@@ -176,68 +176,155 @@
   }
   .animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
 
-  /* ====== LIVE MATCH ENGINE ANIMATION ====== */
-  .chip-gold-dark {
-    display: inline-flex; align-items: center;
-    padding: 5px 11px;
+  /* ====== LIVE MATCH ENGINE — CONSTELLATION ====== */
+  .constellation-stage {
+    height: 460px;
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+  @media (min-width: 768px) {
+    .constellation-stage { height: 540px; }
+  }
+  @media (min-width: 1024px) {
+    .constellation-stage { height: 600px; }
+  }
+
+  /* Central role card — the focal point */
+  .c-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+  .c-center-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(11,31,58,0.92), rgba(11,31,58,0.78));
+    border: 1.5px solid rgba(212,175,55,0.55);
+    border-radius: 14px;
+    padding: 14px 20px;
+    min-width: 260px;
+    box-shadow:
+      0 0 0 1px rgba(212,175,55,0.15),
+      0 20px 48px -16px rgba(212,175,55,0.20),
+      0 8px 24px -8px rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+  }
+  .c-center-glow {
+    position: absolute;
+    inset: -40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,175,55,0.30), rgba(212,175,55,0.08) 50%, transparent 70%);
+    z-index: -1;
+    animation: c-glow-pulse 3.5s ease-in-out infinite;
+  }
+  @keyframes c-glow-pulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50%      { opacity: 1;   transform: scale(1.08); }
+  }
+
+  /* Connection lines fanning out from center — animated stroke-dash drift */
+  .c-line {
+    stroke-dasharray: 4 6;
+    opacity: 0;
+    animation:
+      c-line-appear 0.6s ease forwards,
+      c-line-drift  14s linear infinite;
+    animation-delay: calc(0.3s + var(--d) * 0.12s), calc(0.9s + var(--d) * 0.12s);
+  }
+  @keyframes c-line-appear {
+    from { opacity: 0; }
+    to   { opacity: 0.65; }
+  }
+  @keyframes c-line-drift {
+    from { stroke-dashoffset: 0; }
+    to   { stroke-dashoffset: -100; }
+  }
+
+  /* Floating skill pills */
+  .c-skill {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 7px 14px;
     border-radius: 9999px;
-    background: rgba(212,175,55,0.12);
-    border: 1px solid rgba(212,175,55,0.30);
-    color: #E8CB6E;
-    font-size: 11.5px;
+    background: rgba(11,31,58,0.65);
+    border: 1px solid rgba(212,175,55,0.40);
+    color: #F8F7F2;
+    font-size: 12.5px;
     font-weight: 500;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 16px -6px rgba(0,0,0,0.4);
+    opacity: 0;
+    animation:
+      c-skill-appear 0.7s cubic-bezier(.2,.7,.3,1.1) forwards,
+      c-skill-float  6s ease-in-out infinite;
+    animation-delay: calc(1.2s + var(--d) * 0.16s), calc(1.9s + var(--d) * 0.3s);
+    z-index: 5;
   }
-  .me-typing::after {
-    content: '';
+  @keyframes c-skill-appear {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+  @keyframes c-skill-float {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50%      { transform: translate(-50%, -50%) translateY(-5px); }
+  }
+
+  /* Tiny candidate orbs — initials */
+  .c-cand {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: rgba(248,247,242,0.7);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation:
+      c-cand-appear 0.5s ease forwards,
+      c-cand-pulse 5s ease-in-out infinite;
+    animation-delay: calc(0.5s + var(--d) * 0.05s), calc(2.5s + var(--d) * 0.08s);
+    z-index: 3;
+  }
+  @keyframes c-cand-appear {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+    to   { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  }
+  @keyframes c-cand-pulse {
+    0%, 100% { opacity: 0.45; }
+    50%      { opacity: 0.85; }
+  }
+
+  /* Hover affordance on skills (no requirement, just nice) */
+  .c-skill:hover {
+    background: rgba(212,175,55,0.20);
+    border-color: rgba(212,175,55,0.7);
+    color: #F4E68A;
+    transition: all 0.25s ease;
+  }
+
+  /* Footer banner counter */
+  .c-counter {
     display: inline-block;
-    width: 6px; height: 1.05em;
-    background: currentColor;
-    margin-left: 3px;
-    vertical-align: text-bottom;
-    animation: me-cursor 0.8s steps(2) infinite;
+    min-width: 1ch;
+    font-variant-numeric: tabular-nums;
   }
-  @keyframes me-cursor {
-    50% { opacity: 0; }
-  }
-  .me-skill {
-    opacity: 0;
-    transform: translateY(6px);
-    animation: me-pop 0.45s cubic-bezier(.2,.7,.3,1.1) forwards;
-    animation-delay: calc(0.4s + var(--d) * 0.18s);
-  }
-  @keyframes me-pop {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .me-bar {
-    width: 0%;
-    transition: width 1.4s cubic-bezier(.4,.0,.2,1);
-    animation: me-bar-fill 2.4s cubic-bezier(.4,.0,.2,1) 1.4s forwards;
-  }
-  @keyframes me-bar-fill {
-    to { width: 92%; }
-  }
-  .me-bar-val {
-    animation: me-bar-count 2.4s cubic-bezier(.4,.0,.2,1) 1.4s forwards;
-  }
-  @keyframes me-bar-count {
-    0% { content: '0%'; }
-    100% { content: '92%'; }
-  }
-  .me-profile {
-    opacity: 0;
-    transform: translateY(8px);
-    animation: me-pop 0.5s cubic-bezier(.2,.7,.3,1.1) forwards;
-    animation-delay: calc(2.6s + var(--d) * 0.25s);
-  }
-  .me-final-text {
-    animation: me-fade-text 0.6s 4.0s forwards;
-  }
-  @keyframes me-fade-text {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    51% { content: '3 qualified profiles ready · in hours, not weeks'; }
-    100% { opacity: 1; }
+
+  /* Mobile responsive — hide some candidate orbs to reduce clutter on narrow screens */
+  @media (max-width: 640px) {
+    .c-cand[style*="--d:4"], .c-cand[style*="--d:6"], .c-cand[style*="--d:12"],
+    .c-cand[style*="--d:13"], .c-cand[style*="--d:14"], .c-cand[style*="--d:23"],
+    .c-cand[style*="--d:26"], .c-cand[style*="--d:27"] { display: none; }
+    .c-skill { font-size: 11.5px; padding: 5px 11px; }
+    .c-center-card { min-width: 220px; padding: 12px 16px; }
+    .c-center-card .font-display { font-size: 15px; }
   }
 
   /* ====== HERO MOUSE-FOLLOW GLOW ====== */

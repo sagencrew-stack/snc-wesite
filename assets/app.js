@@ -2029,44 +2029,38 @@ Location: Hyderabad / Remote.`;
     });
   })();
 
-  /* ---------------- 26. LIVE MATCH ENGINE — counter animation + text swap ---------------- */
+  /* ---------------- 26. LIVE MATCH ENGINE — Constellation counter ---------------- */
   (function () {
-    const engine = document.querySelector('.match-engine');
-    if (!engine) return;
-    const barVal = engine.querySelector('.me-bar-val');
-    const finalText = engine.querySelector('.me-final-text');
-    if (!barVal || !finalText) return;
+    const stage = document.querySelector('.constellation-stage');
+    const counter = document.querySelector('.c-counter');
+    if (!stage || !counter) return;
 
     let started = false;
+    const target = parseInt(counter.dataset.target || '3', 10);
+
     const start = () => {
       if (started) return;
       started = true;
 
-      // Animate the percentage from 0 to 92 over ~2.4s, starting after 1.4s
+      // Wait until skills/cards have appeared (~3s) then start counting
       setTimeout(() => {
+        const duration = 1200;
         const startTime = performance.now();
-        const duration = 2400;
         const tick = (now) => {
           const elapsed = now - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          // Ease-out
+          // Ease-out cubic
           const eased = 1 - Math.pow(1 - progress, 3);
-          const val = Math.round(eased * 92);
-          barVal.textContent = val + '%';
-          if (progress < 1) requestAnimationFrame(tick);
+          const val = Math.floor(eased * target);
+          counter.textContent = val;
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            counter.textContent = target;
+          }
         };
         requestAnimationFrame(tick);
-      }, 1400);
-
-      // Swap the final text after profiles appear
-      setTimeout(() => {
-        finalText.style.transition = 'opacity 0.3s ease';
-        finalText.style.opacity = '0';
-        setTimeout(() => {
-          finalText.textContent = '3 qualified profiles ready · in hours, not weeks';
-          finalText.style.opacity = '1';
-        }, 300);
-      }, 4000);
+      }, 3200);
     };
 
     // Trigger only when scrolled into view
@@ -2079,9 +2073,8 @@ Location: Hyderabad / Remote.`;
           }
         });
       }, { threshold: 0.3 });
-      observer.observe(engine);
+      observer.observe(stage);
     } else {
-      // Fallback: just start
       start();
     }
   })();

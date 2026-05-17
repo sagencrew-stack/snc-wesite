@@ -133,9 +133,7 @@
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <nav class="flex items-center justify-between h-16 md:h-20">
       <a href="index.html" class="flex items-center gap-3 group" aria-label="Sage & Crew Next — Home">
-        <span class="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-navy shadow-soft overflow-hidden">
-          <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
-        </span>
+        <img src="assets/logo-mark.svg" alt="Sage & Crew Next" class="brand-mark w-12 h-12 md:w-14 md:h-14 object-contain transition-transform duration-300 group-hover:scale-105" />
         <span class="flex items-baseline gap-1 text-[18px] md:text-[19px]">
           <span class="font-display italic text-navy">Sage</span>
           <span class="font-semibold tracking-tight text-charcoal">& Crew</span>
@@ -243,129 +241,124 @@
   </div>
 </section>
 
-<!-- LIVE MATCH ENGINE — animated visual showing requisition → matched profiles -->
+<!-- LIVE MATCH ENGINE — Constellation: floating skills, candidate orbs, central role card -->
 <section id="live-engine" class="py-16 md:py-24 bg-navy text-ivory relative overflow-hidden border-t border-white/5">
   <div class="absolute inset-0 dot-grid opacity-25"></div>
-  <div class="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gold/10 blur-3xl"></div>
-  <div class="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-sage/12 blur-3xl"></div>
+  <div class="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gold/10 blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-sage/12 blur-3xl pointer-events-none"></div>
 
   <div class="relative max-w-7xl mx-auto px-5 md:px-8">
-    <div class="grid lg:grid-cols-12 gap-10 items-center">
-      <div class="lg:col-span-5 reveal">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-gold/25 text-[11.5px] uppercase tracking-[0.18em] text-gold/90 mb-5">
-          <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
-          Live Match Engine
-        </div>
-        <h2 class="font-display text-3xl md:text-5xl text-ivory leading-tight">
-          From requisition to <span class="italic text-gold">qualified profiles.</span>
-        </h2>
-        <p class="mt-5 text-ivory/70 text-[15.5px] leading-relaxed">
-          Watch how our process moves from a fresh hiring requirement to a curated, role-matched shortlist — typically within agreed turnaround, not weeks. Human-screened, AI-assisted.
-        </p>
-        <ul class="mt-7 space-y-2.5 text-[14px] text-ivory/80">
-          <li class="flex items-start gap-2.5"><svg class="mt-1 shrink-0 text-gold" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg>AI-assisted skill extraction from JD</li>
-          <li class="flex items-start gap-2.5"><svg class="mt-1 shrink-0 text-gold" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg>Talent pool match with role-fit scoring</li>
-          <li class="flex items-start gap-2.5"><svg class="mt-1 shrink-0 text-gold" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg>Human-screened profiles, never auto-forwarded</li>
-        </ul>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a href="contact.html?intent=employer" class="px-5 py-3 rounded-full btn-gold text-[13.5px] inline-flex items-center gap-2">
-            Submit Hiring Requirement
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
+    <!-- Header text above the stage -->
+    <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-gold/25 text-[11.5px] uppercase tracking-[0.18em] text-gold/90 mb-5">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
+        Live Match Engine
+      </div>
+      <h2 class="font-display text-3xl md:text-5xl text-ivory leading-tight">
+        Watch a requisition <span class="italic text-gold">find its people.</span>
+      </h2>
+      <p class="mt-4 text-ivory/65 text-[15px] md:text-[16px] leading-relaxed max-w-2xl mx-auto">
+        Our AI-assisted, human-screened workflow turns a fresh requirement into a curated shortlist — typically within agreed turnaround, not weeks.
+      </p>
+    </div>
+
+    <!-- Constellation stage -->
+    <div class="constellation-stage relative w-full reveal" aria-hidden="true">
+      <!-- Background SVG connection lines — drawn first so they sit behind nodes -->
+      <svg class="constellation-lines absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none">
+        <defs>
+          <linearGradient id="lineGold" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#D4AF37" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Lines fanning out from the central card (center at 500, 300) -->
+        <line x1="500" y1="300" x2="180" y2="90"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:0"/>
+        <line x1="500" y1="300" x2="500" y2="80"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:1"/>
+        <line x1="500" y1="300" x2="820" y2="90"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:2"/>
+        <line x1="500" y1="300" x2="120" y2="300" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:3"/>
+        <line x1="500" y1="300" x2="880" y2="300" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:4"/>
+        <line x1="500" y1="300" x2="180" y2="510" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:5"/>
+        <line x1="500" y1="300" x2="500" y2="520" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:6"/>
+        <line x1="500" y1="300" x2="820" y2="510" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:7"/>
+      </svg>
+
+      <!-- Tiny candidate dots scattered around -->
+      <span class="c-cand" style="top:14%; left:34%; --d:0">RT</span>
+      <span class="c-cand" style="top:18%; left:50%; --d:1">TS</span>
+      <span class="c-cand" style="top:12%; left:62%; --d:2">BS</span>
+      <span class="c-cand" style="top:22%; left:70%; --d:3">NA</span>
+      <span class="c-cand" style="top:8%;  left:80%; --d:4">UI</span>
+      <span class="c-cand" style="top:25%; left:84%; --d:5">MN</span>
+      <span class="c-cand" style="top:28%; left:88%; --d:6">HR</span>
+      <span class="c-cand" style="top:22%; left:16%; --d:7">RN</span>
+      <span class="c-cand" style="top:35%; left:8%;  --d:8">SP</span>
+      <span class="c-cand" style="top:48%; left:14%; --d:9">JL</span>
+      <span class="c-cand" style="top:30%; left:78%; --d:10">KK</span>
+      <span class="c-cand" style="top:38%; left:82%; --d:11">GP</span>
+      <span class="c-cand" style="top:42%; left:88%; --d:12">SA</span>
+      <span class="c-cand" style="top:56%; left:90%; --d:13">EJ</span>
+      <span class="c-cand" style="top:60%; left:86%; --d:14">PL</span>
+      <span class="c-cand" style="top:42%; left:42%; --d:15">RV</span>
+      <span class="c-cand" style="top:44%; left:55%; --d:16">VK</span>
+      <span class="c-cand" style="top:55%; left:46%; --d:17">RB</span>
+      <span class="c-cand" style="top:60%; left:32%; --d:18">DR</span>
+      <span class="c-cand" style="top:65%; left:65%; --d:19">RG</span>
+      <span class="c-cand" style="top:75%; left:25%; --d:20">PJ</span>
+      <span class="c-cand" style="top:80%; left:38%; --d:21">AK</span>
+      <span class="c-cand" style="top:82%; left:44%; --d:22">SH</span>
+      <span class="c-cand" style="top:85%; left:18%; --d:23">JD</span>
+      <span class="c-cand" style="top:78%; left:52%; --d:24">AS</span>
+      <span class="c-cand" style="top:75%; left:68%; --d:25">VS</span>
+      <span class="c-cand" style="top:80%; left:74%; --d:26">BC</span>
+      <span class="c-cand" style="top:78%; left:62%; --d:27">MK</span>
+
+      <!-- Floating skill pills around the central card -->
+      <span class="c-skill" style="top:8%;  left:42%; --d:0">AWS</span>
+      <span class="c-skill" style="top:14%; left:60%; --d:1">Kubernetes</span>
+      <span class="c-skill" style="top:18%; left:24%; --d:2">Remote-OK</span>
+      <span class="c-skill" style="top:35%; left:75%; --d:3">Terraform</span>
+      <span class="c-skill" style="top:40%; left:60%; --d:4">CI/CD</span>
+      <span class="c-skill" style="top:30%; left:18%; --d:5">6+ yrs</span>
+      <span class="c-skill" style="top:50%; left:22%; --d:6">Docker</span>
+      <span class="c-skill" style="top:55%; left:42%; --d:7">Python</span>
+
+      <!-- Central role card — the focal point -->
+      <div class="c-center reveal">
+        <div class="c-center-glow"></div>
+        <div class="c-center-card">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10.5px] uppercase tracking-wider text-gold/90 font-semibold">Live Requisition</span>
+            <span class="w-2 h-2 rounded-full bg-gold pillar-pulse"></span>
+          </div>
+          <div class="font-display text-[17px] md:text-[19px] text-ivory leading-tight">Senior DevOps Engineer</div>
+          <div class="text-[12.5px] text-ivory/65 mt-1">6+ yrs · Bangalore · Permanent</div>
         </div>
       </div>
+    </div>
 
-      <!-- The animated match engine -->
-      <div class="lg:col-span-7 reveal">
-        <div class="match-engine glass-dark rounded-3xl border border-gold/20 p-6 md:p-7 shadow-lift">
-          <!-- Header -->
-          <div class="flex items-center justify-between mb-5 pb-4 border-b border-white/8">
-            <div class="flex items-center gap-2.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 pillar-pulse"></span>
-              <span class="text-[12.5px] font-semibold text-ivory">Live Match Engine</span>
-            </div>
-            <span class="text-[10.5px] uppercase tracking-wider text-ivory/40">Illustrative</span>
-          </div>
-
-          <!-- Step 1: Requisition -->
-          <div class="mb-4">
-            <div class="text-[10.5px] uppercase tracking-wider text-gold/80 mb-2">Step 1 · Requisition Received</div>
-            <div class="rounded-xl bg-white/5 border border-white/8 p-4">
-              <div class="flex items-start justify-between gap-3 mb-2">
-                <div>
-                  <div class="font-display text-[15px] text-ivory">Senior DevOps Engineer</div>
-                  <div class="text-[11.5px] text-ivory/55">Hyderabad / Remote · 6+ yrs</div>
-                </div>
-                <span class="text-[10.5px] px-2 py-1 rounded-md bg-gold/15 text-gold/90 whitespace-nowrap me-typing">Receiving…</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2: Skill extraction animation -->
-          <div class="mb-4">
-            <div class="text-[10.5px] uppercase tracking-wider text-gold/80 mb-2">Step 2 · AI-Assisted Skill Extraction</div>
-            <div class="rounded-xl bg-white/5 border border-white/8 p-4">
-              <div class="flex flex-wrap gap-1.5" id="me-skills">
-                <span class="me-skill chip-gold-dark" style="--d:0">AWS</span>
-                <span class="me-skill chip-gold-dark" style="--d:1">Kubernetes</span>
-                <span class="me-skill chip-gold-dark" style="--d:2">Terraform</span>
-                <span class="me-skill chip-gold-dark" style="--d:3">Jenkins</span>
-                <span class="me-skill chip-gold-dark" style="--d:4">Docker</span>
-                <span class="me-skill chip-gold-dark" style="--d:5">Linux</span>
-              </div>
-              <div class="mt-3 flex items-center gap-2 text-[11px] text-ivory/55">
-                <span>Pool match strength</span>
-                <div class="flex-1 h-1.5 rounded-full bg-white/10 overflow-hidden">
-                  <div class="h-full bg-gradient-to-r from-gold via-gold-deep to-gold me-bar"></div>
-                </div>
-                <span class="me-bar-val font-semibold text-gold">0%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3: Profiles -->
-          <div>
-            <div class="text-[10.5px] uppercase tracking-wider text-gold/80 mb-2">Step 3 · Curated Shortlist</div>
-            <div class="space-y-2">
-              <div class="me-profile rounded-xl bg-white/5 border border-white/8 p-3 flex items-center justify-between" style="--d:0">
-                <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-full bg-sage/25 text-ivory flex items-center justify-center text-[12px] font-semibold">AS</div>
-                  <div>
-                    <div class="text-[13px] font-medium text-ivory">Aarav S.</div>
-                    <div class="text-[11px] text-ivory/55">7 yrs · Hyderabad</div>
-                  </div>
-                </div>
-                <span class="text-gold font-display text-lg">94%</span>
-              </div>
-              <div class="me-profile rounded-xl bg-white/5 border border-white/8 p-3 flex items-center justify-between" style="--d:1">
-                <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-full bg-sage/25 text-ivory flex items-center justify-center text-[12px] font-semibold">PR</div>
-                  <div>
-                    <div class="text-[13px] font-medium text-ivory">Priya R.</div>
-                    <div class="text-[11px] text-ivory/55">6 yrs · Remote</div>
-                  </div>
-                </div>
-                <span class="text-gold font-display text-lg">91%</span>
-              </div>
-              <div class="me-profile rounded-xl bg-white/5 border border-white/8 p-3 flex items-center justify-between" style="--d:2">
-                <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-full bg-sage/25 text-ivory flex items-center justify-center text-[12px] font-semibold">VK</div>
-                  <div>
-                    <div class="text-[13px] font-medium text-ivory">Vikram K.</div>
-                    <div class="text-[11px] text-ivory/55">8 yrs · Hybrid</div>
-                  </div>
-                </div>
-                <span class="text-gold font-display text-lg">88%</span>
-              </div>
-            </div>
-            <div class="mt-4 text-center">
-              <span class="inline-flex items-center gap-2 text-[12px] text-ivory/65">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="text-emerald-400"><path d="M5 12l5 5 9-11"/></svg>
-                <span class="me-final-text">Processing requirements…</span>
-              </span>
-            </div>
-          </div>
+    <!-- Footer banner -->
+    <div class="constellation-footer mt-8 md:mt-10 rounded-2xl bg-navy-deep/60 border border-white/8 backdrop-blur-sm p-5 md:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 reveal">
+      <div>
+        <div class="text-[10.5px] uppercase tracking-[0.18em] text-ivory/55 font-semibold">From requisition to qualified profiles</div>
+        <div class="font-display text-[18px] md:text-[20px] text-ivory mt-1">In hours, not weeks.</div>
+      </div>
+      <div class="flex items-center gap-5">
+        <div class="flex items-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="url(#zapFill)" stroke="url(#zapStroke)" stroke-width="1.6">
+            <defs>
+              <linearGradient id="zapFill" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#F4D77A"/><stop offset="100%" stop-color="#A8881F"/></linearGradient>
+              <linearGradient id="zapStroke" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#E8CB6E"/><stop offset="100%" stop-color="#A8881F"/></linearGradient>
+            </defs>
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <span class="text-gold font-display text-[18px] md:text-[20px]"><span class="c-counter" data-target="3">0</span> qualified</span>
         </div>
+        <a href="contact.html?intent=employer" class="px-4 py-2 rounded-full btn-gold text-[12.5px] inline-flex items-center gap-1.5 whitespace-nowrap">
+          Submit Requirement
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -884,7 +877,7 @@
     <div class="grid md:grid-cols-12 gap-10">
       <div class="md:col-span-5">
         <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Sage & Crew Next — Home">
-          <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark-dark w-11 h-11 object-contain transition-transform duration-300 group-hover:scale-105 rounded-full" />
+          <img src="assets/logo-mark.svg" alt="Sage & Crew Next" class="brand-mark-dark w-11 h-11 object-contain transition-transform duration-300 group-hover:scale-105" />
           <span class="flex items-baseline gap-1 text-[17px] text-ivory">
             <span class="font-display italic">Sage</span><span class="font-semibold">& Crew</span><span class="text-gold font-semibold">Next</span>
           </span>
