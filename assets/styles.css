@@ -178,16 +178,20 @@
 
   /* ====== LIVE MATCH ENGINE — CONSTELLATION ====== */
   .constellation-stage {
-    height: 460px;
-    margin: 0 auto;
-    max-width: 1000px;
+    height: 380px;
+    width: 100%;
+    position: relative;
   }
-  @media (min-width: 768px) {
-    .constellation-stage { height: 540px; }
+  @media (min-width: 640px) {
+    .constellation-stage { height: 420px; }
   }
   @media (min-width: 1024px) {
-    .constellation-stage { height: 600px; }
+    .constellation-stage { height: 460px; }
   }
+  @media (min-width: 1280px) {
+    .constellation-stage { height: 500px; }
+  }
+  .hero-constellation { width: 100%; }
 
   /* Central role card — the focal point */
   .c-center {
@@ -200,14 +204,17 @@
     position: relative;
     background: linear-gradient(180deg, rgba(11,31,58,0.92), rgba(11,31,58,0.78));
     border: 1.5px solid rgba(212,175,55,0.55);
-    border-radius: 14px;
-    padding: 14px 20px;
-    min-width: 260px;
+    border-radius: 12px;
+    padding: 12px 16px;
+    min-width: 220px;
     box-shadow:
       0 0 0 1px rgba(212,175,55,0.15),
       0 20px 48px -16px rgba(212,175,55,0.20),
       0 8px 24px -8px rgba(0,0,0,0.5);
     backdrop-filter: blur(8px);
+  }
+  @media (min-width: 1024px) {
+    .c-center-card { min-width: 250px; padding: 14px 18px; }
   }
   .c-center-glow {
     position: absolute;
@@ -244,12 +251,12 @@
   .c-skill {
     position: absolute;
     transform: translate(-50%, -50%);
-    padding: 7px 14px;
+    padding: 5px 11px;
     border-radius: 9999px;
     background: rgba(11,31,58,0.65);
     border: 1px solid rgba(212,175,55,0.40);
     color: #F8F7F2;
-    font-size: 12.5px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.01em;
     white-space: nowrap;
@@ -261,6 +268,9 @@
       c-skill-float  6s ease-in-out infinite;
     animation-delay: calc(1.2s + var(--d) * 0.16s), calc(1.9s + var(--d) * 0.3s);
     z-index: 5;
+  }
+  @media (min-width: 1024px) {
+    .c-skill { padding: 6px 12px; font-size: 12px; }
   }
   @keyframes c-skill-appear {
     0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
@@ -275,12 +285,12 @@
   .c-cand {
     position: absolute;
     transform: translate(-50%, -50%);
-    width: 28px; height: 28px;
+    width: 24px; height: 24px;
     border-radius: 50%;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.10);
     color: rgba(248,247,242,0.7);
-    font-size: 9.5px;
+    font-size: 8.5px;
     font-weight: 600;
     letter-spacing: 0.04em;
     display: flex;
@@ -292,6 +302,9 @@
       c-cand-pulse 5s ease-in-out infinite;
     animation-delay: calc(0.5s + var(--d) * 0.05s), calc(2.5s + var(--d) * 0.08s);
     z-index: 3;
+  }
+  @media (min-width: 1024px) {
+    .c-cand { width: 26px; height: 26px; font-size: 9px; }
   }
   @keyframes c-cand-appear {
     from { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
@@ -319,12 +332,8 @@
 
   /* Mobile responsive — hide some candidate orbs to reduce clutter on narrow screens */
   @media (max-width: 640px) {
-    .c-cand[style*="--d:4"], .c-cand[style*="--d:6"], .c-cand[style*="--d:12"],
-    .c-cand[style*="--d:13"], .c-cand[style*="--d:14"], .c-cand[style*="--d:23"],
-    .c-cand[style*="--d:26"], .c-cand[style*="--d:27"] { display: none; }
-    .c-skill { font-size: 11.5px; padding: 5px 11px; }
-    .c-center-card { min-width: 220px; padding: 12px 16px; }
-    .c-center-card .font-display { font-size: 15px; }
+    .c-cand[style*="--d:5"], .c-cand[style*="--d:11"],
+    .c-cand[style*="--d:14"], .c-cand[style*="--d:25"] { display: none; }
   }
 
   /* ====== HERO MOUSE-FOLLOW GLOW ====== */

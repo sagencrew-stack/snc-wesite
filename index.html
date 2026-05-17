@@ -183,36 +183,142 @@
   </div>
 </header>
 
-<!-- HERO -->
-<section id="top" class="hero-bg dot-grid pt-28 md:pt-32 pb-20 md:pb-24 text-ivory relative overflow-hidden">
+<!-- HERO with constellation top-right -->
+<section id="top" class="hero-bg dot-grid pt-24 md:pt-28 pb-14 md:pb-20 text-ivory relative overflow-hidden">
   <canvas id="particles"></canvas>
-  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
-    <div class="text-center max-w-4xl mx-auto reveal">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-gold/25 text-[12px] uppercase tracking-[0.18em] text-gold/90 mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
-        Business Growth Partner
-      </div>
-      <h1 class="font-display text-5xl md:text-7xl text-ivory leading-[1.05]">
-        Build Teams. <span class="italic text-gold">Build Systems.</span> <br class="hidden md:block"/>Build AI-Powered Growth.
-      </h1>
-      <p class="mt-6 text-ivory/75 text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto">
-        Sage & Crew Next helps businesses grow with recruitment support, software projects, AI-enabled automation, websites, dashboards, and digital branding solutions.
-      </p>
-      <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-        <a href="contact.html?intent=project" class="magnetic px-6 py-3.5 rounded-full btn-gold text-[14.5px] inline-flex items-center gap-2">
-          Start a Project
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <a href="contact.html?intent=employer" class="magnetic px-6 py-3.5 rounded-full text-[14.5px] font-semibold border border-ivory/25 text-ivory hover:bg-ivory hover:text-navy transition">Hire Talent</a>
-        <a href="ai-solutions.html" class="magnetic px-6 py-3.5 rounded-full text-[14.5px] font-semibold text-ivory/85 hover:text-gold transition inline-flex items-center gap-1.5">
-          Explore AI Solutions
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <div class="mt-5 text-ivory/55 text-[12.5px]">People, platforms, and AI-powered progress for growing businesses.</div>
-    </div>
 
-    <div class="mt-16 md:mt-20 grid md:grid-cols-3 gap-5 md:gap-7 pillar-row">
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+      <!-- LEFT COLUMN: headline, sub, CTAs -->
+      <div class="lg:col-span-6 reveal text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-gold/25 text-[12px] uppercase tracking-[0.18em] text-gold/90 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
+          Business Growth Partner
+        </div>
+        <h1 class="font-display text-4xl md:text-6xl lg:text-[64px] xl:text-[72px] text-ivory leading-[1.05]">
+          Build Teams. <span class="italic text-gold">Build Systems.</span> <br class="hidden lg:block"/>Build AI-Powered Growth.
+        </h1>
+        <p class="mt-5 text-ivory/75 text-[15.5px] md:text-[17px] leading-relaxed max-w-xl mx-auto lg:mx-0">
+          Sage &amp; Crew Next helps businesses grow with recruitment support, software projects, AI-enabled automation, websites, dashboards, and digital branding solutions.
+        </p>
+        <div class="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+          <a href="contact.html?intent=project" class="magnetic px-5 md:px-6 py-3 md:py-3.5 rounded-full btn-gold text-[14px] md:text-[14.5px] inline-flex items-center gap-2">
+            Start a Project
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="contact.html?intent=employer" class="magnetic px-5 md:px-6 py-3 md:py-3.5 rounded-full text-[14px] md:text-[14.5px] font-semibold border border-ivory/25 text-ivory hover:bg-ivory hover:text-navy transition">Hire Talent</a>
+          <a href="ai-solutions.html" class="magnetic px-3 py-3 md:py-3.5 rounded-full text-[14px] md:text-[14.5px] font-semibold text-ivory/85 hover:text-gold transition inline-flex items-center gap-1.5">
+            Explore AI Solutions
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="mt-5 text-ivory/55 text-[12.5px]">People, platforms, and AI-powered progress for growing businesses.</div>
+      </div>
+
+      <!-- RIGHT COLUMN: Constellation animation (top-right position) -->
+      <div class="lg:col-span-6 reveal">
+        <div class="hero-constellation relative w-full" aria-hidden="true">
+
+          <!-- Header pill above stage -->
+          <div class="flex items-center justify-center lg:justify-start gap-2 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-gold/25 text-[11px] uppercase tracking-[0.18em] text-gold/90">
+              <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
+              Live Match Engine
+            </span>
+          </div>
+
+          <!-- Constellation stage -->
+          <div class="constellation-stage relative w-full">
+            <!-- Background SVG connection lines -->
+            <svg class="constellation-lines absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none">
+              <defs>
+                <linearGradient id="lineGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#D4AF37" stop-opacity="0"/>
+                  <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <line x1="500" y1="300" x2="180" y2="90"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:0"/>
+              <line x1="500" y1="300" x2="500" y2="80"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:1"/>
+              <line x1="500" y1="300" x2="820" y2="90"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:2"/>
+              <line x1="500" y1="300" x2="120" y2="300" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:3"/>
+              <line x1="500" y1="300" x2="880" y2="300" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:4"/>
+              <line x1="500" y1="300" x2="180" y2="510" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:5"/>
+              <line x1="500" y1="300" x2="500" y2="520" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:6"/>
+              <line x1="500" y1="300" x2="820" y2="510" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:7"/>
+            </svg>
+
+            <!-- Candidate dots -->
+            <span class="c-cand" style="top:14%; left:30%; --d:0">RT</span>
+            <span class="c-cand" style="top:18%; left:50%; --d:1">TS</span>
+            <span class="c-cand" style="top:10%; left:64%; --d:2">BS</span>
+            <span class="c-cand" style="top:22%; left:72%; --d:3">NA</span>
+            <span class="c-cand" style="top:25%; left:84%; --d:5">MN</span>
+            <span class="c-cand" style="top:18%; left:12%; --d:7">RN</span>
+            <span class="c-cand" style="top:35%; left:6%;  --d:8">SP</span>
+            <span class="c-cand" style="top:48%; left:12%; --d:9">JL</span>
+            <span class="c-cand" style="top:32%; left:78%; --d:10">KK</span>
+            <span class="c-cand" style="top:42%; left:88%; --d:11">GP</span>
+            <span class="c-cand" style="top:58%; left:86%; --d:14">EJ</span>
+            <span class="c-cand" style="top:42%; left:40%; --d:15">RV</span>
+            <span class="c-cand" style="top:46%; left:56%; --d:16">VK</span>
+            <span class="c-cand" style="top:58%; left:44%; --d:17">RB</span>
+            <span class="c-cand" style="top:62%; left:30%; --d:18">DR</span>
+            <span class="c-cand" style="top:68%; left:64%; --d:19">RG</span>
+            <span class="c-cand" style="top:76%; left:22%; --d:20">PJ</span>
+            <span class="c-cand" style="top:80%; left:40%; --d:21">AK</span>
+            <span class="c-cand" style="top:78%; left:54%; --d:24">AS</span>
+            <span class="c-cand" style="top:75%; left:72%; --d:25">VS</span>
+
+            <!-- Skill pills -->
+            <span class="c-skill" style="top:8%;  left:42%; --d:0">AWS</span>
+            <span class="c-skill" style="top:14%; left:62%; --d:1">Kubernetes</span>
+            <span class="c-skill" style="top:18%; left:22%; --d:2">Remote-OK</span>
+            <span class="c-skill" style="top:36%; left:74%; --d:3">Terraform</span>
+            <span class="c-skill" style="top:40%; left:62%; --d:4">CI/CD</span>
+            <span class="c-skill" style="top:30%; left:16%; --d:5">6+ yrs</span>
+            <span class="c-skill" style="top:52%; left:20%; --d:6">Docker</span>
+            <span class="c-skill" style="top:56%; left:44%; --d:7">Python</span>
+
+            <!-- Central role card -->
+            <div class="c-center">
+              <div class="c-center-glow"></div>
+              <div class="c-center-card">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[10px] uppercase tracking-wider text-gold/90 font-semibold">Live Requisition</span>
+                  <span class="w-2 h-2 rounded-full bg-gold pillar-pulse"></span>
+                </div>
+                <div class="font-display text-[15px] md:text-[17px] text-ivory leading-tight">Senior DevOps Engineer</div>
+                <div class="text-[11.5px] text-ivory/65 mt-1">6+ yrs · Bangalore · Permanent</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer banner -->
+          <div class="mt-4 rounded-xl bg-navy-deep/60 border border-white/8 backdrop-blur-sm p-3.5 flex items-center justify-between gap-3">
+            <div>
+              <div class="text-[9.5px] uppercase tracking-[0.16em] text-ivory/55 font-semibold">Requisition → Qualified Profiles</div>
+              <div class="font-display text-[14px] text-ivory mt-0.5">In hours, not weeks.</div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#D4AF37" stroke="#A8881F" stroke-width="1.4">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+              <span class="text-gold font-display text-[16px]"><span class="c-counter" data-target="3">0</span> qualified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 PILLARS — promoted to their own band below hero -->
+<section class="bg-navy text-ivory py-12 md:py-16 relative overflow-hidden border-t border-white/5">
+  <div class="absolute inset-0 dot-grid opacity-20"></div>
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-3 gap-5 md:gap-7 pillar-row">
       <div class="pillar-card reveal">
         <div class="pillar-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M17 11a4 4 0 100-8 4 4 0 000 8z"/><path d="M1 21v-2a4 4 0 014-4h8a4 4 0 014 4v2"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
@@ -236,129 +342,6 @@
         <div class="text-[11px] uppercase tracking-[0.18em] text-gold/85 mb-2">Pillar 03</div>
         <div class="font-display text-2xl text-ivory mb-2">AI &amp; Automation</div>
         <p class="text-[13.5px] text-ivory/65 leading-relaxed">AI-enabled workflows, automation, smart dashboards, and digital branding that move your business faster.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LIVE MATCH ENGINE — Constellation: floating skills, candidate orbs, central role card -->
-<section id="live-engine" class="py-16 md:py-24 bg-navy text-ivory relative overflow-hidden border-t border-white/5">
-  <div class="absolute inset-0 dot-grid opacity-25"></div>
-  <div class="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gold/10 blur-3xl pointer-events-none"></div>
-  <div class="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-sage/12 blur-3xl pointer-events-none"></div>
-
-  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
-    <!-- Header text above the stage -->
-    <div class="text-center max-w-3xl mx-auto mb-10 reveal">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-gold/25 text-[11.5px] uppercase tracking-[0.18em] text-gold/90 mb-5">
-        <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
-        Live Match Engine
-      </div>
-      <h2 class="font-display text-3xl md:text-5xl text-ivory leading-tight">
-        Watch a requisition <span class="italic text-gold">find its people.</span>
-      </h2>
-      <p class="mt-4 text-ivory/65 text-[15px] md:text-[16px] leading-relaxed max-w-2xl mx-auto">
-        Our AI-assisted, human-screened workflow turns a fresh requirement into a curated shortlist — typically within agreed turnaround, not weeks.
-      </p>
-    </div>
-
-    <!-- Constellation stage -->
-    <div class="constellation-stage relative w-full reveal" aria-hidden="true">
-      <!-- Background SVG connection lines — drawn first so they sit behind nodes -->
-      <svg class="constellation-lines absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none">
-        <defs>
-          <linearGradient id="lineGold" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#D4AF37" stop-opacity="0"/>
-            <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.45"/>
-            <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <!-- Lines fanning out from the central card (center at 500, 300) -->
-        <line x1="500" y1="300" x2="180" y2="90"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:0"/>
-        <line x1="500" y1="300" x2="500" y2="80"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:1"/>
-        <line x1="500" y1="300" x2="820" y2="90"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:2"/>
-        <line x1="500" y1="300" x2="120" y2="300" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:3"/>
-        <line x1="500" y1="300" x2="880" y2="300" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:4"/>
-        <line x1="500" y1="300" x2="180" y2="510" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:5"/>
-        <line x1="500" y1="300" x2="500" y2="520" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:6"/>
-        <line x1="500" y1="300" x2="820" y2="510" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:7"/>
-      </svg>
-
-      <!-- Tiny candidate dots scattered around -->
-      <span class="c-cand" style="top:14%; left:34%; --d:0">RT</span>
-      <span class="c-cand" style="top:18%; left:50%; --d:1">TS</span>
-      <span class="c-cand" style="top:12%; left:62%; --d:2">BS</span>
-      <span class="c-cand" style="top:22%; left:70%; --d:3">NA</span>
-      <span class="c-cand" style="top:8%;  left:80%; --d:4">UI</span>
-      <span class="c-cand" style="top:25%; left:84%; --d:5">MN</span>
-      <span class="c-cand" style="top:28%; left:88%; --d:6">HR</span>
-      <span class="c-cand" style="top:22%; left:16%; --d:7">RN</span>
-      <span class="c-cand" style="top:35%; left:8%;  --d:8">SP</span>
-      <span class="c-cand" style="top:48%; left:14%; --d:9">JL</span>
-      <span class="c-cand" style="top:30%; left:78%; --d:10">KK</span>
-      <span class="c-cand" style="top:38%; left:82%; --d:11">GP</span>
-      <span class="c-cand" style="top:42%; left:88%; --d:12">SA</span>
-      <span class="c-cand" style="top:56%; left:90%; --d:13">EJ</span>
-      <span class="c-cand" style="top:60%; left:86%; --d:14">PL</span>
-      <span class="c-cand" style="top:42%; left:42%; --d:15">RV</span>
-      <span class="c-cand" style="top:44%; left:55%; --d:16">VK</span>
-      <span class="c-cand" style="top:55%; left:46%; --d:17">RB</span>
-      <span class="c-cand" style="top:60%; left:32%; --d:18">DR</span>
-      <span class="c-cand" style="top:65%; left:65%; --d:19">RG</span>
-      <span class="c-cand" style="top:75%; left:25%; --d:20">PJ</span>
-      <span class="c-cand" style="top:80%; left:38%; --d:21">AK</span>
-      <span class="c-cand" style="top:82%; left:44%; --d:22">SH</span>
-      <span class="c-cand" style="top:85%; left:18%; --d:23">JD</span>
-      <span class="c-cand" style="top:78%; left:52%; --d:24">AS</span>
-      <span class="c-cand" style="top:75%; left:68%; --d:25">VS</span>
-      <span class="c-cand" style="top:80%; left:74%; --d:26">BC</span>
-      <span class="c-cand" style="top:78%; left:62%; --d:27">MK</span>
-
-      <!-- Floating skill pills around the central card -->
-      <span class="c-skill" style="top:8%;  left:42%; --d:0">AWS</span>
-      <span class="c-skill" style="top:14%; left:60%; --d:1">Kubernetes</span>
-      <span class="c-skill" style="top:18%; left:24%; --d:2">Remote-OK</span>
-      <span class="c-skill" style="top:35%; left:75%; --d:3">Terraform</span>
-      <span class="c-skill" style="top:40%; left:60%; --d:4">CI/CD</span>
-      <span class="c-skill" style="top:30%; left:18%; --d:5">6+ yrs</span>
-      <span class="c-skill" style="top:50%; left:22%; --d:6">Docker</span>
-      <span class="c-skill" style="top:55%; left:42%; --d:7">Python</span>
-
-      <!-- Central role card — the focal point -->
-      <div class="c-center reveal">
-        <div class="c-center-glow"></div>
-        <div class="c-center-card">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-[10.5px] uppercase tracking-wider text-gold/90 font-semibold">Live Requisition</span>
-            <span class="w-2 h-2 rounded-full bg-gold pillar-pulse"></span>
-          </div>
-          <div class="font-display text-[17px] md:text-[19px] text-ivory leading-tight">Senior DevOps Engineer</div>
-          <div class="text-[12.5px] text-ivory/65 mt-1">6+ yrs · Bangalore · Permanent</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer banner -->
-    <div class="constellation-footer mt-8 md:mt-10 rounded-2xl bg-navy-deep/60 border border-white/8 backdrop-blur-sm p-5 md:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 reveal">
-      <div>
-        <div class="text-[10.5px] uppercase tracking-[0.18em] text-ivory/55 font-semibold">From requisition to qualified profiles</div>
-        <div class="font-display text-[18px] md:text-[20px] text-ivory mt-1">In hours, not weeks.</div>
-      </div>
-      <div class="flex items-center gap-5">
-        <div class="flex items-center gap-2">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="url(#zapFill)" stroke="url(#zapStroke)" stroke-width="1.6">
-            <defs>
-              <linearGradient id="zapFill" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#F4D77A"/><stop offset="100%" stop-color="#A8881F"/></linearGradient>
-              <linearGradient id="zapStroke" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#E8CB6E"/><stop offset="100%" stop-color="#A8881F"/></linearGradient>
-            </defs>
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
-          <span class="text-gold font-display text-[18px] md:text-[20px]"><span class="c-counter" data-target="3">0</span> qualified</span>
-        </div>
-        <a href="contact.html?intent=employer" class="px-4 py-2 rounded-full btn-gold text-[12.5px] inline-flex items-center gap-1.5 whitespace-nowrap">
-          Submit Requirement
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
       </div>
     </div>
   </div>
