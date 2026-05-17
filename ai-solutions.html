@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI &amp; Automation | Sage &amp; Crew Next — Practical AI for Modern Businesses</title>
+<meta name="description" content="Practical AI and automation services from Sage & Crew Next — workflow automation, AI-assisted screening, chatbots, smart dashboards, document processing, and HR support." />
+<meta name="theme-color" content="#0B1F3A" />
+
+<meta property="og:title" content="AI &amp; Automation | Sage &amp; Crew Next" />
+<meta property="og:description" content="Practical AI support for everyday business workflows — automation, screening, content, chatbots, dashboards, and document processing." />
+<meta property="og:type" content="website" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tailwind-config.js"></script>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<link rel="stylesheet" href="assets/styles.css" />
+
+<style>
+  .ai-card {
+    position: relative;
+    background: linear-gradient(180deg, #ffffff, #fafaf7);
+    border: 1px solid rgba(11,31,58,0.08);
+    border-radius: 20px;
+    padding: 28px 24px;
+    transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
+    overflow: hidden;
+  }
+  .ai-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
+    opacity: 0;
+    transition: opacity .4s ease;
+  }
+  .ai-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,175,55,0.35);
+    box-shadow: 0 24px 48px -16px rgba(11,31,58,0.12);
+  }
+  .ai-card:hover::before { opacity: 1; }
+
+  .ai-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+    background: linear-gradient(135deg, #D4AF37, rgba(212,175,55,0.25));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.55;
+    position: absolute;
+    top: 16px;
+    right: 22px;
+    pointer-events: none;
+  }
+
+  .ai-ic {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.04));
+    border: 1px solid rgba(212,175,55,0.30);
+    display: flex; align-items: center; justify-content: center;
+    color: #A8881F;
+    margin-bottom: 18px;
+  }
+
+  .ai-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    background: rgba(122,158,126,0.12);
+    border: 1px solid rgba(122,158,126,0.25);
+    color: #5A7E5E;
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .ai-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: #7A9E7E; }
+  .ai-tag.aspirational {
+    background: rgba(212,175,55,0.12);
+    border-color: rgba(212,175,55,0.3);
+    color: #A8881F;
+  }
+  .ai-tag.aspirational .ai-tag-dot { background: #D4AF37; }
+</style>
+</head>
+<body class="text-charcoal">
+
+<div id="page-loader" class="fixed inset-0 z-[100] bg-navy flex items-center justify-center">
+  <div class="text-center">
+    <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark-dark w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 animate-pulse-soft" />
+    <div class="text-ivory/55 text-[11px] tracking-[0.3em] uppercase">Build · Systems · AI Growth</div>
+    <div class="mt-5 w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto loader-shine"></div>
+  </div>
+</div>
+
+<div id="cursor-glow"></div>
+<div id="scroll-progress"></div>
+
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <nav class="flex items-center justify-between h-16 md:h-20">
+      <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Sage & Crew Next — Home">
+        <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark w-10 h-10 md:w-11 md:h-11 object-contain transition-transform duration-300 group-hover:scale-105" />
+        <span class="flex items-baseline gap-1 text-[17px]">
+          <span class="font-display italic text-navy">Sage</span>
+          <span class="font-semibold tracking-tight text-charcoal">&amp; Crew</span>
+          <span class="text-gold font-semibold">Next</span>
+        </span>
+      </a>
+
+      <ul class="hidden lg:flex items-center gap-5 xl:gap-6 text-[13.5px] text-charcoal/80">
+        <li><a class="nav-link hover:text-navy transition" href="index.html">Home</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#services">Services</a></li>
+        <li><a class="nav-link hover:text-navy transition active" href="ai-solutions.html">AI &amp; Automation</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="projects.html">Projects</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#employers">For Employers</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="tools.html">Free Tools</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="about.html">About</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="hidden lg:flex items-center gap-2.5">
+        <a href="contact.html?intent=project" class="magnetic px-4 py-2 rounded-full text-[13.5px] font-semibold border border-navy/15 text-navy hover:bg-navy hover:text-ivory transition">Discuss Requirement</a>
+        <a href="contact.html?intent=project" class="magnetic btn-arrow px-4 py-2 rounded-full text-[13.5px] btn-gold inline-flex items-center gap-1.5">Request a Quote
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <button id="menu-btn" aria-label="Open menu" class="lg:hidden p-2 rounded-lg hover:bg-navy/5">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu lg:hidden mt-2 mb-4 rounded-2xl bg-white shadow-lift border border-navy/5 p-4">
+      <ul class="flex flex-col text-[15px] text-charcoal divide-y divide-navy/5">
+        <li><a class="block py-3" href="index.html">Home</a></li>
+        <li><a class="block py-3" href="index.html#services">Services</a></li>
+        <li><a class="block py-3" href="ai-solutions.html">AI &amp; Automation</a></li>
+        <li><a class="block py-3" href="projects.html">Projects</a></li>
+        <li><a class="block py-3" href="index.html#employers">For Employers</a></li>
+        <li><a class="block py-3" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="block py-3" href="tools.html">Free Tools</a></li>
+        <li><a class="block py-3" href="about.html">About</a></li>
+        <li><a class="block py-3" href="contact.html">Contact</a></li>
+        <li class="pt-3 flex gap-2">
+          <a href="contact.html?intent=project" class="flex-1 text-center py-2.5 rounded-full border border-navy/15 text-navy text-[14px] font-semibold">Discuss</a>
+          <a href="contact.html?intent=project" class="flex-1 text-center py-2.5 rounded-full btn-gold text-[14px]">Request Quote</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-bg dot-grid pt-28 md:pt-32 pb-16 md:pb-20 text-ivory relative overflow-hidden">
+  <div class="relative max-w-5xl mx-auto px-5 md:px-8 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-gold/25 text-[12px] uppercase tracking-[0.18em] text-gold/90 mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
+      AI &amp; Automation
+    </div>
+    <h1 class="font-display text-4xl md:text-6xl text-ivory leading-[1.05]">
+      Practical AI for <span class="italic text-gold">modern businesses.</span>
+    </h1>
+    <p class="mt-6 text-ivory/75 text-[16px] md:text-[18px] leading-relaxed max-w-3xl mx-auto">
+      Sage &amp; Crew Next helps businesses identify where AI and automation can reduce repetitive work, improve visibility, speed up communication, and support smarter decisions — without the hype.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <a href="contact.html?intent=project" class="px-6 py-3.5 rounded-full btn-gold text-[14.5px] inline-flex items-center gap-2">
+        Request a Quote
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="contact.html?intent=project" class="px-6 py-3.5 rounded-full text-[14.5px] font-semibold border border-ivory/25 text-ivory hover:bg-ivory hover:text-navy transition">Discuss Requirement</a>
+    </div>
+
+    <!-- Honesty strip -->
+    <div class="mt-12 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[12px] text-ivory/70">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      AI-assisted, human-reviewed. We say what's live versus what's possible.
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE MEAN BY AI -->
+<section class="py-16 md:py-20 bg-ivory">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 text-center">
+    <span class="gold-line-c block mx-auto mb-5"></span>
+    <h2 class="font-display text-2xl md:text-3xl text-navy reveal">What we mean by "AI"</h2>
+    <p class="mt-4 text-charcoal/70 text-[15px] leading-relaxed reveal">
+      We use AI tools — large language models, document processors, automation platforms — to deliver client work faster and smarter. We don't claim every tool is AI. We don't claim end-to-end autonomous AI. We use AI where it actually moves the needle, and we mark everything else as <em>future possibilities</em>. That honesty is part of the service.
+    </p>
+    <div class="mt-7 flex flex-wrap justify-center gap-2">
+      <span class="ai-tag"><span class="ai-tag-dot"></span>AI-Assisted</span>
+      <span class="ai-tag"><span class="ai-tag-dot"></span>Human-Reviewed</span>
+      <span class="ai-tag"><span class="ai-tag-dot"></span>Smart Workflows</span>
+      <span class="ai-tag"><span class="ai-tag-dot"></span>Decision Support</span>
+      <span class="ai-tag"><span class="ai-tag-dot"></span>Automation-Ready</span>
+    </div>
+  </div>
+</section>
+
+<!-- 6 AI SOLUTIONS -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">AI Solutions <span class="italic text-gold">we deliver</span></h2>
+      <p class="mt-4 text-charcoal/70 text-[15.5px]">Six practical AI and automation services for everyday business workflows. Each one configurable to your stack.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- 1. AI Workflow Automation -->
+      <div class="ai-card reveal">
+        <span class="ai-num">01</span>
+        <div class="ai-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <span class="ai-tag"><span class="ai-tag-dot"></span>Available Now</span>
+        <h3 class="font-display text-xl text-navy mb-2">AI Workflow Automation</h3>
+        <p class="text-[13.5px] text-charcoal/70 leading-relaxed">Automate repetitive business tasks — follow-ups, reminders, approvals, status reports, lead handoffs, and routine data handling. Built on platforms like Make, n8n, or Zapier with AI steps where they add value.</p>
+      </div>
+
+      <!-- 2. AI Screening Support -->
+      <div class="ai-card reveal">
+        <span class="ai-num">02</span>
+        <div class="ai-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 11l2 2 4-4"/></svg>
+        </div>
+        <span class="ai-tag"><span class="ai-tag-dot"></span>Available Now</span>
+        <h3 class="font-display text-xl text-navy mb-2">AI Resume &amp; Candidate Screening Support</h3>
+        <p class="text-[13.5px] text-charcoal/70 leading-relaxed">AI-assisted resume filtering: compare resumes against JDs, extract skills, surface ranked shortlists. We use it to accelerate screening — every candidate is still human-reviewed before they reach you.</p>
+      </div>
+
+      <!-- 3. AI Content & Branding -->
+      <div class="ai-card reveal">
+        <span class="ai-num">03</span>
+        <div class="ai-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>
+        </div>
+        <span class="ai-tag"><span class="ai-tag-dot"></span>Available Now</span>
+        <h3 class="font-display text-xl text-navy mb-2">AI Content &amp; Branding Support</h3>
+        <p class="text-[13.5px] text-charcoal/70 leading-relaxed">AI-assisted drafting for website copy, company profiles, service pages, social posts, and brand messaging. We use AI to draft fast, then edit by hand so it reads like you, not like a chatbot.</p>
+      </div>
+
+      <!-- 4. AI Chatbot & Lead Capture -->
+      <div class="ai-card reveal">
+        <span class="ai-num">04</span>
+        <div class="ai-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/><circle cx="16" cy="10" r="1" fill="currentColor"/></svg>
+        </div>
+        <span class="ai-tag"><span class="ai-tag-dot"></span>Available Now</span>
+        <h3 class="font-display text-xl text-navy mb-2">AI Chatbot &amp; Lead Capture</h3>
+        <p class="text-[13.5px] text-charcoal/70 leading-relaxed">Website chat flows that capture leads, answer FAQs, route service inquiries, schedule appointments, and hand over to your team when it matters. Embedded in your existing site, powered by trained LLMs.</p>
+      </div>
+
+      <!-- 5. AI Dashboards & Insights -->
+      <div class="ai-card reveal">
+        <span class="ai-num">05</span>
+        <div class="ai-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l3-4 4 3 5-7"/></svg>
+        </div>
+        <span class="ai-tag"><span class="ai-tag-dot"></span>Available Now</span>
+        <h3 class="font-display text-xl text-navy mb-2">Smart Dashboards &amp; Insights</h3>
+        <p class="text-[13.5px] text-charcoal/70 leading-relaxed">Custom dashboards for leads, hiring progress, sales pipelines, operations, and performance trends. AI-assisted natural-language insights help business owners ask questions and get answers from their own data.</p>
+      </div>
+
+      <!-- 6. AI Document Processing -->
+      <div class="ai-card reveal">
+        <span class="ai-num">06</span>
+        <div class="ai-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
+        </div>
+        <span class="ai-tag"><span class="ai-tag-dot"></span>Available Now</span>
+        <h3 class="font-display text-xl text-navy mb-2">AI Document Processing</h3>
+        <p class="text-[13.5px] text-charcoal/70 leading-relaxed">Resume parsing, document summarization, form extraction, proposal drafting, requirement summaries, and report generation. Useful for HR teams, operations, and any team buried in paperwork.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE DELIVER -->
+<section class="py-16 md:py-24 bg-ivory">
+  <div class="max-w-5xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <h2 class="font-display text-3xl md:text-4xl text-navy">How we deliver AI work</h2>
+      <p class="mt-4 text-charcoal/65 text-[15px]">No hype, no "AI everything." A simple, honest process.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="reveal p-6 rounded-2xl bg-white border border-navy/8 shadow-soft">
+        <div class="flex items-start gap-3">
+          <div class="shrink-0 w-10 h-10 rounded-xl bg-gold/15 border border-gold/30 text-gold-deep flex items-center justify-center font-display font-semibold">1</div>
+          <div>
+            <div class="font-display text-lg text-navy">Identify where AI actually helps</div>
+            <p class="mt-1.5 text-[13.5px] text-charcoal/65 leading-relaxed">We start with your workflow, not a tool. Sometimes the answer is "this doesn't need AI — it needs automation" or "your team already does this well, leave it alone."</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal p-6 rounded-2xl bg-white border border-navy/8 shadow-soft">
+        <div class="flex items-start gap-3">
+          <div class="shrink-0 w-10 h-10 rounded-xl bg-gold/15 border border-gold/30 text-gold-deep flex items-center justify-center font-display font-semibold">2</div>
+          <div>
+            <div class="font-display text-lg text-navy">Pick boring, proven tools</div>
+            <p class="mt-1.5 text-[13.5px] text-charcoal/65 leading-relaxed">Established LLMs, mature automation platforms, well-tested APIs. We avoid trendy AI tools that may not exist in 12 months and leave you stranded.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal p-6 rounded-2xl bg-white border border-navy/8 shadow-soft">
+        <div class="flex items-start gap-3">
+          <div class="shrink-0 w-10 h-10 rounded-xl bg-gold/15 border border-gold/30 text-gold-deep flex items-center justify-center font-display font-semibold">3</div>
+          <div>
+            <div class="font-display text-lg text-navy">Keep humans in the loop</div>
+            <p class="mt-1.5 text-[13.5px] text-charcoal/65 leading-relaxed">AI-generated drafts get human review. AI-screened candidates get human screening. AI insights get human interpretation. Speed up, don't replace.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal p-6 rounded-2xl bg-white border border-navy/8 shadow-soft">
+        <div class="flex items-start gap-3">
+          <div class="shrink-0 w-10 h-10 rounded-xl bg-gold/15 border border-gold/30 text-gold-deep flex items-center justify-center font-display font-semibold">4</div>
+          <div>
+            <div class="font-display text-lg text-navy">Hand over so you're not locked in</div>
+            <p class="mt-1.5 text-[13.5px] text-charcoal/65 leading-relaxed">Your AI workflows run in your accounts (OpenAI, Make, Zapier, whatever we pick) — not ours. You own the keys, the data, and the option to switch later.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE POSSIBILITIES -->
+<section class="py-16 md:py-24 bg-navy text-ivory relative overflow-hidden">
+  <div class="absolute inset-0 dot-grid opacity-30"></div>
+  <div class="relative max-w-5xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <div class="text-[11.5px] uppercase tracking-[0.2em] text-gold/85 mb-3">Aspirational · Not Yet Live</div>
+      <h2 class="font-display text-3xl md:text-4xl text-ivory">Future AI possibilities</h2>
+      <p class="mt-4 text-ivory/70 text-[15px]">Areas we're exploring for clients but haven't shipped yet. We flag these as aspirational so nobody's misled.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="reveal p-5 rounded-2xl bg-white/5 border border-gold/20">
+        <span class="ai-tag aspirational"><span class="ai-tag-dot"></span>Future</span>
+        <div class="font-display text-base text-ivory mt-1">AI Interview Question Generator</div>
+        <p class="mt-2 text-[12.5px] text-ivory/65 leading-relaxed">Role-specific question banks generated from your JD and seniority level.</p>
+      </div>
+      <div class="reveal p-5 rounded-2xl bg-white/5 border border-gold/20">
+        <span class="ai-tag aspirational"><span class="ai-tag-dot"></span>Future</span>
+        <div class="font-display text-base text-ivory mt-1">AI Onboarding Checklists</div>
+        <p class="mt-2 text-[12.5px] text-ivory/65 leading-relaxed">Auto-generated onboarding plans based on role, team, and seniority.</p>
+      </div>
+      <div class="reveal p-5 rounded-2xl bg-white/5 border border-gold/20">
+        <span class="ai-tag aspirational"><span class="ai-tag-dot"></span>Future</span>
+        <div class="font-display text-base text-ivory mt-1">AI Sales Coach</div>
+        <p class="mt-2 text-[12.5px] text-ivory/65 leading-relaxed">Call analysis and follow-up draft generation for small sales teams.</p>
+      </div>
+      <div class="reveal p-5 rounded-2xl bg-white/5 border border-gold/20">
+        <span class="ai-tag aspirational"><span class="ai-tag-dot"></span>Future</span>
+        <div class="font-display text-base text-ivory mt-1">AI for HR Operations</div>
+        <p class="mt-2 text-[12.5px] text-ivory/65 leading-relaxed">JD drafting, candidate summaries, and internal HR workflow assistance.</p>
+      </div>
+      <div class="reveal p-5 rounded-2xl bg-white/5 border border-gold/20">
+        <span class="ai-tag aspirational"><span class="ai-tag-dot"></span>Future</span>
+        <div class="font-display text-base text-ivory mt-1">AI Productivity Toolkit</div>
+        <p class="mt-2 text-[12.5px] text-ivory/65 leading-relaxed">Curated AI tools, templates, and prompt libraries for your team.</p>
+      </div>
+      <div class="reveal p-5 rounded-2xl bg-white/5 border border-gold/20">
+        <span class="ai-tag aspirational"><span class="ai-tag-dot"></span>Future</span>
+        <div class="font-display text-base text-ivory mt-1">Custom Vertical AI</div>
+        <p class="mt-2 text-[12.5px] text-ivory/65 leading-relaxed">Domain-specific AI tools for fitness, real estate, healthcare, and more.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center reveal">
+      <p class="text-[14px] text-ivory/65 max-w-2xl mx-auto">If one of these aspirational ideas is exactly what you need, talk to us — we'll be honest about whether it's a 4-week project or 4-month research effort.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 md:py-20 bg-ivory">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 text-center">
+    <h2 class="font-display text-3xl md:text-5xl text-navy leading-tight reveal">Have an AI or automation idea? <span class="italic text-gold">Let's pressure-test it.</span></h2>
+    <p class="mt-5 text-charcoal/65 text-[15px] reveal">Bring us a problem, a workflow, or a half-baked idea. We'll tell you whether AI is the right tool, what it'd cost roughly, and how long it'd take honestly.</p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3 reveal">
+      <a href="contact.html?intent=project" class="px-6 py-3.5 rounded-full btn-gold text-[14.5px] inline-flex items-center gap-2">Request a Quote
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="contact.html?intent=project" class="px-6 py-3.5 rounded-full text-[14.5px] font-semibold border border-navy/15 text-navy hover:bg-navy hover:text-ivory transition">Discuss Requirement</a>
+      <a href="https://wa.me/919133666619?text=Hi%20Sage%20%26%20Crew%2C%20I%27d%20like%20to%20discuss%20an%20AI%20%2F%20automation%20idea." target="_blank" rel="noopener" class="px-6 py-3.5 rounded-full text-[14.5px] font-semibold text-charcoal/70 hover:text-gold transition">Chat on WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-navy-deep text-ivory/75 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Sage & Crew Next — Home">
+          <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark-dark w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-105" />
+          <span class="flex items-baseline gap-1 text-[17px] text-ivory">
+            <span class="font-display italic">Sage</span><span class="font-semibold">&amp; Crew</span><span class="text-gold font-semibold">Next</span>
+          </span>
+        </a>
+        <p class="mt-5 text-[13.5px] text-ivory/60 leading-relaxed max-w-md">
+          Sage &amp; Crew Next helps businesses grow through recruitment, staffing, software projects, AI-enabled automation, websites, dashboards, and digital branding. We also support professionals with resume, LinkedIn, and interview readiness.
+        </p>
+        <div class="mt-6 flex flex-col gap-2 text-[12.5px] text-ivory/55">
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:sagencrew@gmail.com" class="hover:text-gold transition">sagencrew@gmail.com</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg>
+            <a href="https://sagencrew.com" class="hover:text-gold transition">sagencrew.com</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="https://wa.me/919133666619" target="_blank" rel="noopener" class="hover:text-gold transition">+91 91336 66619 · WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-ivory/50 mb-4">Company</div>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a class="hover:text-gold transition" href="about.html">About</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#services">Services</a></li>
+            <li><a class="hover:text-gold transition" href="projects.html">Projects</a></li>
+            <li><a class="hover:text-gold transition" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-ivory/50 mb-4">Solutions</div>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a class="hover:text-gold transition" href="index.html#services">Recruitment</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#services">Software Projects</a></li>
+            <li><a class="hover:text-gold transition" href="ai-solutions.html">AI &amp; Automation</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#services">Websites</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#services">Digital Branding</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-ivory/50 mb-4">For Candidates</div>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a class="hover:text-gold transition" href="index.html#candidates">Resume Services</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#candidates">LinkedIn Optimization</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#candidates">Interview Preparation</a></li>
+            <li><a class="hover:text-gold transition" href="tools.html">Free Tools</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-ivory/50 mb-4">Legal</div>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a class="hover:text-gold transition" href="privacy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-gold transition" href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-ivory/8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div class="text-[12px] text-ivory/50">© <span id="copyright-year">2026</span> Sage &amp; Crew Next. All rights reserved.</div>
+      <div class="text-[12px] text-ivory/45">Build Teams · Build Systems · Build AI-Powered Growth</div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919133666619?text=Hi%20Sage%20%26%20Crew%2C%20I%27d%20like%20to%20discuss%20an%20AI%20%2F%20automation%20idea." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="wa-fab fixed bottom-5 right-5 z-50 group" id="wa-fab">
+  <span class="wa-tooltip">Chat with us</span>
+  <span class="wa-bubble"></span>
+  <svg viewBox="0 0 32 32" class="relative z-10 w-7 h-7 text-white" fill="currentColor"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 01-.315-.1c-.802-.402-1.504-.817-2.163-1.4-.545-.484-1.064-1.04-1.494-1.55-.21-.245-.205-.404-.044-.69.21-.351.485-.7.713-1.064.165-.252.105-.484-.06-.726a8.04 8.04 0 01-.846-1.39c-.13-.272-.34-.262-.555-.262h-.625c-.226 0-.62.04-.872.434-.255.398-.952 1.158-.952 2.81 0 1.654 1.054 3.156 1.224 3.388.165.232 2.063 3.142 5.014 4.387 1.755.741 2.444.812 3.316.683.524-.08 1.61-.66 1.836-1.3.227-.638.227-1.185.158-1.302-.07-.118-.255-.187-.535-.327z"/><path d="M16 0C7.16 0 0 7.16 0 16c0 2.842.74 5.51 2.046 7.831L0 32l8.382-2.018a15.94 15.94 0 007.61 1.94h.008C24.84 31.922 32 24.762 32 15.922 32 11.62 30.331 7.583 27.31 4.582A15.62 15.62 0 0016.008 0H16zm.008 29.078a13.07 13.07 0 01-6.66-1.82l-.477-.282-4.946 1.198 1.34-4.844-.31-.494a13.13 13.13 0 01-2.013-7.014c0-7.272 5.92-13.19 13.197-13.19 3.524 0 6.836 1.373 9.327 3.864a13.1 13.1 0 013.867 9.328c0 7.27-5.92 13.19-13.198 13.19l-.124.064z"/></svg>
+</a>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
