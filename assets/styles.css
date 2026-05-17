@@ -162,6 +162,20 @@
   .loader-bar > i { display: block; width: 0; height: 100%; background: linear-gradient(90deg, transparent, #D4AF37, transparent); animation: lprog 1.7s ease-in-out forwards; }
   @keyframes lprog { 0% { width: 0; transform: translateX(0) } 60% { width: 60% } 100% { width: 100%; transform: translateX(0) } }
 
+  /* ====== BRAND MARK (logo image) ====== */
+  .brand-mark {
+    filter: drop-shadow(0 1px 3px rgba(11,31,58,0.10));
+  }
+  /* On dark backgrounds (footer, page-loader), gentle subtle warmth — not a halo */
+  .brand-mark-dark {
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.85; transform: scale(0.98); }
+  }
+  .animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+
   /* ====== HERO MOUSE-FOLLOW GLOW ====== */
   #cursor-glow { position: fixed; pointer-events: none; width: 520px; height: 520px; border-radius: 9999px; z-index: 1; transform: translate(-50%, -50%); transition: opacity .4s ease; opacity: 0; mix-blend-mode: screen;
     background: radial-gradient(circle, rgba(212,175,55,0.18), rgba(122,158,126,0.12) 40%, transparent 65%); }

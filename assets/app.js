@@ -14,17 +14,30 @@
   const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   /* ---------------- 1. Page loader ---------------- */
-  window.addEventListener('load', () => {
-    const loader = $('#loader');
+  // Robust loader hide: triggers on window.load, and also has a safety timeout
+  // in case 'load' fires too early (cached pages) or never fires (slow CDN).
+  (function hideLoader() {
+    const loader = document.getElementById('page-loader');
     if (!loader) return;
-    setTimeout(() => {
-      loader.style.transition = 'opacity .7s ease, visibility .7s';
+    let hidden = false;
+    const fade = () => {
+      if (hidden) return;
+      hidden = true;
+      loader.style.transition = 'opacity .6s ease, visibility .6s';
       loader.style.opacity = '0';
       loader.style.visibility = 'hidden';
       document.body.classList.add('loaded');
-      setTimeout(() => loader.remove(), 750);
-    }, 1100);
-  });
+      setTimeout(() => loader.remove(), 650);
+    };
+    // Primary trigger: full window load
+    if (document.readyState === 'complete') {
+      setTimeout(fade, 400);
+    } else {
+      window.addEventListener('load', () => setTimeout(fade, 400));
+    }
+    // Safety net: never let the loader stick past 3.5 seconds, no matter what
+    setTimeout(fade, 3500);
+  })();
 
   /* ---------------- 2. Lucide ---------------- */
   if (window.lucide?.createIcons) lucide.createIcons();
@@ -980,6 +993,19 @@
     });
   });
 
+  // Auto-switch form tab from ?intent=... URL param
+  (function() {
+    if (!$('[data-form-tab]')) return; // not on contact page
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const intent = params.get('intent');
+      const validIntents = ['project', 'employer', 'candidate'];
+      if (intent && validIntents.includes(intent)) {
+        setFormTab(intent);
+      }
+    } catch (_) { /* no-op */ }
+  })();
+
   /* ---------------- 20. FORM VALIDATION + AUTOMATION HOOKS ----------------
      Configure ONE of these endpoints to go live:
      - FORMSPREE_URL   → e.g. 'https://formspree.io/f/xxxxxx'
@@ -989,6 +1015,7 @@
      If none configured, falls back to local success modal (demo mode).
   ----------------------------------------------------------------- */
   const ENDPOINTS = {
+    project: '',   // <-- paste your URL here (or leave empty for mailto fallback)
     employer: '',  // <-- paste your URL here
     candidate: '', // <-- paste your URL here
   };
@@ -1056,9 +1083,13 @@
     const lines = [];
     const subject = kind === 'employer'
       ? `Hiring requirement — Sage & Crew Next`
+      : kind === 'project'
+      ? `New project inquiry — Sage & Crew Next`
       : `Resume submission — Sage & Crew Next`;
     lines.push(kind === 'employer'
       ? 'New hiring requirement submitted via the website:'
+      : kind === 'project'
+      ? 'New project inquiry submitted via the website:'
       : 'New candidate enquiry submitted via the website:');
     lines.push('');
     for (const [key, val] of fd.entries()) {
@@ -1139,6 +1170,7 @@
     }
   };
 
+  $('#form-project')?.addEventListener('submit', e => { e.preventDefault(); handleSubmit(e.currentTarget, 'project'); });
   $('#form-employer')?.addEventListener('submit', e => { e.preventDefault(); handleSubmit(e.currentTarget, 'employer'); });
   $('#form-candidate')?.addEventListener('submit', e => { e.preventDefault(); handleSubmit(e.currentTarget, 'candidate'); });
 
@@ -1798,4 +1830,202 @@ Location: Hyderabad / Remote.`;
     window.addEventListener('scroll', onScroll2, { passive: true });
     onScroll2();
   }
+
+  /* ---------------- 23. TOOL 6 — PROJECT COST ESTIMATOR ----------------
+     Ballpark estimator. Base ranges roughly in INR thousands; multiplied
+     by complexity, integration count, and timeline. Conservative, not a quote.
+  ---------------------------------------------------------------- */
+  (function () {
+    const run = $('#pc-run');
+    if (!run) return;
+    const fmt = (n) => '₹' + Math.round(n / 1000) * 1000 >= 100000
+      ? '₹' + (n / 100000).toFixed(n >= 1000000 ? 0 : 1) + 'L'
+      : '₹' + Math.round(n / 1000) + 'K';
+    const formatINR = (n) => {
+      if (n >= 10000000) return '₹' + (n / 10000000).toFixed(1) + ' Cr';
+      if (n >= 100000) return '₹' + (n / 100000).toFixed(1) + ' L';
+      if (n >= 1000) return '₹' + Math.round(n / 1000) + 'K';
+      return '₹' + n;
+    };
+    // Base ballparks in INR (mid-point of typical bracket for Indian market, 2026)
+    const base = {
+      'landing':       { low: 25000,   mid: 45000,   high: 80000   },
+      'business-site': { low: 60000,   mid: 120000,  high: 200000  },
+      'ecommerce':     { low: 150000,  mid: 300000,  high: 600000  },
+      'webapp':        { low: 250000,  mid: 500000,  high: 1200000 },
+      'dashboard':     { low: 150000,  mid: 300000,  high: 700000  },
+      'automation':    { low: 60000,   mid: 150000,  high: 400000  },
+      'crm':           { low: 200000,  mid: 450000,  high: 1000000 },
+    };
+    const complexityMult = { simple: 0.7, standard: 1.0, advanced: 1.5, enterprise: 2.2 };
+    const timelineMult = { flexible: 0.95, standard: 1.0, rush: 1.25 };
+    const integrationCost = 25000; // per integration, added to mid
+
+    run.addEventListener('click', () => {
+      const type = $('#pc-type').value;
+      const complexity = $('#pc-complexity').value;
+      const integrations = Math.max(0, Math.min(20, parseInt($('#pc-integrations').value || '0', 10)));
+      const timeline = $('#pc-timeline').value;
+
+      const b = base[type] || base['business-site'];
+      const cm = complexityMult[complexity] || 1.0;
+      const tm = timelineMult[timeline] || 1.0;
+      const intAdd = integrations * integrationCost;
+
+      const low = Math.round((b.low * cm * tm + intAdd * 0.7) / 1000) * 1000;
+      const mid = Math.round((b.mid * cm * tm + intAdd) / 1000) * 1000;
+      const high = Math.round((b.high * cm * tm + intAdd * 1.3) / 1000) * 1000;
+
+      $('#pc-low').textContent = formatINR(low);
+      $('#pc-mid').textContent = formatINR(mid);
+      $('#pc-high').textContent = formatINR(high);
+      $('#pc-result').classList.remove('hidden');
+      $('#pc-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  })();
+
+  /* ---------------- 24. TOOL 7 — WEBSITE READINESS CHECKLIST ---------------- */
+  (function () {
+    const list = $('#wc-list');
+    if (!list) return;
+    const items = [
+      { id: 'wc1', label: 'Domain & hosting set up', detail: 'Domain registered, DNS pointed, SSL active' },
+      { id: 'wc2', label: 'Mobile responsive on phones & tablets', detail: 'Tested on at least one iOS and one Android device' },
+      { id: 'wc3', label: 'All page copy proofread', detail: 'Spelling, grammar, factual accuracy double-checked' },
+      { id: 'wc4', label: 'Contact form actually delivers email', detail: 'Submit a test entry — confirm you receive it' },
+      { id: 'wc5', label: 'WhatsApp / phone numbers are live (not placeholders)', detail: 'No "910000000000" or "+91 XXXXX" anywhere' },
+      { id: 'wc6', label: 'Page titles & meta descriptions set', detail: 'Each page has a unique SEO title and description' },
+      { id: 'wc7', label: 'Favicon and social share image (OG) added', detail: 'Looks polished when shared on WhatsApp / LinkedIn' },
+      { id: 'wc8', label: 'Loading speed under 3 seconds', detail: 'Test at pagespeed.web.dev — aim for 80+ mobile score' },
+      { id: 'wc9', label: 'Privacy policy & terms pages exist', detail: 'Required if you collect any visitor data' },
+      { id: 'wc10', label: 'Analytics installed (GA4 or alternative)', detail: 'You can see how many people visit and which pages' },
+      { id: 'wc11', label: 'Backups configured', detail: 'Automatic, off-site, restorable if site breaks' },
+      { id: 'wc12', label: 'Tested on Chrome, Safari, Firefox', detail: 'No layout breaks across major browsers' },
+    ];
+
+    const render = () => {
+      list.innerHTML = items.map(it => `
+        <label class="flex items-start gap-3 py-2.5 border-b border-navy/5 last:border-0 cursor-pointer group">
+          <input type="checkbox" data-wc id="${it.id}" class="mt-1 w-4 h-4 rounded border-navy/20 text-gold-deep focus:ring-gold/30" />
+          <div class="flex-1 min-w-0">
+            <div class="text-[14px] text-charcoal group-has-[:checked]:line-through group-has-[:checked]:text-charcoal/45 transition">${it.label}</div>
+            <div class="text-[12px] text-charcoal/55 mt-0.5">${it.detail}</div>
+          </div>
+        </label>
+      `).join('');
+      updateScore();
+    };
+
+    const updateScore = () => {
+      const total = items.length;
+      const done = $$('[data-wc]:checked').length;
+      const pct = Math.round((done / total) * 100);
+      $('#wc-score-badge').textContent = `${done} / ${total} Complete`;
+      $('#wc-bar').style.width = pct + '%';
+      const msg = $('#wc-message');
+      if (done === 0) msg.textContent = 'Tick items as you complete them. Aim for at least 10/12 before launch.';
+      else if (done < 6) msg.textContent = `${done}/${total} done — good start. Keep going through the list before launch.`;
+      else if (done < 10) msg.textContent = `${done}/${total} done — you're well on your way. A few key items left.`;
+      else if (done < total) msg.innerHTML = `<strong class="text-navy">${done}/${total} — nearly there!</strong> Wrap up the last items and you're ready to launch.`;
+      else msg.innerHTML = `<strong class="text-navy">✅ All ${total} items complete!</strong> Your site is ready for launch. Time to share the URL.`;
+    };
+
+    list.addEventListener('change', e => { if (e.target.matches('[data-wc]')) updateScore(); });
+    $('#wc-reset')?.addEventListener('click', () => {
+      $$('[data-wc]').forEach(cb => cb.checked = false);
+      updateScore();
+    });
+    render();
+  })();
+
+  /* ---------------- 25. TOOL 8 — HIRING REQUIREMENT TEMPLATE ---------------- */
+  (function () {
+    const run = $('#jt-run');
+    if (!run) return;
+
+    const build = () => {
+      const role = ($('#jt-role').value || '[Role Title]').trim();
+      const company = ($('#jt-company').value || '[Company Name]').trim();
+      const exp = ($('#jt-exp').value || '[Experience]').trim();
+      const loc = ($('#jt-loc').value || '[Location]').trim();
+      const type = $('#jt-type').value;
+      const ctc = ($('#jt-ctc').value || '[CTC]').trim();
+      const musts = ($('#jt-musts').value || '').split(',').map(s => s.trim()).filter(Boolean);
+      const nices = ($('#jt-nices').value || '').split(',').map(s => s.trim()).filter(Boolean);
+      const respLines = ($('#jt-resp').value || '').split('\n').map(s => s.trim()).filter(Boolean);
+      const openings = ($('#jt-openings').value || '[Openings & timeline]').trim();
+
+      const lines = [];
+      lines.push(`HIRING REQUIREMENT — ${role.toUpperCase()}`);
+      lines.push('═'.repeat(50));
+      lines.push('');
+      lines.push(`Company:        ${company}`);
+      lines.push(`Role:           ${role}`);
+      lines.push(`Experience:     ${exp}`);
+      lines.push(`Location:       ${loc}`);
+      lines.push(`Hiring Type:    ${type}`);
+      lines.push(`CTC Range:      ${ctc}`);
+      lines.push(`Openings:       ${openings}`);
+      lines.push('');
+      lines.push('MUST-HAVE SKILLS');
+      lines.push('─'.repeat(50));
+      if (musts.length) musts.forEach(s => lines.push(`  • ${s}`));
+      else lines.push('  • [Add at least 3-5 must-have skills]');
+      lines.push('');
+      if (nices.length) {
+        lines.push('GOOD-TO-HAVE SKILLS');
+        lines.push('─'.repeat(50));
+        nices.forEach(s => lines.push(`  • ${s}`));
+        lines.push('');
+      }
+      lines.push('KEY RESPONSIBILITIES');
+      lines.push('─'.repeat(50));
+      if (respLines.length) respLines.forEach(r => lines.push(`  • ${r}`));
+      else lines.push('  • [List 3-5 core responsibilities]');
+      lines.push('');
+      lines.push('═'.repeat(50));
+      lines.push('Submitted to: Sage & Crew Next');
+      lines.push('Contact:      sagencrew@gmail.com · +91 91336 66619');
+      return lines.join('\n');
+    };
+
+    run.addEventListener('click', () => {
+      const text = build();
+      $('#jt-output').textContent = text;
+      $('#jt-result').classList.remove('hidden');
+      $('#jt-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    $('#jt-copy')?.addEventListener('click', async () => {
+      const btn = $('#jt-copy');
+      const text = $('#jt-output').textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = '✓ Copied';
+        setTimeout(() => { btn.textContent = orig; }, 1800);
+      } catch (_) {
+        // Fallback: select text
+        const range = document.createRange();
+        range.selectNodeContents($('#jt-output'));
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    });
+
+    $('#jt-download')?.addEventListener('click', () => {
+      const text = $('#jt-output').textContent;
+      const role = ($('#jt-role').value || 'role').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `hiring-requirement-${role}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  })();
 })();
