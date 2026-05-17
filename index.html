@@ -216,100 +216,38 @@
         <div class="mt-5 text-ivory/55 text-[12.5px]">People, platforms, and AI-powered progress for growing businesses.</div>
       </div>
 
-      <!-- RIGHT COLUMN: Constellation animation (top-right position) -->
+      <!-- RIGHT COLUMN: AI Talent Match canvas animation (top-right position) -->
       <div class="lg:col-span-6 reveal">
-        <div class="hero-constellation relative w-full" aria-hidden="true">
-
-          <!-- Header pill above stage -->
-          <div class="flex items-center justify-center lg:justify-start gap-2 mb-4">
-            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-gold/25 text-[11px] uppercase tracking-[0.18em] text-gold/90">
-              <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
-              Live Match Engine
-            </span>
+        <div id="atm-stage" class="atm-stage relative w-full" aria-label="AI talent match animation">
+          <!-- Top-left status caption -->
+          <div class="atm-caption-wrap">
+            <div class="text-[9.5px] uppercase tracking-[0.18em] text-gold/90 font-semibold">Live Match Engine</div>
+            <div id="atm-caption" class="text-[12px] text-ivory/90 mt-0.5 font-medium">Receiving requisition…</div>
           </div>
+          <!-- Top-right scanning counter -->
+          <div class="atm-counter-wrap">
+            <div class="text-[9.5px] uppercase tracking-[0.18em] text-ivory/55 font-semibold">Profiles Scanned</div>
+            <div class="font-display text-[22px] text-ivory mt-0.5 tabular-nums"><span id="atm-counter">0</span></div>
+          </div>
+          <!-- The canvas where the magic happens -->
+          <canvas id="atm-canvas" class="atm-canvas"></canvas>
+        </div>
 
-          <!-- Constellation stage -->
-          <div class="constellation-stage relative w-full">
-            <!-- Background SVG connection lines -->
-            <svg class="constellation-lines absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none">
-              <defs>
-                <linearGradient id="lineGold" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#D4AF37" stop-opacity="0"/>
-                  <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.45"/>
-                  <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <line x1="500" y1="300" x2="180" y2="90"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:0"/>
-              <line x1="500" y1="300" x2="500" y2="80"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:1"/>
-              <line x1="500" y1="300" x2="820" y2="90"  stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:2"/>
-              <line x1="500" y1="300" x2="120" y2="300" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:3"/>
-              <line x1="500" y1="300" x2="880" y2="300" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:4"/>
-              <line x1="500" y1="300" x2="180" y2="510" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:5"/>
-              <line x1="500" y1="300" x2="500" y2="520" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:6"/>
-              <line x1="500" y1="300" x2="820" y2="510" stroke="url(#lineGold)" stroke-width="1" class="c-line" style="--d:7"/>
+        <!-- Footer banner under stage -->
+        <div class="mt-4 rounded-xl bg-navy-deep/60 border border-white/8 backdrop-blur-sm p-3.5 flex items-center justify-between gap-3">
+          <div>
+            <div class="text-[9.5px] uppercase tracking-[0.16em] text-ivory/55 font-semibold">Requisition → Qualified Profiles</div>
+            <div class="font-display text-[14px] text-ivory mt-0.5">In hours, not weeks.</div>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#D4AF37" stroke="#A8881F" stroke-width="1.4">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
             </svg>
-
-            <!-- Candidate dots -->
-            <span class="c-cand" style="top:14%; left:30%; --d:0">RT</span>
-            <span class="c-cand" style="top:18%; left:50%; --d:1">TS</span>
-            <span class="c-cand" style="top:10%; left:64%; --d:2">BS</span>
-            <span class="c-cand" style="top:22%; left:72%; --d:3">NA</span>
-            <span class="c-cand" style="top:25%; left:84%; --d:5">MN</span>
-            <span class="c-cand" style="top:18%; left:12%; --d:7">RN</span>
-            <span class="c-cand" style="top:35%; left:6%;  --d:8">SP</span>
-            <span class="c-cand" style="top:48%; left:12%; --d:9">JL</span>
-            <span class="c-cand" style="top:32%; left:78%; --d:10">KK</span>
-            <span class="c-cand" style="top:42%; left:88%; --d:11">GP</span>
-            <span class="c-cand" style="top:58%; left:86%; --d:14">EJ</span>
-            <span class="c-cand" style="top:42%; left:40%; --d:15">RV</span>
-            <span class="c-cand" style="top:46%; left:56%; --d:16">VK</span>
-            <span class="c-cand" style="top:58%; left:44%; --d:17">RB</span>
-            <span class="c-cand" style="top:62%; left:30%; --d:18">DR</span>
-            <span class="c-cand" style="top:68%; left:64%; --d:19">RG</span>
-            <span class="c-cand" style="top:76%; left:22%; --d:20">PJ</span>
-            <span class="c-cand" style="top:80%; left:40%; --d:21">AK</span>
-            <span class="c-cand" style="top:78%; left:54%; --d:24">AS</span>
-            <span class="c-cand" style="top:75%; left:72%; --d:25">VS</span>
-
-            <!-- Skill pills -->
-            <span class="c-skill" style="top:8%;  left:42%; --d:0">AWS</span>
-            <span class="c-skill" style="top:14%; left:62%; --d:1">Kubernetes</span>
-            <span class="c-skill" style="top:18%; left:22%; --d:2">Remote-OK</span>
-            <span class="c-skill" style="top:36%; left:74%; --d:3">Terraform</span>
-            <span class="c-skill" style="top:40%; left:62%; --d:4">CI/CD</span>
-            <span class="c-skill" style="top:30%; left:16%; --d:5">6+ yrs</span>
-            <span class="c-skill" style="top:52%; left:20%; --d:6">Docker</span>
-            <span class="c-skill" style="top:56%; left:44%; --d:7">Python</span>
-
-            <!-- Central role card -->
-            <div class="c-center">
-              <div class="c-center-glow"></div>
-              <div class="c-center-card">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-[10px] uppercase tracking-wider text-gold/90 font-semibold">Live Requisition</span>
-                  <span class="w-2 h-2 rounded-full bg-gold pillar-pulse"></span>
-                </div>
-                <div class="font-display text-[15px] md:text-[17px] text-ivory leading-tight">Senior DevOps Engineer</div>
-                <div class="text-[11.5px] text-ivory/65 mt-1">6+ yrs · Bangalore · Permanent</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer banner -->
-          <div class="mt-4 rounded-xl bg-navy-deep/60 border border-white/8 backdrop-blur-sm p-3.5 flex items-center justify-between gap-3">
-            <div>
-              <div class="text-[9.5px] uppercase tracking-[0.16em] text-ivory/55 font-semibold">Requisition → Qualified Profiles</div>
-              <div class="font-display text-[14px] text-ivory mt-0.5">In hours, not weeks.</div>
-            </div>
-            <div class="flex items-center gap-2 shrink-0">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#D4AF37" stroke="#A8881F" stroke-width="1.4">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-              </svg>
-              <span class="text-gold font-display text-[16px]"><span class="c-counter" data-target="3">0</span> qualified</span>
-            </div>
+            <span class="text-gold font-display text-[16px]">3 qualified</span>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
