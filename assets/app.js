@@ -1046,11 +1046,41 @@
     });
   });
 
-  const submitToEndpoint = async (endpoint, payload) => {
+  const FALLBACK_EMAIL = 'sagencrew@gmail.com';
+
+  // Build a mailto: link that contains the form contents as a pre-composed email.
+  // Used when no backend endpoint is configured — visitor's email client opens
+  // and they hit Send. You actually receive the inquiry, no Formspree needed.
+  const buildMailtoFromForm = (form, kind) => {
+    const fd = new FormData(form);
+    const lines = [];
+    const subject = kind === 'employer'
+      ? `Hiring requirement — Sage & Crew Next`
+      : `Resume submission — Sage & Crew Next`;
+    lines.push(kind === 'employer'
+      ? 'New hiring requirement submitted via the website:'
+      : 'New candidate enquiry submitted via the website:');
+    lines.push('');
+    for (const [key, val] of fd.entries()) {
+      if (key.startsWith('_')) continue;          // skip internal markers
+      if (val instanceof File) {
+        if (val.name) lines.push(`${key}: (attachment "${val.name}" — please re-attach manually before sending)`);
+      } else if (String(val).trim()) {
+        lines.push(`${key}: ${val}`);
+      }
+    }
+    lines.push('');
+    lines.push('— Sent from sage-and-crew website');
+    return `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+  };
+
+  const submitToEndpoint = async (endpoint, payload, form, kind) => {
     if (!endpoint) {
-      // Demo mode — simulate latency
-      await sleep(1100);
-      return { ok: true };
+      // No backend yet — open visitor's email client with a pre-composed message.
+      // We return a special marker so handleSubmit can show the right confirmation.
+      const mailto = buildMailtoFromForm(form, kind);
+      window.location.href = mailto;
+      return { ok: true, mode: 'mailto' };
     }
     try {
       // Works for Formspree and most Apps Script web-apps with FormData
@@ -1085,12 +1115,18 @@
     fd.append('_kind', kind);
     fd.append('_source', 'sage-and-crew-next');
 
-    const { ok } = await submitToEndpoint(ENDPOINTS[kind], fd);
+    const result = await submitToEndpoint(ENDPOINTS[kind], fd, form, kind);
 
     btn.disabled = false;
     btn.innerHTML = originalHTML;
 
-    if (ok) {
+    if (result.ok && result.mode === 'mailto') {
+      // Email client should open. Show a clarifying message so visitor knows what to do.
+      showModal(
+        'Opening your email…',
+        `Your email app should open with the message pre-filled to ${FALLBACK_EMAIL}. Please review and hit Send. (If a file was attached, you'll need to re-attach it in the email.)`
+      );
+    } else if (result.ok) {
       form.reset();
       $$('.form-input', form).forEach(i => i.classList.remove('invalid'));
       if (kind === 'employer') {
@@ -1099,37 +1135,108 @@
         showModal('Resume received', 'Our team will review your profile and contact you shortly.');
       }
     } else {
-      showModal('', 'We could not send your details. Please try again or reach us on WhatsApp.', true);
+      showModal('', `We couldn't send your details. Please email us directly at ${FALLBACK_EMAIL}.`, true);
     }
   };
 
   $('#form-employer')?.addEventListener('submit', e => { e.preventDefault(); handleSubmit(e.currentTarget, 'employer'); });
   $('#form-candidate')?.addEventListener('submit', e => { e.preventDefault(); handleSubmit(e.currentTarget, 'candidate'); });
 
-  /* ---------------- 21. WHATSAPP — pre-fill messages by intent ---------------- */
-  // Replace with your real number (no + or spaces)
-  const WA_NUMBER = '910000000000';
+  /* ---------------- 21. WHATSAPP — pre-fill messages, auto-rewrite, placeholder guard ----------------
+     HOW TO SET YOUR REAL NUMBER:
+       Change the value of WA_NUMBER below. That's it — links across all pages
+       auto-rewrite to the new number on load. No need to edit HTML files.
+
+       Format: country code + number, no '+' or spaces.
+       Example for India: '919876543210'
+  */
+  const WA_NUMBER = '919133666619';                  // Live: India (+91) 9133666619
+  const WA_PLACEHOLDER_PATTERN = /^91X+$|^910000000000$/i;
+
+  const isPlaceholder = WA_PLACEHOLDER_PATTERN.test(WA_NUMBER);
+
+  if (isPlaceholder) {
+    console.warn(
+      '%c[Sage & Crew] WhatsApp number not configured.',
+      'color:#D4AF37;font-weight:bold;',
+      '\nClicks on WhatsApp buttons will show a setup notice instead of opening WhatsApp.',
+      '\nFix: set WA_NUMBER in assets/app.js (e.g. \'919876543210\') and redeploy.'
+    );
+  }
+
   const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 
   const buildWA = (intent) => {
     const msg = intent === 'employer'
-      ? 'Hi Sage & Crew Next, I need hiring support for my company.'
+      ? 'Hi Sage & Crew, I need hiring support for my company.'
       : intent === 'candidate'
-      ? 'Hi Sage & Crew Next, I need resume / career support.'
-      : 'Hi Sage & Crew Next, I’d like to know more.';
+      ? 'Hi Sage & Crew, I need resume / career support.'
+      : 'Hi Sage & Crew, I’d like to know more.';
     return `${WA_BASE}?text=${encodeURIComponent(msg)}`;
   };
+
+  // Rewrite ALL existing wa.me links on the page to use the current WA_NUMBER.
+  // This covers FAB, contact-page buttons, and any other hardcoded ones in HTML.
+  document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+    try {
+      const orig = a.getAttribute('href') || '';
+      // preserve the original ?text= portion (it's intent-specific)
+      const queryIdx = orig.indexOf('?');
+      const query = queryIdx >= 0 ? orig.slice(queryIdx) : '';
+      a.href = WA_BASE + query;
+    } catch (_) {}
+  });
 
   // Floating WhatsApp FAB defaults to general
   const fab = $('#wa-fab');
   if (fab) fab.href = buildWA('general');
 
-  // Intent-aware WhatsApp links
+  // Intent-aware WhatsApp links (data-wa="employer" / "candidate" / "general")
   $$('a[data-wa]').forEach(a => {
     a.href = buildWA(a.dataset.wa);
     a.target = '_blank';
     a.rel = 'noopener';
   });
+
+  // Click guard: when number is a placeholder, prevent opening a broken chat.
+  // Shows a friendly setup notice instead.
+  if (isPlaceholder) {
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href*="wa.me/"]');
+      if (!a) return;
+      e.preventDefault();
+      // Build a small modal-style alert
+      const existing = document.getElementById('wa-placeholder-modal');
+      if (existing) return;
+      const modal = document.createElement('div');
+      modal.id = 'wa-placeholder-modal';
+      modal.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(11,31,58,0.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:20px;animation:waFadeIn .25s ease;';
+      modal.innerHTML = `
+        <div style="background:#F8F7F2;border-radius:16px;max-width:420px;width:100%;padding:28px;box-shadow:0 24px 60px -12px rgba(0,0,0,0.4);font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(212,175,55,0.15);color:#A8881F;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+          </div>
+          <div style="font-family:'Playfair Display',serif;font-size:22px;color:#0B1F3A;line-height:1.3;margin-bottom:8px;">WhatsApp not yet configured</div>
+          <p style="font-size:14px;color:#4B5563;line-height:1.5;margin:0 0 18px;">This is a brand-new site and the WhatsApp number is still a placeholder. For now please email us at <a href="mailto:sagencrew@gmail.com" style="color:#A8881F;text-decoration:underline;">sagencrew@gmail.com</a> and we'll get back to you quickly.</p>
+          <div style="display:flex;gap:10px;">
+            <a href="mailto:sagencrew@gmail.com" style="flex:1;background:#0B1F3A;color:#F8F7F2;padding:11px 16px;border-radius:9999px;text-align:center;font-size:13.5px;font-weight:600;text-decoration:none;">Email us instead</a>
+            <button type="button" id="wa-modal-close" style="padding:11px 16px;border-radius:9999px;border:1px solid rgba(11,31,58,0.15);background:transparent;color:#0B1F3A;font-size:13.5px;font-weight:600;cursor:pointer;">Close</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      const closeFn = () => modal.remove();
+      modal.addEventListener('click', (ev) => { if (ev.target === modal) closeFn(); });
+      document.getElementById('wa-modal-close')?.addEventListener('click', closeFn);
+    }, true);
+    // small inline keyframes for the modal fade-in
+    if (!document.getElementById('wa-placeholder-style')) {
+      const s = document.createElement('style');
+      s.id = 'wa-placeholder-style';
+      s.textContent = '@keyframes waFadeIn{from{opacity:0}to{opacity:1}}';
+      document.head.appendChild(s);
+    }
+  }
 
   /* ---------------- 22B. FREE HR TOOLS ---------------- */
 
