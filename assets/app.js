@@ -16,8 +16,9 @@
   /* ---------------- 1. Page loader ---------------- */
   // Robust loader hide: triggers on window.load, and also has a safety timeout
   // in case 'load' fires too early (cached pages) or never fires (slow CDN).
+  // Handles BOTH legacy #loader (old pages) and new #page-loader (Push 4+ pages).
   (function hideLoader() {
-    const loader = document.getElementById('page-loader');
+    const loader = document.getElementById('page-loader') || document.getElementById('loader');
     if (!loader) return;
     let hidden = false;
     const fade = () => {
