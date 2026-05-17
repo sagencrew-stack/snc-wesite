@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free HR & Career Tools | Sage & Crew Next</title>
+<meta name="description" content="Free ATS resume score checker, CTC to in-hand calculator, JD keyword extractor, cost-of-hire calculator, and LinkedIn headline generator. No sign-up." />
+<meta name="theme-color" content="#0B1F3A" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tailwind-config.js"></script>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="text-charcoal">
+<!-- ============ PREMIUM PAGE LOADER ============ -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-mark loader-shine">
+    <span class="relative inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10">
+      <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z" stroke="#D4AF37"/>
+        <path d="M12 8 C10.5 9.5 10.5 12 12 14 C13.5 12 13.5 9.5 12 8 Z" fill="#7A9E7E" stroke="#7A9E7E"/>
+      </svg>
+    </span>
+    <span class="flex items-baseline gap-1.5 text-[20px] text-ivory">
+      <span class="font-display italic">Sage</span>
+      <span class="font-semibold">& Crew</span>
+      <span class="text-gold font-semibold">Next</span>
+    </span>
+  </div>
+  <div class="loader-bar"><i></i></div>
+  <div class="loader-tag">Wise Hiring · Stronger Careers</div>
+</div>
+
+<!-- Cursor glow (desktop only) -->
+<div id="cursor-glow"></div>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <nav class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <span class="relative inline-flex items-center justify-center w-9 h-9 rounded-xl bg-navy text-ivory">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z" stroke="#D4AF37"/>
+            <path d="M12 8 C10.5 9.5 10.5 12 12 14 C13.5 12 13.5 9.5 12 8 Z" fill="#7A9E7E" stroke="#7A9E7E"/>
+          </svg>
+        </span>
+        <span class="flex items-baseline gap-1 text-[17px]">
+          <span class="font-display italic text-navy">Sage</span>
+          <span class="font-semibold tracking-tight text-charcoal">& Crew</span>
+          <span class="text-gold font-semibold">Next</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden lg:flex items-center gap-5 xl:gap-6 text-[13.5px] text-charcoal/80">
+        <li><a class="nav-link hover:text-navy transition" href="index.html">Home</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#employers">For Employers</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#services">Services</a></li>
+        <li><a class="nav-link hover:text-navy transition active" href="tools.html">Free Tools</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="pricing.html">Pricing</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="faq.html">FAQ</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- CTAs -->
+      <div class="hidden lg:flex items-center gap-2.5">
+        <a href="contact.html?intent=employer" data-tab="employer" class="magnetic px-4 py-2 rounded-full text-[13.5px] font-semibold border border-navy/15 text-navy hover:bg-navy hover:text-ivory transition">Hire Talent</a>
+        <a href="contact.html?intent=candidate" data-tab="candidate" class="magnetic btn-arrow px-4 py-2 rounded-full text-[13.5px] btn-gold inline-flex items-center gap-1.5">Upload Resume
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="menu-btn" aria-label="Open menu" class="lg:hidden p-2 rounded-lg hover:bg-navy/5">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu lg:hidden mt-2 mb-4 rounded-2xl bg-white shadow-lift border border-navy/5 p-4">
+      <ul class="flex flex-col text-[15px] text-charcoal divide-y divide-navy/5">
+        <li><a class="block py-3" href="index.html">Home</a></li>
+        <li><a class="block py-3" href="index.html#employers">For Employers</a></li>
+        <li><a class="block py-3" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="block py-3" href="index.html#services">Services</a></li>
+        <li><a class="block py-3" href="tools.html">Free Tools</a></li>
+        <li><a class="block py-3" href="pricing.html">Pricing</a></li>
+        <li><a class="block py-3" href="faq.html">FAQ</a></li>
+        <li><a class="block py-3" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- Page header -->
+<section class="pt-32 pb-12 bg-navy text-ivory relative overflow-hidden">
+  <div class="absolute inset-0 dot-grid opacity-30"></div>
+  <div class="max-w-5xl mx-auto px-5 md:px-8 relative">
+    <a href="index.html" class="text-[12.5px] text-ivory/60 hover:text-gold inline-flex items-center gap-1.5 mb-4">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Back to home
+    </a>
+    <div class="flex items-center gap-2 text-[11.5px] uppercase tracking-wider text-gold/85 mb-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+      Free · No Sign-up Required
+    </div>
+    <h1 class="font-display text-4xl md:text-5xl text-ivory leading-tight">Free HR & Career Tools</h1>
+    <p class="mt-4 text-[15.5px] text-ivory/70 max-w-2xl leading-relaxed">
+      Five practical tools we built for hiring teams and job seekers. All client-side, all instant. No email required, no data leaves your browser.
+    </p>
+  </div>
+</section>
+<section id="tools" class="py-20 md:py-28 bg-ivory relative overflow-hidden">
+  <div class="sage-blob w-[500px] h-[500px] -top-20 -right-32"></div>
+  <div class="sage-blob w-[420px] h-[420px] bottom-0 -left-32"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">Free HR & Career Tools</h2>
+      <p class="mt-4 text-charcoal/70 text-[15.5px]">Five working tools — open to anyone, no email needed. Built to give you real, immediate answers.</p>
+      <div class="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-navy/8 text-[12px] text-charcoal/65">
+        <span class="w-1.5 h-1.5 rounded-full bg-sage"></span>
+        Runs entirely in your browser · Nothing is uploaded or stored
+      </div>
+    </div>
+
+    <!-- ===== TOOL 1: ATS RESUME SCORE ===== -->
+    <div id="tool-ats" class="rounded-3xl bg-white border border-navy/8 shadow-soft p-6 md:p-10 mb-8 scroll-mt-24 reveal">
+      <div class="flex items-start justify-between gap-4 mb-6 flex-wrap">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></div>
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-gold-deep mb-1">For Candidates · Tool 1</div>
+            <h3 class="font-display text-2xl md:text-3xl text-navy">ATS Resume Score Checker</h3>
+            <p class="mt-2 text-[14px] text-charcoal/65 max-w-xl">Paste your resume and the job description. Get a match score, missing keywords, and concrete suggestions — instantly.</p>
+          </div>
+        </div>
+        <span class="chip chip-gold shrink-0">100% Free</span>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-[12px] text-charcoal/65 mb-1.5">Your resume (paste full text)</label>
+          <textarea id="ats-resume" rows="9" placeholder="Paste your resume text here…" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[13.5px] focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition resize-none"></textarea>
+        </div>
+        <div>
+          <label class="block text-[12px] text-charcoal/65 mb-1.5">Target job description</label>
+          <textarea id="ats-jd" rows="9" placeholder="Paste the JD you're applying to…" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[13.5px] focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition resize-none"></textarea>
+        </div>
+      </div>
+
+      <div class="mt-5 flex flex-wrap items-center gap-3">
+        <button id="ats-run" class="px-6 py-3 rounded-full btn-gold text-[14px] inline-flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 3l14 9-14 9V3z"/></svg>
+          Analyze Match
+        </button>
+        <button id="ats-sample" class="px-5 py-3 rounded-full border border-navy/15 text-navy text-[13.5px] hover:bg-navy hover:text-ivory transition">Try with sample</button>
+        <button id="ats-clear" class="px-5 py-3 rounded-full text-charcoal/65 text-[13.5px] hover:text-navy transition">Clear</button>
+      </div>
+
+      <!-- Result -->
+      <div id="ats-result" class="hidden mt-8 pt-8 border-t border-navy/8">
+        <div class="grid lg:grid-cols-3 gap-6">
+          <!-- Score ring -->
+          <div class="rounded-2xl bg-navy text-ivory p-6 flex flex-col items-center text-center">
+            <div class="text-[11px] uppercase tracking-wider text-ivory/55 mb-3">Overall Match</div>
+            <div class="relative w-36 h-36">
+              <svg viewBox="0 0 36 36" class="w-36 h-36">
+                <circle cx="18" cy="18" r="15.5" stroke="rgba(255,255,255,0.10)" stroke-width="2.5" fill="none"/>
+                <circle id="ats-ring" cx="18" cy="18" r="15.5" stroke="#D4AF37" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="97.4" stroke-dashoffset="97.4" transform="rotate(-90 18 18)" style="transition: stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1)"/>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <div id="ats-score" class="font-display text-4xl text-gold">0</div>
+                <div class="text-[11px] uppercase tracking-wider text-ivory/55">out of 100</div>
+              </div>
+            </div>
+            <div id="ats-verdict" class="mt-4 text-[13px] text-ivory/80 font-medium">—</div>
+          </div>
+
+          <!-- Breakdown -->
+          <div class="lg:col-span-2 rounded-2xl bg-ivory border border-navy/6 p-6">
+            <div class="text-[12px] uppercase tracking-wider text-charcoal/55 mb-4">Breakdown</div>
+            <div class="space-y-3.5" id="ats-breakdown">
+              <!-- Filled by JS -->
+            </div>
+            <div id="ats-missing" class="mt-5 pt-5 border-t border-navy/6 hidden">
+              <div class="text-[12px] uppercase tracking-wider text-charcoal/55 mb-2">Top missing keywords from your resume</div>
+              <div id="ats-missing-chips" class="flex flex-wrap gap-1.5"></div>
+            </div>
+            <div id="ats-tips" class="mt-5 pt-5 border-t border-navy/6">
+              <div class="text-[12px] uppercase tracking-wider text-charcoal/55 mb-2">Suggestions</div>
+              <ul id="ats-tips-list" class="space-y-1.5 text-[13px] text-charcoal/75"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 p-5 rounded-2xl bg-gradient-to-br from-navy/5 to-gold/5 border border-gold/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="text-[13.5px] text-charcoal/75">Want our team to professionally rewrite your resume to score 90+?</div>
+          <a href="contact.html" data-tab="candidate" class="px-5 py-2.5 rounded-full btn-gold text-[13px] inline-flex items-center gap-2 shrink-0">Get Expert Help <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TOOL 2: CTC CALCULATOR ===== -->
+    <div id="tool-ctc" class="rounded-3xl bg-white border border-navy/8 shadow-soft p-6 md:p-10 mb-8 scroll-mt-24 reveal">
+      <div class="flex items-start justify-between gap-4 mb-6 flex-wrap">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-gold-deep mb-1">For Candidates · Tool 2</div>
+            <h3 class="font-display text-2xl md:text-3xl text-navy">CTC → In-Hand Salary Calculator</h3>
+            <p class="mt-2 text-[14px] text-charcoal/65 max-w-xl">Indian salary breakdown using FY 2025-26 new tax regime. Get monthly take-home in seconds.</p>
+          </div>
+        </div>
+        <span class="chip chip-gold shrink-0">India · FY 25-26</span>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="space-y-5">
+          <div>
+            <label class="flex justify-between text-[13px] text-charcoal/70 mb-2">
+              <span>Annual CTC</span>
+              <span class="text-navy font-semibold" id="ctc-display">₹ 12,00,000</span>
+            </label>
+            <input type="range" id="ctc-input" min="300000" max="10000000" step="50000" value="1200000" class="w-full accent-[#D4AF37]" />
+            <div class="flex justify-between text-[11px] text-charcoal/45 mt-1.5">
+              <span>₹3L</span><span>₹25L</span><span>₹50L</span><span>₹1Cr</span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[13px] text-charcoal/70 mb-2">Or enter exact CTC</label>
+            <input type="number" id="ctc-exact" placeholder="e.g. 1500000" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition" />
+          </div>
+          <div>
+            <label class="block text-[13px] text-charcoal/70 mb-2">Bonus (annual, optional)</label>
+            <input type="number" id="ctc-bonus" placeholder="0" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition" />
+          </div>
+          <div class="text-[11.5px] text-charcoal/50 leading-relaxed">
+            Assumptions: Basic 50% of CTC, HRA 40% of basic, EPF 12% of basic (employer + employee), gratuity 4.81% of basic, professional tax ₹2,400/yr, standard deduction ₹75,000. New tax regime slabs.
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-navy text-ivory p-6">
+          <div class="text-[11px] uppercase tracking-wider text-ivory/55 mb-1">Estimated monthly in-hand</div>
+          <div class="font-display text-4xl md:text-5xl text-gold mb-1" id="ctc-monthly">₹0</div>
+          <div class="text-[12px] text-ivory/55 mb-5"><span id="ctc-annual">₹0</span> annually</div>
+
+          <div class="space-y-2.5 text-[13px]">
+            <div class="flex justify-between"><span class="text-ivory/65">Basic Salary</span><span class="font-medium" id="ctc-basic">—</span></div>
+            <div class="flex justify-between"><span class="text-ivory/65">HRA</span><span class="font-medium" id="ctc-hra">—</span></div>
+            <div class="flex justify-between"><span class="text-ivory/65">Special Allowance</span><span class="font-medium" id="ctc-special">—</span></div>
+            <div class="border-t border-white/10 pt-2.5 flex justify-between"><span class="text-ivory/65">Gross Annual</span><span class="font-medium" id="ctc-gross">—</span></div>
+            <div class="flex justify-between text-red-300/90"><span>− Employee EPF</span><span class="font-medium" id="ctc-epf">—</span></div>
+            <div class="flex justify-between text-red-300/90"><span>− Income Tax</span><span class="font-medium" id="ctc-tax">—</span></div>
+            <div class="flex justify-between text-red-300/90"><span>− Professional Tax</span><span class="font-medium" id="ctc-pt">—</span></div>
+            <div class="border-t border-white/10 pt-2.5 flex justify-between text-gold"><span class="font-semibold">Net Annual</span><span class="font-bold" id="ctc-net">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TOOL 3: JD KEYWORD EXTRACTOR ===== -->
+    <div id="tool-jd" class="rounded-3xl bg-white border border-navy/8 shadow-soft p-6 md:p-10 mb-8 scroll-mt-24 reveal">
+      <div class="flex items-start justify-between gap-4 mb-6 flex-wrap">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-gold-deep mb-1">For Candidates · Tool 3</div>
+            <h3 class="font-display text-2xl md:text-3xl text-navy">JD Keyword Extractor</h3>
+            <p class="mt-2 text-[14px] text-charcoal/65 max-w-xl">Paste any job description — instantly see the most important skills, tools, and qualifications recruiters and ATS systems are scanning for.</p>
+          </div>
+        </div>
+        <span class="chip chip-gold shrink-0">Instant</span>
+      </div>
+
+      <textarea id="jd-input" rows="8" placeholder="Paste the full job description…" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[13.5px] focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition resize-none"></textarea>
+
+      <div class="mt-5 flex flex-wrap items-center gap-3">
+        <button id="jd-run" class="px-6 py-3 rounded-full btn-gold text-[14px]">Extract Keywords</button>
+        <button id="jd-sample" class="px-5 py-3 rounded-full border border-navy/15 text-navy text-[13.5px] hover:bg-navy hover:text-ivory transition">Try with sample</button>
+      </div>
+
+      <div id="jd-result" class="hidden mt-8 pt-8 border-t border-navy/8">
+        <div class="grid md:grid-cols-3 gap-5 mb-6">
+          <div class="rounded-2xl bg-ivory border border-navy/6 p-5 text-center">
+            <div class="text-[11px] uppercase tracking-wider text-charcoal/55 mb-1">Total words</div>
+            <div class="font-display text-3xl text-navy" id="jd-words">0</div>
+          </div>
+          <div class="rounded-2xl bg-ivory border border-navy/6 p-5 text-center">
+            <div class="text-[11px] uppercase tracking-wider text-charcoal/55 mb-1">Unique terms</div>
+            <div class="font-display text-3xl text-navy" id="jd-unique">0</div>
+          </div>
+          <div class="rounded-2xl bg-ivory border border-navy/6 p-5 text-center">
+            <div class="text-[11px] uppercase tracking-wider text-charcoal/55 mb-1">Reading level</div>
+            <div class="font-display text-3xl text-navy" id="jd-level">—</div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <div class="text-[12px] uppercase tracking-wider text-charcoal/55 mb-3">Top skills & tools</div>
+            <div id="jd-skills" class="flex flex-wrap gap-1.5"></div>
+          </div>
+          <div>
+            <div class="text-[12px] uppercase tracking-wider text-charcoal/55 mb-3">Most-repeated keywords</div>
+            <div id="jd-keywords" class="space-y-2"></div>
+          </div>
+        </div>
+
+        <div id="jd-meta" class="mt-6 grid sm:grid-cols-3 gap-3 text-[13px]">
+          <div class="rounded-xl bg-ivory border border-navy/6 p-4"><span class="text-charcoal/55">Experience required:</span> <span class="font-semibold text-navy" id="jd-exp">—</span></div>
+          <div class="rounded-xl bg-ivory border border-navy/6 p-4"><span class="text-charcoal/55">Qualifications:</span> <span class="font-semibold text-navy" id="jd-qual">—</span></div>
+          <div class="rounded-xl bg-ivory border border-navy/6 p-4"><span class="text-charcoal/55">Likely role tier:</span> <span class="font-semibold text-navy" id="jd-tier">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TOOL 4: COST OF HIRE ===== -->
+    <div id="tool-coh" class="rounded-3xl bg-white border border-navy/8 shadow-soft p-6 md:p-10 mb-8 scroll-mt-24 reveal">
+      <div class="flex items-start justify-between gap-4 mb-6 flex-wrap">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l3-4 4 3 5-7"/></svg></div>
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-gold-deep mb-1">For Employers · Tool 4</div>
+            <h3 class="font-display text-2xl md:text-3xl text-navy">Cost of Hire Calculator</h3>
+            <p class="mt-2 text-[14px] text-charcoal/65 max-w-xl">The true cost of filling a role isn't just salary. See the full picture: agency, sourcing, interviewer time, onboarding, ramp-up.</p>
+          </div>
+        </div>
+        <span class="chip chip-gold shrink-0">For Employers</span>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="space-y-4">
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[12px] text-charcoal/65 mb-1.5">Role's annual CTC (₹)</label>
+              <input type="number" id="coh-salary" value="1200000" class="form-input w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+            </div>
+            <div>
+              <label class="block text-[12px] text-charcoal/65 mb-1.5">Days to fill</label>
+              <input type="number" id="coh-days" value="35" class="form-input w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-[12px] text-charcoal/65 mb-1.5">Recruitment / agency fee (% of CTC)</label>
+            <input type="number" id="coh-fee" value="8.33" step="0.1" class="form-input w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[12px] text-charcoal/65 mb-1.5">Job-board / sourcing spend (₹)</label>
+              <input type="number" id="coh-jobs" value="15000" class="form-input w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+            </div>
+            <div>
+              <label class="block text-[12px] text-charcoal/65 mb-1.5">Onboarding & training (₹)</label>
+              <input type="number" id="coh-onboard" value="20000" class="form-input w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[12px] text-charcoal/65 mb-1.5">Total interviewer hours</label>
+              <input type="number" id="coh-hours" value="12" class="form-input w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+            </div>
+            <div>
+              <label class="block text-[12px] text-charcoal/65 mb-1.5">Avg interviewer hourly rate (₹)</label>
+              <input type="number" id="coh-rate" value="2000" class="form-input w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-[12px] text-charcoal/65 mb-1.5">Ramp-up productivity loss (% of monthly salary)</label>
+            <input type="number" id="coh-ramp" value="30" class="form-input w-full px-3.5 py-2.5 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-navy text-ivory p-6">
+          <div class="text-[11px] uppercase tracking-wider text-ivory/55 mb-1">Total cost to hire</div>
+          <div class="font-display text-4xl md:text-5xl text-gold mb-2" id="coh-total">₹0</div>
+          <div class="text-[12px] text-ivory/55 mb-5"><span id="coh-perday">₹0</span> per vacant day</div>
+
+          <div class="space-y-2.5 text-[13px]">
+            <div class="flex justify-between"><span class="text-ivory/65">Agency / recruitment fee</span><span id="coh-out-fee">—</span></div>
+            <div class="flex justify-between"><span class="text-ivory/65">Job board / sourcing</span><span id="coh-out-jobs">—</span></div>
+            <div class="flex justify-between"><span class="text-ivory/65">Interviewer time cost</span><span id="coh-out-time">—</span></div>
+            <div class="flex justify-between"><span class="text-ivory/65">Onboarding & training</span><span id="coh-out-onboard">—</span></div>
+            <div class="flex justify-between"><span class="text-ivory/65">Ramp-up productivity loss</span><span id="coh-out-ramp">—</span></div>
+            <div class="flex justify-between"><span class="text-ivory/65">Vacancy cost (lost productivity)</span><span id="coh-out-vacant">—</span></div>
+          </div>
+
+          <div class="mt-5 pt-5 border-t border-white/10">
+            <div class="text-[12px] text-ivory/65 mb-2">As % of annual CTC</div>
+            <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+              <div id="coh-bar" class="h-full bg-gradient-to-r from-gold to-sage rounded-full" style="width: 0%"></div>
+            </div>
+            <div class="text-[12px] text-gold mt-1.5"><span id="coh-pct">0</span>% of CTC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 p-5 rounded-2xl bg-gradient-to-br from-navy/5 to-gold/5 border border-gold/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="text-[13.5px] text-charcoal/75">Reduce this cost — let our team deliver pre-screened, role-matched profiles.</div>
+        <a href="contact.html" data-tab="employer" class="px-5 py-2.5 rounded-full btn-gold text-[13px] inline-flex items-center gap-2 shrink-0">Submit Hiring Requirement <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+
+    <!-- ===== TOOL 5: LINKEDIN HEADLINE GENERATOR ===== -->
+    <div id="tool-li" class="rounded-3xl bg-white border border-navy/8 shadow-soft p-6 md:p-10 scroll-mt-24 reveal">
+      <div class="flex items-start justify-between gap-4 mb-6 flex-wrap">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M8 11v5M8 8v.01M12 16v-3M16 16V9"/></svg></div>
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-gold-deep mb-1">For Candidates · Tool 5</div>
+            <h3 class="font-display text-2xl md:text-3xl text-navy">LinkedIn Headline Generator</h3>
+            <p class="mt-2 text-[14px] text-charcoal/65 max-w-xl">Get four polished LinkedIn headline variants, written in different recruiter-tested styles. Pick what fits you.</p>
+          </div>
+        </div>
+        <span class="chip chip-gold shrink-0">4 Variants</span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-[12px] text-charcoal/65 mb-1.5">Your role</label>
+          <input id="li-role" type="text" placeholder="e.g. Senior DevOps Engineer" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+        </div>
+        <div>
+          <label class="block text-[12px] text-charcoal/65 mb-1.5">Years of experience</label>
+          <input id="li-years" type="number" placeholder="e.g. 6" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-[12px] text-charcoal/65 mb-1.5">Top 3 skills (comma-separated)</label>
+          <input id="li-skills" type="text" placeholder="e.g. AWS, Kubernetes, Terraform" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-[12px] text-charcoal/65 mb-1.5">What value do you bring? <span class="text-charcoal/45">(optional)</span></label>
+          <input id="li-value" type="text" placeholder="e.g. cut deployment time 60%" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+        </div>
+        <div>
+          <label class="block text-[12px] text-charcoal/65 mb-1.5">Industry / domain <span class="text-charcoal/45">(optional)</span></label>
+          <input id="li-industry" type="text" placeholder="e.g. Fintech, SaaS" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none" />
+        </div>
+        <div>
+          <label class="block text-[12px] text-charcoal/65 mb-1.5">Open to <span class="text-charcoal/45">(optional)</span></label>
+          <select id="li-status" class="form-input w-full px-4 py-3 rounded-xl bg-ivory border border-navy/10 text-[14px] focus:border-gold outline-none">
+            <option value="">—</option>
+            <option>New opportunities</option>
+            <option>Remote roles</option>
+            <option>Freelance / Contract</option>
+            <option>Leadership roles</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="li-run" class="mt-5 px-6 py-3 rounded-full btn-gold text-[14px]">Generate Headlines</button>
+
+      <div id="li-result" class="hidden mt-8 pt-8 border-t border-navy/8 space-y-4"></div>
+    </div>
+
+  </div>
+</section>
+<footer class="bg-navy-deep text-ivory/75 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <span class="relative inline-flex items-center justify-center w-9 h-9 rounded-xl bg-white/5 text-gold border border-white/10">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z"/>
+              <path d="M12 8 C10.5 9.5 10.5 12 12 14 C13.5 12 13.5 9.5 12 8 Z" fill="#7A9E7E" stroke="#7A9E7E"/>
+            </svg>
+          </span>
+          <span class="flex items-baseline gap-1 text-[17px] text-ivory">
+            <span class="font-display italic">Sage</span><span class="font-semibold">& Crew</span><span class="text-gold font-semibold">Next</span>
+          </span>
+        </a>
+        <p class="mt-4 text-[13.5px] leading-relaxed max-w-md">Sage & Crew Next helps companies hire smarter and helps professionals become opportunity-ready through recruitment, staffing, resume, LinkedIn, and career branding services.</p>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="text-[12px] uppercase tracking-wider text-gold mb-4">Company</div>
+        <ul class="space-y-2 text-[13.5px]">
+          <li><a class="hover:text-ivory" href="index.html">Home</a></li>
+          <li><a class="hover:text-ivory" href="index.html#employers">For Employers</a></li>
+          <li><a class="hover:text-ivory" href="index.html#candidates">For Candidates</a></li>
+          <li><a class="hover:text-ivory" href="about.html">About</a></li>
+          <li><a class="hover:text-ivory" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="text-[12px] uppercase tracking-wider text-gold mb-4">Services</div>
+        <ul class="space-y-2 text-[13.5px]">
+          <li><a class="hover:text-ivory" href="index.html#services">Contract Staffing</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">Permanent Hiring</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">Resume Writing</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">LinkedIn Optimization</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">Interview Preparation</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="text-[12px] uppercase tracking-wider text-gold mb-4">Connect</div>
+        <ul class="space-y-2 text-[13.5px]">
+          <li><a class="hover:text-ivory" href="#">LinkedIn</a></li>
+          <li><a class="hover:text-ivory" href="#">Instagram</a></li>
+          <li><a class="hover:text-ivory" href="#">WhatsApp</a></li>
+          <li><a class="hover:text-ivory" href="mailto:sagencrew@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between text-[12.5px] text-ivory/55">
+      <div>© 2026 Sage & Crew Next. All rights reserved.</div>
+      <div class="flex items-center gap-5">
+        <a href="#" class="hover:text-ivory">Privacy Policy</a>
+        <a href="#" class="hover:text-ivory">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/910000000000?text=Hi%20Sage%20%26%20Crew%20Next%2C%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="wa-fab fixed bottom-5 right-5 z-50 group" id="wa-fab">
+  <span class="wa-tooltip">Chat with us</span>
+  <span class="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lift pulse-ring">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.81 11.81 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.595 5.39l-.999 3.648 3.893-1.737zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </span>
+</a>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sage & Crew Next | Hiring, Recruitment, Resume & Career Branding Services</title>
+<meta name="description" content="Sage & Crew Next helps companies hire smarter and helps professionals become opportunity-ready with recruitment, staffing, resume writing, LinkedIn optimization, and interview preparation services." />
+<meta name="theme-color" content="#0B1F3A" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tailwind-config.js"></script>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="text-charcoal">
+<!-- ============ PREMIUM PAGE LOADER ============ -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-mark loader-shine">
+    <span class="relative inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10">
+      <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z" stroke="#D4AF37"/>
+        <path d="M12 8 C10.5 9.5 10.5 12 12 14 C13.5 12 13.5 9.5 12 8 Z" fill="#7A9E7E" stroke="#7A9E7E"/>
+      </svg>
+    </span>
+    <span class="flex items-baseline gap-1.5 text-[20px] text-ivory">
+      <span class="font-display italic">Sage</span>
+      <span class="font-semibold">& Crew</span>
+      <span class="text-gold font-semibold">Next</span>
+    </span>
+  </div>
+  <div class="loader-bar"><i></i></div>
+  <div class="loader-tag">Wise Hiring · Stronger Careers</div>
+</div>
+
+<!-- Cursor glow (desktop only) -->
+<div id="cursor-glow"></div>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <nav class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <span class="relative inline-flex items-center justify-center w-9 h-9 rounded-xl bg-navy text-ivory">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z" stroke="#D4AF37"/>
+            <path d="M12 8 C10.5 9.5 10.5 12 12 14 C13.5 12 13.5 9.5 12 8 Z" fill="#7A9E7E" stroke="#7A9E7E"/>
+          </svg>
+        </span>
+        <span class="flex items-baseline gap-1 text-[17px]">
+          <span class="font-display italic text-navy">Sage</span>
+          <span class="font-semibold tracking-tight text-charcoal">& Crew</span>
+          <span class="text-gold font-semibold">Next</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden lg:flex items-center gap-5 xl:gap-6 text-[13.5px] text-charcoal/80">
+        <li><a class="nav-link hover:text-navy transition active" href="index.html">Home</a></li>
+        <li><a class="nav-link hover:text-navy transition active" href="index.html#employers">For Employers</a></li>
+        <li><a class="nav-link hover:text-navy transition active" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="nav-link hover:text-navy transition active" href="index.html#services">Services</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="tools.html">Free Tools</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="pricing.html">Pricing</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="faq.html">FAQ</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- CTAs -->
+      <div class="hidden lg:flex items-center gap-2.5">
+        <a href="contact.html?intent=employer" data-tab="employer" class="magnetic px-4 py-2 rounded-full text-[13.5px] font-semibold border border-navy/15 text-navy hover:bg-navy hover:text-ivory transition">Hire Talent</a>
+        <a href="contact.html?intent=candidate" data-tab="candidate" class="magnetic btn-arrow px-4 py-2 rounded-full text-[13.5px] btn-gold inline-flex items-center gap-1.5">Upload Resume
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="menu-btn" aria-label="Open menu" class="lg:hidden p-2 rounded-lg hover:bg-navy/5">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu lg:hidden mt-2 mb-4 rounded-2xl bg-white shadow-lift border border-navy/5 p-4">
+      <ul class="flex flex-col text-[15px] text-charcoal divide-y divide-navy/5">
+        <li><a class="block py-3" href="index.html">Home</a></li>
+        <li><a class="block py-3" href="index.html#employers">For Employers</a></li>
+        <li><a class="block py-3" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="block py-3" href="index.html#services">Services</a></li>
+        <li><a class="block py-3" href="tools.html">Free Tools</a></li>
+        <li><a class="block py-3" href="pricing.html">Pricing</a></li>
+        <li><a class="block py-3" href="faq.html">FAQ</a></li>
+        <li><a class="block py-3" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<section id="top" class="hero-bg dot-grid pt-28 md:pt-32 pb-20 md:pb-28 text-ivory relative">
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center relative z-[2]">
+    <!-- Left: copy -->
+    <div class="lg:col-span-6 relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-[12px] tracking-wide uppercase text-ivory/85 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+        Wise Hiring · Stronger Careers
+      </div>
+
+      <h1 id="hero-title" class="font-display text-[40px] sm:text-5xl lg:text-[60px] leading-[1.05] text-ivory">
+        <span class="block">Hire Smarter.</span>
+        <span class="block"><span class="italic text-gold">Build</span> Stronger Teams.</span>
+      </h1>
+
+      <!-- Role rotator -->
+      <div class="mt-4 text-[15px] text-ivory/70 reveal" id="hero-rotator-wrap">
+        Hiring for <span class="role-rotator" id="role-rotator"><span id="role-text"></span><span class="caret"></span></span>
+      </div>
+
+      <p id="hero-sub" class="mt-5 text-[15.5px] md:text-[16.5px] leading-relaxed text-ivory/75 max-w-xl reveal">
+        Sage & Crew Next helps businesses find skilled, verified, and ready-to-hire talent across contract, permanent, IT, non-IT, and leadership roles. We also help professionals build stronger resumes, LinkedIn profiles, and interview confidence.
+      </p>
+
+      <div id="hero-ctas" class="mt-8 flex flex-wrap items-center gap-3 reveal">
+        <a href="contact.html" data-tab="employer" class="magnetic btn-arrow px-6 py-3.5 rounded-full btn-gold text-[14.5px] inline-flex items-center gap-2">
+          Hire Talent
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="contact.html" data-tab="candidate" class="magnetic btn-arrow px-6 py-3.5 rounded-full btn-ghost-light text-[14.5px] inline-flex items-center gap-2">
+          Upload Resume
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#resume-review" class="text-[14px] text-gold/90 hover:text-gold underline-offset-4 hover:underline ml-1">Get Free Resume Review →</a>
+      </div>
+
+      <!-- Mini stats strip -->
+      <div id="hero-stats" class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl reveal">
+        <div class="glass rounded-xl px-3 py-3">
+          <div class="text-[11px] uppercase tracking-wider text-ivory/55">Open Roles</div>
+          <div class="font-display text-2xl text-ivory mt-0.5">12</div>
+        </div>
+        <div class="glass rounded-xl px-3 py-3">
+          <div class="text-[11px] uppercase tracking-wider text-ivory/55">Profiles Shared</div>
+          <div class="font-display text-2xl text-ivory mt-0.5">48</div>
+        </div>
+        <div class="glass rounded-xl px-3 py-3">
+          <div class="text-[11px] uppercase tracking-wider text-ivory/55">Interviews</div>
+          <div class="font-display text-2xl text-ivory mt-0.5">16</div>
+        </div>
+        <div class="glass rounded-xl px-3 py-3">
+          <div class="text-[11px] uppercase tracking-wider text-ivory/55">Offers</div>
+          <div class="font-display text-2xl text-ivory mt-0.5">5</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: AI Talent Match animation -->
+    <div class="lg:col-span-6 relative h-[460px] sm:h-[520px] lg:h-[580px]" id="atm-stage">
+      <!-- Soft background glow (keeps the hero feeling lit, even before canvas paints) -->
+      <div class="absolute inset-0 -z-0 pointer-events-none">
+        <div class="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-sage/20 blur-3xl"></div>
+        <div class="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-gold/10 blur-3xl"></div>
+      </div>
+
+      <!-- The animation canvas -->
+      <canvas id="atm-canvas" class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
+
+      <!-- Live overlay HUD: counter + scene caption + reduced-motion fallback hint -->
+      <div class="atm-hud absolute top-3 left-3 right-3 flex items-start justify-between pointer-events-none">
+        <div class="glass rounded-lg px-3 py-2 text-[11px] tracking-wide">
+          <div class="text-ivory/55 uppercase">Live Match Engine</div>
+          <div class="mt-0.5 text-ivory font-semibold flex items-center gap-2">
+            <span class="atm-live-dot"></span>
+            <span id="atm-caption">Receiving requisition…</span>
+          </div>
+        </div>
+        <div class="glass rounded-lg px-3 py-2 text-[11px] tracking-wide text-right">
+          <div class="text-ivory/55 uppercase">Profiles Scanned</div>
+          <div class="mt-0.5 font-display text-ivory text-lg leading-none"><span id="atm-counter">0</span></div>
+        </div>
+      </div>
+
+      <!-- Bottom caption -->
+      <div class="absolute bottom-3 left-3 right-3 pointer-events-none">
+        <div class="glass rounded-xl px-4 py-3 flex items-center justify-between gap-3">
+          <div>
+            <div class="text-[10.5px] uppercase tracking-wider text-ivory/55">From requisition to qualified profiles</div>
+            <div class="text-[13px] text-ivory font-semibold mt-0.5">In hours, not weeks.</div>
+          </div>
+          <div class="flex items-center gap-1 text-[11px] text-gold/90">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>
+            <span id="atm-shortlist">3 qualified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. AUDIENCE CHOICE ============ -->
+<section class="py-14 md:py-20 bg-ivory">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">Choose Your Path</h2>
+      <p class="mt-4 text-charcoal/70 text-[15.5px]">Whether you are building a team or building your career, Sage & Crew Next gives you wise guidance and practical support.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 gap-6 lg:gap-8">
+      <!-- Employer card -->
+      <a href="#employers" class="group relative rounded-3xl overflow-hidden border border-navy/8 bg-white p-8 md:p-10 card-hover reveal">
+        <div class="flex items-center justify-between mb-8">
+          <span class="chip chip-gold">For Employers</span>
+          <span class="w-9 h-9 rounded-full bg-navy text-ivory inline-flex items-center justify-center group-hover:bg-gold group-hover:text-navy transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+        <h3 class="font-display text-2xl md:text-[28px] text-navy">Need the right candidate, faster?</h3>
+        <p class="mt-3 text-charcoal/70 text-[15px]">Share your hiring requirement and receive curated, screened, and role-matched profiles for your business needs.</p>
+
+        <!-- Mini visual: JD -> pipeline -->
+        <div class="mt-7 rounded-2xl bg-ivory border border-navy/5 p-5">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-lg bg-navy text-ivory flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg></div>
+            <div>
+              <div class="text-[13px] font-semibold text-navy">JD: Senior DevOps Engineer</div>
+              <div class="text-[11.5px] text-charcoal/55">Hyderabad / Remote · 6+ yrs</div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="chip">AWS</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">CI/CD</span>
+          </div>
+          <div class="flex items-center justify-between text-[12px] text-charcoal/65">
+            <span>3 candidates shortlisted</span>
+            <span class="text-sage-deep font-semibold">94% top match</span>
+          </div>
+        </div>
+
+        <span class="mt-7 inline-flex items-center gap-1.5 text-[14px] font-semibold text-navy group-hover:text-gold transition">Submit Hiring Requirement →</span>
+      </a>
+
+      <!-- Candidate card -->
+      <a href="#candidates" class="group relative rounded-3xl overflow-hidden border border-navy/8 bg-white p-8 md:p-10 card-hover reveal">
+        <div class="flex items-center justify-between mb-8">
+          <span class="chip chip-gold">For Candidates</span>
+          <span class="w-9 h-9 rounded-full bg-navy text-ivory inline-flex items-center justify-center group-hover:bg-gold group-hover:text-navy transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+        <h3 class="font-display text-2xl md:text-[28px] text-navy">Want a stronger professional profile?</h3>
+        <p class="mt-3 text-charcoal/70 text-[15px]">Upload your resume and get expert support with ATS formatting, LinkedIn optimization, interview preparation, and career branding.</p>
+
+        <!-- Mini visual: Resume + ATS -->
+        <div class="mt-7 rounded-2xl bg-ivory border border-navy/5 p-5 relative overflow-hidden">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-20 bg-white border border-navy/10 rounded-md p-1.5 shrink-0">
+              <div class="h-1 w-2/3 bg-navy/40 rounded mb-1"></div>
+              <div class="h-1 w-full bg-navy/15 rounded mb-0.5"></div>
+              <div class="h-1 w-5/6 bg-navy/15 rounded mb-0.5"></div>
+              <div class="h-1 w-3/4 bg-navy/15 rounded mb-2"></div>
+              <div class="h-1 w-1/2 bg-gold/60 rounded mb-0.5"></div>
+              <div class="h-1 w-2/3 bg-navy/15 rounded mb-0.5"></div>
+              <div class="h-1 w-1/2 bg-navy/15 rounded"></div>
+            </div>
+            <div class="flex-1">
+              <div class="text-[13px] font-semibold text-navy">Resume Scan</div>
+              <div class="mt-2">
+                <div class="flex justify-between text-[11.5px] text-charcoal/65 mb-1"><span>ATS Readiness</span><span class="font-semibold text-sage-deep">86%</span></div>
+                <div class="h-1.5 rounded-full bg-mist overflow-hidden"><div class="h-full bg-sage rounded-full" style="width: 86%"></div></div>
+              </div>
+              <div class="mt-2">
+                <div class="flex justify-between text-[11.5px] text-charcoal/65 mb-1"><span>Keyword Match</span><span class="font-semibold text-sage-deep">78%</span></div>
+                <div class="h-1.5 rounded-full bg-mist overflow-hidden"><div class="h-full bg-sage rounded-full" style="width: 78%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <span class="mt-7 inline-flex items-center gap-1.5 text-[14px] font-semibold text-navy group-hover:text-gold transition">Submit Your Resume →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. EMPLOYER JOURNEY ============ -->
+<section id="employers" class="py-14 md:py-20 bg-navy text-ivory relative overflow-hidden">
+  <div class="absolute inset-0 dot-grid opacity-50"></div>
+  <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-sage/15 blur-3xl"></div>
+  <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-gold/10 blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="gold-line block mb-5"></span>
+      <div class="text-[12px] uppercase tracking-[0.2em] text-gold/90 mb-3">For Employers</div>
+      <h2 class="font-display text-3xl md:text-5xl text-ivory">From Requirement to <span class="italic text-gold">Right Hire</span></h2>
+      <p class="mt-4 text-ivory/70 text-[15.5px]">A simple, structured hiring process designed to reduce screening time and improve candidate quality.</p>
+    </div>
+
+    <!-- Live Animated Pipeline -->
+    <div class="mt-14 relative" id="emp-pipeline">
+      <!-- Connector line (desktop) -->
+      <div class="hidden md:block absolute top-[120px] left-[8%] right-[8%] h-px bg-gradient-to-r from-gold/0 via-gold/60 to-gold/0"></div>
+
+      <div class="grid md:grid-cols-12 gap-5 md:gap-6">
+        <!-- LEFT: JD Card -->
+        <div class="md:col-span-4 reveal">
+          <div class="text-[11px] uppercase tracking-wider text-gold/80 mb-3">Step 1 — Requirement</div>
+          <div class="rounded-2xl glass-dark p-5">
+            <div class="flex items-center gap-2.5 mb-4">
+              <div class="w-9 h-9 rounded-lg bg-gold/15 text-gold flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6"/></svg></div>
+              <div>
+                <div class="text-[13.5px] font-semibold text-ivory">Job Requirement</div>
+                <div class="text-[11px] text-ivory/55">Received from employer</div>
+              </div>
+            </div>
+            <div class="text-[15px] font-display text-ivory">Senior DevOps Engineer</div>
+            <div class="text-[12px] text-ivory/60 mt-1">6+ yrs · Hyderabad / Remote</div>
+            <div class="mt-3 pt-3 border-t border-white/10">
+              <div class="text-[11px] uppercase tracking-wider text-ivory/45 mb-2">Required skills</div>
+              <div id="emp-jd-skills" class="flex flex-wrap gap-1.5">
+                <span class="skill-fly"><span class="chip chip-dark">AWS</span></span>
+                <span class="skill-fly"><span class="chip chip-dark">Kubernetes</span></span>
+                <span class="skill-fly"><span class="chip chip-dark">Terraform</span></span>
+                <span class="skill-fly"><span class="chip chip-dark">Jenkins</span></span>
+                <span class="skill-fly"><span class="chip chip-dark">Docker</span></span>
+                <span class="skill-fly"><span class="chip chip-dark">Linux</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MIDDLE: AI Extraction -->
+        <div class="md:col-span-4 reveal">
+          <div class="text-[11px] uppercase tracking-wider text-gold/80 mb-3">Step 2 — Skill Match</div>
+          <div class="relative rounded-2xl glass-dark p-5 overflow-hidden">
+            <!-- Scanner sweep -->
+            <div id="emp-scanner" class="absolute left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent shadow-[0_0_18px_2px_rgba(212,175,55,0.55)]" style="top: 30%; opacity: 0;"></div>
+
+            <div class="flex items-center gap-2.5 mb-4">
+              <div class="w-9 h-9 rounded-lg bg-gold/15 text-gold flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+              <div>
+                <div class="text-[13.5px] font-semibold text-ivory">Skill Extraction</div>
+                <div class="text-[11px] text-ivory/55">Auto-mapped to talent pool</div>
+              </div>
+            </div>
+
+            <div class="text-[12px] text-ivory/65 mb-2">Skills extracted</div>
+            <div id="emp-extract" class="flex flex-wrap gap-1.5 min-h-[64px]">
+              <!-- chips populated by JS -->
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-white/10">
+              <div class="flex items-center justify-between mb-2 text-[12px]">
+                <span class="text-ivory/65">Pool match strength</span>
+                <span class="text-gold font-semibold ats-counter" id="emp-strength">0%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
+                <div id="emp-strength-bar" class="h-full bg-gradient-to-r from-gold to-sage transition-all duration-1000" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Shortlist + Interview + Hire -->
+        <div class="md:col-span-4 reveal">
+          <div class="text-[11px] uppercase tracking-wider text-gold/80 mb-3">Step 3 — Shortlist · Interview · Hire</div>
+
+          <!-- Shortlist -->
+          <div class="rounded-2xl glass-dark p-5 space-y-2.5">
+            <div class="flex items-center gap-2.5 mb-2">
+              <div class="w-9 h-9 rounded-lg bg-gold/15 text-gold flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M22 11h-4M22 8l-3 3-3-3"/></svg></div>
+              <div class="text-[13.5px] font-semibold text-ivory">Curated Shortlist</div>
+            </div>
+
+            <div id="emp-cand-1" class="candidate-fly flex items-center justify-between text-[12.5px] py-2 px-2.5 rounded-lg bg-white/5">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-full bg-sage/30 text-ivory flex items-center justify-center text-[11px] font-semibold">A</div>
+                <div>
+                  <div class="text-ivory">Aarav S.</div>
+                  <div class="text-ivory/50 text-[10.5px]">7 yrs · Hyderabad</div>
+                </div>
+              </div>
+              <span class="text-gold font-bold">94%</span>
+            </div>
+            <div id="emp-cand-2" class="candidate-fly flex items-center justify-between text-[12.5px] py-2 px-2.5 rounded-lg bg-white/5">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-full bg-sage/30 text-ivory flex items-center justify-center text-[11px] font-semibold">P</div>
+                <div>
+                  <div class="text-ivory">Priya R.</div>
+                  <div class="text-ivory/50 text-[10.5px]">6 yrs · Remote</div>
+                </div>
+              </div>
+              <span class="text-gold font-bold">91%</span>
+            </div>
+            <div id="emp-cand-3" class="candidate-fly flex items-center justify-between text-[12.5px] py-2 px-2.5 rounded-lg bg-white/5">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-full bg-sage/30 text-ivory flex items-center justify-center text-[11px] font-semibold">V</div>
+                <div>
+                  <div class="text-ivory">Vikram K.</div>
+                  <div class="text-ivory/50 text-[10.5px]">8 yrs · Hybrid</div>
+                </div>
+              </div>
+              <span class="text-gold font-bold">87%</span>
+            </div>
+          </div>
+
+          <!-- Interview + Hire stacked -->
+          <div class="grid grid-cols-2 gap-3 mt-3">
+            <div id="emp-interview" class="pipeline-stage rounded-2xl glass-dark p-3">
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <div class="text-[11px] font-semibold text-ivory">Interview</div>
+              </div>
+              <div class="text-[10.5px] text-ivory/65 leading-snug">R1 Tech · R2 Client</div>
+              <div class="text-[10.5px] text-sage-soft mt-1.5 flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-sage-soft"></span>Scheduled</div>
+            </div>
+            <div id="emp-hire" class="pipeline-stage rounded-2xl bg-gradient-to-br from-gold/25 to-sage/15 border border-gold/40 p-3">
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg>
+                <div class="text-[11px] font-semibold text-ivory">Hire</div>
+              </div>
+              <div class="text-[10.5px] text-ivory/85">Offer Released</div>
+              <div class="text-[10.5px] text-gold mt-1">Completed ✓</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-12 max-w-2xl text-ivory/70 text-[15px] reveal">We help companies move from unclear requirements to qualified shortlists with human-screened candidate profiles, practical coordination, and faster hiring support.</p>
+
+    <div class="mt-7 reveal">
+      <a href="contact.html" data-tab="employer" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full btn-gold text-[14.5px]">Start Hiring Today
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMPLOYER PAIN POINTS ============ -->
+<section class="py-14 md:py-18 bg-ivory relative overflow-hidden">
+  <div class="sage-blob w-[420px] h-[420px] -top-24 -left-24"></div>
+  <div class="grad-line top-12 left-0 right-0"></div>
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <div class="reveal">
+        <span class="gold-line block mb-5"></span>
+        <div class="text-[12px] uppercase tracking-[0.2em] text-charcoal/50 mb-3">For Employers</div>
+        <h2 class="font-display text-3xl md:text-5xl text-navy">Hiring Pain Points <span class="italic text-gold">We Solve</span></h2>
+        <p class="mt-4 text-charcoal/70 text-[15.5px]">If any of these sound familiar, we built our process specifically to remove them.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="reveal rounded-2xl bg-white border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Too many irrelevant resumes</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">Wasting hours filtering profiles that don't match your role.</p>
+        </div>
+        <div class="reveal rounded-2xl bg-white border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Slow screening cycles</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">Days lost in shortlisting before the first interview is scheduled.</p>
+        </div>
+        <div class="reveal rounded-2xl bg-white border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Urgent hiring with no buffer</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">Project starts in 2 weeks; recruiter response comes in 6.</p>
+        </div>
+        <div class="reveal rounded-2xl bg-white border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Hard-to-fill tech roles</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">DevOps, SRE, Cloud and platform engineers that take months.</p>
+        </div>
+        <div class="reveal sm:col-span-2 rounded-2xl bg-white border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Interview coordination delays</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">Candidate drop-offs caused by long gaps between rounds.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TALENT MARQUEE ============ -->
+<section class="py-12 md:py-16 bg-white border-y border-navy/6 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 mb-8">
+    <div class="flex items-end justify-between flex-wrap gap-3 reveal">
+      <div>
+        <div class="text-[12px] uppercase tracking-[0.2em] text-gold mb-2">Talent Pool</div>
+        <h2 class="font-display text-2xl md:text-4xl text-navy">Roles We <span class="italic text-gold">Hire For</span></h2>
+      </div>
+      <p class="text-[14px] text-charcoal/55 max-w-md">A snapshot of the roles we actively support across IT, Non-IT, and leadership categories.</p>
+    </div>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track" id="marquee-track">
+      <!-- 11 cards × 2 for seamless loop, populated below -->
+      <!-- Cards -->
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">IT</span><span class="text-[11px] text-charcoal/45">5–8 yrs</span></div>
+        <div class="font-display text-lg text-navy">DevOps Engineer</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">AWS</span><span class="chip">K8s</span><span class="chip">Terraform</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">IT</span><span class="text-[11px] text-charcoal/45">7–10 yrs</span></div>
+        <div class="font-display text-lg text-navy">Cloud Architect</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">GCP</span><span class="chip">Azure</span><span class="chip">Networking</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">IT</span><span class="text-[11px] text-charcoal/45">4–7 yrs</span></div>
+        <div class="font-display text-lg text-navy">SRE</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Observability</span><span class="chip">Linux</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">HR</span><span class="text-[11px] text-charcoal/45">2–5 yrs</span></div>
+        <div class="font-display text-lg text-navy">HR Executive</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Recruitment</span><span class="chip">HRMS</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">SALES</span><span class="text-[11px] text-charcoal/45">5–8 yrs</span></div>
+        <div class="font-display text-lg text-navy">Sales Manager</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">B2B</span><span class="chip">Pipeline</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">FINANCE</span><span class="text-[11px] text-charcoal/45">3–6 yrs</span></div>
+        <div class="font-display text-lg text-navy">Finance Analyst</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">FP&A</span><span class="chip">Excel</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">QA</span><span class="text-[11px] text-charcoal/45">3–6 yrs</span></div>
+        <div class="font-display text-lg text-navy">QA Automation</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Selenium</span><span class="chip">API</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">IT</span><span class="text-[11px] text-charcoal/45">3–7 yrs</span></div>
+        <div class="font-display text-lg text-navy">Backend Developer</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Java</span><span class="chip">Node</span><span class="chip">SQL</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">ADMIN</span><span class="text-[11px] text-charcoal/45">1–4 yrs</span></div>
+        <div class="font-display text-lg text-navy">Admin Executive</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Office Ops</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">CX</span><span class="text-[11px] text-charcoal/45">1–5 yrs</span></div>
+        <div class="font-display text-lg text-navy">Customer Support</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Voice</span><span class="chip">Email</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">OPS</span><span class="text-[11px] text-charcoal/45">3–8 yrs</span></div>
+        <div class="font-display text-lg text-navy">Manufacturing Ops</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Plant</span><span class="chip">Quality</span></div>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">IT</span><span class="text-[11px] text-charcoal/45">5–8 yrs</span></div>
+        <div class="font-display text-lg text-navy">DevOps Engineer</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">AWS</span><span class="chip">K8s</span><span class="chip">Terraform</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">IT</span><span class="text-[11px] text-charcoal/45">7–10 yrs</span></div>
+        <div class="font-display text-lg text-navy">Cloud Architect</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">GCP</span><span class="chip">Azure</span><span class="chip">Networking</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">IT</span><span class="text-[11px] text-charcoal/45">4–7 yrs</span></div>
+        <div class="font-display text-lg text-navy">SRE</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Observability</span><span class="chip">Linux</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">HR</span><span class="text-[11px] text-charcoal/45">2–5 yrs</span></div>
+        <div class="font-display text-lg text-navy">HR Executive</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Recruitment</span><span class="chip">HRMS</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">SALES</span><span class="text-[11px] text-charcoal/45">5–8 yrs</span></div>
+        <div class="font-display text-lg text-navy">Sales Manager</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">B2B</span><span class="chip">Pipeline</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">FINANCE</span><span class="text-[11px] text-charcoal/45">3–6 yrs</span></div>
+        <div class="font-display text-lg text-navy">Finance Analyst</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">FP&A</span><span class="chip">Excel</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">QA</span><span class="text-[11px] text-charcoal/45">3–6 yrs</span></div>
+        <div class="font-display text-lg text-navy">QA Automation</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Selenium</span><span class="chip">API</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-gold font-semibold tracking-wider">IT</span><span class="text-[11px] text-charcoal/45">3–7 yrs</span></div>
+        <div class="font-display text-lg text-navy">Backend Developer</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Java</span><span class="chip">Node</span><span class="chip">SQL</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">ADMIN</span><span class="text-[11px] text-charcoal/45">1–4 yrs</span></div>
+        <div class="font-display text-lg text-navy">Admin Executive</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Office Ops</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">CX</span><span class="text-[11px] text-charcoal/45">1–5 yrs</span></div>
+        <div class="font-display text-lg text-navy">Customer Support</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Voice</span><span class="chip">Email</span></div>
+      </div>
+      <div class="shrink-0 w-[260px] rounded-2xl bg-ivory border border-navy/8 p-4 hover:border-gold/40 transition" aria-hidden="true">
+        <div class="flex items-center justify-between mb-2"><span class="text-[11px] text-sage-deep font-semibold tracking-wider">OPS</span><span class="text-[11px] text-charcoal/45">3–8 yrs</span></div>
+        <div class="font-display text-lg text-navy">Manufacturing Ops</div>
+        <div class="mt-2 flex flex-wrap gap-1"><span class="chip">Plant</span><span class="chip">Quality</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. CANDIDATE JOURNEY ============ -->
+<section id="candidates" class="py-14 md:py-20 bg-ivory relative overflow-hidden">
+  <div class="absolute -top-40 left-1/3 w-[600px] h-[600px] rounded-full bg-sage/8 blur-3xl"></div>
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+
+    <div class="max-w-2xl reveal">
+      <span class="gold-line block mb-5"></span>
+      <div class="text-[12px] uppercase tracking-[0.2em] text-sage-deep mb-3">For Candidates</div>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">From Resume to <span class="italic text-gold">Career Growth</span></h2>
+      <p class="mt-4 text-charcoal/70 text-[15.5px]">We help professionals transform their resumes, LinkedIn profiles, and interview readiness into a stronger career brand.</p>
+    </div>
+
+    <!-- Before / After resume duo -->
+    <div class="mt-14 grid lg:grid-cols-2 gap-6 lg:gap-10" id="resume-transform">
+      <!-- BEFORE -->
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-red-50 text-red-700 border border-red-100">Before</span>
+          <span class="text-[13px] text-charcoal/60">ATS Score: <span class="font-semibold text-red-600 ats-counter" id="ats-before">42%</span></span>
+        </div>
+        <div class="relative rounded-2xl bg-white border border-navy/10 shadow-soft p-6 overflow-hidden">
+          <!-- Scanner line -->
+          <div class="scanner-line absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent shadow-[0_0_18px_2px_rgba(212,175,55,0.6)]"></div>
+          <div class="font-display text-xl text-navy mb-1">Rohan S.</div>
+          <div class="text-[12px] text-charcoal/55 mb-4">Software Engineer</div>
+          <div class="space-y-3 text-[12.5px] text-charcoal/70">
+            <div>
+              <div class="font-semibold text-charcoal mb-1">Summary</div>
+              <p class="leading-relaxed">Hardworking and dedicated professional looking for a challenging opportunity to grow my career.</p>
+            </div>
+            <div>
+              <div class="font-semibold text-charcoal mb-1">Experience</div>
+              <p>Worked on various projects. Did coding. Helped team with deliverables.</p>
+            </div>
+          </div>
+          <div class="mt-5 space-y-1.5 text-[12px]">
+            <div class="warn-pop flex items-center gap-2 text-red-600" data-warn="0"><span>✕</span>Generic summary</div>
+            <div class="warn-pop flex items-center gap-2 text-red-600" data-warn="1"><span>✕</span>Weak keywords</div>
+            <div class="warn-pop flex items-center gap-2 text-red-600" data-warn="2"><span>✕</span>Poor formatting</div>
+            <div class="warn-pop flex items-center gap-2 text-red-600" data-warn="3"><span>✕</span>Missing achievements</div>
+            <div class="warn-pop flex items-center gap-2 text-red-600" data-warn="4"><span>✕</span>No role targeting</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AFTER -->
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-sage/10 text-sage-deep border border-sage/30">After</span>
+          <span class="text-[13px] text-charcoal/60">ATS Score: <span class="font-semibold text-sage-deep ats-counter" id="ats-after">86%</span></span>
+        </div>
+        <div class="relative rounded-2xl bg-white border border-gold/30 shadow-gold p-6 overflow-hidden">
+          <div class="absolute top-4 right-4 inline-flex items-center gap-1 text-[11px] font-semibold text-gold-deep bg-gold/10 px-2 py-0.5 rounded-md border border-gold/30">ATS Optimized</div>
+          <div class="font-display text-xl text-navy mb-1">Rohan Sharma</div>
+          <div class="text-[12px] text-sage-deep font-semibold mb-4">Senior Software Engineer · Backend & Cloud</div>
+          <div class="space-y-3 text-[12.5px] text-charcoal/75">
+            <div>
+              <div class="font-semibold text-charcoal mb-1">Professional Summary</div>
+              <p class="leading-relaxed">Backend engineer with 5+ years building scalable APIs on AWS. Led microservice migration that reduced latency by 38% and improved deployment frequency 4×.</p>
+            </div>
+            <div>
+              <div class="font-semibold text-charcoal mb-1">Core Skills</div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">AWS</span><span class="chip">Kafka</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 space-y-1.5 text-[12px]">
+            <div class="warn-pop flex items-center gap-2 text-sage-deep" data-good="0"><span>✓</span>ATS-friendly layout</div>
+            <div class="warn-pop flex items-center gap-2 text-sage-deep" data-good="1"><span>✓</span>Role-based keywords</div>
+            <div class="warn-pop flex items-center gap-2 text-sage-deep" data-good="2"><span>✓</span>Quantified achievements</div>
+            <div class="warn-pop flex items-center gap-2 text-sage-deep" data-good="3"><span>✓</span>Clean professional summary</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subsequent steps -->
+    <div class="mt-12 grid md:grid-cols-3 gap-5">
+      <div class="rounded-2xl bg-white border border-navy/8 p-6 shadow-soft reveal card-hover">
+        <div class="w-10 h-10 rounded-xl bg-navy text-ivory flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M8 11v5M8 8v.01M12 16v-3M16 16V9"/></svg>
+        </div>
+        <div class="font-display text-xl text-navy">LinkedIn Upgrade</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Headline rewritten, About section sharpened, skills aligned with target roles, and recruiter visibility improved.</p>
+      </div>
+      <div class="rounded-2xl bg-white border border-navy/8 p-6 shadow-soft reveal card-hover">
+        <div class="w-10 h-10 rounded-xl bg-navy text-ivory flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="font-display text-xl text-navy">Interview Ready</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Mock interviews, HR & role-based prep, and confidence building for technical and behavioral rounds.</p>
+      </div>
+      <div class="rounded-2xl bg-gradient-to-br from-navy to-navy-soft text-ivory p-6 shadow-lift reveal">
+        <div class="w-10 h-10 rounded-xl bg-gold text-navy flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-9"/><path d="M14 6h6v6"/></svg>
+        </div>
+        <div class="font-display text-xl">Career Growth</div>
+        <p class="mt-2 text-[13.5px] text-ivory/70 leading-relaxed">Resume → Interview → Offer → Growth. A clear, supported path to your next opportunity.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 reveal">
+      <a href="contact.html" data-tab="candidate" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-navy text-ivory text-[14.5px] hover:bg-navy-deep transition">Get Resume Help
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CANDIDATE PAIN POINTS ============ -->
+<section class="py-14 md:py-18 bg-white relative overflow-hidden">
+  <div class="sage-blob w-[400px] h-[400px] top-10 -right-20"></div>
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <div class="reveal lg:order-2 lg:pl-8">
+        <span class="gold-line block mb-5"></span>
+        <div class="text-[12px] uppercase tracking-[0.2em] text-charcoal/50 mb-3">For Candidates</div>
+        <h2 class="font-display text-3xl md:text-5xl text-navy">Career Pain Points <span class="italic text-gold">We Solve</span></h2>
+        <p class="mt-4 text-charcoal/70 text-[15.5px]">If your job search isn't getting traction, the issue is usually fixable — and often closer to the top of the funnel than you think.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3 lg:order-1">
+        <div class="reveal rounded-2xl bg-ivory border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Weak resume</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">Generic summaries, no quantified achievements, unclear role targeting.</p>
+        </div>
+        <div class="reveal rounded-2xl bg-ivory border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Low ATS score</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">Resumes filtered out before a recruiter ever sees them.</p>
+        </div>
+        <div class="reveal rounded-2xl bg-ivory border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M8 11v5M8 8v.01M12 16v-3M16 16V9"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Poor LinkedIn visibility</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">Invisible to recruiters searching for your skill set and target role.</p>
+        </div>
+        <div class="reveal rounded-2xl bg-ivory border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Interview fear</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">Strong skills, weak presentation — fixable with structured prep.</p>
+        </div>
+        <div class="reveal sm:col-span-2 rounded-2xl bg-ivory border border-navy/8 p-5 hover:shadow-lift transition">
+          <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div class="font-display text-[16px] text-navy">Unclear career positioning</div>
+          <p class="mt-1 text-[13px] text-charcoal/60">Lots of experience, but the story doesn't land for the role you actually want next.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 & 6. SERVICES ============ -->
+<section id="services" class="py-14 md:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <!-- Employer services -->
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">Hiring Solutions for Growing Teams</h2>
+      <p class="mt-4 text-charcoal/70 text-[15.5px]">Flexible hiring support for companies that need quality profiles without wasting time on irrelevant resumes.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- 8 employer cards generated below -->
+      <!-- Each: icon, title, desc, chips -->
+      <!-- 1 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg></div>
+        <div class="font-display text-lg text-navy">Contract Staffing</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Flexible talent support for project-based, temporary, or urgent business needs.</p>
+      </div>
+      <!-- 2 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z"/></svg></div>
+        <div class="font-display text-lg text-navy">Permanent Hiring</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">End-to-end recruitment support for long-term roles across multiple industries.</p>
+      </div>
+      <!-- 3 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div class="font-display text-lg text-navy">IT & Tech Hiring</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Specialized hiring for DevOps, Cloud, SRE, Software, Data, QA, and Infrastructure roles.</p>
+        <div class="mt-3 flex flex-wrap gap-1"><span class="chip">DevOps</span><span class="chip">Cloud</span><span class="chip">QA</span></div>
+      </div>
+      <!-- 4 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="font-display text-lg text-navy">Non-IT Hiring</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Recruitment support for HR, Admin, Sales, Finance, Operations, and Manufacturing roles.</p>
+      </div>
+      <!-- 5 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></div>
+        <div class="font-display text-lg text-navy">Resume Shortlisting</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Share your job description and receive curated, screened profiles that match your requirements.</p>
+      </div>
+      <!-- 6 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="font-display text-lg text-navy">Interview Coordination</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">We assist with interview scheduling, candidate follow-ups, and feedback tracking.</p>
+      </div>
+      <!-- 7 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="font-display text-lg text-navy">Bulk Hiring</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Structured support for multiple openings, urgent hiring drives, and team expansion.</p>
+      </div>
+      <!-- 8 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+        <div class="font-display text-lg text-navy">Vendor Hiring Support</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Practical hiring support for vendors, consultancies, and business partners.</p>
+      </div>
+    </div>
+
+    <!-- Candidate services -->
+    <div class="mt-24 text-center max-w-2xl mx-auto reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">Career Branding for Professionals</h2>
+      <p class="mt-4 text-charcoal/70 text-[15.5px]">Build a stronger professional identity with resume, LinkedIn, and interview preparation support.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- 1 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-sage/12 text-sage-deep flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+        <div class="font-display text-lg text-navy">ATS Resume Writing</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Professionally written resumes structured for ATS systems, recruiters, and role-based applications.</p>
+      </div>
+      <!-- 2 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-sage/12 text-sage-deep flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <div class="font-display text-lg text-navy">Resume Redesign</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Transform outdated resumes into clean, modern, achievement-focused professional profiles.</p>
+      </div>
+      <!-- 3 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-sage/12 text-sage-deep flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M8 11v5M8 8v.01M12 16v-3M16 16V9"/></svg></div>
+        <div class="font-display text-lg text-navy">LinkedIn Optimization</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Improve your headline, about section, experience, skills, and recruiter visibility.</p>
+      </div>
+      <!-- 4 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-sage/12 text-sage-deep flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+        <div class="font-display text-lg text-navy">Interview Preparation</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Prepare for HR, technical, behavioral, and role-specific interview questions.</p>
+      </div>
+      <!-- 5 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-sage/12 text-sage-deep flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg></div>
+        <div class="font-display text-lg text-navy">Mock Interview Support</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Practice real interview scenarios and improve confidence with guided feedback.</p>
+      </div>
+      <!-- 6 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-sage/12 text-sage-deep flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg></div>
+        <div class="font-display text-lg text-navy">Career Branding</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Build a complete professional brand across resume, LinkedIn, summary, and job applications.</p>
+      </div>
+      <!-- 7 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-sage/12 text-sage-deep flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 16l4.5-9 4.5 9M2 22h20M19 8l3 5"/></svg></div>
+        <div class="font-display text-lg text-navy">Fresher Launch Pack</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">Resume, LinkedIn, interview basics, and job-readiness support for fresh graduates.</p>
+      </div>
+      <!-- 8 -->
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-sage/12 text-sage-deep flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 7-9"/><path d="M14 6h6v6"/></svg></div>
+        <div class="font-display text-lg text-navy">Pro Upgrade Pack</div>
+        <p class="mt-2 text-[13.5px] text-charcoal/65 leading-relaxed">For professionals targeting better roles, better companies, and stronger career positioning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. HOW IT WORKS ============ -->
+<section class="py-14 md:py-20 bg-ivory">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">How Sage & Crew Next Works</h2>
+    </div>
+
+    <!-- Tabs -->
+    <div class="mt-10 flex justify-center reveal">
+      <div class="inline-flex bg-white border border-navy/8 rounded-full p-1 shadow-soft">
+        <button data-tab-btn="emp" class="tab-btn tab-active px-5 py-2.5 rounded-full text-[13.5px] font-semibold transition">For Employers</button>
+        <button data-tab-btn="cand" class="tab-btn px-5 py-2.5 rounded-full text-[13.5px] font-semibold transition text-charcoal/70">For Candidates</button>
+      </div>
+    </div>
+
+    <!-- Tab content -->
+    <div class="mt-12">
+      <div data-tab-panel="emp">
+        <p class="text-center max-w-2xl mx-auto text-charcoal/70 text-[15px] mb-10 reveal">Send us your job description, hiring budget, skills, location, and timeline. We understand the role, screen suitable candidates, share relevant resumes, and support the interview process.</p>
+        <div class="timeline-grid grid grid-cols-1 md:grid-cols-7 gap-3 reveal">
+          <!-- 7 employer steps -->
+          <!-- step template -->
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-gold mb-1">01</div><div class="text-[13px] font-semibold text-navy">Share Requirement</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-gold mb-1">02</div><div class="text-[13px] font-semibold text-navy">Role Understanding</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-gold mb-1">03</div><div class="text-[13px] font-semibold text-navy">Candidate Search</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-gold mb-1">04</div><div class="text-[13px] font-semibold text-navy">Profile Screening</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-gold mb-1">05</div><div class="text-[13px] font-semibold text-navy">Shortlist Sharing</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-gold mb-1">06</div><div class="text-[13px] font-semibold text-navy">Interview Coord.</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-gold mb-1">07</div><div class="text-[13px] font-semibold text-navy">Hiring Closure</div></div>
+        </div>
+      </div>
+      <div data-tab-panel="cand" class="hidden">
+        <p class="text-center max-w-2xl mx-auto text-charcoal/70 text-[15px] mb-10 reveal">Upload your resume and we review your profile, improve your resume, optimize your LinkedIn presence, and guide you toward better interview readiness.</p>
+        <div class="timeline-grid grid grid-cols-1 md:grid-cols-7 gap-3 reveal">
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-sage-deep mb-1">01</div><div class="text-[13px] font-semibold text-navy">Upload Resume</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-sage-deep mb-1">02</div><div class="text-[13px] font-semibold text-navy">Profile Review</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-sage-deep mb-1">03</div><div class="text-[13px] font-semibold text-navy">Resume Upgrade</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-sage-deep mb-1">04</div><div class="text-[13px] font-semibold text-navy">LinkedIn Optim.</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-sage-deep mb-1">05</div><div class="text-[13px] font-semibold text-navy">Interview Prep</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-sage-deep mb-1">06</div><div class="text-[13px] font-semibold text-navy">Job Readiness</div></div>
+          <div class="step bg-white rounded-2xl border border-navy/6 p-4 text-center"><div class="font-display text-2xl text-sage-deep mb-1">07</div><div class="text-[13px] font-semibold text-navy">Career Growth</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. INDUSTRIES ============ -->
+<section id="industries" class="py-14 md:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="gold-line block mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">Industries and Roles We Support</h2>
+      <p class="mt-4 text-charcoal/70 text-[15.5px]">From technology roles to business operations, we support hiring and career needs across multiple domains.</p>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Industry cards (12) -->
+      <!-- helper template repeated -->
+      <div class="rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal group">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="font-display text-lg text-navy">IT & Software</div>
+        </div>
+        <p class="text-[13.5px] text-charcoal/65">Backend, frontend, full-stack and platform engineering roles.</p>
+        <div class="mt-3 flex flex-wrap gap-1"><span class="chip">SDE</span><span class="chip">Full-stack</span><span class="chip">Backend</span></div>
+      </div>
+
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
+          <div class="font-display text-lg text-navy">DevOps / Cloud / SRE</div>
+        </div>
+        <p class="text-[13.5px] text-charcoal/65">Cloud infrastructure, automation, reliability and platform roles.</p>
+        <div class="mt-3 flex flex-wrap gap-1"><span class="chip">SRE</span><span class="chip">DevOps</span><span class="chip">K8s</span><span class="chip">Cloud</span></div>
+      </div>
+
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l3-4 4 3 5-7"/></svg></div>
+          <div class="font-display text-lg text-navy">Data & Analytics</div>
+        </div>
+        <p class="text-[13.5px] text-charcoal/65">Data engineers, analysts, BI and ML practitioners.</p>
+        <div class="mt-3 flex flex-wrap gap-1"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">PowerBI</span></div>
+      </div>
+
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
+          <div class="font-display text-lg text-navy">HR & Administration</div>
+        </div>
+        <p class="text-[13.5px] text-charcoal/65">Recruiters, HRBPs, TA specialists, admin and HR ops.</p>
+        <div class="mt-3 flex flex-wrap gap-1"><span class="chip">Recruiter</span><span class="chip">HRBP</span><span class="chip">TA</span></div>
+      </div>
+
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l6 18 4-9 9-4z"/></svg></div>
+          <div class="font-display text-lg text-navy">Sales & Marketing</div>
+        </div>
+        <p class="text-[13.5px] text-charcoal/65">Inside sales, BD, performance marketing and content roles.</p>
+        <div class="mt-3 flex flex-wrap gap-1"><span class="chip">BD</span><span class="chip">SDR</span><span class="chip">Growth</span></div>
+      </div>
+
+      <div class="tilt-card relative rounded-2xl bg-ivory border border-navy/6 p-6 card-hover reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div class="font-display text-lg text-navy">Finance & Accounting</div>
+        </div>
+        <p class="text-[13.5px] text-charcoal/65">FP&A, accounting, audit, and finance operations specialists.</p>
+        <div class="mt-3 flex flex-wrap gap-1"><span class="chip">FP&A</span><span class="chip">CA</span><span class="chip">Audit</span></div>
+      </div>
+    </div>
+
+    <!-- More-on-request strip -->
+    <div class="mt-8 flex flex-wrap items-center gap-2 text-[13px] text-charcoal/70 reveal">
+      <span class="text-charcoal/55">Also supporting:</span>
+      <span class="chip">Infrastructure & Support</span>
+      <span class="chip">QA & Automation</span>
+      <span class="chip">Manufacturing & Ops</span>
+      <span class="chip">Customer Support</span>
+      <span class="chip">Healthcare Support</span>
+      <span class="chip">Startups & SMEs</span>
+      <a href="contact.html" class="text-gold hover:underline ml-1">— ask about your industry →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FREE TOOLS TEASER ============ -->
+<section class="py-14 md:py-18 bg-white relative overflow-hidden">
+  <div class="sage-blob w-[420px] h-[420px] top-10 -left-20"></div>
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12 reveal">
+      <div class="max-w-2xl">
+        <span class="gold-line block mb-5"></span>
+        <div class="text-[12px] uppercase tracking-[0.2em] text-gold mb-3">Free Tools</div>
+        <h2 class="font-display text-3xl md:text-5xl text-navy">Built to Help You, <span class="italic text-gold">No Sign-up Required</span></h2>
+        <p class="mt-4 text-charcoal/70 text-[15.5px]">Practical, instant tools for hiring teams and job seekers. Use them as much as you want — no email gate, no paywall.</p>
+      </div>
+      <a href="tools.html" class="inline-flex items-center gap-2 text-[14px] font-semibold text-navy hover:text-gold transition shrink-0">
+        Explore all tools
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <a href="#tool-ats" class="group rounded-2xl bg-ivory border border-navy/8 p-5 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center mb-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></div>
+        <div class="font-display text-[17px] text-navy leading-snug">ATS Resume Score</div>
+        <p class="mt-1.5 text-[12.5px] text-charcoal/60">Match your resume against any JD.</p>
+        <span class="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-gold-deep group-hover:gap-2 transition-all">Try now →</span>
+      </a>
+      <a href="#tool-ctc" class="group rounded-2xl bg-ivory border border-navy/8 p-5 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center mb-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <div class="font-display text-[17px] text-navy leading-snug">CTC Calculator</div>
+        <p class="mt-1.5 text-[12.5px] text-charcoal/60">CTC → in-hand monthly (India).</p>
+        <span class="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-gold-deep group-hover:gap-2 transition-all">Try now →</span>
+      </a>
+      <a href="#tool-jd" class="group rounded-2xl bg-ivory border border-navy/8 p-5 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center mb-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <div class="font-display text-[17px] text-navy leading-snug">JD Keyword Extractor</div>
+        <p class="mt-1.5 text-[12.5px] text-charcoal/60">Surface what recruiters scan for.</p>
+        <span class="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-gold-deep group-hover:gap-2 transition-all">Try now →</span>
+      </a>
+      <a href="#tool-coh" class="group rounded-2xl bg-ivory border border-navy/8 p-5 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center mb-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l3-4 4 3 5-7"/></svg></div>
+        <div class="font-display text-[17px] text-navy leading-snug">Cost of Hire</div>
+        <p class="mt-1.5 text-[12.5px] text-charcoal/60">True cost of filling a role.</p>
+        <span class="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-gold-deep group-hover:gap-2 transition-all">Try now →</span>
+      </a>
+      <a href="#tool-li" class="group rounded-2xl bg-ivory border border-navy/8 p-5 card-hover reveal">
+        <div class="w-10 h-10 rounded-xl bg-gold/15 text-gold-deep flex items-center justify-center mb-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M8 11v5M8 8v.01M12 16v-3M16 16V9"/></svg></div>
+        <div class="font-display text-[17px] text-navy leading-snug">LinkedIn Headline</div>
+        <p class="mt-1.5 text-[12.5px] text-charcoal/60">4 headline variants, instantly.</p>
+        <span class="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-gold-deep group-hover:gap-2 transition-all">Try now →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FULL FREE TOOLS SECTION ============ -->
+
+
+<!-- ============ 9. WHY CHOOSE US ============ -->
+<section class="py-14 md:py-20 bg-navy text-ivory relative overflow-hidden">
+  <div class="absolute inset-0 dot-grid opacity-40"></div>
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="gold-line block mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-ivory">Why Companies and Candidates <span class="italic text-gold">Trust Us</span></h2>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass rounded-2xl p-6 card-hover reveal">
+        <div class="font-display text-3xl text-gold mb-1">01</div>
+        <div class="font-semibold text-ivory">Human-Screened Profiles</div>
+        <p class="mt-1.5 text-[13px] text-ivory/65">We focus on quality, not just quantity.</p>
+      </div>
+      <div class="glass rounded-2xl p-6 card-hover reveal">
+        <div class="font-display text-3xl text-gold mb-1">02</div>
+        <div class="font-semibold text-ivory">Faster Response</div>
+        <p class="mt-1.5 text-[13px] text-ivory/65">Quick communication via email, forms, and WhatsApp.</p>
+      </div>
+      <div class="glass rounded-2xl p-6 card-hover reveal">
+        <div class="font-display text-3xl text-gold mb-1">03</div>
+        <div class="font-semibold text-ivory">Both-Side Focus</div>
+        <p class="mt-1.5 text-[13px] text-ivory/65">We support both employer and candidate journeys.</p>
+      </div>
+      <div class="glass rounded-2xl p-6 card-hover reveal">
+        <div class="font-display text-3xl text-gold mb-1">04</div>
+        <div class="font-semibold text-ivory">IT + Non-IT Expertise</div>
+        <p class="mt-1.5 text-[13px] text-ivory/65">Flexible support across technical and business roles.</p>
+      </div>
+      <div class="glass rounded-2xl p-6 card-hover reveal">
+        <div class="font-display text-3xl text-gold mb-1">05</div>
+        <div class="font-semibold text-ivory">ATS-Friendly Career Support</div>
+        <p class="mt-1.5 text-[13px] text-ivory/65">Resumes designed for recruiter and system visibility.</p>
+      </div>
+      <div class="glass rounded-2xl p-6 card-hover reveal">
+        <div class="font-display text-3xl text-gold mb-1">06</div>
+        <div class="font-semibold text-ivory">Practical Hiring Process</div>
+        <p class="mt-1.5 text-[13px] text-ivory/65">Simple, structured, and transparent recruitment support.</p>
+      </div>
+      <div class="glass rounded-2xl p-6 card-hover reveal">
+        <div class="font-display text-3xl text-gold mb-1">07</div>
+        <div class="font-semibold text-ivory">Career Branding Mindset</div>
+        <p class="mt-1.5 text-[13px] text-ivory/65">We help professionals present themselves with confidence.</p>
+      </div>
+      <div class="glass rounded-2xl p-6 card-hover reveal">
+        <div class="font-display text-3xl text-gold mb-1">08</div>
+        <div class="font-semibold text-ivory">Future-Ready Approach</div>
+        <p class="mt-1.5 text-[13px] text-ivory/65">Combining human guidance with modern HR-tech workflows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. STATS ============ -->
+<section class="py-14 md:py-20 bg-ivory">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">Built for Better Hiring and Better Careers</h2>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="rounded-2xl bg-white border border-navy/6 p-7 text-center reveal">
+        <div class="font-display text-5xl text-navy"><span class="counter" data-target="500">0</span><span class="text-gold">+</span></div>
+        <div class="mt-2 text-[13px] uppercase tracking-wider text-charcoal/55">Resumes Reviewed</div>
+      </div>
+      <div class="rounded-2xl bg-white border border-navy/6 p-7 text-center reveal">
+        <div class="font-display text-5xl text-navy"><span class="counter" data-target="100">0</span><span class="text-gold">+</span></div>
+        <div class="mt-2 text-[13px] uppercase tracking-wider text-charcoal/55">Profiles Shortlisted</div>
+      </div>
+      <div class="rounded-2xl bg-white border border-navy/6 p-7 text-center reveal">
+        <div class="font-display text-5xl text-navy"><span class="counter" data-target="20">0</span><span class="text-gold">+</span></div>
+        <div class="mt-2 text-[13px] uppercase tracking-wider text-charcoal/55">Hiring Categories</div>
+      </div>
+      <div class="rounded-2xl bg-white border border-navy/6 p-7 text-center reveal">
+        <div class="font-display text-5xl text-navy"><span class="counter" data-target="24">0</span><span class="text-gold">hr</span></div>
+        <div class="mt-2 text-[13px] uppercase tracking-wider text-charcoal/55">Response Goal</div>
+      </div>
+    </div>
+    <p class="mt-5 text-center text-[12px] text-charcoal/45">Numbers shown are starter benchmarks and editable as the team grows.</p>
+  </div>
+</section>
+
+<!-- ============ 11. RESUME REVIEW LEAD MAGNET ============ -->
+<section id="resume-review" class="py-14 md:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <span class="gold-line block mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">Get a Free <span class="italic text-gold">Resume Review</span></h2>
+      <p class="mt-4 text-charcoal/70 text-[15.5px]">Upload your resume and receive practical feedback on formatting, keywords, ATS readiness, and career positioning.</p>
+      <div class="mt-7">
+        <a href="contact.html" data-tab="candidate" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full btn-gold text-[14.5px]">Upload Resume for Review
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <p class="mt-4 text-[12px] text-charcoal/50">Final resume review may require manual evaluation by our team.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="rounded-3xl bg-gradient-to-br from-navy to-navy-deep text-ivory p-7 shadow-lift relative overflow-hidden">
+        <div class="absolute inset-0 dot-grid opacity-50"></div>
+        <div class="relative">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <div class="text-[11px] uppercase tracking-wider text-ivory/55">Live Resume Score</div>
+              <div class="font-display text-2xl mt-1">Sample Profile</div>
+            </div>
+            <div class="relative w-20 h-20">
+              <svg viewBox="0 0 36 36" class="w-20 h-20">
+                <circle cx="18" cy="18" r="15.5" stroke="rgba(255,255,255,0.10)" stroke-width="3" fill="none"/>
+                <circle cx="18" cy="18" r="15.5" stroke="#D4AF37" stroke-width="3" fill="none" stroke-linecap="round"
+                  stroke-dasharray="97.4" stroke-dashoffset="14" transform="rotate(-90 18 18)"/>
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center font-display text-lg text-gold">86</div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-[13px] mb-1.5"><span class="text-ivory/70">ATS Readiness</span><span class="text-gold font-semibold">86%</span></div>
+              <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-gold rounded-full" style="width: 86%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[13px] mb-1.5"><span class="text-ivory/70">Keyword Match</span><span class="text-gold font-semibold">78%</span></div>
+              <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-gold rounded-full" style="width: 78%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[13px] mb-1.5"><span class="text-ivory/70">Format Quality</span><span class="text-gold font-semibold">92%</span></div>
+              <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-gold rounded-full" style="width: 92%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[13px] mb-1.5"><span class="text-ivory/70">Interview Readiness</span><span class="text-gold font-semibold">81%</span></div>
+              <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-gold rounded-full" style="width: 81%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13. TESTIMONIALS ============ -->
+<section class="py-14 md:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="flex items-end justify-between flex-wrap gap-4 reveal">
+      <div class="max-w-2xl">
+        <span class="gold-line block mb-5"></span>
+        <h2 class="font-display text-3xl md:text-5xl text-navy">Success Stories</h2>
+        <p class="mt-3 text-charcoal/55 text-[13px]">Placeholder testimonials — replace with real quotes once available.</p>
+      </div>
+      <div class="flex items-center gap-2" id="testi-arrows">
+        <button class="w-10 h-10 rounded-full border border-navy/15 hover:bg-navy hover:text-ivory transition flex items-center justify-center" data-testi="prev" aria-label="Previous testimonial">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="w-10 h-10 rounded-full border border-navy/15 hover:bg-navy hover:text-ivory transition flex items-center justify-center" data-testi="next" aria-label="Next testimonial">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-12 overflow-hidden reveal">
+      <div class="testimonial-track" id="testi-track">
+        <figure class="testimonial-card rounded-2xl bg-ivory border border-navy/8 p-7 card-hover">
+          <div class="text-gold mb-4"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9 17v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3zm12 0v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3z" transform="translate(-3 0)"/></svg></div>
+          <blockquote class="font-display text-[19px] text-navy leading-snug">Sage & Crew Next helped us receive relevant candidate profiles quickly and saved our team screening time.</blockquote>
+          <figcaption class="mt-5 pt-5 border-t border-navy/8">
+            <div class="text-[13px] font-semibold text-navy">Hiring Manager</div>
+            <div class="text-[12px] text-charcoal/55">Tech Services Company</div>
+            <span class="chip chip-gold mt-2 inline-block">Employer</span>
+          </figcaption>
+        </figure>
+        <figure class="testimonial-card rounded-2xl bg-ivory border border-navy/8 p-7 card-hover">
+          <div class="text-gold mb-4"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9 17v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3zm12 0v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3z" transform="translate(-3 0)"/></svg></div>
+          <blockquote class="font-display text-[19px] text-navy leading-snug">My resume looked more professional and role-focused after the review. The LinkedIn suggestions were also very helpful.</blockquote>
+          <figcaption class="mt-5 pt-5 border-t border-navy/8">
+            <div class="text-[13px] font-semibold text-navy">Software Engineer</div>
+            <div class="text-[12px] text-charcoal/55">5+ years experience</div>
+            <span class="chip chip-gold mt-2 inline-block">Candidate</span>
+          </figcaption>
+        </figure>
+        <figure class="testimonial-card rounded-2xl bg-ivory border border-navy/8 p-7 card-hover">
+          <div class="text-gold mb-4"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9 17v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3zm12 0v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3z" transform="translate(-3 0)"/></svg></div>
+          <blockquote class="font-display text-[19px] text-navy leading-snug">The ATS-friendly resume format helped me present my experience more clearly.</blockquote>
+          <figcaption class="mt-5 pt-5 border-t border-navy/8">
+            <div class="text-[13px] font-semibold text-navy">HR Professional</div>
+            <div class="text-[12px] text-charcoal/55">Career transition</div>
+            <span class="chip chip-gold mt-2 inline-block">Resume Service</span>
+          </figcaption>
+        </figure>
+        <figure class="testimonial-card rounded-2xl bg-ivory border border-navy/8 p-7 card-hover">
+          <div class="text-gold mb-4"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9 17v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3zm12 0v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3z" transform="translate(-3 0)"/></svg></div>
+          <blockquote class="font-display text-[19px] text-navy leading-snug">Communication was clear from day one. We got a curated shortlist within the agreed window — no noise.</blockquote>
+          <figcaption class="mt-5 pt-5 border-t border-navy/8">
+            <div class="text-[13px] font-semibold text-navy">Talent Lead</div>
+            <div class="text-[12px] text-charcoal/55">Mid-size SaaS firm</div>
+            <span class="chip chip-gold mt-2 inline-block">Employer</span>
+          </figcaption>
+        </figure>
+        <figure class="testimonial-card rounded-2xl bg-ivory border border-navy/8 p-7 card-hover">
+          <div class="text-gold mb-4"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9 17v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3zm12 0v-3a4 4 0 014-4V7a7 7 0 00-7 7v3a3 3 0 003 3 3 3 0 003-3z" transform="translate(-3 0)"/></svg></div>
+          <blockquote class="font-display text-[19px] text-navy leading-snug">Mock interviews built my confidence in a week. I went into the real round prepared, not nervous.</blockquote>
+          <figcaption class="mt-5 pt-5 border-t border-navy/8">
+            <div class="text-[13px] font-semibold text-navy">Recent Graduate</div>
+            <div class="text-[12px] text-charcoal/55">First job search</div>
+            <span class="chip chip-gold mt-2 inline-block">Candidate</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Dots -->
+    <div class="mt-8 flex justify-center gap-2" id="testi-dots"></div>
+  </div>
+</section>
+
+<!-- ============ WHAT HAPPENS AFTER SUBMIT ============ -->
+<section class="py-14 md:py-18 bg-ivory">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="gold-line-c block mx-auto mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">What Happens After You <span class="italic text-gold">Submit?</span></h2>
+      <p class="mt-4 text-charcoal/70 text-[15.5px]">No black box, no waiting in silence. Here's exactly what happens next.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-4 gap-5">
+      <div class="reveal rounded-2xl bg-white border border-navy/8 p-6 relative">
+        <div class="step-num">01</div>
+        <div class="font-display text-lg text-navy">We review your submission</div>
+        <p class="mt-2 text-[13px] text-charcoal/65 leading-relaxed">A human reads your JD or resume — not a parser. We flag anything ambiguous before reaching out.</p>
+      </div>
+      <div class="reveal rounded-2xl bg-white border border-navy/8 p-6 relative">
+        <div class="step-num">02</div>
+        <div class="font-display text-lg text-navy">Quick clarification call</div>
+        <p class="mt-2 text-[13px] text-charcoal/65 leading-relaxed">Within 24 hours, we confirm priorities, timelines, and any nuances over a 15-minute call or WhatsApp.</p>
+      </div>
+      <div class="reveal rounded-2xl bg-white border border-navy/8 p-6 relative">
+        <div class="step-num">03</div>
+        <div class="font-display text-lg text-navy">Work begins</div>
+        <p class="mt-2 text-[13px] text-charcoal/65 leading-relaxed">Employers: shortlist sourcing kicks off. Candidates: resume/LinkedIn drafts begin within agreed turnaround.</p>
+      </div>
+      <div class="reveal rounded-2xl bg-white border border-navy/8 p-6 relative">
+        <div class="step-num">04</div>
+        <div class="font-display text-lg text-navy">First deliverable</div>
+        <p class="mt-2 text-[13px] text-charcoal/65 leading-relaxed">You receive a curated shortlist or upgraded profile. We iterate until it's right — no extra fees for revisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14. ABOUT ============ -->
+
+
+<!-- ============ FINAL CTA ============ -->
+<section class="py-20 md:py-28 gradient-cta text-ivory relative overflow-hidden">
+  <div class="absolute inset-0 dot-grid opacity-30"></div>
+
+  <!-- Floating mini cards -->
+  <div class="hidden md:block absolute top-10 left-8 glass-dark rounded-xl px-3.5 py-2 text-[12px] text-ivory/85 floaty">Resume Review</div>
+  <div class="hidden md:block absolute top-24 right-12 glass-dark rounded-xl px-3.5 py-2 text-[12px] text-ivory/85 floaty-2">JD Matching</div>
+  <div class="hidden md:block absolute bottom-16 left-20 glass-dark rounded-xl px-3.5 py-2 text-[12px] text-ivory/85 floaty-3">Shortlist Ready</div>
+  <div class="hidden md:block absolute bottom-10 right-24 glass-dark rounded-xl px-3.5 py-2 text-[12px] text-ivory/85 floaty">Interview Prep</div>
+  <div class="hidden md:block absolute top-1/2 left-1/4 glass-dark rounded-xl px-3.5 py-2 text-[12px] text-ivory/85 floaty-2">Career Growth</div>
+
+  <div class="relative max-w-4xl mx-auto px-5 md:px-8 text-center">
+    <span class="gold-line-c block mx-auto mb-5"></span>
+    <h2 class="font-display text-4xl md:text-6xl text-ivory leading-[1.05] reveal">Ready for the <span class="italic text-gold">Next Step?</span></h2>
+    <p class="mt-5 text-ivory/70 text-[15.5px] md:text-[16.5px] max-w-2xl mx-auto reveal">Whether you are hiring for your company or preparing for your next career opportunity, Sage & Crew Next is here to guide you with practical, human-first support.</p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3 reveal">
+      <a href="contact.html" data-tab="employer" class="px-6 py-3.5 rounded-full btn-gold text-[14.5px] inline-flex items-center gap-2">Hire Talent
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="contact.html" data-tab="candidate" class="px-6 py-3.5 rounded-full btn-ghost-light text-[14.5px]">Upload Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+
+<footer class="bg-navy-deep text-ivory/75 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <span class="relative inline-flex items-center justify-center w-9 h-9 rounded-xl bg-white/5 text-gold border border-white/10">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z"/>
+              <path d="M12 8 C10.5 9.5 10.5 12 12 14 C13.5 12 13.5 9.5 12 8 Z" fill="#7A9E7E" stroke="#7A9E7E"/>
+            </svg>
+          </span>
+          <span class="flex items-baseline gap-1 text-[17px] text-ivory">
+            <span class="font-display italic">Sage</span><span class="font-semibold">& Crew</span><span class="text-gold font-semibold">Next</span>
+          </span>
+        </a>
+        <p class="mt-4 text-[13.5px] leading-relaxed max-w-md">Sage & Crew Next helps companies hire smarter and helps professionals become opportunity-ready through recruitment, staffing, resume, LinkedIn, and career branding services.</p>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="text-[12px] uppercase tracking-wider text-gold mb-4">Company</div>
+        <ul class="space-y-2 text-[13.5px]">
+          <li><a class="hover:text-ivory" href="index.html">Home</a></li>
+          <li><a class="hover:text-ivory" href="index.html#employers">For Employers</a></li>
+          <li><a class="hover:text-ivory" href="index.html#candidates">For Candidates</a></li>
+          <li><a class="hover:text-ivory" href="about.html">About</a></li>
+          <li><a class="hover:text-ivory" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="text-[12px] uppercase tracking-wider text-gold mb-4">Services</div>
+        <ul class="space-y-2 text-[13.5px]">
+          <li><a class="hover:text-ivory" href="index.html#services">Contract Staffing</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">Permanent Hiring</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">Resume Writing</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">LinkedIn Optimization</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">Interview Preparation</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="text-[12px] uppercase tracking-wider text-gold mb-4">Connect</div>
+        <ul class="space-y-2 text-[13.5px]">
+          <li><a class="hover:text-ivory" href="#">LinkedIn</a></li>
+          <li><a class="hover:text-ivory" href="#">Instagram</a></li>
+          <li><a class="hover:text-ivory" href="#">WhatsApp</a></li>
+          <li><a class="hover:text-ivory" href="mailto:sagencrew@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between text-[12.5px] text-ivory/55">
+      <div>© 2026 Sage & Crew Next. All rights reserved.</div>
+      <div class="flex items-center gap-5">
+        <a href="#" class="hover:text-ivory">Privacy Policy</a>
+        <a href="#" class="hover:text-ivory">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/910000000000?text=Hi%20Sage%20%26%20Crew%20Next%2C%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="wa-fab fixed bottom-5 right-5 z-50 group" id="wa-fab">
+  <span class="wa-tooltip">Chat with us</span>
+  <span class="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lift pulse-ring">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.81 11.81 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.595 5.39l-.999 3.648 3.893-1.737zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </span>
+</a>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

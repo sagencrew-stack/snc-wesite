@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About | Sage & Crew Next</title>
+<meta name="description" content="About Sage & Crew Next — our mission, approach, and the team helping companies hire smarter and professionals build stronger careers." />
+<meta name="theme-color" content="#0B1F3A" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tailwind-config.js"></script>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="text-charcoal">
+<!-- ============ PREMIUM PAGE LOADER ============ -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-mark loader-shine">
+    <span class="relative inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10">
+      <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z" stroke="#D4AF37"/>
+        <path d="M12 8 C10.5 9.5 10.5 12 12 14 C13.5 12 13.5 9.5 12 8 Z" fill="#7A9E7E" stroke="#7A9E7E"/>
+      </svg>
+    </span>
+    <span class="flex items-baseline gap-1.5 text-[20px] text-ivory">
+      <span class="font-display italic">Sage</span>
+      <span class="font-semibold">& Crew</span>
+      <span class="text-gold font-semibold">Next</span>
+    </span>
+  </div>
+  <div class="loader-bar"><i></i></div>
+  <div class="loader-tag">Wise Hiring · Stronger Careers</div>
+</div>
+
+<!-- Cursor glow (desktop only) -->
+<div id="cursor-glow"></div>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <nav class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <span class="relative inline-flex items-center justify-center w-9 h-9 rounded-xl bg-navy text-ivory">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z" stroke="#D4AF37"/>
+            <path d="M12 8 C10.5 9.5 10.5 12 12 14 C13.5 12 13.5 9.5 12 8 Z" fill="#7A9E7E" stroke="#7A9E7E"/>
+          </svg>
+        </span>
+        <span class="flex items-baseline gap-1 text-[17px]">
+          <span class="font-display italic text-navy">Sage</span>
+          <span class="font-semibold tracking-tight text-charcoal">& Crew</span>
+          <span class="text-gold font-semibold">Next</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden lg:flex items-center gap-5 xl:gap-6 text-[13.5px] text-charcoal/80">
+        <li><a class="nav-link hover:text-navy transition" href="index.html">Home</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#employers">For Employers</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#services">Services</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="tools.html">Free Tools</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="pricing.html">Pricing</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="faq.html">FAQ</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- CTAs -->
+      <div class="hidden lg:flex items-center gap-2.5">
+        <a href="contact.html?intent=employer" data-tab="employer" class="magnetic px-4 py-2 rounded-full text-[13.5px] font-semibold border border-navy/15 text-navy hover:bg-navy hover:text-ivory transition">Hire Talent</a>
+        <a href="contact.html?intent=candidate" data-tab="candidate" class="magnetic btn-arrow px-4 py-2 rounded-full text-[13.5px] btn-gold inline-flex items-center gap-1.5">Upload Resume
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="menu-btn" aria-label="Open menu" class="lg:hidden p-2 rounded-lg hover:bg-navy/5">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu lg:hidden mt-2 mb-4 rounded-2xl bg-white shadow-lift border border-navy/5 p-4">
+      <ul class="flex flex-col text-[15px] text-charcoal divide-y divide-navy/5">
+        <li><a class="block py-3" href="index.html">Home</a></li>
+        <li><a class="block py-3" href="index.html#employers">For Employers</a></li>
+        <li><a class="block py-3" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="block py-3" href="index.html#services">Services</a></li>
+        <li><a class="block py-3" href="tools.html">Free Tools</a></li>
+        <li><a class="block py-3" href="pricing.html">Pricing</a></li>
+        <li><a class="block py-3" href="faq.html">FAQ</a></li>
+        <li><a class="block py-3" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section class="pt-32 pb-8 bg-ivory">
+  <div class="max-w-5xl mx-auto px-5 md:px-8">
+    <a href="index.html" class="text-[12.5px] text-charcoal/60 hover:text-navy inline-flex items-center gap-1.5 mb-4">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Back to home
+    </a>
+  </div>
+</section>
+<section id="about" class="py-20 md:py-28 bg-ivory">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <span class="gold-line block mb-5"></span>
+      <h2 class="font-display text-3xl md:text-5xl text-navy">A Wise Guide for <span class="italic text-gold">Hiring and Career Growth</span></h2>
+      <p class="mt-5 text-charcoal/70 text-[15.5px] leading-relaxed">Sage & Crew Next was created with a simple belief: the right guidance can transform hiring decisions and career journeys. We combine human understanding, recruitment experience, and modern career branding support to help companies build better teams and help professionals become opportunity-ready.</p>
+
+      <div class="mt-7 grid sm:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl bg-white border border-navy/6"><div class="font-display text-xl text-navy">Sage</div><p class="text-[12.5px] text-charcoal/65 mt-1">Wisdom, guidance, trust.</p></div>
+        <div class="p-4 rounded-xl bg-white border border-navy/6"><div class="font-display text-xl text-navy">Crew</div><p class="text-[12.5px] text-charcoal/65 mt-1">People, teams, collaboration.</p></div>
+        <div class="p-4 rounded-xl bg-white border border-navy/6"><div class="font-display text-xl text-navy">Next</div><p class="text-[12.5px] text-charcoal/65 mt-1">Next step, next career, next-gen hiring.</p></div>
+      </div>
+
+      <div class="mt-7">
+        <a href="contact.html" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-navy/15 text-navy hover:bg-navy hover:text-ivory transition text-[14.5px]">Know More About Us
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Abstract dashboard visual -->
+    <div class="reveal">
+      <div class="relative h-[420px]">
+        <div class="absolute top-0 right-0 w-[260px] glass-dark rounded-2xl p-5 floaty bg-navy/90 text-ivory">
+          <div class="text-[11px] uppercase tracking-wider text-ivory/55">Talent Network</div>
+          <div class="font-display text-2xl mt-1">Connected</div>
+          <div class="mt-4 grid grid-cols-4 gap-2">
+            <div class="aspect-square rounded-lg bg-sage/30"></div>
+            <div class="aspect-square rounded-lg bg-gold/40"></div>
+            <div class="aspect-square rounded-lg bg-sage/15"></div>
+            <div class="aspect-square rounded-lg bg-sage/40"></div>
+            <div class="aspect-square rounded-lg bg-gold/20"></div>
+            <div class="aspect-square rounded-lg bg-sage/25"></div>
+            <div class="aspect-square rounded-lg bg-gold/30"></div>
+            <div class="aspect-square rounded-lg bg-sage/35"></div>
+          </div>
+        </div>
+        <div class="absolute bottom-4 left-0 w-[280px] bg-white rounded-2xl p-5 shadow-lift floaty-2 border border-navy/6">
+          <div class="text-[11px] uppercase tracking-wider text-charcoal/55">This Week</div>
+          <div class="font-display text-xl text-navy mt-1">Active Pipelines</div>
+          <div class="mt-4 space-y-2.5">
+            <div class="flex items-center justify-between"><span class="text-[12.5px]">DevOps Engineer</span><span class="chip">3 shortlisted</span></div>
+            <div class="flex items-center justify-between"><span class="text-[12.5px]">HR Recruiter</span><span class="chip">5 shortlisted</span></div>
+            <div class="flex items-center justify-between"><span class="text-[12.5px]">Cloud Architect</span><span class="chip">2 shortlisted</span></div>
+          </div>
+        </div>
+        <div class="absolute top-1/2 left-1/3 -translate-y-1/2 w-32 h-32 rounded-full bg-gold/15 blur-2xl"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="bg-navy-deep text-ivory/75 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <span class="relative inline-flex items-center justify-center w-9 h-9 rounded-xl bg-white/5 text-gold border border-white/10">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z"/>
+              <path d="M12 8 C10.5 9.5 10.5 12 12 14 C13.5 12 13.5 9.5 12 8 Z" fill="#7A9E7E" stroke="#7A9E7E"/>
+            </svg>
+          </span>
+          <span class="flex items-baseline gap-1 text-[17px] text-ivory">
+            <span class="font-display italic">Sage</span><span class="font-semibold">& Crew</span><span class="text-gold font-semibold">Next</span>
+          </span>
+        </a>
+        <p class="mt-4 text-[13.5px] leading-relaxed max-w-md">Sage & Crew Next helps companies hire smarter and helps professionals become opportunity-ready through recruitment, staffing, resume, LinkedIn, and career branding services.</p>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="text-[12px] uppercase tracking-wider text-gold mb-4">Company</div>
+        <ul class="space-y-2 text-[13.5px]">
+          <li><a class="hover:text-ivory" href="index.html">Home</a></li>
+          <li><a class="hover:text-ivory" href="index.html#employers">For Employers</a></li>
+          <li><a class="hover:text-ivory" href="index.html#candidates">For Candidates</a></li>
+          <li><a class="hover:text-ivory" href="about.html">About</a></li>
+          <li><a class="hover:text-ivory" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="text-[12px] uppercase tracking-wider text-gold mb-4">Services</div>
+        <ul class="space-y-2 text-[13.5px]">
+          <li><a class="hover:text-ivory" href="index.html#services">Contract Staffing</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">Permanent Hiring</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">Resume Writing</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">LinkedIn Optimization</a></li>
+          <li><a class="hover:text-ivory" href="index.html#services">Interview Preparation</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="text-[12px] uppercase tracking-wider text-gold mb-4">Connect</div>
+        <ul class="space-y-2 text-[13.5px]">
+          <li><a class="hover:text-ivory" href="#">LinkedIn</a></li>
+          <li><a class="hover:text-ivory" href="#">Instagram</a></li>
+          <li><a class="hover:text-ivory" href="#">WhatsApp</a></li>
+          <li><a class="hover:text-ivory" href="mailto:sagencrew@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between text-[12.5px] text-ivory/55">
+      <div>© 2026 Sage & Crew Next. All rights reserved.</div>
+      <div class="flex items-center gap-5">
+        <a href="#" class="hover:text-ivory">Privacy Policy</a>
+        <a href="#" class="hover:text-ivory">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/910000000000?text=Hi%20Sage%20%26%20Crew%20Next%2C%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="wa-fab fixed bottom-5 right-5 z-50 group" id="wa-fab">
+  <span class="wa-tooltip">Chat with us</span>
+  <span class="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lift pulse-ring">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.81 11.81 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.595 5.39l-.999 3.648 3.893-1.737zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </span>
+</a>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

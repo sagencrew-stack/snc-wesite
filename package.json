@@ -1,0 +1,10 @@
+{
+  "name": "sage-and-crew-next",
+  "version": "1.0.0",
+  "description": "Sage & Crew Next — Hiring, Recruitment, Resume & Career Branding website",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  }
+}
