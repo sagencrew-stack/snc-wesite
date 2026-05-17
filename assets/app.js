@@ -2028,4 +2028,61 @@ Location: Hyderabad / Remote.`;
       URL.revokeObjectURL(url);
     });
   })();
+
+  /* ---------------- 26. LIVE MATCH ENGINE — counter animation + text swap ---------------- */
+  (function () {
+    const engine = document.querySelector('.match-engine');
+    if (!engine) return;
+    const barVal = engine.querySelector('.me-bar-val');
+    const finalText = engine.querySelector('.me-final-text');
+    if (!barVal || !finalText) return;
+
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+
+      // Animate the percentage from 0 to 92 over ~2.4s, starting after 1.4s
+      setTimeout(() => {
+        const startTime = performance.now();
+        const duration = 2400;
+        const tick = (now) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease-out
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const val = Math.round(eased * 92);
+          barVal.textContent = val + '%';
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, 1400);
+
+      // Swap the final text after profiles appear
+      setTimeout(() => {
+        finalText.style.transition = 'opacity 0.3s ease';
+        finalText.style.opacity = '0';
+        setTimeout(() => {
+          finalText.textContent = '3 qualified profiles ready · in hours, not weeks';
+          finalText.style.opacity = '1';
+        }, 300);
+      }, 4000);
+    };
+
+    // Trigger only when scrolled into view
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            start();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(engine);
+    } else {
+      // Fallback: just start
+      start();
+    }
+  })();
 })();

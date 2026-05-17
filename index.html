@@ -133,7 +133,9 @@
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <nav class="flex items-center justify-between h-16 md:h-20">
       <a href="index.html" class="flex items-center gap-3 group" aria-label="Sage & Crew Next — Home">
-        <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark w-11 h-11 md:w-14 md:h-14 object-contain transition-transform duration-300 group-hover:scale-105" />
+        <span class="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-navy shadow-soft overflow-hidden">
+          <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+        </span>
         <span class="flex items-baseline gap-1 text-[18px] md:text-[19px]">
           <span class="font-display italic text-navy">Sage</span>
           <span class="font-semibold tracking-tight text-charcoal">& Crew</span>
@@ -236,6 +238,134 @@
         <div class="text-[11px] uppercase tracking-[0.18em] text-gold/85 mb-2">Pillar 03</div>
         <div class="font-display text-2xl text-ivory mb-2">AI &amp; Automation</div>
         <p class="text-[13.5px] text-ivory/65 leading-relaxed">AI-enabled workflows, automation, smart dashboards, and digital branding that move your business faster.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE MATCH ENGINE — animated visual showing requisition → matched profiles -->
+<section id="live-engine" class="py-16 md:py-24 bg-navy text-ivory relative overflow-hidden border-t border-white/5">
+  <div class="absolute inset-0 dot-grid opacity-25"></div>
+  <div class="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gold/10 blur-3xl"></div>
+  <div class="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-sage/12 blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-5 reveal">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-gold/25 text-[11.5px] uppercase tracking-[0.18em] text-gold/90 mb-5">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
+          Live Match Engine
+        </div>
+        <h2 class="font-display text-3xl md:text-5xl text-ivory leading-tight">
+          From requisition to <span class="italic text-gold">qualified profiles.</span>
+        </h2>
+        <p class="mt-5 text-ivory/70 text-[15.5px] leading-relaxed">
+          Watch how our process moves from a fresh hiring requirement to a curated, role-matched shortlist — typically within agreed turnaround, not weeks. Human-screened, AI-assisted.
+        </p>
+        <ul class="mt-7 space-y-2.5 text-[14px] text-ivory/80">
+          <li class="flex items-start gap-2.5"><svg class="mt-1 shrink-0 text-gold" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg>AI-assisted skill extraction from JD</li>
+          <li class="flex items-start gap-2.5"><svg class="mt-1 shrink-0 text-gold" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg>Talent pool match with role-fit scoring</li>
+          <li class="flex items-start gap-2.5"><svg class="mt-1 shrink-0 text-gold" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg>Human-screened profiles, never auto-forwarded</li>
+        </ul>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="contact.html?intent=employer" class="px-5 py-3 rounded-full btn-gold text-[13.5px] inline-flex items-center gap-2">
+            Submit Hiring Requirement
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- The animated match engine -->
+      <div class="lg:col-span-7 reveal">
+        <div class="match-engine glass-dark rounded-3xl border border-gold/20 p-6 md:p-7 shadow-lift">
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-5 pb-4 border-b border-white/8">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 pillar-pulse"></span>
+              <span class="text-[12.5px] font-semibold text-ivory">Live Match Engine</span>
+            </div>
+            <span class="text-[10.5px] uppercase tracking-wider text-ivory/40">Illustrative</span>
+          </div>
+
+          <!-- Step 1: Requisition -->
+          <div class="mb-4">
+            <div class="text-[10.5px] uppercase tracking-wider text-gold/80 mb-2">Step 1 · Requisition Received</div>
+            <div class="rounded-xl bg-white/5 border border-white/8 p-4">
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <div>
+                  <div class="font-display text-[15px] text-ivory">Senior DevOps Engineer</div>
+                  <div class="text-[11.5px] text-ivory/55">Hyderabad / Remote · 6+ yrs</div>
+                </div>
+                <span class="text-[10.5px] px-2 py-1 rounded-md bg-gold/15 text-gold/90 whitespace-nowrap me-typing">Receiving…</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Skill extraction animation -->
+          <div class="mb-4">
+            <div class="text-[10.5px] uppercase tracking-wider text-gold/80 mb-2">Step 2 · AI-Assisted Skill Extraction</div>
+            <div class="rounded-xl bg-white/5 border border-white/8 p-4">
+              <div class="flex flex-wrap gap-1.5" id="me-skills">
+                <span class="me-skill chip-gold-dark" style="--d:0">AWS</span>
+                <span class="me-skill chip-gold-dark" style="--d:1">Kubernetes</span>
+                <span class="me-skill chip-gold-dark" style="--d:2">Terraform</span>
+                <span class="me-skill chip-gold-dark" style="--d:3">Jenkins</span>
+                <span class="me-skill chip-gold-dark" style="--d:4">Docker</span>
+                <span class="me-skill chip-gold-dark" style="--d:5">Linux</span>
+              </div>
+              <div class="mt-3 flex items-center gap-2 text-[11px] text-ivory/55">
+                <span>Pool match strength</span>
+                <div class="flex-1 h-1.5 rounded-full bg-white/10 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-gold via-gold-deep to-gold me-bar"></div>
+                </div>
+                <span class="me-bar-val font-semibold text-gold">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Profiles -->
+          <div>
+            <div class="text-[10.5px] uppercase tracking-wider text-gold/80 mb-2">Step 3 · Curated Shortlist</div>
+            <div class="space-y-2">
+              <div class="me-profile rounded-xl bg-white/5 border border-white/8 p-3 flex items-center justify-between" style="--d:0">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-sage/25 text-ivory flex items-center justify-center text-[12px] font-semibold">AS</div>
+                  <div>
+                    <div class="text-[13px] font-medium text-ivory">Aarav S.</div>
+                    <div class="text-[11px] text-ivory/55">7 yrs · Hyderabad</div>
+                  </div>
+                </div>
+                <span class="text-gold font-display text-lg">94%</span>
+              </div>
+              <div class="me-profile rounded-xl bg-white/5 border border-white/8 p-3 flex items-center justify-between" style="--d:1">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-sage/25 text-ivory flex items-center justify-center text-[12px] font-semibold">PR</div>
+                  <div>
+                    <div class="text-[13px] font-medium text-ivory">Priya R.</div>
+                    <div class="text-[11px] text-ivory/55">6 yrs · Remote</div>
+                  </div>
+                </div>
+                <span class="text-gold font-display text-lg">91%</span>
+              </div>
+              <div class="me-profile rounded-xl bg-white/5 border border-white/8 p-3 flex items-center justify-between" style="--d:2">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-sage/25 text-ivory flex items-center justify-center text-[12px] font-semibold">VK</div>
+                  <div>
+                    <div class="text-[13px] font-medium text-ivory">Vikram K.</div>
+                    <div class="text-[11px] text-ivory/55">8 yrs · Hybrid</div>
+                  </div>
+                </div>
+                <span class="text-gold font-display text-lg">88%</span>
+              </div>
+            </div>
+            <div class="mt-4 text-center">
+              <span class="inline-flex items-center gap-2 text-[12px] text-ivory/65">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="text-emerald-400"><path d="M5 12l5 5 9-11"/></svg>
+                <span class="me-final-text">Processing requirements…</span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -754,7 +884,7 @@
     <div class="grid md:grid-cols-12 gap-10">
       <div class="md:col-span-5">
         <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Sage & Crew Next — Home">
-          <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark-dark w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-105" />
+          <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark-dark w-11 h-11 object-contain transition-transform duration-300 group-hover:scale-105 rounded-full" />
           <span class="flex items-baseline gap-1 text-[17px] text-ivory">
             <span class="font-display italic">Sage</span><span class="font-semibold">& Crew</span><span class="text-gold font-semibold">Next</span>
           </span>
