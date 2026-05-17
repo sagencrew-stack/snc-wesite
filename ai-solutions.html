@@ -106,10 +106,10 @@
 <body class="text-charcoal">
 
 <div id="page-loader" class="fixed inset-0 z-[100] bg-navy flex items-center justify-center">
-  <div class="text-center">
-    <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark-dark w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 animate-pulse-soft" />
-    <div class="text-ivory/55 text-[11px] tracking-[0.3em] uppercase">Build · Systems · AI Growth</div>
-    <div class="mt-5 w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto loader-shine"></div>
+  <div class="text-center px-6 max-w-md">
+    <img src="assets/logo-full.png" alt="Sage & Crew Next" class="brand-mark-dark w-[260px] md:w-[340px] mx-auto mb-5 animate-pulse-soft" />
+    <div class="text-ivory/60 text-[11px] tracking-[0.32em] uppercase">Build · Systems · AI Growth</div>
+    <div class="mt-5 w-28 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto loader-shine"></div>
   </div>
 </div>
 
@@ -119,9 +119,9 @@
 <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <nav class="flex items-center justify-between h-16 md:h-20">
-      <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Sage & Crew Next — Home">
-        <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark w-10 h-10 md:w-11 md:h-11 object-contain transition-transform duration-300 group-hover:scale-105" />
-        <span class="flex items-baseline gap-1 text-[17px]">
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Sage & Crew Next — Home">
+        <img src="assets/logo-mark.png" alt="Sage & Crew Next" class="brand-mark w-11 h-11 md:w-14 md:h-14 object-contain transition-transform duration-300 group-hover:scale-105" />
+        <span class="flex items-baseline gap-1 text-[18px] md:text-[19px]">
           <span class="font-display italic text-navy">Sage</span>
           <span class="font-semibold tracking-tight text-charcoal">&amp; Crew</span>
           <span class="text-gold font-semibold">Next</span>
@@ -129,14 +129,12 @@
       </a>
 
       <ul class="hidden lg:flex items-center gap-5 xl:gap-6 text-[13.5px] text-charcoal/80">
-        <li><a class="nav-link hover:text-navy transition" href="index.html">Home</a></li>
         <li><a class="nav-link hover:text-navy transition" href="index.html#services">Services</a></li>
-        <li><a class="nav-link hover:text-navy transition active" href="ai-solutions.html">AI &amp; Automation</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="ai-solutions.html">AI &amp; Automation</a></li>
         <li><a class="nav-link hover:text-navy transition" href="projects.html">Projects</a></li>
-        <li><a class="nav-link hover:text-navy transition" href="index.html#employers">For Employers</a></li>
-        <li><a class="nav-link hover:text-navy transition" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#employers">Hire</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#candidates">Apply</a></li>
         <li><a class="nav-link hover:text-navy transition" href="tools.html">Free Tools</a></li>
-        <li><a class="nav-link hover:text-navy transition" href="about.html">About</a></li>
         <li><a class="nav-link hover:text-navy transition" href="contact.html">Contact</a></li>
       </ul>
 
@@ -158,8 +156,8 @@
         <li><a class="block py-3" href="index.html#services">Services</a></li>
         <li><a class="block py-3" href="ai-solutions.html">AI &amp; Automation</a></li>
         <li><a class="block py-3" href="projects.html">Projects</a></li>
-        <li><a class="block py-3" href="index.html#employers">For Employers</a></li>
-        <li><a class="block py-3" href="index.html#candidates">For Candidates</a></li>
+        <li><a class="block py-3" href="index.html#employers">Hire</a></li>
+        <li><a class="block py-3" href="index.html#candidates">Apply</a></li>
         <li><a class="block py-3" href="tools.html">Free Tools</a></li>
         <li><a class="block py-3" href="about.html">About</a></li>
         <li><a class="block py-3" href="contact.html">Contact</a></li>
@@ -230,7 +228,7 @@
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       <!-- 1. AI Workflow Automation -->
-      <div class="ai-card reveal">
+      <div id="ai-workflow" class="ai-card reveal scroll-mt-28">
         <span class="ai-num">01</span>
         <div class="ai-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
@@ -241,7 +239,7 @@
       </div>
 
       <!-- 2. AI Screening Support -->
-      <div class="ai-card reveal">
+      <div id="ai-screening" class="ai-card reveal scroll-mt-28">
         <span class="ai-num">02</span>
         <div class="ai-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 11l2 2 4-4"/></svg>
@@ -274,7 +272,7 @@
       </div>
 
       <!-- 5. AI Dashboards & Insights -->
-      <div class="ai-card reveal">
+      <div id="smart-dashboards" class="ai-card reveal scroll-mt-28">
         <span class="ai-num">05</span>
         <div class="ai-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l3-4 4 3 5-7"/></svg>
