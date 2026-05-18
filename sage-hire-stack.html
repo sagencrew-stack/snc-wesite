@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sage Hire Stack | The complete recruitment pipeline, automated. | Sage & Crew Next</title>
+<meta name="description" content="Sage Hire Stack — the end-to-end recruitment pipeline. Define roles, source candidates, screen, interview, offer, and onboard — all in one automated workflow. Join the early access waitlist." />
+<meta name="description" content="Coming soon: Sage Hire Stack — the complete recruitment platform from Sage & Crew Next. JD generation, AI sourcing, screening, interviews, offers, and onboarding in one pipeline." />
+<meta name="theme-color" content="#0B1F3A" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tailwind-config.js"></script>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="text-charcoal">
+<!-- PREMIUM ANIMATED LOADER -->
+<div id="page-loader" class="snc-loader" aria-hidden="true">
+  <div class="snc-loader-glow"></div>
+  <div class="snc-loader-stage">
+    <!-- Inner gold orbit ring (rotates clockwise, perpetual) -->
+    <svg class="snc-loader-orbit snc-loader-orbit--inner" viewBox="0 0 280 280" aria-hidden="true">
+      <g class="snc-loader-orbit-spin">
+        <circle cx="140" cy="140" r="130" fill="none" stroke="rgba(212,175,55,0.18)" stroke-width="0.8" stroke-dasharray="2 8"/>
+        <circle cx="140" cy="140" r="130" fill="none" stroke="rgba(212,175,55,0.7)" stroke-width="1.2" stroke-dasharray="60 360" stroke-linecap="round"/>
+        <circle cx="270" cy="140" r="3" fill="#F5E6B8"/>
+        <circle cx="10" cy="140" r="2" fill="#D4AF37" opacity="0.6"/>
+      </g>
+    </svg>
+    <!-- Outer sage orbit ring (rotates counter-clockwise, very slow) -->
+    <svg class="snc-loader-orbit snc-loader-orbit--outer" viewBox="0 0 320 320" aria-hidden="true">
+      <g class="snc-loader-orbit-spin snc-loader-orbit-spin--reverse">
+        <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(122,158,126,0.25)" stroke-width="0.6" stroke-dasharray="1 14"/>
+        <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(245,230,184,0.5)" stroke-width="0.8" stroke-dasharray="20 580" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <!-- The actual logo -->
+    <img class="snc-loader-logo" src="assets/logo-mark.png" alt="Sage and Crew Next" />
+    <!-- Diagonal champagne shimmer sweep -->
+    <div class="snc-loader-shimmer">
+      <div class="snc-loader-shimmer-stripe"></div>
+    </div>
+    <!-- One-shot gold pulse glow -->
+    <div class="snc-loader-pulse"></div>
+  </div>
+  <!-- Wordmark below the mark -->
+  <div class="snc-loader-wordmark">
+    <div class="snc-loader-brand">
+      <span class="snc-loader-brand--italic">Sage</span> <span class="snc-loader-brand--mid">&amp; Crew</span> <span class="snc-loader-brand--accent">Next</span>
+    </div>
+    <div class="snc-loader-tagline">Build · Systems · AI Growth</div>
+  </div>
+</div>
+<!-- END LOADER -->
+
+<!-- Cursor glow (desktop only) -->
+<div id="cursor-glow"></div>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <nav class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Sage & Crew Next — Home">
+        <img src="assets/logo-mark.svg" alt="Sage & Crew Next" class="brand-mark w-12 h-12 md:w-14 md:h-14 object-contain transition-transform duration-300 group-hover:scale-105" />
+        <span class="flex items-baseline gap-1 text-[18px] md:text-[19px]">
+          <span class="font-display italic text-navy">Sage</span>
+          <span class="font-semibold tracking-tight text-charcoal">& Crew</span>
+          <span class="text-gold font-semibold">Next</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden lg:flex items-center gap-5 xl:gap-6 text-[13.5px] text-charcoal/80">
+        <li><a class="nav-link hover:text-navy transition" href="index.html#services">Services</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="ai-solutions.html">AI &amp; Automation</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="projects.html">Projects</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#employers">Hire</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="index.html#candidates">Apply</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="tools.html">Free Tools</a></li>
+        <li><a class="nav-link hover:text-navy transition" href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- CTAs -->
+      <div class="hidden lg:flex items-center gap-2.5">
+        <a href="contact.html?intent=employer" data-tab="employer" class="magnetic px-4 py-2 rounded-full text-[13.5px] font-semibold border border-navy/15 text-navy hover:bg-navy hover:text-ivory transition">Hire Talent</a>
+        <a href="contact.html?intent=candidate" data-tab="candidate" class="magnetic btn-arrow px-4 py-2 rounded-full text-[13.5px] btn-gold inline-flex items-center gap-1.5">Upload Resume
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="menu-btn" aria-label="Open menu" class="lg:hidden p-2 rounded-lg hover:bg-navy/5">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu lg:hidden mt-2 mb-4 rounded-2xl bg-white shadow-lift border border-navy/5 p-4">
+      <ul class="flex flex-col text-[15px] text-charcoal divide-y divide-navy/5">
+        <li><a class="block py-3" href="index.html">Home</a></li>
+        <li><a class="block py-3" href="index.html#services">Services</a></li>
+        <li><a class="block py-3" href="ai-solutions.html">AI &amp; Automation</a></li>
+        <li><a class="block py-3" href="projects.html">Projects</a></li>
+        <li><a class="block py-3" href="index.html#employers">Hire</a></li>
+        <li><a class="block py-3" href="index.html#candidates">Apply</a></li>
+        <li><a class="block py-3" href="tools.html">Free Tools</a></li>
+        <li><a class="block py-3" href="about.html">About</a></li>
+        <li><a class="block py-3" href="contact.html">Contact</a></li>
+        <li class="pt-3 flex gap-2">
+          <a href="contact.html?intent=project" class="flex-1 text-center py-2.5 rounded-full border border-navy/15 text-navy text-[14px] font-semibold">Start a Project</a>
+          <a href="contact.html?intent=employer" class="flex-1 text-center py-2.5 rounded-full btn-gold text-[14px]">Hire Talent</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="pt-28">
+
+<!-- ============ HERO ============ -->
+<section class="hero-bg dot-grid pt-12 md:pt-16 pb-16 md:pb-24 text-ivory relative overflow-hidden">
+  <div class="relative max-w-6xl mx-auto px-5 md:px-8 text-center">
+
+    <!-- Early access badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-gold/30 text-[11.5px] uppercase tracking-[0.2em] text-gold mb-6 reveal">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold pillar-pulse"></span>
+      Early Access · Launching 2026
+    </div>
+
+    <!-- Headline -->
+    <h1 class="font-display text-4xl md:text-6xl lg:text-[68px] xl:text-[76px] text-ivory leading-[1.05] reveal">
+      The complete <span class="italic text-gold">recruitment pipeline</span>,<br class="hidden md:block"/>
+      automated end to end.
+    </h1>
+
+    <!-- Subhead -->
+    <p class="mt-6 text-ivory/75 text-[16px] md:text-[18px] leading-relaxed max-w-3xl mx-auto reveal">
+      Sage Hire Stack turns the seven manual stages of hiring — defining roles, sourcing,
+      screening, interviewing, shortlisting, offering, and onboarding — into one connected
+      workflow built for hiring managers and HR teams who want to ship roles 3× faster.
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-9 flex flex-wrap justify-center gap-3 reveal">
+      <a href="#waitlist" class="magnetic px-6 md:px-7 py-3.5 rounded-full btn-gold text-[14.5px] inline-flex items-center gap-2">
+        Get Early Access
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#how-it-works" class="magnetic px-5 md:px-6 py-3.5 rounded-full text-[14.5px] font-semibold border border-ivory/25 text-ivory hover:bg-ivory hover:text-navy transition">
+        See How It Works
+      </a>
+    </div>
+
+    <!-- Trust line -->
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] text-ivory/55 reveal">
+      <span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Built on real placements at Sage &amp; Crew Next</span>
+      <span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> India-first compliance</span>
+      <span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Plays nicely with your existing ATS</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ THE 7-STAGE PIPELINE ============ -->
+<section id="how-it-works" class="bg-ivory text-charcoal py-20 md:py-28 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+    <div class="text-center mb-14 reveal">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy/5 text-[11px] uppercase tracking-[0.18em] text-navy/70 mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+        The Pipeline
+      </div>
+      <h2 class="font-display text-3xl md:text-5xl text-navy leading-tight">Seven stages. One platform. Zero gaps.</h2>
+      <p class="mt-4 text-[15px] md:text-[16.5px] text-charcoal/65 max-w-2xl mx-auto">
+        Every stage of hiring usually lives in a different tool, spreadsheet, or someone's head.
+        Sage Hire Stack connects them so nothing falls through the cracks.
+      </p>
+    </div>
+
+    <!-- 7-stage pipeline cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-7 gap-4 lg:gap-3 mt-12">
+
+      <!-- Stage 1 -->
+      <div class="pipeline-stage reveal">
+        <div class="pipeline-stage-num">01</div>
+        <div class="pipeline-stage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        </div>
+        <h3 class="font-display text-lg text-navy mt-3">Define</h3>
+        <p class="text-[12.5px] text-charcoal/65 mt-1.5 leading-relaxed">AI-assisted job descriptions. Skills auto-extracted. Budget estimated.</p>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="pipeline-stage reveal">
+        <div class="pipeline-stage-num">02</div>
+        <div class="pipeline-stage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3 class="font-display text-lg text-navy mt-3">Source</h3>
+        <p class="text-[12.5px] text-charcoal/65 mt-1.5 leading-relaxed">Match against our sourced pool. Surface the top 10–20 in minutes.</p>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="pipeline-stage reveal">
+        <div class="pipeline-stage-num">03</div>
+        <div class="pipeline-stage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="font-display text-lg text-navy mt-3">Screen</h3>
+        <p class="text-[12.5px] text-charcoal/65 mt-1.5 leading-relaxed">Automated screening questions. Responses scored. Fit ranked.</p>
+      </div>
+
+      <!-- Stage 4 -->
+      <div class="pipeline-stage reveal">
+        <div class="pipeline-stage-num">04</div>
+        <div class="pipeline-stage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <h3 class="font-display text-lg text-navy mt-3">Shortlist</h3>
+        <p class="text-[12.5px] text-charcoal/65 mt-1.5 leading-relaxed">Kanban view. Move candidates: Interview · Reject · Hold.</p>
+      </div>
+
+      <!-- Stage 5 -->
+      <div class="pipeline-stage reveal">
+        <div class="pipeline-stage-num">05</div>
+        <div class="pipeline-stage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3 class="font-display text-lg text-navy mt-3">Interview</h3>
+        <p class="text-[12.5px] text-charcoal/65 mt-1.5 leading-relaxed">Calendar coordination. Auto feedback forms. Scorecards tracked.</p>
+      </div>
+
+      <!-- Stage 6 -->
+      <div class="pipeline-stage reveal">
+        <div class="pipeline-stage-num">06</div>
+        <div class="pipeline-stage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3 class="font-display text-lg text-navy mt-3">Offer</h3>
+        <p class="text-[12.5px] text-charcoal/65 mt-1.5 leading-relaxed">CTC calculator. Compliant offer letter. Sent to candidate, tracked.</p>
+      </div>
+
+      <!-- Stage 7 -->
+      <div class="pipeline-stage reveal">
+        <div class="pipeline-stage-num">07</div>
+        <div class="pipeline-stage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+        </div>
+        <h3 class="font-display text-lg text-navy mt-3">Onboard</h3>
+        <p class="text-[12.5px] text-charcoal/65 mt-1.5 leading-relaxed">Acceptance tracked. Joining paperwork generated. Status: HIRED.</p>
+      </div>
+
+    </div>
+
+    <!-- Time saved line -->
+    <div class="mt-14 text-center reveal">
+      <div class="inline-block bg-navy text-ivory rounded-2xl px-6 md:px-10 py-6 md:py-8 max-w-3xl">
+        <div class="text-[11px] uppercase tracking-[0.2em] text-gold/85 mb-2">What this replaces</div>
+        <div class="font-display text-xl md:text-[26px] text-ivory leading-snug">
+          Five spreadsheets, three Slack channels, two ATS exports, and one anxious recruiter.
+        </div>
+        <div class="text-[13.5px] text-ivory/65 mt-3">→ All replaced by a single pipeline view that any hiring manager can open and immediately understand.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section class="bg-navy text-ivory py-20 md:py-24 relative overflow-hidden border-t border-white/5">
+  <div class="absolute inset-0 dot-grid opacity-30"></div>
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+
+    <div class="text-center mb-12 reveal">
+      <h2 class="font-display text-3xl md:text-5xl text-ivory leading-tight">Built for the people closest to hiring.</h2>
+      <p class="mt-4 text-[15px] md:text-[16.5px] text-ivory/65 max-w-2xl mx-auto">If any of these describe you, you'll feel the difference within the first hire.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 md:gap-7">
+      <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 reveal">
+        <div class="text-[11px] uppercase tracking-[0.18em] text-gold/85 mb-3">For</div>
+        <h3 class="font-display text-xl text-ivory mb-3">Startup founders</h3>
+        <p class="text-[14px] text-ivory/65 leading-relaxed">Hiring your first 5–20 people. No HR team yet. Need structure, not a 50-seat enterprise tool.</p>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 reveal">
+        <div class="text-[11px] uppercase tracking-[0.18em] text-gold/85 mb-3">For</div>
+        <h3 class="font-display text-xl text-ivory mb-3">HR generalists</h3>
+        <p class="text-[14px] text-ivory/65 leading-relaxed">Running recruitment alongside everything else. Need automation that doesn't require an engineering team to set up.</p>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 reveal">
+        <div class="text-[11px] uppercase tracking-[0.18em] text-gold/85 mb-3">For</div>
+        <h3 class="font-display text-xl text-ivory mb-3">Growing teams</h3>
+        <p class="text-[14px] text-ivory/65 leading-relaxed">Hiring 5+ roles per year. Tired of losing candidates in the gaps between sourcing and offer.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ WAITLIST ============ -->
+<section id="waitlist" class="bg-ivory text-charcoal py-20 md:py-28 relative">
+  <div class="max-w-3xl mx-auto px-5 md:px-8">
+
+    <div class="text-center mb-10 reveal">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 text-[11px] uppercase tracking-[0.18em] text-gold-deep mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+        Early Access
+      </div>
+      <h2 class="font-display text-3xl md:text-5xl text-navy leading-tight">Be first when Sage Hire Stack launches.</h2>
+      <p class="mt-4 text-[15px] md:text-[16.5px] text-charcoal/65 max-w-xl mx-auto">
+        Join the early access list. We'll share product previews, ask what features matter to you,
+        and invite you to use the beta before it's public.
+      </p>
+    </div>
+
+    <!-- Waitlist form (Google Forms embed) -->
+    <div class="bg-white rounded-3xl border border-navy/8 shadow-xl p-3 md:p-4 reveal">
+      <!--
+        REPLACE the iframe src below with your actual Google Form embed URL.
+        How to get it:
+        1. Create a Google Form with fields: Name, Work Email, Company, Roles per year (dropdown), Role.
+        2. Click "Send" → choose the <> embed icon → copy the iframe src URL.
+        3. Paste that URL below in place of GOOGLE_FORM_URL_HERE.
+      -->
+      <iframe
+        src="GOOGLE_FORM_URL_HERE"
+        width="100%"
+        height="720"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        style="border-radius: 18px; background: #fff;"
+        title="Sage Hire Stack — Early Access Waitlist">
+        Loading the form…
+      </iframe>
+    </div>
+
+    <!-- Privacy reassurance -->
+    <p class="mt-5 text-[12px] text-center text-charcoal/55 reveal">
+      We won't share your email. You'll hear from us only about Sage Hire Stack development.
+    </p>
+
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="bg-mist text-charcoal py-20 md:py-24 relative">
+  <div class="max-w-3xl mx-auto px-5 md:px-8">
+
+    <div class="text-center mb-10 reveal">
+      <h2 class="font-display text-3xl md:text-4xl text-navy">Common questions</h2>
+    </div>
+
+    <div class="space-y-3 reveal">
+
+      <details class="bg-white rounded-2xl border border-navy/8 p-5 group">
+        <summary class="cursor-pointer font-display text-[17px] text-navy flex items-center justify-between">
+          When will Sage Hire Stack launch?
+          <span class="text-gold-deep text-xl group-open:rotate-45 transition-transform">+</span>
+        </summary>
+        <p class="mt-3 text-[14px] text-charcoal/70 leading-relaxed">
+          Beta with early-access waitlist members: Q3 2026. Public launch: Q4 2026.
+          The exact rollout depends on feedback from the first 30 waitlist users.
+        </p>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-navy/8 p-5 group">
+        <summary class="cursor-pointer font-display text-[17px] text-navy flex items-center justify-between">
+          What will it cost?
+          <span class="text-gold-deep text-xl group-open:rotate-45 transition-transform">+</span>
+        </summary>
+        <p class="mt-3 text-[14px] text-charcoal/70 leading-relaxed">
+          Pricing is being finalized with input from waitlist members.
+          Expected: a free tier for small teams (up to 3 active roles) and paid tiers scaling
+          with role count. Early-access users get a permanent discount.
+        </p>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-navy/8 p-5 group">
+        <summary class="cursor-pointer font-display text-[17px] text-navy flex items-center justify-between">
+          Does it replace recruiters?
+          <span class="text-gold-deep text-xl group-open:rotate-45 transition-transform">+</span>
+        </summary>
+        <p class="mt-3 text-[14px] text-charcoal/70 leading-relaxed">
+          No. It makes recruiters and hiring managers more effective. The platform handles
+          repetitive work (screening questions, scheduling, status tracking, offer paperwork)
+          so humans can focus on the parts that matter — judgment, conversations, decisions.
+        </p>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-navy/8 p-5 group">
+        <summary class="cursor-pointer font-display text-[17px] text-navy flex items-center justify-between">
+          Will it integrate with our existing ATS / HRIS?
+          <span class="text-gold-deep text-xl group-open:rotate-45 transition-transform">+</span>
+        </summary>
+        <p class="mt-3 text-[14px] text-charcoal/70 leading-relaxed">
+          Yes — top priority. We'll launch with CSV import/export and standard webhook support
+          so you can plug it into Greenhouse, Lever, Zoho Recruit, Keka, or your spreadsheet.
+        </p>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-navy/8 p-5 group">
+        <summary class="cursor-pointer font-display text-[17px] text-navy flex items-center justify-between">
+          Where is the data stored? Is it secure?
+          <span class="text-gold-deep text-xl group-open:rotate-45 transition-transform">+</span>
+        </summary>
+        <p class="mt-3 text-[14px] text-charcoal/70 leading-relaxed">
+          Data is stored in India-region cloud infrastructure. We follow DPDP Act 2023 guidelines
+          for handling candidate PII. Detailed security documentation will be shared with
+          early-access users before beta access.
+        </p>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-navy/8 p-5 group">
+        <summary class="cursor-pointer font-display text-[17px] text-navy flex items-center justify-between">
+          Is this connected to Sage &amp; Crew Next's recruitment services?
+          <span class="text-gold-deep text-xl group-open:rotate-45 transition-transform">+</span>
+        </summary>
+        <p class="mt-3 text-[14px] text-charcoal/70 leading-relaxed">
+          Yes. Sage Hire Stack is built by the team that already delivers recruitment services
+          to clients today. The platform is informed by hundreds of real placements and reflects
+          how a working recruitment team actually operates.
+        </p>
+      </details>
+
+    </div>
+
+    <div class="text-center mt-12 reveal">
+      <a href="#waitlist" class="magnetic inline-flex items-center gap-2 px-6 py-3.5 rounded-full btn-gold text-[14.5px]">
+        Join the Early Access List
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-navy-deep text-ivory/75 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Sage & Crew Next — Home">
+          <img src="assets/logo-mark.svg" alt="Sage & Crew Next" class="brand-mark-dark w-11 h-11 object-contain transition-transform duration-300 group-hover:scale-105" />
+          <span class="flex items-baseline gap-1 text-[17px] text-ivory">
+            <span class="font-display italic">Sage</span><span class="font-semibold">& Crew</span><span class="text-gold font-semibold">Next</span>
+          </span>
+        </a>
+        <p class="mt-5 text-[13.5px] text-ivory/60 leading-relaxed max-w-md">
+          Sage & Crew Next helps businesses grow through recruitment, staffing, software projects, AI-enabled automation, websites, dashboards, and digital branding. We also support professionals with resume, LinkedIn, and interview readiness.
+        </p>
+        <div class="mt-6 flex flex-col gap-2 text-[12.5px] text-ivory/55">
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:sagencrew@gmail.com" class="hover:text-gold transition">sagencrew@gmail.com</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg>
+            <a href="https://sagencrew.com" class="hover:text-gold transition">sagencrew.com</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="https://wa.me/919133666619" target="_blank" rel="noopener" class="hover:text-gold transition">+91 91336 66619 · WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-ivory/50 mb-4">Company</div>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a class="hover:text-gold transition" href="about.html">About</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#services">Services</a></li>
+            <li><a class="hover:text-gold transition" href="projects.html">Projects</a></li>
+            <li><a class="hover:text-gold transition" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-ivory/50 mb-4">Solutions</div>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a class="hover:text-gold transition" href="index.html#services">Recruitment</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#services">Software Projects</a></li>
+            <li><a class="hover:text-gold transition" href="ai-solutions.html">AI &amp; Automation</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#services">Websites</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#services">Digital Branding</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-ivory/50 mb-4">For Candidates</div>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a class="hover:text-gold transition" href="index.html#candidates">Resume Services</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#candidates">LinkedIn Optimization</a></li>
+            <li><a class="hover:text-gold transition" href="index.html#candidates">Interview Preparation</a></li>
+            <li><a class="hover:text-gold transition" href="tools.html">ATS Tools</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-ivory/50 mb-4">Legal</div>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a class="hover:text-gold transition" href="privacy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-gold transition" href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-ivory/8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div class="text-[12px] text-ivory/50">© <span id="copyright-year">2026</span> Sage & Crew Next. All rights reserved.</div>
+      <div class="text-[12px] text-ivory/45">Build Teams · Build Systems · Build AI-Powered Growth</div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/919133666619?text=Hi%20Sage%20%26%20Crew%20Next%2C%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="wa-fab fixed bottom-5 right-5 z-50 group" id="wa-fab">
+  <span class="wa-tooltip">Chat with us</span>
+  <span class="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lift pulse-ring">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.81 11.81 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.595 5.39l-.999 3.648 3.893-1.737zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </span>
+</a>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

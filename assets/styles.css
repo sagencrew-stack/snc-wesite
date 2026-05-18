@@ -651,3 +651,126 @@ body.snc-loading {
   }
 }
 /* ====== END PREMIUM ANIMATED LOADER ====== */
+
+/* ====== SAGE HIRE STACK — Pipeline Stage Cards ====== */
+.pipeline-stage {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(11, 31, 58, 0.08);
+  border-radius: 14px;
+  padding: 18px 16px 16px;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              box-shadow 0.4s ease;
+}
+.pipeline-stage:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 18px 36px -16px rgba(212, 175, 55, 0.18);
+}
+.pipeline-stage-num {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 13px;
+  color: rgba(11, 31, 58, 0.32);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.pipeline-stage-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(212, 175, 55, 0.10);
+  color: #A8881F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pipeline-stage:hover .pipeline-stage-icon {
+  background: rgba(212, 175, 55, 0.18);
+}
+
+/* Connection lines between cards (desktop only) */
+@media (min-width: 1024px) {
+  .pipeline-stage:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    width: 12px;
+    height: 1px;
+    background: linear-gradient(to right, rgba(212, 175, 55, 0.4), transparent);
+    pointer-events: none;
+  }
+}
+/* ====== END SAGE HIRE STACK ====== */
+
+/* ====== SAGE HIRE STACK — Announcement Banner ====== */
+.shs-banner {
+  position: relative;
+  margin-top: 76px; /* sit below fixed header */
+  background: linear-gradient(90deg, #0B1F3A, #142e54 50%, #0B1F3A);
+  border-top: 1px solid rgba(212, 175, 55, 0.18);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+}
+.shs-banner-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  flex-wrap: wrap;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+.shs-banner-link:hover {
+  background: rgba(212, 175, 55, 0.04);
+}
+.shs-banner-badge {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.15);
+  color: #F5E6B8;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.shs-banner-text {
+  color: rgba(248, 247, 242, 0.78);
+  font-size: 13.5px;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+.shs-banner-strong {
+  color: #F5E6B8;
+  font-weight: 600;
+}
+.shs-banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #D4AF37;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.shs-banner-link:hover .shs-banner-cta {
+  color: #F5E6B8;
+}
+@media (max-width: 640px) {
+  .shs-banner-link { padding: 9px 14px; gap: 7px; }
+  .shs-banner-text { font-size: 12px; }
+  .shs-banner-badge { font-size: 9.5px; padding: 2px 8px; }
+  .shs-banner-cta { font-size: 12px; }
+}
+/* When loader is hidden, banner sits at top */
+body.snc-loaded .shs-banner {
+  margin-top: 76px;
+}
+/* ====== END BANNER ====== */
