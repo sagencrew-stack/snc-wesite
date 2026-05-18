@@ -105,13 +105,44 @@
 </head>
 <body class="text-charcoal">
 
-<div id="page-loader" class="fixed inset-0 z-[100] bg-navy flex items-center justify-center">
-  <div class="text-center px-6 max-w-md">
-    <img src="assets/logo-full.png" alt="Sage & Crew Next" class="brand-mark-dark w-[260px] md:w-[340px] mx-auto mb-5 animate-pulse-soft" />
-    <div class="text-ivory/60 text-[11px] tracking-[0.32em] uppercase">Build · Systems · AI Growth</div>
-    <div class="mt-5 w-28 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto loader-shine"></div>
+<!-- PREMIUM ANIMATED LOADER -->
+<div id="page-loader" class="snc-loader" aria-hidden="true">
+  <div class="snc-loader-glow"></div>
+  <div class="snc-loader-stage">
+    <!-- Inner gold orbit ring (rotates clockwise, perpetual) -->
+    <svg class="snc-loader-orbit snc-loader-orbit--inner" viewBox="0 0 280 280" aria-hidden="true">
+      <g class="snc-loader-orbit-spin">
+        <circle cx="140" cy="140" r="130" fill="none" stroke="rgba(212,175,55,0.18)" stroke-width="0.8" stroke-dasharray="2 8"/>
+        <circle cx="140" cy="140" r="130" fill="none" stroke="rgba(212,175,55,0.7)" stroke-width="1.2" stroke-dasharray="60 360" stroke-linecap="round"/>
+        <circle cx="270" cy="140" r="3" fill="#F5E6B8"/>
+        <circle cx="10" cy="140" r="2" fill="#D4AF37" opacity="0.6"/>
+      </g>
+    </svg>
+    <!-- Outer sage orbit ring (rotates counter-clockwise, very slow) -->
+    <svg class="snc-loader-orbit snc-loader-orbit--outer" viewBox="0 0 320 320" aria-hidden="true">
+      <g class="snc-loader-orbit-spin snc-loader-orbit-spin--reverse">
+        <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(122,158,126,0.25)" stroke-width="0.6" stroke-dasharray="1 14"/>
+        <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(245,230,184,0.5)" stroke-width="0.8" stroke-dasharray="20 580" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <!-- The actual logo -->
+    <img class="snc-loader-logo" src="assets/logo-mark.png" alt="Sage and Crew Next" />
+    <!-- Diagonal champagne shimmer sweep -->
+    <div class="snc-loader-shimmer">
+      <div class="snc-loader-shimmer-stripe"></div>
+    </div>
+    <!-- One-shot gold pulse glow -->
+    <div class="snc-loader-pulse"></div>
+  </div>
+  <!-- Wordmark below the mark -->
+  <div class="snc-loader-wordmark">
+    <div class="snc-loader-brand">
+      <span class="snc-loader-brand--italic">Sage</span> <span class="snc-loader-brand--mid">&amp; Crew</span> <span class="snc-loader-brand--accent">Next</span>
+    </div>
+    <div class="snc-loader-tagline">Build · Systems · AI Growth</div>
   </div>
 </div>
+<!-- END LOADER -->
 
 <div id="cursor-glow"></div>
 <div id="scroll-progress"></div>

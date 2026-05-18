@@ -14,30 +14,39 @@
   const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   /* ---------------- 1. Page loader ---------------- */
-  // Robust loader hide: triggers on window.load, and also has a safety timeout
-  // in case 'load' fires too early (cached pages) or never fires (slow CDN).
-  // Handles BOTH legacy #loader (old pages) and new #page-loader (Push 4+ pages).
+  // Premium animated loader hide. The intro animation takes ~3.1s to complete
+  // (glow → logo scale-in → orbits → shimmer → pulse → wordmark). We wait for
+  // the animation AND window.load before fading. Hard cap at 4s for safety.
   (function hideLoader() {
     const loader = document.getElementById('page-loader') || document.getElementById('loader');
     if (!loader) return;
+    // Lock scroll while loader is visible
+    document.body.classList.add('snc-loading');
     let hidden = false;
     const fade = () => {
       if (hidden) return;
       hidden = true;
-      loader.style.transition = 'opacity .6s ease, visibility .6s';
-      loader.style.opacity = '0';
-      loader.style.visibility = 'hidden';
-      document.body.classList.add('loaded');
-      setTimeout(() => loader.remove(), 650);
+      loader.classList.add('snc-loader--hidden');
+      document.body.classList.remove('snc-loading');
+      document.body.classList.add('snc-loaded');
+      document.body.classList.add('loaded'); // legacy class still used elsewhere
+      setTimeout(() => loader.remove(), 700);
     };
-    // Primary trigger: full window load
+    // Wait for BOTH window.load AND the animation intro to complete (~2.9s)
+    const MIN_DURATION = 2900;
+    const startedAt = performance.now();
+    const tryFade = () => {
+      const elapsed = performance.now() - startedAt;
+      const wait = Math.max(0, MIN_DURATION - elapsed);
+      setTimeout(fade, wait);
+    };
     if (document.readyState === 'complete') {
-      setTimeout(fade, 400);
+      tryFade();
     } else {
-      window.addEventListener('load', () => setTimeout(fade, 400));
+      window.addEventListener('load', tryFade);
     }
-    // Safety net: never let the loader stick past 3.5 seconds, no matter what
-    setTimeout(fade, 3500);
+    // Hard safety net: never let the loader stick past 4 seconds
+    setTimeout(fade, 4000);
   })();
 
   /* ---------------- 2. Lucide ---------------- */

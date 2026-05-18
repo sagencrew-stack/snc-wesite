@@ -1,0 +1,57 @@
+MANIFEST — Sage & Crew Next · Premium Animated Loader Push
+Generated: 2026-05-18 04:21:48 UTC
+
+=================================================================
+BEFORE UPLOAD: Verify all files below are present in this ZIP
+AFTER UPLOAD: Verify GitHub file list matches this manifest
+=================================================================
+
+ROOT FILES (upload to repo root):
+-----------------------------------------------------------------
+  .gitignore                            54 bytes  md5: 86bf3350
+  README.md                           5827 bytes  md5: 421d84fb
+  about.html                         29302 bytes  md5: c51cda88 ← NEW LOADER
+  ai-solutions.html                  33773 bytes  md5: ee87ad10 ← NEW LOADER
+  contact.html                       38219 bytes  md5: 4b9b145c ← NEW LOADER
+  faq.html                           42783 bytes  md5: b0bbef87 ← NEW LOADER
+  index.html                         65280 bytes  md5: dfad2696 ← CRITICAL — never deployed before
+  package.json                         260 bytes  md5: 392e654f
+  preview-mac-linux.sh                 847 bytes  md5: 3d729028
+  preview-windows.bat                  864 bytes  md5: 5173f79b
+  projects.html                      20900 bytes  md5: 666fed1a ← NEW LOADER (was missing)
+  tools.html                         54988 bytes  md5: 2231edf9 ← NEW LOADER
+  vercel.json                          577 bytes  md5: d43dfda0
+
+ASSETS (upload to /assets folder):
+-----------------------------------------------------------------
+  app.js                             88369 bytes  md5: 160a7e7f ← loader hide timing updated
+  logo-full.png                     129004 bytes  md5: d07f392c
+  logo-mark-2x.png                  480873 bytes  md5: aed955cf ← high-DPI version
+  logo-mark.png                     120250 bytes  md5: be94be8e ← NEW gold S&C logo, transparent
+  logo-mark.svg                       2679 bytes  md5: 875f017d
+  styles.css                         28997 bytes  md5: 2894c476 ← loader animations added
+  tailwind-config.js                   858 bytes  md5: 4d41cc91
+
+=================================================================
+TOTAL: 20 files
+=================================================================
+
+VERIFICATION CHECKLIST AFTER UPLOAD:
+-----------------------------------------------------------------
+  1. Visit https://snc-wesite.vercel.app/ → hard refresh (Ctrl+Shift+R)
+  2. Loader shows for ~3 seconds with:
+     • Gold S&C logo fading in + scaling up
+     • Inner gold ring rotating clockwise (continuous)
+     • Outer sage ring counter-rotating (very slow)
+     • Champagne shimmer sweep across the logo
+     • One soft gold pulse glow
+     • 'Sage & Crew Next' wordmark below
+     • 'Build · Systems · AI Growth' tagline
+  3. After ~3s the loader fades out, page is interactive
+  4. Test on /tools.html, /about.html, /contact.html, /faq.html
+  5. Test on mobile (smaller logo size, animation still smooth)
+
+IF LOADER DOESN'T DISAPPEAR:
+  - Check console (F12) for errors
+  - Verify assets/logo-mark.png is uploaded
+  - 4-second safety timeout will force-hide regardless
