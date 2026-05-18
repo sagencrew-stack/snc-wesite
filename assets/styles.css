@@ -707,70 +707,143 @@ body.snc-loading {
 }
 /* ====== END SAGE HIRE STACK ====== */
 
-/* ====== SAGE HIRE STACK — Announcement Banner ====== */
-.shs-banner {
-  position: relative;
-  margin-top: 76px; /* sit below fixed header */
-  background: linear-gradient(90deg, #0B1F3A, #142e54 50%, #0B1F3A);
-  border-top: 1px solid rgba(212, 175, 55, 0.18);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+
+/* ====== SAGE HIRE STACK — Floating Trump Card ====== */
+.shs-card {
+  position: fixed;
+  right: 20px;
+  bottom: 96px; /* sit above WhatsApp FAB which is typically at 24px */
+  z-index: 90;
+  width: 260px;
+  background: linear-gradient(165deg, rgba(11,31,58,0.96), rgba(20,46,84,0.96));
+  border: 1px solid rgba(212,175,55,0.32);
+  border-radius: 16px;
+  padding: 14px 16px 16px;
+  box-shadow:
+    0 24px 48px -16px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(212,175,55,0.08),
+    0 0 30px -8px rgba(212,175,55,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: shsCardEntrance 0.7s 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.shs-banner-link {
+.shs-card--dismissed,
+.shs-card.shs-card--dismissed {
+  opacity: 0 !important;
+  transform: translateY(20px) scale(0.95) !important;
+  pointer-events: none;
+}
+@keyframes shsCardEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.shs-card-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: rgba(248,247,242,0.55);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.shs-card-close:hover {
+  background: rgba(255,255,255,0.12);
+  color: #F8F7F2;
+}
+.shs-card-link {
+  display: block;
   text-decoration: none;
-  flex-wrap: wrap;
-  text-align: center;
-  transition: background 0.3s ease;
+  color: inherit;
 }
-.shs-banner-link:hover {
-  background: rgba(212, 175, 55, 0.04);
-}
-.shs-banner-badge {
-  display: inline-block;
-  background: rgba(212, 175, 55, 0.15);
+.shs-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212,175,55,0.14);
+  border: 1px solid rgba(212,175,55,0.32);
   color: #F5E6B8;
-  border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 9999px;
-  padding: 3px 10px;
-  font-size: 10.5px;
+  padding: 3px 9px;
+  font-size: 9.5px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  flex-shrink: 0;
+  margin-bottom: 10px;
 }
-.shs-banner-text {
-  color: rgba(248, 247, 242, 0.78);
-  font-size: 13.5px;
+.shs-card-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #D4AF37;
+  animation: shsCardPulse 2s ease-in-out infinite;
+}
+@keyframes shsCardPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(1.4); }
+}
+.shs-card-title {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #F8F7F2;
+  letter-spacing: 0.005em;
+  margin-bottom: 4px;
+}
+.shs-card-desc {
+  display: block;
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 12px;
+  color: rgba(248,247,242,0.65);
+  line-height: 1.45;
+  margin-bottom: 12px;
 }
-.shs-banner-strong {
-  color: #F5E6B8;
-  font-weight: 600;
-}
-.shs-banner-cta {
+.shs-card-cta {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   color: #D4AF37;
-  font-size: 13px;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.01em;
+  padding-top: 4px;
+  border-top: 1px solid rgba(212,175,55,0.18);
+  width: 100%;
+  transition: color 0.2s, gap 0.2s;
 }
-.shs-banner-link:hover .shs-banner-cta {
+.shs-card-link:hover .shs-card-cta {
   color: #F5E6B8;
+  gap: 8px;
 }
+
+/* Mobile: smaller, tucked above WhatsApp FAB */
 @media (max-width: 640px) {
-  .shs-banner-link { padding: 9px 14px; gap: 7px; }
-  .shs-banner-text { font-size: 12px; }
-  .shs-banner-badge { font-size: 9.5px; padding: 2px 8px; }
-  .shs-banner-cta { font-size: 12px; }
+  .shs-card {
+    right: 14px;
+    bottom: 84px;
+    width: calc(100vw - 80px);
+    max-width: 280px;
+    padding: 12px 14px 14px;
+  }
+  .shs-card-title { font-size: 16px; }
+  .shs-card-desc { font-size: 11.5px; }
 }
-/* When loader is hidden, banner sits at top */
-body.snc-loaded .shs-banner {
-  margin-top: 76px;
-}
-/* ====== END BANNER ====== */
+
+/* Persist dismissal across navigation via sessionStorage check on load */
+/* (handled by inline JS in app.js) */
+/* ====== END FLOATING TRUMP CARD ====== */

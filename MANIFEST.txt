@@ -1,61 +1,39 @@
-MANIFEST — Sage & Crew Next · Sage Hire Stack Launch Page
-Generated: 2026-05-18 08:16:46 UTC
+MANIFEST — Sage & Crew Next · Trump Card Fix
+Generated: 2026-05-18 10:43:21 UTC
 
-=================================================================
-WHAT'S NEW IN THIS PUSH:
-  ✓ NEW page: sage-hire-stack.html (early-access landing page)
-  ✓ NEW banner on index.html and tools.html (drives to new page)
-  ✓ NEW CSS: pipeline-stage cards + announcement banner
-  ✓ Google Form embed placeholder in waitlist section
+FIX IN THIS PUSH:
+  • Removed broken horizontal banner that overlapped the header
+  • Added elegant floating 'trump card' bottom-right on all pages
+  • Pulsing gold dot draws attention without disrupting layout
+  • Has × dismiss button; dismissal persists across session
+  • Doesn't show on sage-hire-stack.html itself (already there)
 
-AFTER UPLOAD, YOU MUST:
-  1. Create a Google Form at https://forms.google.com
-     Fields: Name, Work Email, Company, Roles/year, Role you play
-  2. Click Send → < > Embed icon → copy the iframe src URL
-  3. Open sage-hire-stack.html in GitHub web editor
-  4. Find: GOOGLE_FORM_URL_HERE (2 occurrences)
-  5. Replace both with your Form URL
-  6. Commit
-=================================================================
+FILES THAT CHANGED:
+  • index.html, about.html, contact.html, faq.html,
+    ai-solutions.html, projects.html, tools.html (trump card markup)
+  • assets/styles.css (banner CSS replaced with trump card CSS)
+  • assets/app.js (session-persist dismissal)
 
-ROOT FILES:
------------------------------------------------------------------
   .gitignore                            54 bytes  md5: 86bf3350
   README.md                           5827 bytes  md5: 421d84fb
-  about.html                         29302 bytes  md5: c51cda88
-  ai-solutions.html                  33773 bytes  md5: ee87ad10
-  contact.html                       38219 bytes  md5: 4b9b145c
-  faq.html                           42783 bytes  md5: b0bbef87
-  index.html                         65894 bytes  md5: 9967674e ← +banner
+  about.html                         30407 bytes  md5: db6b0613
+  ai-solutions.html                  34878 bytes  md5: 430510fc
+  contact.html                       39324 bytes  md5: 653b7aaf
+  faq.html                           43888 bytes  md5: 39700ab0
+  index.html                         66385 bytes  md5: 57257e4b
   package.json                         260 bytes  md5: 392e654f
   preview-mac-linux.sh                 847 bytes  md5: 3d729028
   preview-windows.bat                  864 bytes  md5: 5173f79b
-  projects.html                      20900 bytes  md5: 666fed1a
-  sage-hire-stack.html               32159 bytes  md5: 46efbc31 ← NEW PAGE
-  tools.html                         55602 bytes  md5: d545f1c5 ← +banner
+  projects.html                      22005 bytes  md5: 53cb66bc
+  sage-hire-stack.html               32159 bytes  md5: 46efbc31
+  tools.html                         56093 bytes  md5: e3016ff2
   vercel.json                          577 bytes  md5: d43dfda0
 
-ASSETS:
------------------------------------------------------------------
-  app.js                             88369 bytes  md5: 160a7e7f
+Assets:
+  app.js                             88819 bytes  md5: 39a8fdad
   logo-full.png                     129004 bytes  md5: d07f392c
   logo-mark-2x.png                  367390 bytes  md5: 2a7131d2
   logo-mark.png                     157976 bytes  md5: 3372f429
   logo-mark.svg                     210864 bytes  md5: 078191cf
-  styles.css                         32103 bytes  md5: 44019a24 ← +pipeline + banner CSS
+  styles.css                         33888 bytes  md5: 751a1075
   tailwind-config.js                   858 bytes  md5: 4d41cc91
-
-=================================================================
-TOTAL: 21 files
-=================================================================
-
-MINIMUM FILES TO UPLOAD (if doing partial):
-  • sage-hire-stack.html  ← NEW (must add)
-  • index.html            ← banner added
-  • tools.html            ← banner added
-  • assets/styles.css     ← banner + pipeline CSS
-
-AFTER UPLOAD: visit https://snc-wesite.vercel.app/sage-hire-stack.html
-and confirm: ✓ banner shows on home + tools, ✓ pipeline cards render,
-✓ FAQ accordion works, ✓ Google form area is visible (will say 'Loading...'
-until you paste the form URL).

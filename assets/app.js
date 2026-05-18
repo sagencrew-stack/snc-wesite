@@ -2039,4 +2039,18 @@ Location: Hyderabad / Remote.`;
     });
   })();
 
+
+  /* ---------------- 27. SAGE HIRE STACK trump card persistence ---------------- */
+  (function shsCardPersist() {
+    try {
+      if (sessionStorage.getItem('shs-card-dismissed') === '1') {
+        const card = document.getElementById('shs-card');
+        if (card) {
+          card.style.display = 'none';
+          card.classList.add('shs-card--dismissed');
+        }
+      }
+    } catch (e) { /* sessionStorage unavailable, no-op */ }
+  })();
+
 })();
