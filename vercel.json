@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/hire", "destination": "https://sage-hire-stack.vercel.app/hire" },
+    { "source": "/hire/:path*", "destination": "https://sage-hire-stack.vercel.app/hire/:path*" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
