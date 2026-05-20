@@ -8,6 +8,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { ContactForm } from "@/components/contact-form";
+
 export const metadata: Metadata = {
   title: "Contact",
   description:
@@ -35,76 +37,7 @@ export default function ContactPage() {
 
       <section className="bg-ivory">
         <div className="container-padded grid gap-10 py-20 md:grid-cols-[1.4fr_1fr] md:py-24">
-          <div className="space-y-5 rounded-3xl border border-navy/10 bg-white p-7 shadow-soft">
-            <h2 className="text-2xl md:text-3xl">Drop us a line</h2>
-            <p className="text-sm text-charcoal/75">
-              We&apos;re a small team, so we read every message. Skip the form if
-              you&apos;d rather email directly —{" "}
-              <a
-                href="mailto:sagencrew@gmail.com"
-                className="font-medium text-navy hover:underline"
-              >
-                sagencrew@gmail.com
-              </a>
-              .
-            </p>
-
-            <form
-              action="mailto:sagencrew@gmail.com"
-              method="post"
-              encType="text/plain"
-              className="space-y-4"
-            >
-              <div className="grid gap-4 sm:grid-cols-2">
-                <Field label="Your name" name="name" required />
-                <Field label="Email" name="email" type="email" required />
-              </div>
-              <Field label="Company (optional)" name="company" />
-              <div className="space-y-1">
-                <label
-                  htmlFor="topic"
-                  className="text-xs font-semibold uppercase tracking-[0.12em] text-charcoal/65"
-                >
-                  What&apos;s this about?
-                </label>
-                <select
-                  id="topic"
-                  name="topic"
-                  className="w-full rounded-xl border border-navy/15 bg-white px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/40"
-                >
-                  <option value="recruitment">Recruitment — hiring a role</option>
-                  <option value="software">Software project</option>
-                  <option value="ai">AI / automation</option>
-                  <option value="candidate">I&apos;m a candidate looking for a role</option>
-                  <option value="other">Something else</option>
-                </select>
-              </div>
-              <div className="space-y-1">
-                <label
-                  htmlFor="message"
-                  className="text-xs font-semibold uppercase tracking-[0.12em] text-charcoal/65"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="w-full rounded-xl border border-navy/15 bg-white px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/40"
-                  placeholder="A couple of lines is enough to get started."
-                />
-              </div>
-              <button type="submit" className="btn-primary">
-                Send message
-                <ArrowRight className="h-4 w-4" />
-              </button>
-              <p className="text-xs text-charcoal/55">
-                We use your details only to reply. No marketing list, no
-                third-party sharing.
-              </p>
-            </form>
-          </div>
+          <ContactForm />
 
           <div className="space-y-6">
             <div className="space-y-4 rounded-3xl border border-navy/10 bg-white p-7 shadow-soft">
@@ -131,37 +64,6 @@ export default function ContactPage() {
         </div>
       </section>
     </>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  required = false,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-}) {
-  return (
-    <div className="space-y-1">
-      <label
-        htmlFor={name}
-        className="text-xs font-semibold uppercase tracking-[0.12em] text-charcoal/65"
-      >
-        {label}
-        {required && <span className="text-gold-deep"> *</span>}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required={required}
-        className="w-full rounded-xl border border-navy/15 bg-white px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/40"
-      />
-    </div>
   );
 }
 
