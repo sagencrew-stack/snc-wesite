@@ -4,9 +4,12 @@ import {
   ArrowRight,
   Bot,
   CheckCircle2,
+  ChevronDown,
   FileText,
+  Lock,
   MessageSquare,
   Search,
+  ShieldCheck,
   Sparkles,
   Zap,
 } from "lucide-react";
@@ -138,6 +141,64 @@ export default function AISolutionsPage() {
                 Next.js · Supabase · pdf-parse · mammoth · Gemini 2.5 Flash
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Data privacy guarantee */}
+      <section className="bg-ivory">
+        <div className="container-padded py-20 md:py-24">
+          <div className="mb-10 max-w-2xl space-y-3">
+            <span className="section-eyebrow">Data &amp; privacy</span>
+            <h2 className="text-3xl md:text-5xl">
+              Your data.{" "}
+              <span className="italic text-gold-deep">Your rules.</span>
+            </h2>
+            <p className="text-base leading-relaxed text-charcoal/75">
+              Every AI-powered feature runs on inference-only pipelines. Here&apos;s
+              exactly what that means for your business.
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-3xl divide-y divide-navy/8 rounded-3xl border border-navy/10 bg-white shadow-soft">
+            {[
+              {
+                q: "Will our data be used to train public AI models?",
+                a: "No. Your data is never retained for model training, fine-tuning, or benchmarking — by us or by any underlying model provider. Each query is stateless. When the task is done, the context is discarded.",
+              },
+              {
+                q: "Who can access the data we send through your AI tools?",
+                a: "Only the systems required to complete your specific request. We do not share, sell, or cross-reference client data between engagements. Your infrastructure details, candidate pipelines, and business logic stay yours.",
+              },
+              {
+                q: "Where is our data processed and stored?",
+                a: "AI inference runs within isolated, short-lived execution environments. We do not build persistent data stores from client inputs. Outputs are delivered directly to your environment.",
+              },
+              {
+                q: "What if we have enterprise compliance requirements (SOC 2, GDPR, ISO 27001)?",
+                a: "We scope each engagement with your compliance requirements before going live. Custom data handling agreements are available. Talk to us before you start — not after.",
+              },
+            ].map((item) => (
+              <details key={item.q} className="group px-7 py-5">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
+                  <span className="font-medium text-navy">{item.q}</span>
+                  <ChevronDown className="mt-0.5 h-4 w-4 shrink-0 text-navy/50 transition-transform group-open:rotate-180" />
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-charcoal/70">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+
+          <div className="mt-8 flex items-start gap-3 rounded-2xl border border-gold/25 bg-gold/5 p-5">
+            <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-deep" />
+            <p className="text-sm text-charcoal/80">
+              <strong className="text-navy">Our commitment:</strong> We treat
+              your business data the way we&apos;d want our own treated — with
+              zero tolerance for leakage, and nothing left running when the job
+              is done.
+            </p>
           </div>
         </div>
       </section>

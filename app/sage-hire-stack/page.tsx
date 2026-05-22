@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { HIRE_APP_URL } from "@/lib/utils";
+import { WaitlistForm } from "@/components/waitlist-form";
 
 export const metadata: Metadata = {
   title: "Sage Hire Stack — our recruitment platform",
@@ -175,6 +176,77 @@ export default function SageHireStackPage() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Waitlist / pre-launch CTA */}
+      <section className="bg-navy text-ivory">
+        <div className="container-padded py-20 md:py-24">
+          <div className="grid items-center gap-12 md:grid-cols-[1.2fr_1fr]">
+            <div className="space-y-6">
+              <span className="section-eyebrow bg-gold/15 text-gold-soft">
+                Launching 2026
+              </span>
+              <h2 className="text-ivory text-3xl md:text-5xl">
+                Hiring is broken.{" "}
+                <span className="italic text-gold">We built the fix.</span>
+              </h2>
+              <p className="max-w-xl text-ivory/80">
+                Sage Hire Stack is a recruitment operations platform built by
+                people who&apos;ve run hiring pipelines — not just theorised
+                about them. From sourcing to offer to onboarding, every step
+                tracked, automated, and visible.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  {
+                    title: "Your entire pipeline. One screen.",
+                    copy: "Stop stitching together spreadsheets, WhatsApp threads, and email chains. Every candidate, every role, every status — live.",
+                  },
+                  {
+                    title: "AI that does the grunt work.",
+                    copy: "Resume scoring, candidate ranking, automated follow-ups. The AI handles repetitive decisions so your recruiters focus on conversations that close offers.",
+                  },
+                  {
+                    title: "Built for accountability, not just activity.",
+                    copy: "Clients see real-time progress. Offers go through an approval gate. When something stalls, you know — before the candidate ghosts.",
+                  },
+                ].map((item) => (
+                  <li key={item.title} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-gold" />
+                    <div>
+                      <p className="text-sm font-semibold text-ivory">
+                        {item.title}
+                      </p>
+                      <p className="mt-0.5 text-sm text-ivory/70">{item.copy}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Waitlist form */}
+            <div className="rounded-3xl border border-gold/25 bg-navy-soft/70 p-8 shadow-gold">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-soft">
+                Early access waitlist
+              </p>
+              <p className="mt-3 font-display text-2xl text-ivory">
+                Get early access before we open the doors.
+              </p>
+              <p className="mt-2 text-sm text-ivory/70">
+                Small group. Full features. Direct input on the roadmap.
+                Priority onboarding.
+              </p>
+              <WaitlistForm />
+              <p className="mt-4 text-center text-xs text-ivory/45">
+                No credit card. No commitment. Unsubscribe anytime.
+              </p>
+              <div className="mt-5 border-t border-ivory/10 pt-4 text-xs text-ivory/55">
+                Already used by the team behind 200+ placements across
+                engineering, cloud, and AI roles in India.
+              </div>
             </div>
           </div>
         </div>

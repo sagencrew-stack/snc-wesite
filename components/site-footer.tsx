@@ -22,21 +22,26 @@ export function SiteFooter() {
 
         <div className="space-y-2 text-sm">
           <p className="mb-3 font-semibold uppercase tracking-[0.18em] text-gold/90 text-xs">
-            Services
+            For Business
           </p>
-          <FooterLink href="/services">Recruitment</FooterLink>
-          <FooterLink href="/sage-hire-stack">Sage Hire Stack</FooterLink>
-          <FooterLink href="/ai-solutions">AI &amp; automation</FooterLink>
+          <FooterLink href="/services">Recruitment &amp; talent</FooterLink>
           <FooterLink href="/projects">Software projects</FooterLink>
-          <FooterLink href="/tools">Free tools</FooterLink>
+          <FooterLink href="/ai-solutions">AI &amp; automation</FooterLink>
+          <FooterLink href="/sage-hire-stack">Sage Hire Stack</FooterLink>
+          <FooterLink href="/case-studies">Case studies</FooterLink>
+          <FooterLink href="/pricing">Pricing</FooterLink>
         </div>
 
         <div className="space-y-2 text-sm">
           <p className="mb-3 font-semibold uppercase tracking-[0.18em] text-gold/90 text-xs">
+            For Job Seekers
+          </p>
+          <FooterLink href="/for-candidates">Job seeker guide</FooterLink>
+          <FooterLink href="/tools">Free career tools</FooterLink>
+          <p className="mb-3 mt-5 font-semibold uppercase tracking-[0.18em] text-gold/90 text-xs">
             Company
           </p>
           <FooterLink href="/about">About</FooterLink>
-          <FooterLink href="/pricing">Pricing</FooterLink>
           <FooterLink href="/faq">FAQ</FooterLink>
           <FooterLink href="/contact">Contact</FooterLink>
           <a

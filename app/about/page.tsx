@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Compass, Heart, Sparkles, Target } from "lucide-react";
+import { ArrowRight, Compass, Heart, Server, Sparkles, Target, Wrench } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",
@@ -76,6 +76,74 @@ export default function AboutPage() {
                 <p className="text-sm leading-relaxed text-charcoal/75">{v.copy}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Meet the team */}
+      <section className="bg-ivory">
+        <div className="container-padded py-20 md:py-24">
+          <div className="mb-12 max-w-2xl space-y-3">
+            <span className="section-eyebrow">Meet the team</span>
+            <h2 className="text-3xl md:text-5xl">
+              Built from the{" "}
+              <span className="italic text-gold-deep">trenches up.</span>
+            </h2>
+          </div>
+
+          <div className="grid gap-10 md:grid-cols-[1.2fr_1fr]">
+            <div className="space-y-5">
+              <p className="text-base leading-relaxed text-charcoal/80">
+                We started in the trenches — running on-call rotations,
+                debugging Kubernetes clusters at 2am, and writing the
+                automation scripts that nobody else wanted to touch. The
+                founding team at Sage &amp; Crew Next comes from deep SRE,
+                software engineering, and AI backgrounds: people who&apos;ve
+                actually managed the systems that can&apos;t go down, hired for
+                the roles that are hardest to fill, and built the workflows
+                that turn chaos into process.
+              </p>
+              <p className="text-base leading-relaxed text-charcoal/80">
+                We&apos;re not a consultancy that arrives with a slide deck. We
+                embed, we build, and we leave your team stronger than we found
+                it. If you&apos;re scaling something complex, you want people
+                who&apos;ve already made the mistakes — so you don&apos;t have
+                to.
+              </p>
+            </div>
+
+            <div className="grid gap-4">
+              {[
+                {
+                  icon: Server,
+                  label: "SRE & infrastructure",
+                  copy: "On-call veterans. AWS, Azure, Kubernetes, Datadog — run in production, not just configured.",
+                },
+                {
+                  icon: Wrench,
+                  label: "Software engineering",
+                  copy: "Full-stack builders. We own the code we ship and the systems it runs on.",
+                },
+                {
+                  icon: Sparkles,
+                  label: "AI & automation",
+                  copy: "Practical integrations. We use LLMs where they genuinely help — and know when to use a regex instead.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-5 shadow-soft"
+                >
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gold/15 text-gold-deep">
+                    <item.icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-navy">{item.label}</p>
+                    <p className="mt-1 text-sm text-charcoal/70">{item.copy}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
