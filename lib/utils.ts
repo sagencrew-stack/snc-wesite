@@ -5,4 +5,4 @@ export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
 
-export const HIRE_APP_URL = "https://hire.sagencrew.in";
+export const HIRE_APP_URL = "https://hire.sagencrewnext.com";

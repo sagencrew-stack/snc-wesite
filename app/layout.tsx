@@ -3,6 +3,10 @@ import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { PageLoader } from "@/components/page-loader";
+import { WAFab } from "@/components/wa-fab";
+import { ShsTrumpCard } from "@/components/shs-trump-card";
+import { ScrollProgress } from "@/components/scroll-progress";
 import "@/app/globals.css";
 
 const sans = Plus_Jakarta_Sans({
@@ -26,12 +30,12 @@ export const metadata: Metadata = {
   },
   description:
     "One partner for hiring, software, and AI-powered workflows. Sage & Crew Next helps growing teams across India recruit faster, build better, and ship smarter.",
-  metadataBase: new URL("https://sagencrew.in"),
+  metadataBase: new URL("https://sagencrewnext.com"),
   openGraph: {
     title: "Sage & Crew Next",
     description:
       "Recruitment, software projects, and AI-powered workflows for growing Indian teams.",
-    url: "https://sagencrew.in",
+    url: "https://sagencrewnext.com",
     siteName: "Sage & Crew Next",
     locale: "en_IN",
     type: "website",
@@ -46,9 +50,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${display.variable}`}>
       <body className="min-h-screen font-sans">
+        <PageLoader />
+        <div id="scroll-progress"><div id="scroll-progress-bar" /></div>
         <SiteHeader />
         <main className="min-h-[calc(100vh-4rem)]">{children}</main>
         <SiteFooter />
+        <WAFab />
+        <ShsTrumpCard />
+        <ScrollProgress />
       </body>
     </html>
   );

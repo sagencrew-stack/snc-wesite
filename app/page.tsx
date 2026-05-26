@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import { HeroAnimation } from "@/components/hero-animation";
+import { ParticleBackground } from "@/components/particle-bg";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { HIRE_APP_URL } from "@/lib/utils";
 
@@ -10,7 +11,8 @@ export default function HomePage() {
     <>
       {/* ── HERO ── */}
       <section className="hero-bg dot-grid relative overflow-hidden pb-14 pt-24 text-ivory md:pb-20 md:pt-28">
-        <div className="container-padded">
+        <ParticleBackground />
+        <div className="container-padded relative z-10">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
             {/* Left */}
             <ScrollReveal>
@@ -70,7 +72,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden border-t border-white/5 bg-navy py-12 text-ivory md:py-16">
         <div className="absolute inset-0 dot-grid opacity-20" />
         <div className="container-padded relative">
-          <div className="grid gap-5 md:grid-cols-3 md:gap-7">
+          <div className="grid gap-5 md:grid-cols-3 md:gap-7 pillar-row">
             {[
               {
                 n: "01",
@@ -289,6 +291,128 @@ export default function HomePage() {
               </ScrollReveal>
             ))}
           </div>
+
+          <ScrollReveal>
+            <div className="mt-10 text-center">
+              <p className="mb-3 text-[13px] text-charcoal/55">
+                Plus AI Content Support, AI Chatbots, and AI Document Processing.
+              </p>
+              <Link
+                href="/ai-solutions"
+                className="btn-gold inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px]"
+              >
+                Explore all 6 AI services
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── FEATURED PROJECT ── */}
+      <section className="relative overflow-hidden bg-navy py-16 text-ivory md:py-24">
+        <div className="absolute inset-0 dot-grid opacity-30" />
+        <div className="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-gold/8 blur-3xl" />
+        <div className="container-padded relative">
+          <div className="grid items-center gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <ScrollReveal>
+                <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/85">
+                  Featured Project
+                </div>
+                <h2 className="font-display text-3xl leading-tight text-ivory md:text-5xl">
+                  Team Purex —{" "}
+                  <span className="italic text-gold">Fitness Platform</span>
+                </h2>
+                <p className="mt-5 text-[15.5px] leading-relaxed text-ivory/70">
+                  A modern fitness and transformation platform built to support fitness branding,
+                  client engagement, workout planning, diet guidance, and digital business growth.
+                </p>
+                <ul className="mt-6 space-y-2.5 text-[13.5px] text-ivory/75">
+                  {[
+                    "Fitness brand website",
+                    "Client-focused digital experience",
+                    "Transformation and progress tracking concept",
+                    "Workout and diet planning structure",
+                    "Business platform direction for trainers and clients",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <svg className="mt-1 shrink-0 text-gold" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M5 12l5 5 9-11"/></svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href="https://teampurex.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold inline-flex items-center gap-2 rounded-full px-5 py-3 text-[13.5px]"
+                  >
+                    Visit Live Site
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                  </a>
+                  <Link href="/projects" className="rounded-full border border-ivory/25 px-5 py-3 text-[13.5px] font-semibold text-ivory transition hover:bg-ivory hover:text-navy">
+                    View Case Study
+                  </Link>
+                  <Link href="/contact?intent=project" className="rounded-full px-5 py-3 text-[13.5px] font-semibold text-ivory/70 transition hover:text-gold">
+                    Start a similar project →
+                  </Link>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <div className="lg:col-span-7">
+              <ScrollReveal delay={150}>
+                <div className="glass-dark rounded-3xl border border-gold/20 p-6 shadow-lift md:p-7">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-gold to-[#A8881F] font-display font-bold text-navy">P</div>
+                      <div>
+                        <div className="text-[14px] font-semibold text-ivory">Team Purex</div>
+                        <div className="text-[11px] text-ivory/55">Fitness &amp; Transformation Platform</div>
+                      </div>
+                    </div>
+                    <span className="rounded-md bg-gold/15 px-2 py-1 text-[10.5px] uppercase tracking-wider text-gold/90">Illustrative</span>
+                  </div>
+                  <div className="grid gap-3 md:grid-cols-2">
+                    <div className="rounded-xl border border-white/8 bg-white/5 p-4">
+                      <div className="mb-2 text-[11px] uppercase tracking-wider text-ivory/55">Active Plans</div>
+                      <div className="font-display text-3xl leading-none text-ivory">—</div>
+                      <div className="mt-1 text-[11px] text-ivory/45">Workout &amp; diet plans active</div>
+                    </div>
+                    <div className="rounded-xl border border-white/8 bg-white/5 p-4">
+                      <div className="mb-2 text-[11px] uppercase tracking-wider text-ivory/55">Progress Tracking</div>
+                      <div className="flex h-12 items-end gap-1">
+                        {[35, 55, 45, 75, 60, 88, 95].map((h, i) => (
+                          <div key={i} className="flex-1 rounded-sm" style={{ height: `${h}%`, background: `rgba(212,175,55,${0.3 + i * 0.08})` }} />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="rounded-xl border border-white/8 bg-white/5 p-4 md:col-span-2">
+                      <div className="mb-3 text-[11px] uppercase tracking-wider text-ivory/55">Recent Sessions</div>
+                      <div className="space-y-2">
+                        {[
+                          { init: "PT", label: "Push · Strength Training", time: "60 min" },
+                          { init: "PL", label: "Pull · Back Day", time: "55 min" },
+                          { init: "LG", label: "Legs · Lower Body", time: "65 min" },
+                        ].map((s) => (
+                          <div key={s.init} className="flex items-center justify-between rounded-lg bg-white/3 px-2.5 py-1.5 text-[12.5px]">
+                            <div className="flex items-center gap-2.5">
+                              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-sage/20 text-[10px] font-semibold text-sage">{s.init}</div>
+                              <span className="text-ivory/80">{s.label}</span>
+                            </div>
+                            <span className="text-[11px] text-gold/85">{s.time}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-center text-[10.5px] text-ivory/40">Illustrative workflow — actual platform UI varies</p>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -311,23 +435,12 @@ export default function HomePage() {
               { n: "02", title: "Plan", copy: "We map the right solution — screens, services, content, or a hiring approach — with clear deliverables." },
               { n: "03", title: "Build", copy: "We create the website, system, shortlist, automation, content, or digital asset you signed off on." },
               { n: "04", title: "Review", copy: "We test, refine, validate, and improve before delivery — no surprises at handover." },
-              { n: "05", title: "Support", copy: "We help with launch, coordination, handover, improvements, and ongoing growth." },
+              { n: "05", title: "Support", copy: "We help with launch, coordination, handover, improvements, and ongoing growth as the project moves to production." },
             ].map((step, i) => (
               <ScrollReveal key={step.n} delay={i * 80}>
-                <div className="flex items-start gap-6">
-                  <div
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-display text-[15px] font-bold text-navy"
-                    style={{
-                      background: "linear-gradient(135deg, #D4AF37, #A8881F)",
-                      boxShadow: "0 0 0 4px rgba(212,175,55,0.12)",
-                    }}
-                  >
-                    {step.n}
-                  </div>
-                  <div className="pt-1">
-                    <div className="mb-1.5 font-display text-xl text-navy">{step.title}</div>
-                    <p className="text-[14px] leading-relaxed text-charcoal/70">{step.copy}</p>
-                  </div>
+                <div className="proc-step reveal" data-step={step.n}>
+                  <div className="mb-1.5 font-display text-xl text-navy">{step.title}</div>
+                  <p className="text-[14px] leading-relaxed text-charcoal/70">{step.copy}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -524,13 +637,17 @@ export default function HomePage() {
 
           <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { title: "ATS Resume Score Checker", sub: "Match your resume against any JD." },
-              { title: "CTC Calculator", sub: "CTC → in-hand monthly (India)." },
-              { title: "Resume Keyword Matcher", sub: "Surface missing keywords instantly." },
-              { title: "JD Keyword Extractor", sub: "Pull skills, experience, qualifications." },
+              { title: "ATS Resume Score Checker", sub: "Match your resume against any JD.", href: "/tools#tool-ats" },
+              { title: "Resume Keyword Matcher", sub: "Surface missing keywords instantly.", href: "/tools#tool-ats" },
+              { title: "CTC Calculator", sub: "CTC → in-hand monthly (India).", href: "/tools#tool-ctc" },
+              { title: "JD Keyword Extractor", sub: "Pull skills, experience, qualifications.", href: "/tools#tool-jd" },
+              { title: "Cost of Hire Calculator", sub: "Real cost of filling a role.", href: "/tools#tool-coh" },
+              { title: "Project Cost Estimator", sub: "Get a rough estimate via consultation.", href: "/contact?intent=project" },
+              { title: "Website Readiness Checklist", sub: "12-point pre-launch audit.", href: "/contact?intent=project" },
+              { title: "Hiring Requirement Template", sub: "A clean JD format that gets results.", href: "/contact?intent=employer" },
             ].map((t) => (
               <ScrollReveal key={t.title}>
-                <Link href="/tools" className="block rounded-xl border border-navy/8 bg-white p-5 transition hover:border-gold/40 hover:shadow-soft">
+                <Link href={t.href} className="block rounded-xl border border-navy/8 bg-white p-5 transition hover:border-gold/40 hover:shadow-soft">
                   <div className="font-display text-[15px] text-navy">{t.title}</div>
                   <div className="mt-1 text-[12px] text-charcoal/60">{t.sub}</div>
                 </Link>
