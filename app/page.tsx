@@ -223,7 +223,7 @@ export default function HomePage() {
               <span className="gold-line mb-4 block" />
               <h2 className="font-display text-[26px] text-navy md:text-[32px]">Selected work</h2>
               <p className="mt-2 text-[14px] text-charcoal/65">
-                Projects we've designed, built, and shipped.
+                Projects we&apos;ve designed, built, and shipped.
               </p>
             </div>
           </ScrollReveal>
@@ -337,7 +337,7 @@ export default function HomePage() {
                 <p className="mt-3 max-w-lg text-[14px] leading-relaxed text-charcoal/65">
                   Not AI for the press release. AI in the product — resume scoring engines,
                   smart document processing, workflow automation, and recommendation layers
-                  that cut real manual work. We've built it into our own SaaS.
+                  that cut real manual work. We&apos;ve built it into our own SaaS.
                 </p>
                 <ul className="mt-5 space-y-2 text-[13.5px] text-charcoal/70">
                   {[
@@ -429,7 +429,7 @@ export default function HomePage() {
                   <span className="italic text-gold">recruitment software we built and use ourselves.</span>
                 </h2>
                 <p className="mt-4 text-[14px] leading-relaxed text-ivory/65">
-                  We don't just build software for clients — we built a full SaaS product to run our own
+                  We don&apos;t just build software for clients — we built a full SaaS product to run our own
                   recruitment operations. Sage Hire Stack is an AI-powered talent acquisition command
                   centre with a full ATS, client portal, offer management, and interview suite.
                 </p>
