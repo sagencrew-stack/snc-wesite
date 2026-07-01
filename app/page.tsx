@@ -1,470 +1,641 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 
-import { HeroAnimation } from "@/components/hero-animation";
 import { ParticleBackground } from "@/components/particle-bg";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { HIRE_APP_URL } from "@/lib/utils";
 
+/* ─── service data ─────────────────────────────────────── */
+const SOFTWARE_SERVICES = [
+  {
+    title: "Web Application Development",
+    copy: "Custom web apps, portals, admin panels, and internal tools built on modern stacks — React, Next.js, Node.js, Supabase.",
+    tag: "Core",
+  },
+  {
+    title: "Mobile App Design & Build",
+    copy: "Cross-platform mobile apps using React Native or Flutter. Product-quality UI with performance that holds up.",
+    tag: "Core",
+  },
+  {
+    title: "SaaS Product Development",
+    copy: "End-to-end SaaS — multi-tenant architecture, billing, role-based access, real-time data. We've built one ourselves.",
+    tag: "Speciality",
+  },
+  {
+    title: "UI/UX & Product Design",
+    copy: "Wireframes, interactive prototypes, design systems, and pixel-perfect implementation. Design that converts.",
+    tag: "Core",
+  },
+  {
+    title: "Dashboards & Analytics",
+    copy: "Custom reporting dashboards, KPI trackers, CRM tools, and data visualisation for operations, sales, and HR teams.",
+    tag: "Core",
+  },
+  {
+    title: "AI Integration & Automation",
+    copy: "Embed AI into real workflows — document processing, candidate screening, smart recommendations, n8n/Make automation.",
+    tag: "AI",
+  },
+];
+
+const PROCESS_STEPS = [
+  { n: "01", title: "Discovery", copy: "We map the problem, scope, and success criteria together — before writing a line of code." },
+  { n: "02", title: "Design", copy: "Wireframes, prototypes, and a design system. You review and approve before we move to build." },
+  { n: "03", title: "Build", copy: "Iterative sprints with real demos every cycle. You see progress — not just status updates." },
+  { n: "04", title: "Ship & Support", copy: "Deployment, handover, documentation. Ongoing support and iterations as you scale." },
+];
+
+const PROJECTS = [
+  {
+    name: "Sage Hire Stack",
+    type: "SaaS · AI Recruitment Platform",
+    desc: "Our own product — a full-stack recruitment command centre with AI resume scoring, ATS pipeline, client portal, interview scheduling, and offer management.",
+    tech: ["Next.js 14", "Supabase", "Gemini AI", "TypeScript"],
+    status: "Live",
+    href: "/sage-hire-stack",
+    accent: "text-gold-deep",
+    bg: "bg-navy",
+    dark: true,
+  },
+  {
+    name: "Team Purex",
+    type: "Fitness & Wellness Platform",
+    desc: "Digital home for a fitness brand — client portal, transformation tracking, workout planning, diet guidance, and trainer-to-client engagement flows.",
+    tech: ["Next.js", "Custom CMS", "Vercel"],
+    status: "Live",
+    href: "https://teampurex.com",
+    accent: "text-sage-deep",
+    bg: "bg-white",
+    dark: false,
+    external: true,
+  },
+  {
+    name: "Mahan Traders ERP",
+    type: "Trade & Operations Software",
+    desc: "Full ERP for a sugar trading firm — daily entry, supplier management, buyer statements, cash book, audit trail, and automated inventory reconciliation.",
+    tech: ["Next.js", "Supabase", "Postgres", "RLS"],
+    status: "In production",
+    href: "/projects",
+    accent: "text-charcoal",
+    bg: "bg-ivory",
+    dark: false,
+  },
+];
+
+/* ─── page ──────────────────────────────────────────────── */
 export default function HomePage() {
   return (
     <>
-      {/* ── HERO ── */}
-      <section className="hero-bg dot-grid relative overflow-hidden pb-14 pt-24 text-ivory md:pb-20 md:pt-28">
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section className="hero-bg dot-grid relative overflow-hidden pb-16 pt-24 text-ivory md:pb-20 md:pt-28">
         <ParticleBackground />
         <div className="container-padded relative z-10">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
-            {/* Left */}
-            <ScrollReveal>
-              <div className="space-y-6 text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-white/5 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-gold/90">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gold pillar-pulse" />
-                  Business Growth Partner
-                </div>
-                <h1 className="font-display text-4xl leading-[1.05] text-ivory md:text-6xl lg:text-[64px] xl:text-[72px]">
-                  Build Teams.{" "}
-                  <span className="italic text-gold">Build Systems.</span>{" "}
-                  <br className="hidden lg:block" />
-                  Build AI-Powered Growth.
-                </h1>
-                <p className="mx-auto max-w-xl text-[15.5px] leading-relaxed text-ivory/75 lg:mx-0 md:text-[17px]">
-                  Sage &amp; Crew Next helps businesses grow with recruitment
-                  support, software projects, AI-enabled automation, websites,
-                  dashboards, and digital branding solutions.
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-                  <Link
-                    href="/contact?intent=project"
-                    className="btn-gold inline-flex items-center gap-2 rounded-full px-5 py-3 text-[14px] md:px-6 md:py-3.5 md:text-[14.5px]"
-                  >
-                    Start a Project
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="/contact?intent=employer"
-                    className="rounded-full border border-ivory/25 px-5 py-3 text-[14px] font-semibold text-ivory transition hover:bg-ivory hover:text-navy md:px-6 md:py-3.5 md:text-[14.5px]"
-                  >
-                    Hire Talent
-                  </Link>
-                  <Link
-                    href="/ai-solutions"
-                    className="inline-flex items-center gap-1.5 rounded-full px-3 py-3 text-[14px] font-semibold text-ivory/85 transition hover:text-gold md:py-3.5 md:text-[14.5px]"
-                  >
-                    Explore AI Solutions
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-                <p className="text-[12.5px] text-ivory/55">
-                  People, platforms, and AI-powered progress for growing businesses.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            {/* Right — canvas animation */}
-            <ScrollReveal delay={150}>
-              <HeroAnimation />
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3 PILLARS ── */}
-      <section className="relative overflow-hidden border-t border-white/5 bg-navy py-12 text-ivory md:py-16">
-        <div className="absolute inset-0 dot-grid opacity-20" />
-        <div className="container-padded relative">
-          <div className="grid gap-5 md:grid-cols-3 md:gap-7 pillar-row">
-            {[
-              {
-                n: "01",
-                title: "Teams",
-                copy: "Recruitment, staffing, screening, and hiring coordination for IT and non-IT roles.",
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="9" cy="7" r="4"/><path d="M17 11a4 4 0 100-8 4 4 0 000 8z"/><path d="M1 21v-2a4 4 0 014-4h8a4 4 0 014 4v2"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
-                ),
-              },
-              {
-                n: "02",
-                title: "Systems",
-                copy: "Websites, web apps, dashboards, CRM tools, HR systems, and automation workflows.",
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M9 9h6v6H9z"/></svg>
-                ),
-              },
-              {
-                n: "03",
-                title: "AI & Automation",
-                copy: "AI-enabled workflows, automation, smart dashboards, and digital branding that move your business faster.",
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                ),
-              },
-            ].map((p) => (
-              <ScrollReveal key={p.n}>
-                <div className="pillar-card">
-                  <div className="pillar-icon">{p.icon}</div>
-                  <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold/85">
-                    Pillar {p.n}
-                  </div>
-                  <div className="mb-2 font-display text-2xl text-ivory">{p.title}</div>
-                  <p className="text-[13.5px] leading-relaxed text-ivory/65">{p.copy}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── ONE PARTNER ── */}
-      <section className="bg-ivory py-16 md:py-24">
-        <div className="container-padded">
           <ScrollReveal>
-            <div className="mb-12 text-center">
-              <span className="gold-line-c mx-auto mb-5 block" />
-              <h2 className="font-display text-3xl text-navy md:text-5xl">
-                One partner for{" "}
-                <span className="italic text-gold">
-                  people, systems, and AI-powered growth.
-                </span>
-              </h2>
-              <p className="mt-4 text-[15.5px] text-charcoal/70">
-                Three connected capabilities that work together as your business scales.
+            <div className="mx-auto max-w-3xl space-y-5 text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold/85">
+                <span className="h-1.5 w-1.5 rounded-full bg-gold pillar-pulse" />
+                Software & Product Studio · Hyderabad
+              </div>
+
+              <h1 className="font-display text-[34px] leading-[1.1] text-ivory md:text-[46px]">
+                We design and build{" "}
+                <span className="italic text-gold">digital products</span>{" "}
+                that work.
+              </h1>
+
+              <p className="mx-auto max-w-xl text-[14.5px] leading-relaxed text-ivory/70 md:text-[15.5px]">
+                Web apps, mobile apps, SaaS platforms, dashboards, and AI-powered tools —
+                built end-to-end by a focused studio in Hyderabad.
+                Recruitment services are what we built software for. Now we help you build yours too.
               </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                <Link
+                  href="/projects"
+                  className="btn-gold inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-[13.5px]"
+                >
+                  See Our Work
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+                <Link
+                  href="/contact?intent=project"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-ivory/30 px-5 py-2.5 text-[13.5px] font-semibold text-ivory transition hover:bg-ivory/10"
+                >
+                  Start a Project
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-2.5 text-[13.5px] font-medium text-ivory/60 transition hover:text-gold"
+                >
+                  Recruitment services
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
             </div>
           </ScrollReveal>
 
-          <div className="grid gap-5 md:grid-cols-3">
-            {[
-              {
-                title: "Build Teams",
-                copy: "We help companies hire quality talent through recruitment, staffing, screening, and hiring coordination.",
-                href: "/services",
-                cta: "Hiring services",
-                icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="9" cy="7" r="4"/><path d="M17 11a4 4 0 100-8 4 4 0 000 8z"/><path d="M1 21v-2a4 4 0 014-4h8a4 4 0 014 4v2"/></svg>,
-              },
-              {
-                title: "Build Systems",
-                copy: "We build practical digital systems — websites, dashboards, web apps, CRM tools, HR systems, and automation workflows.",
-                href: "/projects",
-                cta: "See projects",
-                icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M9 9h6v6H9z"/></svg>,
-              },
-              {
-                title: "Build AI & Automation",
-                copy: "We help businesses use AI, automation, and smart workflows to reduce manual work, improve decisions, and move faster.",
-                href: "/ai-solutions",
-                cta: "AI solutions",
-                icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
-              },
-            ].map((s) => (
-              <ScrollReveal key={s.title}>
-                <div className="svc-card card-hover rounded-2xl border border-navy/8 bg-white p-7 shadow-soft">
-                  <div className="svc-ic">{s.icon}</div>
-                  <div className="mb-2 font-display text-xl text-navy">{s.title}</div>
-                  <p className="text-[14px] leading-relaxed text-charcoal/65">{s.copy}</p>
-                  <Link
-                    href={s.href}
-                    className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-navy transition hover:text-gold"
-                  >
-                    {s.cta}
-                    <ArrowRight className="h-3 w-3" />
-                  </Link>
+          {/* Stats row */}
+          <ScrollReveal delay={150}>
+            <div className="mx-auto mt-14 grid max-w-2xl grid-cols-3 divide-x divide-ivory/10 rounded-2xl border border-ivory/10 bg-white/[0.06] backdrop-blur">
+              {[
+                { value: "30+", label: "Apps shipped" },
+                { value: "5 yrs", label: "Studio experience" },
+                { value: "Hyd.", label: "India-based" },
+              ].map((s) => (
+                <div key={s.label} className="py-4 text-center">
+                  <div className="font-display text-[22px] text-gold">{s.value}</div>
+                  <div className="mt-0.5 text-[11px] uppercase tracking-[0.14em] text-ivory/50">{s.label}</div>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* ── WHAT WE DO ── */}
-      <section id="services" className="bg-white py-16 md:py-24">
+      {/* ── WHAT WE BUILD ────────────────────────────────── */}
+      <section className="bg-white py-16 md:py-20">
         <div className="container-padded">
           <ScrollReveal>
-            <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-              <div className="max-w-2xl">
-                <span className="gold-line mb-5 block" />
-                <h2 className="font-display text-3xl text-navy md:text-5xl">What We Do</h2>
-                <p className="mt-4 text-[15.5px] text-charcoal/70">
-                  Six service lines that span the people, platforms, and presence a growing business needs.
+            <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+              <div>
+                <span className="gold-line mb-4 block" />
+                <h2 className="font-display text-[26px] text-navy md:text-[32px]">What we build</h2>
+                <p className="mt-2 max-w-lg text-[14px] text-charcoal/65">
+                  Software is 70% of what we do. Below are the six areas where we go deep.
                 </p>
               </div>
               <Link
-                href="/contact?intent=project"
-                className="inline-flex shrink-0 items-center gap-2 text-[14px] font-semibold text-navy transition hover:text-gold"
+                href="/projects"
+                className="shrink-0 inline-flex items-center gap-1.5 text-[13px] font-semibold text-navy transition hover:text-gold"
               >
-                Talk to us about a project
+                View portfolio
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </ScrollReveal>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { title: "Recruitment & Staffing", copy: "Contract hiring, permanent hiring, IT and non-IT recruitment, bulk hiring, and profile shortlisting." },
-              { title: "Software Projects", copy: "Websites, web applications, dashboards, portals, CRM tools, HR systems, and internal business platforms." },
-              { title: "AI & Business Automation", copy: "AI-assisted workflows, automated reports, reminders, approvals, lead follow-ups, document processing, and manual work reduction." },
-              { title: "Websites & Digital Branding", copy: "Business websites, landing pages, brand content, company profiles, and digital presence building." },
-              { title: "Career Branding", copy: "Resume writing, LinkedIn optimization, ATS improvement, interview readiness, and professional profile support." },
-              { title: "Cloud & DevOps Support", copy: "Deployment support, CI/CD, monitoring, cloud infrastructure, containers, Kubernetes, and automation guidance." },
-            ].map((s) => (
-              <ScrollReveal key={s.title}>
-                <div className="svc-card card-hover rounded-2xl border border-navy/6 bg-ivory p-6">
-                  <div className="svc-ic">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                  </div>
-                  <div className="mb-1.5 font-display text-lg text-navy">{s.title}</div>
-                  <p className="text-[13.5px] leading-relaxed text-charcoal/65">{s.copy}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── AI TEASER ── */}
-      <section className="relative overflow-hidden bg-ivory py-16 md:py-24">
-        <div className="sage-blob -top-20 right-0 h-[420px] w-[420px]" />
-        <div className="container-padded relative">
-          <ScrollReveal>
-            <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-              <div className="max-w-2xl">
-                <span className="gold-line mb-5 block" />
-                <div className="mb-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-gold-deep">
-                  AI &amp; Automation
-                </div>
-                <h2 className="font-display text-3xl text-navy md:text-5xl">
-                  Practical AI for{" "}
-                  <span className="italic text-gold">everyday business workflows.</span>
-                </h2>
-                <p className="mt-4 max-w-xl text-[15.5px] text-charcoal/70">
-                  We help businesses identify where AI and automation actually reduce
-                  repetitive work — without the hype, without overclaiming.
-                </p>
-              </div>
-              <Link
-                href="/ai-solutions"
-                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-navy/15 px-5 py-3 text-[14px] font-semibold text-navy transition hover:bg-navy hover:text-ivory"
-              >
-                See all AI services
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid gap-5 md:grid-cols-3">
-            {[
-              {
-                title: "AI Workflow Automation",
-                copy: "Automate follow-ups, reminders, approvals, reports, and lead handoffs. Built on n8n, Make, or Zapier with AI steps where they add real value.",
-                href: "/ai-solutions",
-              },
-              {
-                title: "AI Resume & Candidate Screening",
-                copy: "AI-assisted resume filtering against JDs, skill extraction, and ranked shortlists. Always human-reviewed before profiles reach you.",
-                href: "/ai-solutions",
-              },
-              {
-                title: "Smart Dashboards & Insights",
-                copy: "Custom dashboards for leads, hiring, sales, operations. AI-assisted natural-language insights so owners can ask questions of their own data.",
-                href: "/ai-solutions",
-              },
-            ].map((c) => (
-              <ScrollReveal key={c.title}>
-                <Link
-                  href={c.href}
-                  className="group block rounded-2xl border border-navy/8 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-lift"
-                >
-                  <div className="mb-5 flex items-start justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-gold/30 bg-gradient-to-br from-gold/20 to-gold/5 text-gold-deep">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {SOFTWARE_SERVICES.map((s, i) => (
+              <ScrollReveal key={s.title} delay={i * 50}>
+                <div className="group svc-card card-hover rounded-2xl border border-navy/7 bg-ivory p-6">
+                  <div className="mb-3 flex items-start justify-between gap-2">
+                    <div className="svc-ic shrink-0">
+                      <ServiceIcon index={i} />
                     </div>
-                    <span className="rounded-md border border-sage/25 bg-sage/12 px-2 py-1 text-[10.5px] uppercase tracking-wider text-sage-deep">
-                      Available
+                    <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] ${
+                      s.tag === "AI" ? "chip-gold" : s.tag === "Speciality" ? "chip" : "bg-navy/5 text-navy/50"
+                    }`}>
+                      {s.tag}
                     </span>
                   </div>
-                  <div className="mb-2 font-display text-xl text-navy">{c.title}</div>
-                  <p className="text-[13.5px] leading-relaxed text-charcoal/65">{c.copy}</p>
-                  <div className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-navy transition group-hover:text-gold">
-                    Learn more
-                    <ArrowRight className="h-3 w-3" />
-                  </div>
-                </Link>
+                  <div className="mb-1.5 font-display text-[16px] text-navy">{s.title}</div>
+                  <p className="text-[13px] leading-relaxed text-charcoal/60">{s.copy}</p>
+                </div>
               </ScrollReveal>
             ))}
           </div>
 
+          {/* Recruitment teaser — clearly secondary */}
           <ScrollReveal>
-            <div className="mt-10 text-center">
-              <p className="mb-3 text-[13px] text-charcoal/55">
-                Plus AI Content Support, AI Chatbots, and AI Document Processing.
-              </p>
-              <Link
-                href="/ai-solutions"
-                className="btn-gold inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px]"
-              >
-                Explore all 6 AI services
-                <ArrowRight className="h-4 w-4" />
+            <div className="mt-5 flex items-center gap-4 rounded-2xl border border-navy/8 bg-navy/3 px-6 py-4">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-navy/10 bg-white text-navy">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <circle cx="9" cy="7" r="4" /><path d="M17 11a4 4 0 100-8"/><path d="M1 21v-2a4 4 0 014-4h8a4 4 0 014 4v2"/>
+                </svg>
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-[13px] font-semibold text-navy">Recruitment & Talent Services</span>
+                <span className="text-[13px] text-charcoal/55"> — contract, permanent, and bulk hiring for IT and non-IT roles across India.</span>
+              </div>
+              <Link href="/services" className="shrink-0 text-[12.5px] font-semibold text-navy/60 transition hover:text-gold">
+                Learn more →
               </Link>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ── FEATURED PROJECT ── */}
-      <section className="relative overflow-hidden bg-navy py-16 text-ivory md:py-24">
-        <div className="absolute inset-0 dot-grid opacity-30" />
-        <div className="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-gold/8 blur-3xl" />
-        <div className="container-padded relative">
-          <div className="grid items-center gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <ScrollReveal>
-                <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/85">
-                  Featured Project
+      {/* ── SELECTED WORK ────────────────────────────────── */}
+      <section className="bg-ivory py-16 md:py-20">
+        <div className="container-padded">
+          <ScrollReveal>
+            <div className="mb-10">
+              <span className="gold-line mb-4 block" />
+              <h2 className="font-display text-[26px] text-navy md:text-[32px]">Selected work</h2>
+              <p className="mt-2 text-[14px] text-charcoal/65">
+                Projects we've designed, built, and shipped.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="space-y-4">
+            {PROJECTS.map((p, i) => (
+              <ScrollReveal key={p.name} delay={i * 60}>
+                <div className={`group rounded-2xl border ${p.dark ? "border-gold/15" : "border-navy/7"} ${p.bg} overflow-hidden`}>
+                  <div className="grid items-center gap-6 p-7 md:grid-cols-[1fr_auto]">
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <span className={`font-display text-[18px] ${p.dark ? "text-ivory" : "text-navy"}`}>
+                          {p.name}
+                        </span>
+                        <span className={`rounded-full text-[10.5px] font-semibold uppercase tracking-[0.12em] px-2.5 py-0.5 ${
+                          p.dark ? "bg-gold/15 text-gold" : "bg-navy/7 text-navy/55"
+                        }`}>
+                          {p.status}
+                        </span>
+                      </div>
+                      <p className={`text-[11.5px] font-medium uppercase tracking-[0.14em] ${p.dark ? "text-ivory/45" : "text-charcoal/45"}`}>
+                        {p.type}
+                      </p>
+                      <p className={`max-w-xl text-[13.5px] leading-relaxed ${p.dark ? "text-ivory/70" : "text-charcoal/65"}`}>
+                        {p.desc}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {p.tech.map((t) => (
+                          <span key={t} className={`rounded-full px-2.5 py-0.5 text-[10.5px] font-medium ${
+                            p.dark ? "bg-white/8 text-ivory/70" : "bg-navy/6 text-navy/60"
+                          }`}>
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <Link
+                      href={p.href}
+                      {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className={`shrink-0 inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-[12.5px] font-semibold transition ${
+                        p.dark
+                          ? "border-gold/35 text-gold hover:bg-gold hover:text-navy"
+                          : "border-navy/15 text-navy hover:bg-navy hover:text-ivory"
+                      }`}
+                    >
+                      {p.external ? "Visit live site" : "View project"}
+                      {p.external ? <ArrowUpRight className="h-3 w-3" /> : <ArrowRight className="h-3 w-3" />}
+                    </Link>
+                  </div>
                 </div>
-                <h2 className="font-display text-3xl leading-tight text-ivory md:text-5xl">
-                  Team Purex —{" "}
-                  <span className="italic text-gold">Fitness Platform</span>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal>
+            <div className="mt-6 text-center">
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-1.5 rounded-full border border-navy/15 px-5 py-2.5 text-[13px] font-semibold text-navy transition hover:bg-navy hover:text-ivory"
+              >
+                See all projects
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── HOW WE WORK ──────────────────────────────────── */}
+      <section className="bg-white py-16 md:py-20">
+        <div className="container-padded">
+          <ScrollReveal>
+            <div className="mb-10 text-center">
+              <span className="gold-line-c mx-auto mb-4 block" />
+              <h2 className="font-display text-[26px] text-navy md:text-[32px]">How a project runs</h2>
+              <p className="mt-2 text-[14px] text-charcoal/65">
+                Straightforward process. No surprises.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-4 md:grid-cols-4">
+            {PROCESS_STEPS.map((s, i) => (
+              <ScrollReveal key={s.n} delay={i * 60}>
+                <div className="relative rounded-2xl border border-navy/7 bg-ivory p-6">
+                  <div className="mb-3 font-display text-[28px] leading-none text-gold/35">{s.n}</div>
+                  <div className="mb-1.5 font-display text-[15px] text-navy">{s.title}</div>
+                  <p className="text-[12.5px] leading-relaxed text-charcoal/60">{s.copy}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── AI INTEGRATION ───────────────────────────────── */}
+      <section className="relative overflow-hidden border-t border-navy/5 bg-ivory py-16 md:py-20">
+        <div className="sage-blob -right-20 top-0 h-[360px] w-[360px]" />
+        <div className="container-padded relative">
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_420px]">
+            <ScrollReveal>
+              <div>
+                <span className="gold-line mb-4 block" />
+                <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-deep">
+                  AI Integration
+                </div>
+                <h2 className="font-display text-[26px] text-navy md:text-[32px]">
+                  We embed AI where it{" "}
+                  <span className="italic text-gold">actually earns its place.</span>
                 </h2>
-                <p className="mt-5 text-[15.5px] leading-relaxed text-ivory/70">
-                  A modern fitness and transformation platform built to support fitness branding,
-                  client engagement, workout planning, diet guidance, and digital business growth.
+                <p className="mt-3 max-w-lg text-[14px] leading-relaxed text-charcoal/65">
+                  Not AI for the press release. AI in the product — resume scoring engines,
+                  smart document processing, workflow automation, and recommendation layers
+                  that cut real manual work. We've built it into our own SaaS.
                 </p>
-                <ul className="mt-6 space-y-2.5 text-[13.5px] text-ivory/75">
+                <ul className="mt-5 space-y-2 text-[13.5px] text-charcoal/70">
                   {[
-                    "Fitness brand website",
-                    "Client-focused digital experience",
-                    "Transformation and progress tracking concept",
-                    "Workout and diet planning structure",
-                    "Business platform direction for trainers and clients",
+                    "AI-powered resume screening and scoring",
+                    "Document parsing and extraction (Gemini, GPT)",
+                    "Workflow automation (n8n, Make, Zapier with AI steps)",
+                    "Smart dashboards with natural-language querying",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <svg className="mt-1 shrink-0 text-gold" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M5 12l5 5 9-11"/></svg>
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/ai-solutions"
+                  className="mt-6 inline-flex items-center gap-1.5 rounded-full border border-navy/15 px-5 py-2.5 text-[13px] font-semibold text-navy transition hover:bg-navy hover:text-ivory"
+                >
+                  All AI services
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={120}>
+              <div className="rounded-2xl border border-navy/8 bg-white p-6 shadow-soft">
+                <div className="mb-4 flex items-center justify-between border-b border-navy/5 pb-4">
+                  <div>
+                    <div className="text-[13px] font-semibold text-navy">AI Resume Score</div>
+                    <div className="mt-0.5 text-[11px] text-charcoal/50">Senior Cloud Architect · Auto-processed</div>
+                  </div>
+                  <span className="chip-gold rounded-full px-2.5 py-1 text-[10px]">AI</span>
+                </div>
+                <div className="mb-4 grid grid-cols-5 gap-1.5">
+                  {[
+                    { label: "Clarity", val: 88 },
+                    { label: "Impact", val: 76 },
+                    { label: "Skills", val: 92 },
+                    { label: "Format", val: 84 },
+                    { label: "Complete", val: 79 },
+                  ].map((m) => (
+                    <div key={m.label} className="text-center">
+                      <div className="mb-1 h-16 w-full overflow-hidden rounded-lg bg-navy/5">
+                        <div
+                          className="w-full rounded-lg bg-gradient-to-t from-gold/60 to-gold/20 transition-all"
+                          style={{ height: `${m.val}%`, marginTop: `${100 - m.val}%` }}
+                        />
+                      </div>
+                      <div className="text-[10px] text-charcoal/50">{m.label}</div>
+                      <div className="text-[11px] font-semibold text-navy">{m.val}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-1.5">
+                  {[
+                    { skill: "AWS", pct: 92 },
+                    { skill: "Terraform", pct: 85 },
+                    { skill: "Python", pct: 78 },
+                  ].map((r) => (
+                    <div key={r.skill} className="flex items-center gap-3">
+                      <span className="w-16 text-[11px] text-charcoal/55">{r.skill}</span>
+                      <div className="flex-1 rounded-full bg-navy/6">
+                        <div className="h-1.5 rounded-full bg-gradient-to-r from-gold to-gold/50" style={{ width: `${r.pct}%` }} />
+                      </div>
+                      <span className="w-8 text-right text-[10px] font-medium text-charcoal/55">{r.pct}%</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-4 text-center text-[10px] text-charcoal/35">Illustrative AI processing</p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SAGE HIRE STACK — OWN PRODUCT ────────────────── */}
+      <section className="relative overflow-hidden bg-navy py-16 text-ivory md:py-20">
+        <div className="absolute inset-0 dot-grid opacity-25" />
+        <div className="absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-gold/8 blur-3xl" />
+        <div className="container-padded relative">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <ScrollReveal>
+              <div>
+                <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-gold/70">
+                  Our Own Product
+                </div>
+                <h2 className="font-display text-[26px] leading-tight text-ivory md:text-[34px]">
+                  Sage Hire Stack —{" "}
+                  <span className="italic text-gold">recruitment software we built and use ourselves.</span>
+                </h2>
+                <p className="mt-4 text-[14px] leading-relaxed text-ivory/65">
+                  We don't just build software for clients — we built a full SaaS product to run our own
+                  recruitment operations. Sage Hire Stack is an AI-powered talent acquisition command
+                  centre with a full ATS, client portal, offer management, and interview suite.
+                </p>
+                <ul className="mt-5 space-y-2 text-[13px] text-ivory/70">
+                  {[
+                    "AI resume scoring with Gemini models",
+                    "Real-time ATS kanban pipeline",
+                    "Client portal with role-based access",
+                    "Interview scheduling and structured feedback",
+                    "Offer management and onboarding workflows",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
+                        <path d="M5 12l5 5 9-11" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-7 flex flex-wrap gap-2.5">
+                  <Link
+                    href="/sage-hire-stack"
+                    className="btn-gold inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-[13.5px]"
+                  >
+                    Learn about Sage Hire Stack
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
                   <a
-                    href="https://teampurex.com"
+                    href="https://hire.sagencrewnext.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-gold inline-flex items-center gap-2 rounded-full px-5 py-3 text-[13.5px]"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-ivory/20 px-5 py-2.5 text-[13.5px] font-semibold text-ivory transition hover:bg-ivory/8"
                   >
-                    Visit Live Site
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                    Open app
+                    <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
-                  <Link href="/projects" className="rounded-full border border-ivory/25 px-5 py-3 text-[13.5px] font-semibold text-ivory transition hover:bg-ivory hover:text-navy">
-                    View Case Study
-                  </Link>
-                  <Link href="/contact?intent=project" className="rounded-full px-5 py-3 text-[13.5px] font-semibold text-ivory/70 transition hover:text-gold">
-                    Start a similar project →
-                  </Link>
                 </div>
-              </ScrollReveal>
-            </div>
+              </div>
+            </ScrollReveal>
 
-            <div className="lg:col-span-7">
-              <ScrollReveal delay={150}>
-                <div className="glass-dark rounded-3xl border border-gold/20 p-6 shadow-lift md:p-7">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-gold to-[#A8881F] font-display font-bold text-navy">P</div>
-                      <div>
-                        <div className="text-[14px] font-semibold text-ivory">Team Purex</div>
-                        <div className="text-[11px] text-ivory/55">Fitness &amp; Transformation Platform</div>
-                      </div>
-                    </div>
-                    <span className="rounded-md bg-gold/15 px-2 py-1 text-[10.5px] uppercase tracking-wider text-gold/90">Illustrative</span>
+            <ScrollReveal delay={100}>
+              <div className="glass-dark rounded-2xl border border-gold/15 p-5 shadow-lift">
+                {/* Mini product mockup */}
+                <div className="mb-4 flex items-center gap-3 border-b border-white/6 pb-4">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-gold to-gold-deep font-display font-bold text-[12px] text-navy">S</div>
+                  <div>
+                    <div className="text-[13px] font-semibold text-ivory">Sage Hire Stack</div>
+                    <div className="text-[10px] text-ivory/45">AI Talent Acquisition Platform</div>
                   </div>
-                  <div className="grid gap-3 md:grid-cols-2">
-                    <div className="rounded-xl border border-white/8 bg-white/5 p-4">
-                      <div className="mb-2 text-[11px] uppercase tracking-wider text-ivory/55">Active Plans</div>
-                      <div className="font-display text-3xl leading-none text-ivory">—</div>
-                      <div className="mt-1 text-[11px] text-ivory/45">Workout &amp; diet plans active</div>
-                    </div>
-                    <div className="rounded-xl border border-white/8 bg-white/5 p-4">
-                      <div className="mb-2 text-[11px] uppercase tracking-wider text-ivory/55">Progress Tracking</div>
-                      <div className="flex h-12 items-end gap-1">
-                        {[35, 55, 45, 75, 60, 88, 95].map((h, i) => (
-                          <div key={i} className="flex-1 rounded-sm" style={{ height: `${h}%`, background: `rgba(212,175,55,${0.3 + i * 0.08})` }} />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="rounded-xl border border-white/8 bg-white/5 p-4 md:col-span-2">
-                      <div className="mb-3 text-[11px] uppercase tracking-wider text-ivory/55">Recent Sessions</div>
-                      <div className="space-y-2">
-                        {[
-                          { init: "PT", label: "Push · Strength Training", time: "60 min" },
-                          { init: "PL", label: "Pull · Back Day", time: "55 min" },
-                          { init: "LG", label: "Legs · Lower Body", time: "65 min" },
-                        ].map((s) => (
-                          <div key={s.init} className="flex items-center justify-between rounded-lg bg-white/3 px-2.5 py-1.5 text-[12.5px]">
-                            <div className="flex items-center gap-2.5">
-                              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-sage/20 text-[10px] font-semibold text-sage">{s.init}</div>
-                              <span className="text-ivory/80">{s.label}</span>
-                            </div>
-                            <span className="text-[11px] text-gold/85">{s.time}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="mt-3 text-center text-[10.5px] text-ivory/40">Illustrative workflow — actual platform UI varies</p>
+                  <span className="ml-auto rounded-full bg-sage/20 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-sage">Live</span>
                 </div>
-              </ScrollReveal>
-            </div>
+
+                {/* KPI row */}
+                <div className="mb-4 grid grid-cols-3 gap-2">
+                  {[
+                    { label: "Active Roles", value: "12" },
+                    { label: "In Pipeline", value: "84" },
+                    { label: "Offers Out", value: "6" },
+                  ].map((k) => (
+                    <div key={k.label} className="rounded-xl border border-white/6 bg-white/4 p-3 text-center">
+                      <div className="font-display text-[20px] text-ivory">{k.value}</div>
+                      <div className="mt-0.5 text-[9.5px] uppercase tracking-wider text-ivory/40">{k.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Pipeline stages */}
+                <div className="mb-3 text-[9.5px] uppercase tracking-wider text-ivory/35">ATS Pipeline</div>
+                <div className="space-y-1.5">
+                  {[
+                    { stage: "Applied", count: 32, pct: 85 },
+                    { stage: "Screening", count: 18, pct: 55 },
+                    { stage: "Interview", count: 9, pct: 30 },
+                    { stage: "Offer", count: 6, pct: 18 },
+                  ].map((s) => (
+                    <div key={s.stage} className="flex items-center gap-3">
+                      <span className="w-16 text-[11px] text-ivory/55">{s.stage}</span>
+                      <div className="flex-1 rounded-full bg-white/5">
+                        <div className="h-1.5 rounded-full bg-gradient-to-r from-gold/70 to-gold/25" style={{ width: `${s.pct}%` }} />
+                      </div>
+                      <span className="text-[11px] text-ivory/45">{s.count}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-4 text-center text-[9.5px] text-ivory/25">Illustrative dashboard</p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ── HOW WE WORK ── */}
-      <section className="bg-ivory py-16 md:py-24">
+      {/* ── RECRUITMENT SERVICES (30%) ────────────────────── */}
+      <section className="bg-ivory py-16 md:py-20">
         <div className="container-padded">
-          <ScrollReveal>
-            <div className="mb-14 text-center">
-              <span className="gold-line-c mx-auto mb-5 block" />
-              <h2 className="font-display text-3xl text-navy md:text-5xl">How We Work</h2>
-              <p className="mt-4 text-[15.5px] text-charcoal/70">
-                A simple, transparent process from first conversation to delivery and beyond.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="mx-auto max-w-3xl space-y-9">
-            {[
-              { n: "01", title: "Understand", copy: "We understand your hiring need, business idea, workflow, or digital challenge — and what success looks like for you." },
-              { n: "02", title: "Plan", copy: "We map the right solution — screens, services, content, or a hiring approach — with clear deliverables." },
-              { n: "03", title: "Build", copy: "We create the website, system, shortlist, automation, content, or digital asset you signed off on." },
-              { n: "04", title: "Review", copy: "We test, refine, validate, and improve before delivery — no surprises at handover." },
-              { n: "05", title: "Support", copy: "We help with launch, coordination, handover, improvements, and ongoing growth as the project moves to production." },
-            ].map((step, i) => (
-              <ScrollReveal key={step.n} delay={i * 80}>
-                <div className="proc-step reveal" data-step={step.n}>
-                  <div className="mb-1.5 font-display text-xl text-navy">{step.title}</div>
-                  <p className="text-[14px] leading-relaxed text-charcoal/70">{step.copy}</p>
+          <div className="grid items-start gap-10 lg:grid-cols-[1fr_400px]">
+            <ScrollReveal>
+              <div>
+                <span className="gold-line mb-4 block" />
+                <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-charcoal/50">
+                  Talent Solutions
                 </div>
-              </ScrollReveal>
-            ))}
+                <h2 className="font-display text-[26px] text-navy md:text-[32px]">
+                  Recruitment services,{" "}
+                  <span className="italic text-gold">done by the people who built the software for it.</span>
+                </h2>
+                <p className="mt-3 max-w-lg text-[14px] leading-relaxed text-charcoal/65">
+                  Our team handles end-to-end hiring for IT and non-IT roles across India.
+                  Every search runs on Sage Hire Stack — so you get full pipeline visibility,
+                  not just weekly emails.
+                </p>
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {[
+                    { title: "IT Recruitment", copy: "Engineers, DevOps, product managers, QA, data, and design across levels." },
+                    { title: "Non-IT Hiring", copy: "Sales, marketing, operations, finance, and leadership roles." },
+                    { title: "Contract & Staffing", copy: "Short-term and project-based placement with payroll flexibility." },
+                    { title: "Bulk Hiring", copy: "High-volume hiring campaigns with structured screening and tracking." },
+                  ].map((item) => (
+                    <div key={item.title} className="rounded-xl border border-navy/7 bg-white p-4">
+                      <div className="mb-1 text-[13.5px] font-semibold text-navy">{item.title}</div>
+                      <p className="text-[12.5px] leading-relaxed text-charcoal/55">{item.copy}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 flex flex-wrap gap-2.5">
+                  <Link
+                    href="/contact?intent=employer"
+                    className="btn-gold inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-[13.5px]"
+                  >
+                    Submit a hiring brief
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-navy/12 px-5 py-2.5 text-[13.5px] font-semibold text-navy transition hover:bg-navy hover:text-ivory"
+                  >
+                    See all services
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={100}>
+              <div className="rounded-2xl border border-navy/8 bg-white p-6 shadow-soft">
+                <div className="flex items-center gap-2.5 border-b border-navy/5 pb-4">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-navy text-gold">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-[13px] font-semibold text-navy">Hiring Requirement Received</div>
+                    <div className="text-[11px] text-charcoal/50">Senior Cloud Architect · Hyderabad / Remote</div>
+                  </div>
+                </div>
+                <div className="border-b border-navy/5 py-4">
+                  <div className="mb-2 text-[11px] uppercase tracking-[0.12em] text-charcoal/45">Skills matched</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["AWS", "GCP", "Terraform", "Kubernetes", "Python"].map((t) => (
+                      <span key={t} className="chip">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="space-y-2 pt-4">
+                  {[
+                    { init: "AS", name: "Aarav S.", score: "94 / 100" },
+                    { init: "PR", name: "Priya R.", score: "89 / 100" },
+                    { init: "VK", name: "Vikram K.", score: "86 / 100" },
+                  ].map((c) => (
+                    <div key={c.name} className="flex items-center justify-between rounded-lg bg-ivory px-3 py-2">
+                      <div className="flex items-center gap-2.5">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-sage/15 text-[11px] font-semibold text-sage-deep">{c.init}</div>
+                        <span className="text-[13px] font-medium text-navy">{c.name}</span>
+                      </div>
+                      <span className="text-[11.5px] font-semibold text-gold-deep">{c.score}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-4 text-center text-[10px] text-charcoal/35">Illustrative shortlist — runs on Sage Hire Stack</p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ── WHO WE HELP ── */}
-      <section className="bg-white py-16 md:py-24">
+      {/* ── WHO WE WORK WITH ──────────────────────────────── */}
+      <section className="bg-white py-14 md:py-16">
         <div className="container-padded">
           <ScrollReveal>
-            <div className="mb-12 text-center">
-              <span className="gold-line-c mx-auto mb-5 block" />
-              <h2 className="font-display text-3xl text-navy md:text-5xl">Who We Help</h2>
-              <p className="mt-4 text-[15.5px] text-charcoal/70">
-                We work best with teams and individuals at this stage of building.
-              </p>
+            <div className="mb-8 text-center">
+              <span className="gold-line-c mx-auto mb-4 block" />
+              <h2 className="font-display text-[24px] text-navy md:text-[28px]">Who we work with</h2>
             </div>
           </ScrollReveal>
           <ScrollReveal>
-            <div className="flex flex-wrap justify-center gap-3">
-              {["Startups", "Small Businesses", "HR Teams", "Fitness & Wellness Brands", "Service Businesses", "Technology Teams", "Job Seekers", "Growing Companies"].map((a) => (
+            <div className="flex flex-wrap justify-center gap-2.5">
+              {[
+                "Startups building 0→1",
+                "Scale-ups needing a product team",
+                "Businesses replacing spreadsheets",
+                "Companies automating workflows",
+                "HR teams upgrading their stack",
+                "Founders shipping their first app",
+                "IT teams with recruitment backlogs",
+              ].map((a) => (
                 <span key={a} className="aud-chip">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-gold" />
+                  <CheckCircle2 className="h-3 w-3 text-gold" />
                   {a}
                 </span>
               ))}
@@ -473,238 +644,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FOR EMPLOYERS ── */}
-      <section id="employers" className="bg-ivory py-16 md:py-24">
-        <div className="container-padded grid items-center gap-12 lg:grid-cols-2">
-          <ScrollReveal>
-            <div>
-              <span className="gold-line mb-5 block" />
-              <div className="mb-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-charcoal/50">
-                For Employers
-              </div>
-              <h2 className="font-display text-3xl text-navy md:text-5xl">
-                Need the right candidates,{" "}
-                <span className="italic text-gold">faster?</span>
-              </h2>
-              <p className="mt-4 text-[15.5px] leading-relaxed text-charcoal/70">
-                Share your job description and hiring requirements. Our team reviews
-                the role, screens suitable candidates, and shares relevant resumes —
-                typically within agreed turnaround windows.
-              </p>
-              <ul className="mt-6 space-y-2.5 text-[14px] text-charcoal/75">
-                {["Contract, permanent, and bulk hiring support", "IT and non-IT recruitment across role families", "Human-screened profiles, not auto-forwards", "Interview coordination and feedback tracking"].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <CheckCircle2 className="mt-1 h-3.5 w-3.5 shrink-0 text-gold" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/contact?intent=employer"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3.5 text-[14.5px] text-ivory transition hover:bg-navy-deep"
-              >
-                Submit Hiring Requirement
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={150}>
-            <div className="rounded-3xl border border-navy/8 bg-white p-7 shadow-soft">
-              <div className="flex items-start gap-3 border-b border-navy/5 pb-5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-gold">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
-                </div>
-                <div>
-                  <div className="font-display text-lg text-navy">Job Description</div>
-                  <div className="text-[12px] text-charcoal/60">Senior Cloud Architect · Hyderabad / Remote</div>
-                </div>
-              </div>
-              <div className="border-b border-navy/5 py-5">
-                <div className="mb-2 text-[12px] uppercase tracking-wider text-charcoal/55">Skills extracted</div>
-                <div className="flex flex-wrap gap-1.5">
-                  {["AWS", "GCP", "Terraform", "Kubernetes", "Python"].map((s) => (
-                    <span key={s} className="chip">{s}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-2.5 pt-5">
-                {[{ init: "AS", name: "Aarav S.", score: "95%" }, { init: "PR", name: "Priya R.", score: "91%" }, { init: "VK", name: "Vikram K.", score: "88%" }].map((c) => (
-                  <div key={c.name} className="flex items-center justify-between rounded-lg bg-ivory px-3 py-2 text-[13px]">
-                    <div className="flex items-center gap-2.5">
-                      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-sage/15 text-[11px] font-semibold text-sage-deep">{c.init}</div>
-                      <span className="font-medium text-navy">{c.name}</span>
-                    </div>
-                    <span className="font-semibold text-gold-deep">{c.score}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-center text-[10.5px] text-charcoal/40">Illustrative workflow</p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ── FOR CANDIDATES ── */}
-      <section id="candidates" className="bg-white py-16 md:py-24">
-        <div className="container-padded grid items-center gap-12 lg:grid-cols-2">
-          <ScrollReveal className="order-2 lg:order-1">
-            <div className="rounded-3xl border border-navy/8 bg-ivory p-7 shadow-soft">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-2xl border border-navy/6 bg-white p-4">
-                  <div className="mb-2 text-[10.5px] uppercase tracking-wider text-charcoal/55">Before</div>
-                  <div className="font-display text-3xl text-red-500">42<span className="text-[16px]">%</span></div>
-                  <div className="mt-1 text-[11px] text-charcoal/55">ATS Score</div>
-                </div>
-                <div className="rounded-2xl border border-gold/30 bg-white p-4">
-                  <div className="mb-2 text-[10.5px] uppercase tracking-wider text-gold/85">After</div>
-                  <div className="font-display text-3xl text-gold-deep">86<span className="text-[16px]">%</span></div>
-                  <div className="mt-1 text-[11px] text-charcoal/55">ATS Score</div>
-                </div>
-              </div>
-              <div className="mt-4 space-y-2 text-[12.5px]">
-                {[{ label: "Keyword Match", val: "78%" }, { label: "Format Quality", val: "92%" }, { label: "LinkedIn Headline", val: "Optimized" }].map((r) => (
-                  <div key={r.label} className="flex items-center justify-between rounded-lg border border-navy/5 bg-white px-3 py-1.5">
-                    <span className="text-charcoal/70">{r.label}</span>
-                    <span className="font-semibold text-gold-deep">{r.val}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-center text-[10.5px] text-charcoal/40">Illustrative resume upgrade</p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal className="order-1 lg:order-2" delay={150}>
-            <div>
-              <span className="gold-line mb-5 block" />
-              <div className="mb-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-charcoal/50">
-                For Candidates
-              </div>
-              <h2 className="font-display text-3xl text-navy md:text-5xl">
-                A stronger resume,{" "}
-                <span className="italic text-gold">a sharper profile.</span>
-              </h2>
-              <p className="mt-4 text-[15.5px] leading-relaxed text-charcoal/70">
-                We help professionals upgrade their resumes, optimize LinkedIn for
-                recruiter visibility, and prepare for interviews — so your skills
-                come across as clearly as they should.
-              </p>
-              <ul className="mt-6 space-y-2.5 text-[14px] text-charcoal/75">
-                {["ATS-friendly resume writing and redesign", "LinkedIn headline, about, and skill optimization", "Mock interviews and structured prep", "Career positioning for your next role"].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <CheckCircle2 className="mt-1 h-3.5 w-3.5 shrink-0 text-gold" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/contact?intent=candidate"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3.5 text-[14.5px] text-ivory transition hover:bg-navy-deep"
-              >
-                Upload Resume
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ── FREE TOOLS TEASER ── */}
-      <section className="relative overflow-hidden bg-ivory py-16 md:py-24">
-        <div className="sage-blob -left-20 top-10 h-[420px] w-[420px]" />
-        <div className="container-padded relative">
-          <ScrollReveal>
-            <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-              <div className="max-w-2xl">
-                <span className="gold-line mb-5 block" />
-                <div className="mb-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-gold">
-                  Free Tools
-                </div>
-                <h2 className="font-display text-3xl text-navy md:text-5xl">
-                  Built to help you,{" "}
-                  <span className="italic text-gold">no sign-up required.</span>
-                </h2>
-                <p className="mt-4 text-[15.5px] text-charcoal/70">
-                  Practical, instant tools for hiring teams, project planners, and job seekers.
-                </p>
-              </div>
-              <Link href="/tools" className="inline-flex shrink-0 items-center gap-2 text-[14px] font-semibold text-navy transition hover:text-gold">
-                Explore all tools
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { title: "ATS Resume Score Checker", sub: "Match your resume against any JD.", href: "/tools#tool-ats" },
-              { title: "Resume Keyword Matcher", sub: "Surface missing keywords instantly.", href: "/tools#tool-ats" },
-              { title: "CTC Calculator", sub: "CTC → in-hand monthly (India).", href: "/tools#tool-ctc" },
-              { title: "JD Keyword Extractor", sub: "Pull skills, experience, qualifications.", href: "/tools#tool-jd" },
-              { title: "Cost of Hire Calculator", sub: "Real cost of filling a role.", href: "/tools#tool-coh" },
-              { title: "Project Cost Estimator", sub: "Get a rough estimate via consultation.", href: "/contact?intent=project" },
-              { title: "Website Readiness Checklist", sub: "12-point pre-launch audit.", href: "/contact?intent=project" },
-              { title: "Hiring Requirement Template", sub: "A clean JD format that gets results.", href: "/contact?intent=employer" },
-            ].map((t) => (
-              <ScrollReveal key={t.title}>
-                <Link href={t.href} className="block rounded-xl border border-navy/8 bg-white p-5 transition hover:border-gold/40 hover:shadow-soft">
-                  <div className="font-display text-[15px] text-navy">{t.title}</div>
-                  <div className="mt-1 text-[12px] text-charcoal/60">{t.sub}</div>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── FINAL CTA ── */}
-      <section className="gradient-cta relative overflow-hidden py-20 text-ivory md:py-28">
-        <div className="absolute inset-0 dot-grid opacity-30" />
-        {[
-          { label: "Recruitment", cls: "left-8 top-10 floaty" },
-          { label: "Software Projects", cls: "right-12 top-24 floaty-2" },
-          { label: "AI Automation", cls: "bottom-16 left-20 floaty-3" },
-          { label: "Digital Branding", cls: "bottom-10 right-24 floaty" },
-          { label: "Smart Dashboards", cls: "left-1/4 top-1/2 floaty-2" },
-        ].map((chip) => (
-          <div
-            key={chip.label}
-            className={`glass-dark absolute hidden rounded-xl px-3.5 py-2 text-[12px] text-ivory/85 md:block ${chip.cls}`}
-          >
-            {chip.label}
-          </div>
-        ))}
-
+      {/* ── FINAL CTA ─────────────────────────────────────── */}
+      <section className="gradient-cta relative overflow-hidden py-16 text-ivory md:py-24">
+        <div className="absolute inset-0 dot-grid opacity-25" />
         <div className="container-padded relative text-center">
           <ScrollReveal>
             <span className="gold-line-c mx-auto mb-5 block" />
-            <h2 className="font-display text-4xl leading-[1.05] text-ivory md:text-6xl">
-              Ready to build your{" "}
-              <span className="italic text-gold">
-                next team, system, or AI-powered workflow?
-              </span>
+            <h2 className="font-display text-[28px] leading-tight text-ivory md:text-[38px]">
+              Have a product to build or a role to fill?
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-[15.5px] text-ivory/70 md:text-[16.5px]">
-              Whether you need hiring support, a business website, a custom dashboard,
-              AI-enabled automation, or digital branding, Sage &amp; Crew Next can help
-              you move from idea to execution.
+            <p className="mx-auto mt-4 max-w-xl text-[14px] text-ivory/65 md:text-[15px]">
+              Software studio work and talent solutions from a single team in Hyderabad.
+              No hand-offs. No middlemen.
             </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/contact?intent=project"
-                className="btn-gold inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[14.5px]"
+                className="btn-gold inline-flex items-center gap-2 rounded-full px-6 py-3 text-[13.5px]"
               >
-                Start a Project
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link href="/contact?intent=employer" className="btn-ghost-light rounded-full px-6 py-3.5 text-[14.5px]">
-                Hire Talent
+                Start a Software Project
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
-                href="/ai-solutions"
-                className="rounded-full border border-ivory/25 px-6 py-3.5 text-[14.5px] font-semibold text-ivory transition hover:bg-ivory/10"
+                href="/contact?intent=employer"
+                className="inline-flex items-center gap-2 rounded-full border border-ivory/25 px-6 py-3 text-[13.5px] font-semibold text-ivory transition hover:bg-ivory/10"
               >
-                Discuss AI Solution
+                Submit a Hiring Requirement
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-1.5 rounded-full px-4 py-3 text-[13px] font-medium text-ivory/55 transition hover:text-ivory"
+              >
+                Just want to talk? →
               </Link>
             </div>
           </ScrollReveal>
@@ -712,4 +683,17 @@ export default function HomePage() {
       </section>
     </>
   );
+}
+
+/* ─── icon helper ───────────────────────────────────────── */
+function ServiceIcon({ index }: { index: number }) {
+  const icons = [
+    <svg key="0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>,
+    <svg key="1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>,
+    <svg key="2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>,
+    <svg key="3" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>,
+    <svg key="4" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h4M7 11h6M7 14h3"/></svg>,
+    <svg key="5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 01-2.5 2.5h-5A2.5 2.5 0 012 19.5v-15A2.5 2.5 0 014.5 2h5z"/><path d="M19 8l-5 5 2 4 5-9h-2z"/></svg>,
+  ];
+  return icons[index] ?? icons[0];
 }

@@ -8,12 +8,12 @@ import { LogoMark } from "@/components/logo-mark";
 import { HIRE_APP_URL, cn } from "@/lib/utils";
 
 const NAV_LINKS = [
+  { href: "/projects", label: "Work" },
   { href: "/services", label: "Services" },
-  { href: "/ai-solutions", label: "AI & Automation" },
-  { href: "/projects", label: "Projects" },
-  { href: "/#employers", label: "Hire" },
-  { href: "/#candidates", label: "Apply" },
-  { href: "/tools", label: "Free Tools" },
+  { href: "/ai-solutions", label: "AI" },
+  { href: "/sage-hire-stack", label: "Sage Hire" },
+  { href: "/tools", label: "Tools" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -42,9 +42,7 @@ export function SiteHeader() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <nav className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
-          <Link href="/" aria-label="Sage & Crew Next — Home" className="group flex items-center gap-3">
-            <LogoMark tone={scrolled ? "dark" : "light"} />
-          </Link>
+          <LogoMark tone={scrolled ? "dark" : "light"} />
 
           {/* Desktop nav */}
           <ul
@@ -71,7 +69,7 @@ export function SiteHeader() {
           {/* Desktop CTAs */}
           <div className="hidden items-center gap-2.5 lg:flex">
             <Link
-              href="/contact?intent=project"
+              href="/contact?intent=employer"
               className={cn(
                 "rounded-full border px-4 py-2 text-[13.5px] font-semibold transition",
                 scrolled
@@ -79,13 +77,13 @@ export function SiteHeader() {
                   : "border-ivory/30 text-ivory hover:bg-ivory/10",
               )}
             >
-              Start a Project
+              Hire Talent
             </Link>
             <Link
-              href="/contact?intent=employer"
+              href="/contact?intent=project"
               className="btn-gold inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13.5px]"
             >
-              Hire Talent
+              Start a Project
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>

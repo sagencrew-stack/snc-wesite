@@ -25,16 +25,16 @@ const display = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "Sage & Crew Next — Recruitment, Software & AI Automation",
+    default: "Sage & Crew Next — Software Product Studio & Recruitment · Hyderabad",
     template: "%s · Sage & Crew Next",
   },
   description:
-    "One partner for hiring, software, and AI-powered workflows. Sage & Crew Next helps growing teams across India recruit faster, build better, and ship smarter.",
+    "Software product studio in Hyderabad. We design and build web apps, mobile apps, SaaS platforms, dashboards, and AI-powered tools. Also run recruitment services for IT and non-IT roles across India.",
   metadataBase: new URL("https://sagencrewnext.com"),
   openGraph: {
-    title: "Sage & Crew Next",
+    title: "Sage & Crew Next — Software Studio & Recruitment",
     description:
-      "Recruitment, software projects, and AI-powered workflows for growing Indian teams.",
+      "We design and build digital products — web apps, SaaS, dashboards, AI integration. Plus recruitment services for Indian tech companies.",
     url: "https://sagencrewnext.com",
     siteName: "Sage & Crew Next",
     locale: "en_IN",
