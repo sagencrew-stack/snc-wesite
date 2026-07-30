@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import {
+  SageHireStackThumb,
+  LiferraThumb,
+  TeampurexThumb,
+  MahantraderThumb,
+  RishiDishaThumb,
+} from "@/components/project-thumbnails";
 
 export const metadata: Metadata = {
   title: "Our Work — Projects",
@@ -10,6 +18,7 @@ export const metadata: Metadata = {
 
 const PROJECTS = [
   {
+    thumbnail: <SageHireStackThumb />,
     type: "OWN SAAS PRODUCT",
     status: "LIVE",
     statusColor: "emerald",
@@ -29,6 +38,7 @@ const PROJECTS = [
     accentText: "#5C8060",
   },
   {
+    thumbnail: <LiferraThumb />,
     type: "OWN MOBILE PRODUCT",
     status: "BETA",
     statusColor: "gold",
@@ -48,6 +58,7 @@ const PROJECTS = [
     accentText: "#A8842E",
   },
   {
+    thumbnail: <TeampurexThumb />,
     type: "HEALTH TECH PLATFORM",
     status: "LIVE",
     statusColor: "emerald",
@@ -67,6 +78,7 @@ const PROJECTS = [
     accentText: "#3B82F6",
   },
   {
+    thumbnail: <MahantraderThumb />,
     type: "ERP & CORPORATE WEBSITE",
     status: "LIVE",
     statusColor: "emerald",
@@ -86,6 +98,7 @@ const PROJECTS = [
     accentText: "#7C3AED",
   },
   {
+    thumbnail: <RishiDishaThumb />,
     type: "VAASTU & ASTROLOGY PORTAL",
     status: "LIVE",
     statusColor: "emerald",
@@ -211,8 +224,10 @@ export default function ProjectsPage() {
   );
 }
 
+type Project = Omit<typeof PROJECTS[0], "thumbnail"> & { thumbnail: ReactNode };
+
 function ProjectCard({ project: p, index, dark = false }: {
-  project: typeof PROJECTS[0];
+  project: Project;
   index: number;
   dark?: boolean;
 }) {
@@ -225,8 +240,10 @@ function ProjectCard({ project: p, index, dark = false }: {
             : "border border-dark/7 bg-white hover:shadow-[0_8px_30px_-8px_rgba(7,26,47,0.12)]"
         }`}
       >
-        {/* Color bar */}
-        <div className="h-[3px]" style={{ background: p.accentBar }} />
+        {/* Thumbnail */}
+        <div className="overflow-hidden border-b border-white/5 bg-[#0A0F1C]">
+          {p.thumbnail}
+        </div>
 
         <div className="flex flex-1 flex-col p-6">
           {/* Header row */}
