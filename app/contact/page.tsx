@@ -27,8 +27,8 @@ export default function ContactPage() {
               Tell us what you&apos;re working on. <span className="italic text-gold">We&apos;ll come back.</span>
             </h1>
             <p className="text-lg leading-relaxed text-ivory/80">
-              Hiring a role, scoping a project, or trying to automate a
-              workflow? Send a quick note. We typically reply within one
+              Scoping a software project, planning an AI workflow, or need a
+              custom ERP? Send a quick note. We typically reply within one
               business day.
             </p>
           </div>
@@ -50,13 +50,13 @@ export default function ContactPage() {
 
             <div className="space-y-3 rounded-3xl border border-gold/30 bg-gold/5 p-7 shadow-inset-gold">
               <Sparkles className="h-5 w-5 text-gold-deep" />
-              <h3 className="text-lg">Already a client?</h3>
+              <h3 className="text-lg">Already working with us?</h3>
               <p className="text-sm text-charcoal/75">
-                Use the Sage Hire Stack portal to see live pipeline, message
-                your account manager, or pull historical reports.
+                Email your project manager directly or reach us on WhatsApp
+                for the fastest response on active projects.
               </p>
-              <a href="https://hire.sagencrew.in" className="btn-secondary">
-                Open the portal
+              <a href="https://wa.me/918008543889" target="_blank" rel="noopener" className="btn-secondary">
+                WhatsApp us
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>

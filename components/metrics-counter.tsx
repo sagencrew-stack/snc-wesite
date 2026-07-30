@@ -14,8 +14,8 @@ const METRICS: Metric[] = [
   { value: 30,  suffix: "+", label: "Products Shipped",    sublabel: "web, mobile & SaaS"     },
   { value: 20,  suffix: "+", label: "Clients Served",      sublabel: "across 3 countries"      },
   { value: 5,   suffix: "+", label: "Years Active",        sublabel: "Hyderabad-based"         },
-  { value: 200, suffix: "+", label: "Candidates Placed",   sublabel: "via Sage Hire Stack"     },
-  { value: 82,  suffix: "%", label: "Offer Acceptance",    sublabel: "industry avg. 62%"       },
+  { value: 100, suffix: "%", label: "Code Ownership",      sublabel: "no lock-in, ever"        },
+  { value: 48,  suffix: "h", label: "Avg. Spec Time",      sublabel: "brief to written scope"  },
   { value: 3,   suffix: "",  label: "Countries",           sublabel: "IN · SG · AE"            },
 ];
 
@@ -62,11 +62,23 @@ export function MetricsCounter({ className }: { className?: string }) {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const trigger = () => { setActive(true); observer.disconnect(); };
+
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setActive(true); observer.disconnect(); } },
-      { threshold: 0.3 }
+      ([entry]) => { if (entry.isIntersecting) trigger(); },
+      { threshold: 0.05 }
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
+
+    // Fallback: if already in viewport on mount, fire immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      trigger();
+    }
+
     return () => observer.disconnect();
   }, []);
 

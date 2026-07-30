@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 
-type Topic = "recruitment" | "software" | "ai" | "candidate" | "other";
+type Topic = "software" | "mobile" | "ai" | "erp" | "other";
 
 interface FormState {
   name: string;
@@ -17,7 +17,7 @@ const INITIAL: FormState = {
   name: "",
   email: "",
   company: "",
-  topic: "recruitment",
+  topic: "software",
   message: "",
 };
 
@@ -156,10 +156,10 @@ export function ContactForm() {
           onChange={(e) => update("topic", e.target.value as Topic)}
           className="w-full rounded-xl border border-navy/15 bg-white px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/40"
         >
-          <option value="recruitment">Recruitment — hiring a role</option>
-          <option value="software">Software project</option>
-          <option value="ai">AI / automation</option>
-          <option value="candidate">I&apos;m a candidate looking for a role</option>
+          <option value="software">Web / mobile software project</option>
+          <option value="mobile">Mobile app</option>
+          <option value="ai">AI &amp; automation</option>
+          <option value="erp">ERP / business system</option>
           <option value="other">Something else</option>
         </select>
       </div>
