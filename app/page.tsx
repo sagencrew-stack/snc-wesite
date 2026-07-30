@@ -1,615 +1,562 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { ParticleBackground } from "@/components/particle-bg";
+import { HeroDashboard } from "@/components/hero-dashboard";
+import { MetricsCounter } from "@/components/metrics-counter";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
-/* ─── data ─────────────────────────────────────────────── */
+/* ── Tech marquee ── */
 const TECH = [
-  "Next.js", "React Native", "TypeScript", "Supabase", "PostgreSQL",
-  "Gemini AI", "Flutter", "Node.js", "Tailwind CSS", "Vercel",
-  "n8n Automation", "GPT-4", "Framer Motion", "Docker", "Prisma",
+  "Next.js", "React", "TypeScript", "Supabase", "PostgreSQL",
+  "React Native", "Node.js", "Tailwind CSS", "n8n", "Gemini AI",
+  "Vercel", "Expo", "Python", "OpenAI", "Stripe",
 ];
 
-const SERVICES = [
+function TechMarquee() {
+  return (
+    <div className="marquee-wrap py-1">
+      <div className="marquee-track">
+        {[...TECH, ...TECH].map((t, i) => (
+          <span key={i} className="marquee-item">
+            {t}<span className="marquee-dot" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── 1. HERO ── */
+function Hero() {
+  return (
+    <section className="hero-bg dot-grid min-h-[calc(100vh-68px)] flex items-center pt-24 pb-16">
+      <div className="container-padded w-full relative z-10">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_420px]">
+          <div>
+            <div className="section-eyebrow mb-7">Software Studio · Hyderabad</div>
+            <h1 className="font-display text-[42px] font-medium leading-[1.08] tracking-[-0.025em] text-ivory sm:text-[52px] lg:text-[60px]">
+              We Design, Build &amp;<br />
+              Ship Software<br />
+              <span style={{
+                background: "linear-gradient(130deg, #A8C3A5 0%, #7A9E7E 55%, #C9A646 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                That Lasts.
+              </span>
+            </h1>
+            <p className="mt-6 max-w-[500px] text-[15px] font-normal leading-[1.9] text-muted">
+              Web applications, mobile apps, ERP systems, AI automation, and SaaS platforms —
+              designed, built, and shipped for growing businesses in India and beyond.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact?intent=project" className="btn-primary rounded-full">
+                Start a Project →
+              </Link>
+              <Link href="/projects" className="btn-ghost-light rounded-full">
+                View Our Work
+              </Link>
+            </div>
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2">
+              {["30+ Products Shipped", "20+ Clients", "5+ Years Active", "3 Countries"].map((t) => (
+                <span key={t} className="flex items-center gap-2 text-[12px] font-normal text-muted/50">
+                  <span className="h-[3px] w-[3px] rounded-full bg-sage/35" />
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="hidden lg:block">
+            <HeroDashboard />
+          </div>
+        </div>
+        <div className="mt-14 border-t border-white/[0.04] pt-8">
+          <TechMarquee />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 2. WHAT WE BUILD ── */
+const CAPABILITIES = [
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-      </svg>
-    ),
-    title: "Web Application Development",
-    copy: "Custom web apps, portals, admin panels, and internal tools. React, Next.js, Node.js, Supabase — modern stacks, real delivery.",
-    tag: "CORE",
-    wide: true,
+    bar: "linear-gradient(90deg, #7A9E7E, #5C8060)",
+    icon: "⬡",
+    title: "Web Applications",
+    desc: "SaaS platforms, internal tools, B2B portals, and multi-tenant apps. Built with Next.js + Supabase on fixed-scope timelines.",
+    accent: "#7A9E7E",
+    href: "/services#web",
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>
-      </svg>
-    ),
-    title: "Mobile App Design & Build",
-    copy: "Cross-platform iOS & Android apps in React Native or Flutter. Product-quality UI that performs.",
-    tag: "CORE",
-    wide: false,
+    bar: "linear-gradient(90deg, #60A5FA, #3B82F6)",
+    icon: "◎",
+    title: "Mobile Apps",
+    desc: "Cross-platform iOS and Android with React Native. One codebase, native performance, polished UI.",
+    accent: "#60A5FA",
+    href: "/services#mobile",
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
-    ),
-    title: "SaaS Product Development",
-    copy: "End-to-end SaaS — multi-tenant architecture, billing, role-based access, real-time data. We built one ourselves.",
-    tag: "SPECIALITY",
-    wide: false,
+    bar: "linear-gradient(90deg, #C9A646, #A8842E)",
+    icon: "◈",
+    title: "AI & Automation",
+    desc: "LLM agents, n8n workflows, document automation, and data pipelines that replace manual work — not prototype demos.",
+    accent: "#C9A646",
+    href: "/services#ai",
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
-      </svg>
-    ),
-    title: "UI/UX & Product Design",
-    copy: "Wireframes, design systems, interactive prototypes. Design that converts — and implementation that matches.",
-    tag: "CORE",
-    wide: false,
+    bar: "linear-gradient(90deg, #8B5CF6, #7C3AED)",
+    icon: "◐",
+    title: "ERP & Business Systems",
+    desc: "Custom ERPs, CRMs, and operations dashboards built for your actual workflow — not generic software with 6-month config.",
+    accent: "#8B5CF6",
+    href: "/services#erp",
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h4M7 11h6M7 14h3"/>
-      </svg>
-    ),
-    title: "Dashboards & Analytics",
-    copy: "Custom reporting, KPI trackers, CRM tools, and data visualisation for operations, sales, and HR teams.",
-    tag: "CORE",
-    wide: false,
+    bar: "linear-gradient(90deg, #10B981, #059669)",
+    icon: "○",
+    title: "SaaS Development",
+    desc: "End-to-end SaaS product builds — architecture, auth, billing, and onboarding. We've shipped our own SaaS, so we know every trap.",
+    accent: "#10B981",
+    href: "/services#saas",
+  },
+  {
+    bar: "linear-gradient(90deg, #EC4899, #DB2777)",
+    icon: "◑",
+    title: "UI/UX Design",
+    desc: "User flows, wireframes, and polished interfaces. Design-led thinking, not Figma templates dropped on a developer.",
+    accent: "#EC4899",
+    href: "/services#design",
   },
 ];
 
-const PROJECTS = [
+function WhatWeBuild() {
+  return (
+    <section style={{ background: "#F7F5EE" }} className="py-28">
+      <div className="container-padded">
+        <ScrollReveal>
+          <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="section-eyebrow-light mb-4">What We Build</div>
+              <h2 className="font-display text-[34px] font-medium tracking-tight text-dark md:text-[42px]">
+                Six Disciplines, One Team
+              </h2>
+              <p className="mt-3 max-w-lg text-[15px] text-dark/55 leading-relaxed">
+                No outsourcing. No freelancers. The same team that built Sage Hire Stack and Liferra builds your product.
+              </p>
+            </div>
+            <Link href="/services" className="text-[13px] font-normal shrink-0 transition-colors" style={{ color: "#5C8060" }}>
+              All services →
+            </Link>
+          </div>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {CAPABILITIES.map((c, i) => (
+            <ScrollReveal key={c.title} delay={i * 55}>
+              <Link href={c.href} className="group flex h-full flex-col rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-8px_rgba(7,26,47,0.12)]" style={{ border: "1px solid rgba(7,26,47,0.07)" }}>
+                <div className="h-[2.5px] w-full" style={{ background: c.bar }} />
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="mb-4 text-[22px]" style={{ color: c.accent }}>{c.icon}</div>
+                  <h3 className="font-display text-[17px] font-medium tracking-tight text-dark mb-2 group-hover:text-dark/80 transition-colors">{c.title}</h3>
+                  <p className="text-[13px] leading-[1.75] text-dark/52 flex-1">{c.desc}</p>
+                  <div className="mt-4 text-[12px] font-medium transition-colors" style={{ color: c.accent }}>
+                    Learn more →
+                  </div>
+                </div>
+              </Link>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 3. OUR PRODUCTS ── */
+const PRODUCTS = [
   {
+    bar: "linear-gradient(90deg, #C9A646, #7A9E7E)",
+    tag: "Own SaaS Product",
+    tagStyle: { background: "rgba(201,166,70,0.10)", border: "1px solid rgba(201,166,70,0.22)", color: "#A8842E" },
     name: "Sage Hire Stack",
-    type: "SaaS · AI Recruitment Platform",
-    desc: "Our own product — an AI-powered talent acquisition platform with ATS pipeline, resume scoring, client portal, interview scheduling, and offer management.",
-    tech: ["Next.js 14", "Supabase", "Gemini AI", "TypeScript"],
-    status: "Live",
+    url: "sagehirestack.com",
     href: "/sage-hire-stack",
-    strip: "bg-gradient-to-r from-[#D4AF37] via-[#c49e2a] to-[#7A9E7E]",
-    dark: true,
-    bg: "bg-navy",
+    external: false,
+    desc: "Our own AI-powered recruitment platform — built because we needed it, opened to clients when it worked. Resume parsing, AI screening, candidate pipeline, interview scheduling, and real-time client sharing.",
+    stack: ["Next.js", "Supabase", "Gemini AI", "TypeScript"],
+    stat: "Live SaaS",
+    statLabel: "Product status",
+    badge: "Live",
   },
   {
-    name: "Team Purex",
-    type: "Fitness & Wellness Platform",
-    desc: "Digital home for a fitness brand — client portal, transformation tracking, workout planning, diet guidance, and trainer-to-client engagement flows.",
-    tech: ["Next.js", "Custom CMS", "Vercel"],
-    status: "Live",
-    href: "https://teampurex.com",
-    strip: "bg-gradient-to-r from-[#7A9E7E] via-emerald-400 to-[#7A9E7E]",
-    dark: false,
-    bg: "bg-white",
-    external: true,
-  },
-  {
-    name: "Mahan Traders ERP",
-    type: "Trade & Operations Software",
-    desc: "Full ERP for a sugar trading firm — daily entry, supplier management, buyer statements, cash book, audit trail, and automated inventory reconciliation.",
-    tech: ["Next.js", "Supabase", "Postgres", "RLS"],
-    status: "In production",
-    href: "/projects",
-    strip: "bg-gradient-to-r from-[#0B1F3A] via-[#1F4068] to-[#0B1F3A]",
-    dark: false,
-    bg: "bg-ivory",
+    bar: "linear-gradient(90deg, #60A5FA, #8B5CF6)",
+    tag: "Own Mobile Product",
+    tagStyle: { background: "rgba(96,165,250,0.10)", border: "1px solid rgba(96,165,250,0.22)", color: "#3B82F6" },
+    name: "Liferra",
+    url: "liferra.app",
+    href: "/liferra",
+    external: false,
+    desc: "A mobile-first life dashboard we're building for ourselves — goal tracking, habit streaks, mood logs, finance snapshots, and an AI coach that knows your week. Built with React Native + Supabase.",
+    stack: ["React Native", "Expo", "Supabase", "TypeScript"],
+    stat: "In Development",
+    statLabel: "Product status",
+    badge: "Beta",
   },
 ];
 
-/* ─── page ──────────────────────────────────────────────── */
+const CLIENT_PROJECTS = [
+  {
+    bar: "linear-gradient(90deg, #7A9E7E, #5C8060)",
+    tag: "Health Tech Platform",
+    tagStyle: { background: "rgba(122,158,126,0.10)", border: "1px solid rgba(92,128,96,0.20)", color: "#5C8060" },
+    name: "Teampurex",
+    url: "teampurex.com",
+    href: "https://teampurex.com",
+    external: true,
+    desc: "Medically supervised health coaching — personal training, physiotherapy, and mental wellness — serving clients across India and the UK.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    stat: "India & UK",
+    statLabel: "Active markets",
+    badge: "Live",
+  },
+  {
+    bar: "linear-gradient(90deg, #0E2A47, #071A2F)",
+    tag: "ERP & Corporate Website",
+    tagStyle: { background: "rgba(7,26,47,0.07)", border: "1px solid rgba(7,26,47,0.14)", color: "#0E2A47" },
+    name: "Mahantraders",
+    url: "mahantraders.com",
+    href: "https://mahantraders.com",
+    external: true,
+    desc: "Digital platform and custom ERP for a Hyderabad FMCG commodity trading company — sugar trading, export operations, and supplier management.",
+    stack: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS"],
+    stat: "FMCG & Export",
+    statLabel: "Industry",
+    badge: "Live",
+  },
+];
+
+function ProjectCard({ p }: { p: typeof CLIENT_PROJECTS[0] }) {
+  const Wrapper = p.external ? "a" : Link;
+  const extraProps = p.external ? { target: "_blank", rel: "noopener noreferrer" } : {};
+  return (
+    <Wrapper
+      href={p.href}
+      {...(extraProps as any)}
+      className="group flex h-full flex-col rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-8px_rgba(7,26,47,0.12)]"
+      style={{ border: "1px solid rgba(7,26,47,0.07)" }}
+    >
+      <div className="h-[2.5px] w-full" style={{ background: p.bar }} />
+      <div className="flex flex-1 flex-col p-6">
+        <div className="mb-5 flex items-start justify-between gap-3">
+          <span className="rounded-full px-2.5 py-1 text-[9.5px] font-medium uppercase tracking-widest" style={p.tagStyle}>
+            {p.tag}
+          </span>
+          <span className="rounded-full px-2.5 py-1 text-[9.5px] font-medium uppercase tracking-widest" style={{ background: "rgba(122,158,126,0.10)", color: "#5C8060" }}>
+            {p.badge}
+          </span>
+        </div>
+        <h3 className="font-display text-[22px] font-medium tracking-tight text-dark leading-tight group-hover:text-dark/75 transition-colors">
+          {p.name}
+        </h3>
+        <p className="mt-0.5 mb-4 text-[12px]" style={{ color: "rgba(7,26,47,0.28)" }}>{p.url} ↗</p>
+        <p className="flex-1 text-[13.5px] font-normal leading-[1.75]" style={{ color: "rgba(7,26,47,0.57)" }}>{p.desc}</p>
+        <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(7,26,47,0.06)" }}>
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {p.stack.map(s => <span key={s} className="stack-badge-dark">{s}</span>)}
+          </div>
+          <div>
+            <div className="font-display text-[17px] font-semibold text-dark/75">{p.stat}</div>
+            <div className="text-[10px] font-normal uppercase tracking-wider mt-0.5" style={{ color: "rgba(7,26,47,0.28)" }}>{p.statLabel}</div>
+          </div>
+        </div>
+      </div>
+    </Wrapper>
+  );
+}
+
+function OurProducts() {
+  return (
+    <section className="bg-navy-mid py-28">
+      <div className="container-padded">
+        <ScrollReveal>
+          <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="section-eyebrow mb-4">Products We Own</div>
+              <h2 className="font-display text-[34px] font-medium tracking-tight text-ivory md:text-[42px]">
+                We Ship for Clients.<br />We Also Ship for Ourselves.
+              </h2>
+              <p className="mt-3 max-w-lg text-[15px] text-muted leading-relaxed">
+                Two live products built entirely in-house. They&apos;re how we eat our own cooking.
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {PRODUCTS.map((p, i) => (
+            <ScrollReveal key={p.name} delay={i * 80}>
+              <ProjectCard p={p} />
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 4. CLIENT WORK ── */
+function ClientWork() {
+  return (
+    <section style={{ background: "#F7F5EE" }} className="py-28">
+      <div className="container-padded">
+        <ScrollReveal>
+          <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="section-eyebrow-light mb-4">Client Work</div>
+              <h2 className="font-display text-[34px] font-medium tracking-tight text-dark md:text-[42px]">
+                Selected Projects
+              </h2>
+            </div>
+            <Link href="/projects" className="text-[13px] font-normal shrink-0 transition-colors" style={{ color: "#5C8060" }}>
+              All projects →
+            </Link>
+          </div>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {CLIENT_PROJECTS.map((p, i) => (
+            <ScrollReveal key={p.name} delay={i * 80}>
+              <ProjectCard p={p} />
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 5. HOW WE WORK ── */
+const PROCESS = [
+  { n: "01", title: "Scope",    desc: "45-min discovery call → written spec we both agree on. No code until the scope is locked." },
+  { n: "02", title: "Architect", desc: "Tech stack, database schema, auth model, and deployment plan. Designed for maintainability." },
+  { n: "03", title: "Build",    desc: "Weekly demos on staging. You see exactly where things are — no surprises on delivery day." },
+  { n: "04", title: "Ship",     desc: "Production deploy, CI/CD, monitoring, and post-launch squashing included in every project." },
+  { n: "05", title: "Support",  desc: "Optional retainer or clean handoff with full docs. Your code, your servers, your call." },
+];
+
+function HowWeWork() {
+  return (
+    <section className="bg-navy py-28">
+      <div className="container-padded">
+        <ScrollReveal>
+          <div className="mb-14">
+            <div className="section-eyebrow mb-4">Process</div>
+            <h2 className="font-display text-[34px] font-medium tracking-tight text-ivory md:text-[42px]">
+              From Brief to Live in Weeks
+            </h2>
+            <p className="mt-3 max-w-lg text-[15px] text-muted leading-relaxed">
+              No six-month discovery phases. No bloated sprints. Clear milestones, weekly visibility.
+            </p>
+          </div>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          {PROCESS.map((p, i) => (
+            <ScrollReveal key={p.n} delay={i * 65}>
+              <div className="flex flex-col h-full rounded-xl p-5" style={{ border: "1px solid rgba(255,255,255,0.05)", background: "rgba(7,26,47,0.35)" }}>
+                <div className="font-display text-[32px] font-medium mb-4" style={{ color: "rgba(122,158,126,0.18)" }}>{p.n}</div>
+                <h3 className="font-display text-[15px] font-medium text-ivory mb-2">{p.title}</h3>
+                <p className="text-[12.5px] text-muted/68 leading-relaxed">{p.desc}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 6. METRICS ── */
+function Metrics() {
+  return (
+    <section style={{ background: "#F4F7FA" }} className="py-28">
+      <div className="container-padded">
+        <ScrollReveal>
+          <div className="mb-12 text-center">
+            <div className="section-eyebrow-light mb-4">By the Numbers</div>
+            <h2 className="font-display text-[34px] font-medium tracking-tight text-dark md:text-[42px]">
+              Five Years of Shipping
+            </h2>
+          </div>
+        </ScrollReveal>
+        <MetricsCounter />
+      </div>
+    </section>
+  );
+}
+
+/* ── 7. AI AUTOMATION ── */
+const AI_ITEMS = [
+  { icon: "🤖", name: "AI Agent Development",    desc: "Custom LLM agents that perform multi-step tasks — research, writing, classification, routing — in your workflow." },
+  { icon: "🔄", name: "Workflow Automation",      desc: "n8n and custom automation that cuts manual steps across finance, ops, and customer success." },
+  { icon: "📄", name: "Document Generation",      desc: "Contracts, reports, and invoices generated from templates by AI — seconds instead of hours." },
+  { icon: "💬", name: "AI Assistants & Copilots", desc: "Internal or customer-facing LLM chatbots fine-tuned to your business context and data." },
+  { icon: "📊", name: "Data Pipelines",           desc: "ETL, sync, and reporting automation between your tools — CRMs, ERPs, databases, and APIs." },
+  { icon: "🎯", name: "CRM & Lead Automation",    desc: "Auto-score leads, trigger follow-up sequences, keep CRM data clean — without manual effort." },
+];
+
+function AISection() {
+  return (
+    <section className="bg-navy-mid py-28">
+      <div className="container-padded">
+        <ScrollReveal>
+          <div className="mb-14">
+            <div className="section-eyebrow mb-4">AI & Automation</div>
+            <h2 className="font-display text-[34px] font-medium tracking-tight text-ivory md:text-[42px]">
+              Practical AI for Real Operations
+            </h2>
+            <p className="mt-3 max-w-lg text-[15px] text-muted leading-relaxed">
+              Not strategy decks. Production AI systems that cut your team&apos;s manual work from day one.
+            </p>
+          </div>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {AI_ITEMS.map((item, i) => (
+            <ScrollReveal key={item.name} delay={i * 55}>
+              <div className="flex items-start gap-4 rounded-xl p-5" style={{ border: "1px solid rgba(122,158,126,0.10)", background: "rgba(7,26,47,0.40)" }}>
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl text-[18px]" style={{ background: "rgba(122,158,126,0.08)", border: "1px solid rgba(122,158,126,0.13)" }}>
+                  {item.icon}
+                </div>
+                <div>
+                  <div className="mb-1 text-[13.5px] font-medium" style={{ color: "rgba(244,247,250,0.85)" }}>{item.name}</div>
+                  <div className="text-[12.5px] leading-relaxed text-muted/68">{item.desc}</div>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+        <ScrollReveal delay={200}>
+          <div className="mt-5 rounded-xl p-5" style={{ border: "1px solid rgba(122,158,126,0.08)", background: "rgba(7,26,47,0.30)" }}>
+            <p className="mb-3 text-[11px] uppercase tracking-widest" style={{ color: "rgba(168,179,194,0.35)" }}>Tools we use</p>
+            <div className="flex flex-wrap gap-2">
+              {["n8n", "OpenAI GPT-4", "Google Gemini", "Python", "LangChain", "Supabase Edge Functions", "REST APIs & Webhooks"].map(t => (
+                <span key={t} className="stack-badge">{t}</span>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+/* ── 8. ABOUT STRIP ── */
+function AboutStrip() {
+  return (
+    <section style={{ background: "#F4F7FA" }} className="py-28">
+      <div className="container-padded max-w-5xl">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+          <ScrollReveal>
+            <div>
+              <div className="section-eyebrow-light mb-5">About Us</div>
+              <h2 className="font-display text-[32px] font-medium tracking-tight text-dark mb-5 md:text-[38px]">
+                A Studio That Ships<br />
+                <span style={{ color: "#5C8060" }}>What It Builds.</span>
+              </h2>
+              <p className="text-[15px] font-normal leading-[1.85] mb-4" style={{ color: "rgba(7,26,47,0.60)" }}>
+                We started as a technical recruitment firm in Hyderabad. Clients kept
+                asking &ldquo;Can you build the software too?&rdquo; — so we did. Then
+                we automated our own operations with AI. Then built Sage Hire Stack for ourselves.
+              </p>
+              <p className="text-[15px] font-normal leading-[1.85] mb-8" style={{ color: "rgba(7,26,47,0.60)" }}>
+                Today we&apos;re a software studio. Every tool we sell, we&apos;ve built
+                and used ourselves first. No outsourcing. No retainer lock-in. Full code ownership.
+              </p>
+              <Link href="/about" className="btn-ghost-dark rounded-full inline-flex">
+                Our Story →
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={120}>
+            <div className="rounded-2xl p-7 bg-white" style={{ border: "1px solid rgba(7,26,47,0.07)", boxShadow: "0 2px 14px -6px rgba(7,26,47,0.08)" }}>
+              <div className="mb-6 flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl font-display text-[20px] font-semibold text-white" style={{ background: "linear-gradient(135deg, #0E2A47, #071A2F)" }}>
+                  V
+                </div>
+                <div>
+                  <div className="font-display text-[15px] font-medium text-dark">Vardhan Puttepu</div>
+                  <div className="mt-0.5 text-[12px]" style={{ color: "rgba(7,26,47,0.38)" }}>Founder, Sage &amp; Crew Next</div>
+                </div>
+              </div>
+              <blockquote className="border-l-2 pl-4 text-[13.5px] italic leading-[1.85]" style={{ borderColor: "rgba(122,158,126,0.28)", color: "rgba(7,26,47,0.58)" }}>
+                &ldquo;Every project we take on, we treat like we&apos;re building it for ourselves.
+                That&apos;s how Sage Hire Stack was born — we needed the tool,
+                built it, and realised others needed it too.&rdquo;
+              </blockquote>
+              <div className="mt-6 grid grid-cols-3 gap-2.5 text-center">
+                {[{ v: "30+", l: "Products" }, { v: "5+", l: "Years" }, { v: "3", l: "Countries" }].map(s => (
+                  <div key={s.l} className="rounded-xl p-3.5" style={{ background: "#F4F7FA" }}>
+                    <div className="font-display text-[18px] font-semibold" style={{ color: "#C9A646" }}>{s.v}</div>
+                    <div className="mt-1 text-[10px]" style={{ color: "rgba(7,26,47,0.32)" }}>{s.l}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 9. CTA ── */
+function FinalCTA() {
+  return (
+    <section className="bg-navy py-32">
+      <div className="container-padded">
+        <ScrollReveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="section-eyebrow mb-6">Let&apos;s Build Together</div>
+            <h2 className="font-display text-[36px] font-medium tracking-tight text-ivory leading-tight md:text-[48px]">
+              What Are You Building?<br />
+              <span style={{ color: "#A8C3A5" }}>Let&apos;s Ship It.</span>
+            </h2>
+            <p className="mt-5 text-[15px] font-normal leading-[1.85] max-w-lg mx-auto" style={{ color: "#A8B3C2" }}>
+              Free 45-minute discovery call. We&apos;ll scope it, quote it, and tell you exactly how fast we can deliver.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              <Link href="/contact?intent=project" className="btn-primary rounded-full">
+                Start a Project →
+              </Link>
+              <Link href="/projects" className="btn-ghost-light rounded-full">
+                See Our Work
+              </Link>
+            </div>
+            <div className="mt-10 flex flex-wrap justify-center gap-6 text-[11.5px] font-normal" style={{ color: "rgba(168,179,194,0.38)" }}>
+              {["No retainer lock-in", "Hyderabad-based", "Fixed-scope delivery", "Code you own"].map(t => (
+                <span key={t} className="flex items-center gap-2">
+                  <span className="h-[3px] w-[3px] rounded-full" style={{ background: "rgba(122,158,126,0.30)" }} />
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+/* ── PAGE ── */
 export default function HomePage() {
   return (
     <>
-      {/* ══ HERO ═══════════════════════════════════════════ */}
-      <section className="hero-bg relative min-h-screen overflow-hidden text-ivory">
-        {/* Stronger glow orb */}
-        <div className="pointer-events-none absolute inset-0 z-0">
-          <div className="absolute left-1/2 top-[38%] h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/[0.07] blur-[100px]" />
-          <div className="absolute left-1/3 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sage/[0.09] blur-[80px]" />
-        </div>
-        <ParticleBackground />
-
-        <div className="container-padded relative z-10 flex min-h-screen flex-col justify-center pb-12 pt-28">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_440px]">
-            {/* Left */}
-            <ScrollReveal>
-              <div>
-                {/* Badge */}
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/20 bg-white/[0.05] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gold pillar-pulse" />
-                  Software &amp; Product Studio · Hyderabad
-                </div>
-
-                {/* Headline */}
-                <h1 className="font-display text-[42px] font-bold leading-[1.05] tracking-tight text-ivory md:text-[58px] lg:text-[68px]">
-                  We build software<br />
-                  <span className="italic text-gold">clients actually use.</span>
-                </h1>
-
-                {/* Sub-copy — tight, punchy */}
-                <p className="mt-5 max-w-md text-[15px] leading-relaxed text-ivory/65 md:text-[16px]">
-                  Web apps, mobile apps, SaaS products, AI integrations —
-                  designed and shipped end-to-end from Hyderabad.
-                </p>
-
-                {/* CTAs */}
-                <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <Link
-                    href="/contact?intent=project"
-                    className="btn-gold inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px]"
-                  >
-                    Start a Project
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="/projects"
-                    className="inline-flex items-center gap-2 rounded-full border border-ivory/25 px-6 py-3 text-[14px] font-semibold text-ivory transition hover:bg-ivory/10"
-                  >
-                    See Our Work
-                  </Link>
-                </div>
-
-                {/* Stats */}
-                <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
-                  {[
-                    { n: "30+", label: "apps shipped" },
-                    { n: "5 yrs", label: "studio experience" },
-                    { n: "3", label: "countries served" },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <div className="font-display text-[28px] font-bold leading-none text-gold">{s.n}</div>
-                      <div className="mt-0.5 text-[11px] uppercase tracking-[0.15em] text-ivory/45">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Right — Product preview card */}
-            <ScrollReveal delay={120}>
-              <div className="hidden lg:block">
-                <div className="glass-dark floaty rounded-2xl border border-gold/20 p-5 shadow-lift">
-                  {/* Header */}
-                  <div className="mb-4 flex items-center gap-3 border-b border-white/6 pb-4">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-gold to-[#A8881F] font-display text-[13px] font-bold text-navy">S</div>
-                    <div>
-                      <div className="text-[13px] font-semibold text-ivory">Sage Hire Stack</div>
-                      <div className="text-[10.5px] text-ivory/40">AI Recruitment Platform · Live</div>
-                    </div>
-                    <span className="ml-auto rounded-full bg-emerald-500/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-emerald-400">Live</span>
-                  </div>
-
-                  {/* KPIs */}
-                  <div className="mb-4 grid grid-cols-3 gap-2">
-                    {[{ v: "12", l: "Active Roles" }, { v: "84", l: "In Pipeline" }, { v: "6", l: "Offers Out" }].map((k) => (
-                      <div key={k.l} className="rounded-xl border border-white/5 bg-white/4 p-3 text-center">
-                        <div className="font-display text-[22px] text-ivory">{k.v}</div>
-                        <div className="mt-0.5 text-[9px] uppercase tracking-wider text-ivory/35">{k.l}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Pipeline bars */}
-                  <div className="mb-1 text-[9.5px] uppercase tracking-wider text-ivory/30">ATS Pipeline</div>
-                  <div className="space-y-1.5 py-2">
-                    {[{ s: "Applied", c: 32, p: 85 }, { s: "Screening", c: 18, p: 55 }, { s: "Interview", c: 9, p: 30 }, { s: "Offer", c: 6, p: 18 }].map((r) => (
-                      <div key={r.s} className="flex items-center gap-3">
-                        <span className="w-16 text-[11px] text-ivory/50">{r.s}</span>
-                        <div className="flex-1 rounded-full bg-white/5">
-                          <div className="h-1.5 rounded-full bg-gradient-to-r from-gold to-gold/30" style={{ width: `${r.p}%` }} />
-                        </div>
-                        <span className="w-5 text-right text-[11px] text-ivory/40">{r.c}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* AI Score row */}
-                  <div className="mt-3 flex items-center gap-3 rounded-xl border border-gold/15 bg-gold/5 p-2.5">
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gold/15">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2">
-                        <path d="M9.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 01-2.5 2.5h-5A2.5 2.5 0 012 19.5v-15A2.5 2.5 0 014.5 2h5z"/><path d="M19 8l-5 5 2 4 5-9h-2z"/>
-                      </svg>
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="text-[11px] font-semibold text-ivory/80">AI Resume Score</div>
-                      <div className="text-[10px] text-ivory/40">Priya R. · 94 / 100 match</div>
-                    </div>
-                    <span className="chip-gold rounded-full px-2 py-0.5 text-[9px]">AI</span>
-                  </div>
-                  <p className="mt-3 text-center text-[9px] text-ivory/20">Illustrative — runs on Sage Hire Stack</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-
-        {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-40">
-          <div className="h-6 w-px bg-gradient-to-b from-transparent to-ivory/60" />
-          <div className="h-6 w-px bg-gradient-to-b from-ivory/60 to-transparent animate-[bounce_2s_ease-in-out_infinite]" />
-        </div>
-      </section>
-
-      {/* ══ TECH MARQUEE ═══════════════════════════════════ */}
-      <section className="border-y border-navy/8 bg-white py-4">
-        <div className="marquee-wrap">
-          <div className="marquee-track">
-            {[...TECH, ...TECH].map((t, i) => (
-              <span key={i} className="marquee-item">
-                {t}
-                <span className="marquee-dot" />
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ WHAT WE BUILD ══════════════════════════════════ */}
-      <section className="bg-ivory py-20 md:py-28">
-        <div className="container-padded">
-          <ScrollReveal>
-            <div className="mb-3 inline-block rounded-full bg-navy/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-navy/50">
-              What we build
-            </div>
-            <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-              <h2 className="font-display text-[30px] text-navy md:text-[38px]">
-                Software is 70% of what we do.
-              </h2>
-              <Link href="/projects" className="shrink-0 inline-flex items-center gap-1.5 text-[13px] font-semibold text-navy/60 transition hover:text-gold">
-                View portfolio <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          {/* Bento grid */}
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {/* Wide card */}
-            <ScrollReveal className="md:col-span-2">
-              <div className="svc-card-v2 group h-full min-h-[190px]">
-                <div className="svc-ic mb-4 transition-all duration-300 group-hover:bg-gold/10 group-hover:border-gold/30 group-hover:text-gold">
-                  {SERVICES[0].icon}
-                </div>
-                <div className="mb-1 font-display text-[18px] text-navy">{SERVICES[0].title}</div>
-                <p className="text-[13.5px] leading-relaxed text-charcoal/60">{SERVICES[0].copy}</p>
-                <span className="mt-4 inline-block rounded-full bg-navy/5 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-navy/40">
-                  {SERVICES[0].tag}
-                </span>
-              </div>
-            </ScrollReveal>
-
-            {/* Regular card */}
-            <ScrollReveal delay={60}>
-              <div className="svc-card-v2 group h-full min-h-[190px]">
-                <div className="svc-ic mb-4 transition-all duration-300 group-hover:bg-gold/10 group-hover:border-gold/30 group-hover:text-gold">
-                  {SERVICES[1].icon}
-                </div>
-                <div className="mb-1 font-display text-[18px] text-navy">{SERVICES[1].title}</div>
-                <p className="text-[13.5px] leading-relaxed text-charcoal/60">{SERVICES[1].copy}</p>
-                <span className="mt-4 inline-block rounded-full bg-navy/5 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-navy/40">
-                  {SERVICES[1].tag}
-                </span>
-              </div>
-            </ScrollReveal>
-
-            {/* 3 equal cards */}
-            {SERVICES.slice(2).map((s, i) => (
-              <ScrollReveal key={s.title} delay={(i + 2) * 60}>
-                <div className="svc-card-v2 group h-full min-h-[175px]">
-                  <div className="svc-ic mb-4 transition-all duration-300 group-hover:bg-gold/10 group-hover:border-gold/30 group-hover:text-gold">
-                    {s.icon}
-                  </div>
-                  <div className="mb-1 font-display text-[17px] text-navy">{s.title}</div>
-                  <p className="text-[13px] leading-relaxed text-charcoal/60">{s.copy}</p>
-                  <span className="mt-3 inline-block rounded-full bg-navy/5 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-navy/40">
-                    {s.tag}
-                  </span>
-                </div>
-              </ScrollReveal>
-            ))}
-
-            {/* AI — featured full-width dark card */}
-            <ScrollReveal className="md:col-span-3">
-              <div className="svc-card-v2 featured group relative overflow-hidden">
-                <div className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full bg-gold/6 blur-3xl" />
-                <div className="relative flex flex-col items-start gap-5 md:flex-row md:items-center">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-gold/25 bg-gold/10">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.8">
-                      <path d="M9.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 01-2.5 2.5h-5A2.5 2.5 0 012 19.5v-15A2.5 2.5 0 014.5 2h5z"/>
-                      <path d="M19 8l-5 5 2 4 5-9h-2z"/>
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <span className="chip-gold mb-2 inline-block">AI — Featured</span>
-                    <div className="font-display text-[20px] text-ivory">AI Integration &amp; Workflow Automation</div>
-                    <p className="mt-1.5 max-w-2xl text-[13.5px] text-ivory/60">
-                      Not AI for the press release — AI that cuts real manual work. Resume scoring, document extraction, smart recommendations, n8n/Make automation pipelines. We&apos;ve built and shipped it ourselves.
-                    </p>
-                  </div>
-                  <Link href="/ai-solutions" className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-gold/30 px-4 py-2 text-[13px] font-semibold text-gold transition hover:bg-gold hover:text-navy">
-                    AI Services <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* Recruitment teaser */}
-          <ScrollReveal>
-            <div className="mt-4 flex flex-wrap items-center gap-3 rounded-2xl border border-navy/8 bg-white px-6 py-4">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-navy/5 text-navy">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <circle cx="9" cy="7" r="4"/><path d="M17 11a4 4 0 100-8"/><path d="M1 21v-2a4 4 0 014-4h8a4 4 0 014 4v2"/>
-                </svg>
-              </div>
-              <p className="flex-1 text-[13.5px] text-charcoal/65">
-                <span className="font-semibold text-navy">Recruitment &amp; Talent Services —</span>{" "}
-                end-to-end hiring for IT and non-IT roles across India, powered by our own ATS.
-              </p>
-              <Link href="/services" className="shrink-0 text-[13px] font-semibold text-gold transition hover:text-gold-deep">
-                View talent services →
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ══ NUMBERS ════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-navy py-16 md:py-20">
-        <div className="dot-grid pointer-events-none absolute inset-0 opacity-20" />
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/5 blur-[80px]" />
-        <div className="container-padded relative">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            {[
-              { n: "30+", label: "Digital products shipped" },
-              { n: "5 yrs", label: "In product studio" },
-              { n: "3", label: "Countries served" },
-              { n: "100%", label: "Project completion rate" },
-            ].map((s, i) => (
-              <ScrollReveal key={s.label} delay={i * 80}>
-                <div className="text-center md:text-left">
-                  <div className="stat-num">{s.n}</div>
-                  <div className="mt-2 text-[12px] uppercase tracking-[0.15em] text-ivory/40">{s.label}</div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ SELECTED WORK ══════════════════════════════════ */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="container-padded">
-          <ScrollReveal>
-            <div className="mb-3 inline-block rounded-full bg-navy/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-navy/50">
-              Selected work
-            </div>
-            <h2 className="font-display text-[30px] text-navy md:text-[38px]">
-              Products we&apos;ve built and shipped.
-            </h2>
-          </ScrollReveal>
-
-          <div className="mt-10 space-y-5">
-            {PROJECTS.map((p, i) => (
-              <ScrollReveal key={p.name} delay={i * 70}>
-                <div className={`group overflow-hidden rounded-2xl border ${p.dark ? "border-gold/15" : "border-navy/7"} ${p.bg}`}>
-                  {/* Color strip */}
-                  <div className={`work-strip ${p.strip}`} />
-                  <div className="grid items-center gap-6 p-7 md:grid-cols-[1fr_auto]">
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap items-center gap-2.5">
-                        <span className={`font-display text-[20px] ${p.dark ? "text-ivory" : "text-navy"}`}>{p.name}</span>
-                        <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] ${p.dark ? "bg-gold/15 text-gold" : "bg-navy/7 text-navy/50"}`}>
-                          {p.status}
-                        </span>
-                      </div>
-                      <p className={`text-[11.5px] font-medium uppercase tracking-[0.14em] ${p.dark ? "text-ivory/40" : "text-charcoal/40"}`}>{p.type}</p>
-                      <p className={`max-w-xl text-[14px] leading-relaxed ${p.dark ? "text-ivory/70" : "text-charcoal/65"}`}>{p.desc}</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {p.tech.map((t) => (
-                          <span key={t} className={`rounded-full px-2.5 py-0.5 text-[10.5px] font-medium ${p.dark ? "bg-white/8 text-ivory/65" : "bg-navy/5 text-navy/55"}`}>{t}</span>
-                        ))}
-                      </div>
-                    </div>
-                    <Link
-                      href={p.href}
-                      {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className={`shrink-0 inline-flex items-center gap-1.5 rounded-full border px-5 py-2.5 text-[13px] font-semibold transition ${
-                        p.dark
-                          ? "border-gold/35 text-gold hover:bg-gold hover:text-navy"
-                          : "border-navy/15 text-navy hover:bg-navy hover:text-ivory"
-                      }`}
-                    >
-                      {p.external ? "Visit live" : "View project"}
-                      {p.external ? <ArrowUpRight className="h-3.5 w-3.5" /> : <ArrowRight className="h-3.5 w-3.5" />}
-                    </Link>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal>
-            <div className="mt-8 text-center">
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 rounded-full border border-navy/15 px-6 py-3 text-[13.5px] font-semibold text-navy transition hover:bg-navy hover:text-ivory"
-              >
-                See all projects <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ══ HOW A PROJECT RUNS ═════════════════════════════ */}
-      <section className="bg-ivory py-20 md:py-28">
-        <div className="container-padded">
-          <ScrollReveal>
-            <div className="mb-3 inline-block rounded-full bg-navy/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-navy/50">
-              How we work
-            </div>
-            <h2 className="font-display text-[30px] text-navy md:text-[38px]">
-              A process built for real delivery.
-            </h2>
-            <p className="mt-2 text-[14.5px] text-charcoal/55">No surprises. No scope creep. Just product.</p>
-          </ScrollReveal>
-
-          <div className="proc-h-wrap mt-12 grid gap-8 md:grid-cols-4">
-            {[
-              { n: "01", title: "Discovery", copy: "We map the problem, scope, and success criteria together — before writing a single line of code." },
-              { n: "02", title: "Design", copy: "Wireframes, prototypes, and a design system. You approve before we build." },
-              { n: "03", title: "Build", copy: "Iterative sprints with real demos every cycle. Visible progress, not status updates." },
-              { n: "04", title: "Ship & Support", copy: "Deployment, handover, documentation. Ongoing support as you scale." },
-            ].map((s, i) => (
-              <ScrollReveal key={s.n} delay={i * 80}>
-                <div className="proc-h-step text-center md:text-center">
-                  <div className="proc-h-num">{s.n}</div>
-                  <div className="mb-2 font-display text-[17px] text-navy">{s.title}</div>
-                  <p className="text-[13px] leading-relaxed text-charcoal/55">{s.copy}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ SAGE HIRE STACK SPOTLIGHT ══════════════════════ */}
-      <section className="relative overflow-hidden bg-navy py-20 text-ivory md:py-28">
-        <div className="dot-grid pointer-events-none absolute inset-0 opacity-20" />
-        <div className="pointer-events-none absolute -right-24 top-1/3 h-96 w-96 rounded-full bg-gold/8 blur-[80px]" />
-        <div className="container-padded relative">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <ScrollReveal>
-              <span className="section-eyebrow mb-4 inline-block">Our Own Product</span>
-              <h2 className="font-display text-[30px] leading-tight text-ivory md:text-[42px]">
-                Sage Hire Stack —{" "}
-                <span className="italic text-gold">we built our own SaaS.</span>
-              </h2>
-              <p className="mt-4 max-w-lg text-[14.5px] leading-relaxed text-ivory/60">
-                We don&apos;t just promise great software — we built a full SaaS product ourselves to run our own
-                recruitment operations. That&apos;s proof of stack, not a slide deck.
-              </p>
-              <ul className="mt-6 space-y-2.5">
-                {[
-                  "AI resume scoring with Gemini models",
-                  "Real-time ATS kanban pipeline",
-                  "Client portal with role-based access",
-                  "Interview scheduling &amp; structured feedback",
-                  "Offer management and onboarding workflows",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-[13.5px] text-ivory/65">
-                    <svg className="mt-0.5 h-4 w-4 shrink-0 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-                      <path d="M5 12l5 5 9-11"/>
-                    </svg>
-                    <span dangerouslySetInnerHTML={{ __html: item }} />
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/sage-hire-stack" className="btn-gold inline-flex items-center gap-2 rounded-full px-6 py-3 text-[13.5px]">
-                  Explore Sage Hire Stack <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-                <a href="https://hire.sagencrewnext.com" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-ivory/20 px-6 py-3 text-[13.5px] font-semibold text-ivory transition hover:bg-ivory/8">
-                  Open app <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={100}>
-              <div className="glass-dark rounded-2xl border border-gold/15 p-5 shadow-lift">
-                <div className="mb-4 flex items-center gap-3 border-b border-white/6 pb-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-gold to-[#A8881F] font-display text-[12px] font-bold text-navy">S</div>
-                  <div>
-                    <div className="text-[13px] font-semibold text-ivory">Sage Hire Stack</div>
-                    <div className="text-[10px] text-ivory/40">AI Talent Acquisition</div>
-                  </div>
-                  <span className="ml-auto rounded-full bg-sage/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-sage">Live</span>
-                </div>
-                <div className="mb-4 grid grid-cols-3 gap-2">
-                  {[{ v: "12", l: "Active Roles" }, { v: "84", l: "In Pipeline" }, { v: "6", l: "Offers Out" }].map((k) => (
-                    <div key={k.l} className="rounded-xl border border-white/5 bg-white/4 p-3 text-center">
-                      <div className="font-display text-[22px] text-ivory">{k.v}</div>
-                      <div className="mt-0.5 text-[9px] uppercase tracking-wider text-ivory/35">{k.l}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mb-1 text-[9.5px] uppercase tracking-wider text-ivory/30">ATS Pipeline</div>
-                <div className="space-y-1.5">
-                  {[{ s: "Applied", c: 32, p: 85 }, { s: "Screening", c: 18, p: 55 }, { s: "Interview", c: 9, p: 30 }, { s: "Offer", c: 6, p: 18 }].map((r) => (
-                    <div key={r.s} className="flex items-center gap-3">
-                      <span className="w-16 text-[11px] text-ivory/50">{r.s}</span>
-                      <div className="flex-1 rounded-full bg-white/5">
-                        <div className="h-1.5 rounded-full bg-gradient-to-r from-gold/70 to-gold/25" style={{ width: `${r.p}%` }} />
-                      </div>
-                      <span className="text-[11px] text-ivory/40">{r.c}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-center text-[9.5px] text-ivory/20">Illustrative dashboard</p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ SPLIT CTA ══════════════════════════════════════ */}
-      <section>
-        <div className="grid md:grid-cols-2">
-          {/* Software side */}
-          <ScrollReveal>
-            <div className="split-cta-left relative overflow-hidden px-8 py-16 md:px-12 md:py-20">
-              <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-gold/6 blur-[60px]" />
-              <div className="relative">
-                <span className="mb-4 inline-block text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/70">Software Projects</span>
-                <h3 className="font-display text-[26px] leading-tight text-ivory md:text-[32px]">
-                  Have a product to design or build?
-                </h3>
-                <p className="mt-3 max-w-sm text-[14px] text-ivory/55">
-                  Tell us what you&apos;re building. We&apos;ll take it from idea to deployed product.
-                </p>
-                <Link
-                  href="/contact?intent=project"
-                  className="mt-7 btn-gold inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px]"
-                >
-                  Start a Project <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Recruitment side */}
-          <ScrollReveal delay={80}>
-            <div className="split-cta-right relative overflow-hidden px-8 py-16 md:px-12 md:py-20">
-              <div className="pointer-events-none absolute -left-8 top-0 h-64 w-64 rounded-full bg-sage/10 blur-[60px]" />
-              <div className="relative">
-                <span className="mb-4 inline-block text-[11px] font-semibold uppercase tracking-[0.2em] text-charcoal/45">Talent Solutions</span>
-                <h3 className="font-display text-[26px] leading-tight text-navy md:text-[32px]">
-                  Need to hire great people?
-                </h3>
-                <p className="mt-3 max-w-sm text-[14px] text-charcoal/55">
-                  End-to-end IT and non-IT hiring across India. Every search runs on Sage Hire Stack.
-                </p>
-                <Link
-                  href="/contact?intent=employer"
-                  className="mt-7 inline-flex items-center gap-2 rounded-full border border-navy/20 bg-white px-6 py-3 text-[14px] font-semibold text-navy shadow-soft transition hover:bg-navy hover:text-ivory"
-                >
-                  Submit a Hiring Brief <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      <Hero />
+      <WhatWeBuild />
+      <OurProducts />
+      <ClientWork />
+      <HowWeWork />
+      <Metrics />
+      <AISection />
+      <AboutStrip />
+      <FinalCTA />
     </>
   );
 }

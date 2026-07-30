@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -9,32 +9,31 @@ import { ShsTrumpCard } from "@/components/shs-trump-card";
 import { ScrollProgress } from "@/components/scroll-progress";
 import "@/app/globals.css";
 
-const sans = Plus_Jakarta_Sans({
+const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const display = Playfair_Display({
+const display = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Sage & Crew Next — Software Product Studio & Recruitment · Hyderabad",
+    default: "Sage & Crew Next — Software Studio · Hyderabad",
     template: "%s · Sage & Crew Next",
   },
   description:
-    "Software product studio in Hyderabad. We design and build web apps, mobile apps, SaaS platforms, dashboards, and AI-powered tools. Also run recruitment services for IT and non-IT roles across India.",
+    "Sage & Crew Next builds production-ready software, automates business operations with AI, and powers hiring through Sage Hire Stack. Based in Hyderabad.",
   metadataBase: new URL("https://sagencrewnext.com"),
   openGraph: {
-    title: "Sage & Crew Next — Software Studio & Recruitment",
+    title: "Sage & Crew Next — Software Studio · Hyderabad",
     description:
-      "We design and build digital products — web apps, SaaS, dashboards, AI integration. Plus recruitment services for Indian tech companies.",
+      "We build software, automate operations, and support hiring. Production-ready digital systems for growing businesses.",
     url: "https://sagencrewnext.com",
     siteName: "Sage & Crew Next",
     locale: "en_IN",
@@ -49,7 +48,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${sans.variable} ${display.variable}`}>
-      <body className="min-h-screen font-sans">
+      <body className="min-h-screen font-sans bg-navy text-ivory antialiased">
         <PageLoader />
         <div id="scroll-progress"><div id="scroll-progress-bar" /></div>
         <SiteHeader />

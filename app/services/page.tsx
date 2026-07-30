@@ -1,203 +1,311 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Briefcase, CheckCircle2, Clock, Target, Users } from "lucide-react";
-
-import { HIRE_APP_URL } from "@/lib/utils";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const metadata: Metadata = {
-  title: "Recruitment services",
+  title: "Software Development Services",
   description:
-    "Full-cycle recruitment for tech, product, design, and GTM roles across India. Run on our own Sage Hire Stack with full pipeline visibility.",
+    "Custom web apps, mobile apps, AI automation, ERP systems, and SaaS platforms — designed, built, and shipped by Sage & Crew Next in Hyderabad.",
 };
 
-const ROLES = [
-  "Engineering — backend, frontend, full-stack, data, DevOps",
-  "Product — managers, designers, analysts",
-  "Sales, marketing, customer success",
-  "Operations, finance, HR leadership",
-  "Founding team / first 10 hires for early-stage startups",
+const SERVICES = [
+  {
+    id: "web",
+    icon: "⬡",
+    bar: "linear-gradient(90deg, #7A9E7E, #5C8060)",
+    title: "Web Applications",
+    desc: "Production-ready web apps built with Next.js, React, and Supabase. From MVPs to full-scale SaaS platforms — all shipped on fixed timelines.",
+    items: [
+      "SaaS platforms and multi-tenant apps",
+      "Internal dashboards and admin portals",
+      "B2B and B2C web applications",
+      "API development and integrations",
+      "Progressive Web Apps (PWA)",
+    ],
+    stack: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
+    accent: "#7A9E7E",
+  },
+  {
+    id: "mobile",
+    icon: "◎",
+    bar: "linear-gradient(90deg, #60A5FA, #3B82F6)",
+    title: "Mobile Apps",
+    desc: "Cross-platform mobile apps with React Native. One codebase, iOS and Android, with native performance and a polished UI.",
+    items: [
+      "Cross-platform iOS & Android (React Native)",
+      "Consumer and B2B mobile products",
+      "Offline-first architecture",
+      "Push notifications and deep linking",
+      "App Store and Play Store deployment",
+    ],
+    stack: ["React Native", "Expo", "TypeScript", "Supabase", "Firebase"],
+    accent: "#60A5FA",
+  },
+  {
+    id: "ai",
+    icon: "◈",
+    bar: "linear-gradient(90deg, #C9A646, #A8842E)",
+    title: "AI & Automation",
+    desc: "AI workflows and automation that cut real manual work — not demos. Built with LLMs, n8n, and custom agents that run in production from day one.",
+    items: [
+      "Custom AI agent development",
+      "LLM integrations (GPT-4, Gemini, Claude)",
+      "n8n workflow automation",
+      "Document and report generation",
+      "Data pipelines and CRM automation",
+    ],
+    stack: ["n8n", "OpenAI", "Gemini", "LangChain", "Python", "Supabase Edge Functions"],
+    accent: "#C9A646",
+  },
+  {
+    id: "erp",
+    icon: "◐",
+    bar: "linear-gradient(90deg, #8B5CF6, #7C3AED)",
+    title: "ERP & Business Systems",
+    desc: "Internal tools, ERPs, and operations dashboards built for how your business actually works — not generic software that needs 6 months of configuration.",
+    items: [
+      "Custom ERP and inventory systems",
+      "Operations and logistics dashboards",
+      "Finance and accounting tools",
+      "CRM systems tailored to your process",
+      "Legacy system migrations and modernisation",
+    ],
+    stack: ["Next.js", "PostgreSQL", "Supabase", "React", "TypeScript"],
+    accent: "#8B5CF6",
+  },
+  {
+    id: "saas",
+    icon: "○",
+    bar: "linear-gradient(90deg, #10B981, #059669)",
+    title: "SaaS Development",
+    desc: "End-to-end SaaS product development — from idea to live, paying customers. We've built our own SaaS (Sage Hire Stack) and know exactly what it takes.",
+    items: [
+      "Product architecture and technical design",
+      "Multi-tenancy, auth, and billing (Stripe)",
+      "User onboarding and activation flows",
+      "Analytics, usage metering, and limits",
+      "Post-launch support and iteration",
+    ],
+    stack: ["Next.js", "Supabase", "Stripe", "TypeScript", "Vercel", "Resend"],
+    accent: "#10B981",
+  },
+  {
+    id: "design",
+    icon: "◑",
+    bar: "linear-gradient(90deg, #EC4899, #DB2777)",
+    title: "UI/UX Design",
+    desc: "Design-led product thinking: wireframes, prototypes, and polished UI built from user flows first. No templates, no Figma-to-trash pipelines.",
+    items: [
+      "Product design and wireframing",
+      "Design system creation",
+      "User flow and conversion optimisation",
+      "Mobile-first responsive design",
+      "Brand identity and visual language",
+    ],
+    stack: ["Figma", "Tailwind CSS", "Framer Motion", "Shadcn UI"],
+    accent: "#EC4899",
+  },
 ];
 
 const PROCESS = [
-  {
-    step: "01",
-    title: "Intake & spec",
-    copy: "We sit with you for 60 minutes to understand the role, comp band, must-haves, and red flags. You leave with a written spec we both sign off on.",
-  },
-  {
-    step: "02",
-    title: "Source & screen",
-    copy: "We hit LinkedIn, Naukri, Sage's own talent network, and warm referrals. Every candidate is screened by a human before they reach your inbox.",
-  },
-  {
-    step: "03",
-    title: "Submit & track",
-    copy: "You see every profile, interview, and offer move in real time in your Sage Hire Stack portal. No back-and-forth Excel sheets.",
-  },
-  {
-    step: "04",
-    title: "Close & onboard",
-    copy: "We handle offer negotiation, BGV consent (DPDP-compliant), document collection, and joining-day check-ins.",
-  },
+  { step: "01", title: "Discovery",     desc: "We spend time understanding your business, users, and goals before writing a single line of code. Output: a scoped spec we both agree on." },
+  { step: "02", title: "Architecture",  desc: "Tech stack selection, database schema, auth model, and deployment plan. We design for maintainability, not just the demo." },
+  { step: "03", title: "Build & Ship",  desc: "Weekly check-ins, staging previews you can click, and a clear handover. We ship on fixed timelines with full code ownership." },
+  { step: "04", title: "Launch",        desc: "Production deployment, monitoring setup, CI/CD, and post-launch bug squashing included. You launch confident, not hopeful." },
+  { step: "05", title: "Support",       desc: "Optional retainer for ongoing features and maintenance. Or hand-off to your team with full docs — your call." },
 ];
 
 export default function ServicesPage() {
   return (
     <>
-      <section className="bg-navy text-ivory">
-        <div className="container-padded py-20 md:py-28">
-          <div className="max-w-3xl space-y-6">
-            <span className="section-eyebrow bg-gold/15 text-gold-soft">Recruitment</span>
-            <h1 className="text-4xl md:text-6xl text-ivory leading-tight">
-              Hiring that <span className="italic text-gold">actually closes.</span>
+      {/* Hero */}
+      <section className="bg-navy text-ivory pt-32 pb-20">
+        <div className="container-padded">
+          <div className="max-w-3xl">
+            <div className="section-eyebrow mb-6">Services</div>
+            <h1 className="font-display text-[42px] font-medium leading-[1.08] tracking-[-0.025em] text-ivory md:text-[58px]">
+              Software built to ship,<br />
+              <span style={{
+                background: "linear-gradient(130deg, #A8C3A5 0%, #7A9E7E 55%, #C9A646 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>not to impress in demos.</span>
             </h1>
-            <p className="text-lg leading-relaxed text-ivory/80">
-              We&apos;ve placed 200+ engineers, product folks, and operators
-              across early-stage Indian startups and scaling SaaS companies. No
-              spray-and-pray. No 200 mediocre CVs in your inbox. Just the
-              shortlist you&apos;d hire from.
+            <p className="mt-6 text-[16px] font-normal leading-[1.85] text-ivory/65 max-w-xl">
+              We build web apps, mobile apps, AI systems, ERP platforms, and SaaS products —
+              end-to-end, on fixed scope. Based in Hyderabad, shipping globally.
             </p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Link href="/contact" className="btn-primary">
-                Start a search
-                <ArrowRight className="h-4 w-4" />
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact?intent=project" className="btn-primary rounded-full">
+                Discuss Your Project →
               </Link>
-              <a href={HIRE_APP_URL} className="btn-ghost-light">
-                Existing client? Sign in
-              </a>
+              <Link href="/projects" className="btn-ghost-light rounded-full">
+                See Our Work
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-ivory">
-        <div className="container-padded py-20 md:py-24">
-          <div className="grid gap-10 md:grid-cols-2">
-            <div className="space-y-5">
-              <span className="section-eyebrow">Roles we hire for</span>
-              <h2 className="text-3xl md:text-4xl">India-first. Tech-first.</h2>
-              <p className="text-charcoal/75">
-                We&apos;re sharpest on tech, product, and GTM roles — the seats
-                that make or break a 10-50 person company.
+      {/* Services grid */}
+      <section style={{ background: "#F7F5EE" }} className="py-24">
+        <div className="container-padded">
+          <ScrollReveal>
+            <div className="mb-14">
+              <div className="section-eyebrow-light mb-4">What We Build</div>
+              <h2 className="font-display text-[34px] font-medium tracking-tight text-dark md:text-[42px]">
+                Six Disciplines, One Team
+              </h2>
+              <p className="mt-3 max-w-lg text-[15px] text-dark/55 leading-relaxed">
+                We don&apos;t outsource or use freelancers. Every discipline below is handled by the same team that built Sage Hire Stack and Liferra.
               </p>
-              <ul className="space-y-2 text-sm">
-                {ROLES.map((r) => (
-                  <li key={r} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                    <span>{r}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
+          </ScrollReveal>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Stat icon={Users} label="Candidates placed" value="200+" />
-              <Stat icon={Briefcase} label="Active clients" value="20+" />
-              <Stat icon={Clock} label="Avg. time-to-shortlist" value="7 days" />
-              <Stat icon={Target} label="Offer accept rate" value="82%" />
-            </div>
-          </div>
-        </div>
-      </section>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((s, i) => (
+              <ScrollReveal key={s.id} delay={i * 60}>
+                <div id={s.id} className="group flex h-full flex-col rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-8px_rgba(7,26,47,0.12)]" style={{ border: "1px solid rgba(7,26,47,0.07)" }}>
+                  <div className="h-[2.5px] w-full" style={{ background: s.bar }} />
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="mb-5 text-[22px]" style={{ color: s.accent }}>{s.icon}</div>
+                    <h3 className="font-display text-[18px] font-medium tracking-tight text-dark mb-2">{s.title}</h3>
+                    <p className="text-[13.5px] leading-[1.75] text-dark/55 mb-5 flex-1">{s.desc}</p>
 
-      <section className="bg-ivory-soft">
-        <div className="container-padded py-20 md:py-24">
-          <div className="mb-12 max-w-2xl space-y-3">
-            <span className="section-eyebrow">How a search runs</span>
-            <h2 className="text-3xl md:text-5xl">
-              Four steps, <span className="italic text-gold-deep">zero surprises.</span>
-            </h2>
-          </div>
+                    <ul className="space-y-2 mb-5">
+                      {s.items.map(item => (
+                        <li key={item} className="flex items-start gap-2.5 text-[12.5px] text-dark/52">
+                          <span className="h-[3px] w-[3px] flex-shrink-0 rounded-full mt-[7px]" style={{ background: s.accent + "70" }} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {PROCESS.map((p) => (
-              <div
-                key={p.step}
-                className="space-y-2 rounded-2xl border border-navy/10 bg-white p-6 shadow-soft"
-              >
-                <p className="font-display text-2xl text-gold-deep">{p.step}</p>
-                <p className="font-semibold text-navy">{p.title}</p>
-                <p className="text-sm text-charcoal/75">{p.copy}</p>
-              </div>
+                    <div className="flex flex-wrap gap-1.5 pt-4" style={{ borderTop: "1px solid rgba(7,26,47,0.05)" }}>
+                      {s.stack.map(t => (
+                        <span key={t} className="stack-badge-dark">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-navy text-ivory">
-        <div className="container-padded py-20 md:py-24">
-          <div className="grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
-            <div className="space-y-4">
-              <h2 className="text-3xl md:text-5xl text-ivory">
-                Pipeline visibility, <span className="italic text-gold">live.</span>
+      {/* Process */}
+      <section className="bg-navy-mid py-24">
+        <div className="container-padded">
+          <ScrollReveal>
+            <div className="mb-14">
+              <div className="section-eyebrow mb-4">How We Work</div>
+              <h2 className="font-display text-[34px] font-medium tracking-tight text-ivory md:text-[42px]">
+                From Brief to Live in Weeks
               </h2>
-              <p className="text-ivory/80">
-                Every search runs on our own Sage Hire Stack platform. You see
-                every candidate sourced, every interview scheduled, and every
-                offer&apos;s status the moment it moves — no weekly status emails
-                required.
+              <p className="mt-3 max-w-lg text-[15px] text-muted leading-relaxed">
+                No long discovery phases. No bloated project plans. A clear five-step process with weekly visibility.
               </p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Link href="/sage-hire-stack" className="btn-primary">
-                  See the platform
-                  <ArrowRight className="h-4 w-4" />
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {PROCESS.map((p, i) => (
+              <ScrollReveal key={p.step} delay={i * 70}>
+                <div className="flex flex-col h-full rounded-xl p-5 relative" style={{ border: "1px solid rgba(255,255,255,0.05)", background: "rgba(7,26,47,0.35)" }}>
+                  <div className="font-display text-[32px] font-medium mb-4" style={{ color: "rgba(122,158,126,0.18)" }}>{p.step}</div>
+                  <h3 className="font-display text-[15px] font-medium text-ivory mb-2">{p.title}</h3>
+                  <p className="text-[12.5px] text-muted/70 leading-relaxed">{p.desc}</p>
+                  {i < PROCESS.length - 1 && (
+                    <div className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 text-white/10 text-lg">›</div>
+                  )}
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Engagement models */}
+      <section style={{ background: "#F4F7FA" }} className="py-24">
+        <div className="container-padded max-w-4xl">
+          <ScrollReveal>
+            <div className="mb-12 text-center">
+              <div className="section-eyebrow-light mb-4">Engagement</div>
+              <h2 className="font-display text-[32px] font-medium tracking-tight text-dark md:text-[40px]">
+                How We Engage
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: "Fixed Scope",
+                tag: "Most Popular",
+                tagColor: "#5C8060",
+                desc: "You provide a spec. We give a fixed price and timeline. No surprises, no scope creep billing. Best for defined products.",
+                bar: "linear-gradient(90deg, #7A9E7E, #5C8060)",
+              },
+              {
+                title: "Time & Material",
+                tag: "Flexible",
+                tagColor: "#3B82F6",
+                desc: "Pay per sprint for ongoing product development, feature work, or early-stage discovery where scope will evolve.",
+                bar: "linear-gradient(90deg, #60A5FA, #3B82F6)",
+              },
+              {
+                title: "Retainer",
+                tag: "Long-term",
+                tagColor: "#C9A646",
+                desc: "Monthly bucket of hours for teams that need a reliable technical partner post-launch — features, fixes, scaling.",
+                bar: "linear-gradient(90deg, #C9A646, #A8842E)",
+              },
+            ].map((e, i) => (
+              <ScrollReveal key={e.title} delay={i * 80}>
+                <div className="flex flex-col h-full rounded-2xl bg-white overflow-hidden" style={{ border: "1px solid rgba(7,26,47,0.07)" }}>
+                  <div className="h-[3px]" style={{ background: e.bar }} />
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-start justify-between mb-4">
+                      <h3 className="font-display text-[17px] font-medium text-dark">{e.title}</h3>
+                      <span className="rounded-full px-2.5 py-1 text-[9px] font-medium uppercase tracking-wider" style={{ background: e.tagColor + "12", color: e.tagColor, border: `1px solid ${e.tagColor}25` }}>
+                        {e.tag}
+                      </span>
+                    </div>
+                    <p className="text-[13px] text-dark/55 leading-relaxed flex-1">{e.desc}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-navy py-24">
+        <div className="container-padded">
+          <ScrollReveal>
+            <div className="mx-auto max-w-2xl text-center">
+              <div className="section-eyebrow mb-6">Let&apos;s Build</div>
+              <h2 className="font-display text-[34px] font-medium tracking-tight text-ivory md:text-[44px]">
+                Tell Us What You&apos;re Building
+              </h2>
+              <p className="mt-4 text-[15px] text-muted leading-relaxed max-w-md mx-auto">
+                Free 45-minute discovery call. We&apos;ll scope it, quote it, and tell you exactly how fast we can ship.
+              </p>
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
+                <Link href="/contact?intent=project" className="btn-primary rounded-full">
+                  Start a Project →
+                </Link>
+                <Link href="/projects" className="btn-ghost-light rounded-full">
+                  See Our Work
                 </Link>
               </div>
             </div>
-            <ul className="space-y-3 text-sm text-ivory/85">
-              {[
-                "Real-time client dashboard scoped to your roles only",
-                "AI-parsed resumes — no manual data entry on our side",
-                "DPDP-compliant consent flow before sharing candidate data",
-                "Slack / email pings when interviews are confirmed",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-ivory">
-        <div className="container-padded py-20 md:py-24">
-          <div className="rounded-3xl bg-gradient-to-br from-navy to-navy-soft p-10 text-ivory md:p-14">
-            <h2 className="text-ivory text-3xl md:text-5xl">
-              Tell us about the role.
-            </h2>
-            <p className="mt-3 max-w-2xl text-ivory/80">
-              Best-case turnaround: shortlist in your inbox within 7 days. Honest
-              fit-check on a 30-minute call before you sign anything.
-            </p>
-            <div className="mt-6">
-              <Link href="/contact" className="btn-primary">
-                Start a search
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </>
-  );
-}
-
-function Stat({
-  icon: Icon,
-  label,
-  value,
-}: {
-  icon: typeof Briefcase;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="rounded-2xl border border-navy/10 bg-white p-5 shadow-soft">
-      <Icon className="h-5 w-5 text-gold-deep" aria-hidden />
-      <p className="mt-3 font-display text-3xl text-navy">{value}</p>
-      <p className="text-xs uppercase tracking-[0.12em] text-charcoal/60">{label}</p>
-    </div>
   );
 }
